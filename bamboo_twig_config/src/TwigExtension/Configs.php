@@ -2,8 +2,6 @@
 
 namespace Drupal\bamboo_twig_config\TwigExtension;
 
-use Drupal\file\Plugin\Field\FieldType\FileFieldItemList;
-
 // Injection.
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\State\StateInterface;

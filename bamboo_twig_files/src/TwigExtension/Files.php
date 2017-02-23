@@ -46,14 +46,14 @@ class Files extends \Twig_Extension {
   }
 
   /**
-   * Generate an absolute url to the given theme
+   * Generate an absolute url to the given theme.
    *
    * @param  string   $theme
-   *    Theme name
+   *   Theme name.
    * @param  string   $file
-   *    File path from theme root
+   *   File path from theme root.
    * @return string
-   *    absolute url to the given file in the theme
+   *   Absolute url to the given file in the theme.
    */
   public static function themeUrl($theme, $file) {
     return file_create_url(drupal_get_path('theme', $theme) . '/' . $file);

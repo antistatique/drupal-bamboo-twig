@@ -86,10 +86,10 @@ class Images extends \Twig_Extension {
    * Load an image from file uri.
    *
    * @param string $file_uri
-   *    File URI on the current server.
+   *   File URI on the current server.
    *
    * @return \Drupal\Core\Image\ImageInterface
-   *    An Image object.
+   *   An Image object.
    */
   public function getImage($file_uri) {
     return $this->imageFactory->get($file_uri);

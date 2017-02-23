@@ -2,8 +2,6 @@
 
 namespace Drupal\bamboo_twig\TwigExtension;
 
-use Drupal\file\Plugin\Field\FieldType\FileFieldItemList;
-
 // Injection.
 use Drupal\Core\Language\LanguageManagerInterface;
 

@@ -2,8 +2,6 @@
 
 namespace Drupal\bamboo_twig_loaders\TwigExtension;
 
-use Drupal\file\Plugin\Field\FieldType\FileFieldItemList;
-
 // Injection.
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -45,11 +43,11 @@ class Loader extends \Twig_Extension {
   /**
    * TwigExtension constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, BlockManagerInterface $blockManager, $formBuilder) {
-    $this->entityTypeManager   = $entity_type_manager;
-    $this->routeMatch          = $route_match;
-    $this->blockManager        = $blockManager;
-    $this->formBuilder         = $formBuilder;
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, BlockManagerInterface $blockManager, FormBuilderInterface $formBuilder) {
+    $this->entityTypeManager = $entity_type_manager;
+    $this->routeMatch        = $route_match;
+    $this->blockManager      = $blockManager;
+    $this->formBuilder       = $formBuilder;
   }
 
   /**
@@ -82,7 +80,7 @@ class Loader extends \Twig_Extension {
    * Load a given block with or whitout parameters.
    */
   public function loadForm($module, $form, $params = array()) {
-    return \Drupal::formBuilder()->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
+    return $this->formBuilder->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
   }
 
   /**
