@@ -1,0 +1,3 @@
+echo "Running Code Sniffer Drupal & DrupalPractice for ./ ..."
+./vendor/bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info --encoding=utf-8 ./src
+./vendor/bin/phpcs --standard=DrupalPractice --colors --extensions=php,module,inc,install,test,profile,theme,css,info --encoding=utf-8 ./src

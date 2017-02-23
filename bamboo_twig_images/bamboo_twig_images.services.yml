@@ -1,0 +1,6 @@
+services:
+    bamboo_twig_images.twig.images:
+        class: Drupal\bamboo_twig_images\TwigExtension\Images
+        arguments: ['@image.factory', '@disrupt_tools.image_style_generator']
+        tags:
+            - { name: twig.extension }

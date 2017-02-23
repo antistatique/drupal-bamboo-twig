@@ -1,0 +1,14 @@
+{
+  "name": "drupal/bamboo_twig",
+  "description": "Several Twig extensions with some useful functions and filters that can improve development experience.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/sandbox/wengerk/2855250",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/2855250"
+  },
+  "license": "GPL-2.0+",
+  "require-dev": {
+      "squizlabs/php_codesniffer": "^2.7",
+      "drupal/coder": "^8.2.10"
+  }
+}

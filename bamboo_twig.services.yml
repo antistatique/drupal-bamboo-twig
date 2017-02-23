@@ -1,0 +1,6 @@
+services:
+    # Custom Twig extensions
+    bamboo_twig.twig.dates:
+        class: Drupal\bamboo_twig\TwigExtension\Dates
+        tags:
+            - { name: twig.extension }

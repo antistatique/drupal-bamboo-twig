@@ -1,0 +1,9 @@
+name: Bamboo Twig - Images
+description: 'Several "Images" Twig extensions.'
+package: Bamboo Twig
+type: module
+version: 1.0
+core: 8.x
+
+dependencies:
+ - disrupt_tools
