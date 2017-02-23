@@ -29,7 +29,7 @@ class Configs extends \Twig_Extension {
    */
   public function __construct(ConfigFactory $config, StateInterface $state) {
     $this->config = $config;
-    $this->state  = $state;
+    $this->state = $state;
   }
 
   /**

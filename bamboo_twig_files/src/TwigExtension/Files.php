@@ -48,10 +48,11 @@ class Files extends \Twig_Extension {
   /**
    * Generate an absolute url to the given theme.
    *
-   * @param  string   $theme
+   * @param string $theme
    *   Theme name.
-   * @param  string   $file
+   * @param string $file
    *   File path from theme root.
+   *
    * @return string
    *   Absolute url to the given file in the theme.
    */
