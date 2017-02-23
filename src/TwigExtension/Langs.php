@@ -119,7 +119,7 @@ class Loader extends \Twig_Extension {
    * Generate Image Style, with responsive format.
    *
    * @param FileFieldItemList $field
-   *   Field File Entity to retreive cover and generate it.
+   *   Field File Entity to retrieve cover and generate it.
    * @param array $styles
    *   Styles to be generated.
    *
