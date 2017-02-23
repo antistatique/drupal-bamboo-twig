@@ -4,3 +4,8 @@ services:
         class: Drupal\bamboo_twig\TwigExtension\Dates
         tags:
             - { name: twig.extension }
+    bamboo_twig.twig.langs:
+        class: Drupal\bamboo_twig\TwigExtension\Langs
+        arguments: ['@language_manager']
+        tags:
+            - { name: twig.extension }

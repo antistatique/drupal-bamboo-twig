@@ -15,14 +15,14 @@ class Images extends \Twig_Extension {
   /**
    * Provides a factory for image objects.
    *
-   * @var ImageFactory
+   * @var Drupal\Core\Image\ImageFactory
    */
   private $imageFactory;
 
   /**
    * ImageStyleGenerator Service.
    *
-   * @var ImageStyleGenerator
+   * @var Drupal\disrupt_tools\Service\ImageStyleGenerator
    */
   private $imageStyleGenerator;
 
@@ -55,7 +55,7 @@ class Images extends \Twig_Extension {
   /**
    * Generate Image Style, with responsive format.
    *
-   * @param FileFieldItemList $field
+   * @param Drupal\file\Plugin\Field\FieldType\FileFieldItemList $field
    *   Field File Entity to retrieve cover and generate it.
    * @param array $styles
    *   Styles to be generated.
@@ -63,7 +63,7 @@ class Images extends \Twig_Extension {
    * @return array
    *   Generated link of styles
    */
-  public function imageStyleField($field, array $styles) {
+  public function imageStyleField(FileFieldItemList $field, array $styles) {
     return $this->imageStyleGenerator->fromField($field, $styles);
   }
 

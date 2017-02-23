@@ -2,6 +2,6 @@ services:
     # Custom Twig extensions
     bamboo_twig_loaders.twig.loader:
         class: Drupal\bamboo_twig_loaders\TwigExtension\Loader
-        arguments: ['@entity_type.manager', '@current_route_match', '@plugin.manager.block']
+        arguments: ['@entity_type.manager', '@current_route_match', '@plugin.manager.block', '@form_builder']
         tags:
             - { name: twig.extension }

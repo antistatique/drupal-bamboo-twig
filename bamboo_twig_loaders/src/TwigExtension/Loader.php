@@ -8,6 +8,7 @@ use Drupal\file\Plugin\Field\FieldType\FileFieldItemList;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Block\BlockManagerInterface;
+use Drupal\Core\Form\FormBuilderInterface;
 
 /**
  * Provides a 'Loader' Twig Extensions.
@@ -35,12 +36,20 @@ class Loader extends \Twig_Extension {
   protected $blockManager;
 
   /**
+   * The form builder service.
+   *
+   * @var \Drupal\Core\Form\FormBuilderInterface
+   */
+  protected $formBuilder;
+
+  /**
    * TwigExtension constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, BlockManagerInterface $blockManager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, BlockManagerInterface $blockManager, $formBuilder) {
     $this->entityTypeManager   = $entity_type_manager;
     $this->routeMatch          = $route_match;
     $this->blockManager        = $blockManager;
+    $this->formBuilder         = $formBuilder;
   }
 
   /**

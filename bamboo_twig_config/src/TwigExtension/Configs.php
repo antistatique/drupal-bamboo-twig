@@ -12,19 +12,19 @@ use Drupal\Core\State\StateInterface;
  * Provides a 'Configs' Twig Extensions.
  */
 class Configs extends \Twig_Extension {
-    /**
-     * Config API for storing variables that travel between instances.
-     *
-     * @var ConfigFactory
-     */
-    private $config;
+  /**
+   * Config API for storing variables that travel between instances.
+   *
+   * @var Drupal\Core\Config\ConfigFactory
+   */
+  private $config;
 
-    /**
-     * State API for storing variables that shouldn't travel between instances.
-     *
-     * @var StateInterface
-     */
-    private $state;
+  /**
+   * State API for storing variables that shouldn't travel between instances.
+   *
+   * @var Drupal\Core\State\StateInterface
+   */
+  private $state;
 
   /**
    * TwigExtension constructor.
