@@ -1,15 +1,23 @@
 <?php
 
 /**
+ * @file
+ */
+
+/**
  * Implements hook_help().
  *
  * @inheritdoc
+ */use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ *
  */
-function bamboo_twig_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+function bamboo_twig_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     case 'help.page.bamboo_twig':
       $text = file_get_contents(dirname(__FILE__) . "/README.md");
-      if (! \Drupal::moduleHandler()->moduleExists('markdown')) {
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
         return '<pre>' . $text . '</pre>';
       }
       else {

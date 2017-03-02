@@ -35,7 +35,7 @@ This project is sponsored by Antistatique. We are a Swiss Web Agency, Visit us a
 ```twig
 {# Format date using Drupal i118n. #}
 <dt>Format date:</dt>
-<dd>{{ node.changed.value|date_format('d M, h:i A') }}</dd>
+<dd>{{ node.changed.value|format_date_i18n('d M, h:i A') }}</dd>
 ```
 
 **Files**

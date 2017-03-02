@@ -9,24 +9,36 @@ First of all, you need to have the following tools installed globally on your en
   * drush
   * Latest dev release of Drupal 8.x.
 
+## 🏆 Tests
+
+  ```bash
+    $ ../vendor/bin/phpunit --group bamboo_twig
+  ```
+
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
-You need to run composer before using PHPCS. Then register the Drupal and DrupalPractice Standard with PHPCS: `./vendor/bin/phpcs --config-set installed_paths `pwd`/vendor/drupal/coder/coder_sniffer`
+You need to run composer before using PHPCS. Then register the Drupal
+and DrupalPractice Standard with PHPCS:
+`./vendor/bin/phpcs --config-set installed_paths
+`pwd`/vendor/drupal/coder/coder_sniffer`
 
 ### Command Line Usage
 
 Check Drupal coding standards:
 
   ```
-  $ ./vendor/bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info ./src
+  $ ./vendor/bin/phpcs --standard=Drupal --colors
+  --extensions=php,module,inc,install,test,profile,theme,css,info,md
+  --ignore=*/vendor/* ./
   ```
 
 Check Drupal best practices:
 
   ```
-  $ ./vendor/bin/phpcs --standard=DrupalPractice --colors --extensions=php,module,inc,install,test,profile,theme,css,info ./src
+  $ ./vendor/bin/phpcs --standard=DrupalPractice --colors
+  --extensions=php,module,inc,install,test,profile,theme,css,info,md
+  --ignore=*/vendor/* ./
   ```
-
 ### Enforce code standards with git hooks
 
 Maintaining code quality by adding the custom post-commit hook to yours.
