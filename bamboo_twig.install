@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Contains bamboo_twig.install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function bamboo_twig_install() {
+  drupal_set_message(t("Bamboo Twig is installed and ready for action."));
+}
