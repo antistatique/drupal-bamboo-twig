@@ -14,7 +14,7 @@ class Files extends \Twig_Extension {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('theme_url', array($this, 'themeUrl'), array('is_safe' => array('html'))),
+      new \Twig_SimpleFunction('theme_url', [$this, 'themeUrl'], ['is_safe' => ['html']]),
     ];
   }
 
@@ -23,7 +23,7 @@ class Files extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig_SimpleFilter('extension_guesser', array($this, 'extensionGuesser')),
+      new \Twig_SimpleFilter('extension_guesser', [$this, 'extensionGuesser']),
     ];
   }
 

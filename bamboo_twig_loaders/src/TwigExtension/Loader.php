@@ -55,8 +55,8 @@ class Loader extends \Twig_Extension {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('load_block', [$this, 'loadBlock'], array('is_safe' => array('html'))),
-      new \Twig_SimpleFunction('load_form', [$this, 'loadForm'], array('is_safe' => array('html'))),
+      new \Twig_SimpleFunction('load_block', [$this, 'loadBlock'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('load_form', [$this, 'loadForm'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('load_entity', [$this, 'loadEntity']),
     ];
   }
@@ -71,7 +71,7 @@ class Loader extends \Twig_Extension {
   /**
    * Load a given block with or whitout parameters.
    */
-  public function loadBlock($block_id, $params = array()) {
+  public function loadBlock($block_id, $params = []) {
     $instance = $this->blockManager->createInstance($block_id, $params);
     return $instance->build($params);
   }
@@ -79,7 +79,7 @@ class Loader extends \Twig_Extension {
   /**
    * Load a given block with or whitout parameters.
    */
-  public function loadForm($module, $form, $params = array()) {
+  public function loadForm($module, $form, $params = []) {
     return $this->formBuilder->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
   }
 

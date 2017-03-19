@@ -29,7 +29,7 @@ class Dates extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig_SimpleFilter('format_date_i18n', array($this, 'dateFormati18n')),
+      new \Twig_SimpleFilter('format_date_i18n', [$this, 'dateFormati18n']),
     ];
   }
 
