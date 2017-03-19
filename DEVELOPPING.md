@@ -1,6 +1,9 @@
 # Developing on BAMBOO TWIG
 
-* Issues should be filed at https://www.drupal.org/project/issues/2855250
+* Issues should be filed at
+https://www.drupal.org/project/issues/bamboo_twig
+* Pull requests can be made against
+https://github.com/antistatique/drupal-bamboo-twig/pulls
 
 ## 🔧 Prerequisites
 
