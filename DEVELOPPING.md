@@ -4,7 +4,8 @@
 
 ## 🔧 Prerequisites
 
-First of all, you need to have the following tools installed globally on your environment:
+First of all, you need to have the following tools installed
+globally on your environment:
 
   * drush
   * Latest dev release of Drupal 8.x.
@@ -12,7 +13,8 @@ First of all, you need to have the following tools installed globally on your en
 ## 🏆 Tests
 
   ```bash
-    $ ../vendor/bin/phpunit --group bamboo_twig
+  $ cd core
+  $ ../vendor/bin/phpunit --group bamboo_twig
   ```
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
@@ -39,6 +41,15 @@ Check Drupal best practices:
   --extensions=php,module,inc,install,test,profile,theme,css,info,md
   --ignore=*/vendor/* ./
   ```
+
+Automatically fix coding standards
+
+  ```
+  $ ./vendor/bin/phpcbf --standard=Drupal --colors
+  --extensions=php,module,inc,install,test,profile,theme,css,info
+  --ignore=*/vendor/* ./
+  ```
+
 ### Enforce code standards with git hooks
 
 Maintaining code quality by adding the custom post-commit hook to yours.

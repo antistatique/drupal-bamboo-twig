@@ -2,7 +2,8 @@
 
 Bamboo Twig. Drupal 8 powered module.
 
-Bamboo Twig module provides some Twig extensions with some useful functions and filters that can improve development experience.
+Bamboo Twig module provides some Twig extensions with some useful functions
+and filters that can improve development experience.
 
 ## You need Bamboo Twig if
 
@@ -11,9 +12,16 @@ Bamboo Twig module provides some Twig extensions with some useful functions and 
   - You need to "Load an Entity with view mode" from your twig.
   - You need to "Load a Form" from your twig.
   - You need to "Load a ImageStyle" from your twig.
-  - You need to "Retrieve the Extension file from given mimeType" from your twig.
+  - You need to "Retrieve the Extension file from given mimeType"
+  from your twig.
 
-Bamboo Twig can do a lot more than that, but those are some of the obvious uses of Bamboo Twig.
+Bamboo Twig can do a lot more than that, but those are some of the
+obvious uses of Bamboo Twig.
+
+## Performances
+
+For performances reasons, Bamboo Twig has been splitted in multiple sub-modules
+for each topics he provides Twigs.
 
 ## Bamboo Twig versions
 
@@ -22,11 +30,14 @@ The module is ready to be used in Drupal 8, there are no known issues.
 
 ## Dependencies
 
-The Drupal 8 version of Bamboo Twig requires [Disrupt Tools](https://www.drupal.org/sandbox/wengerk/2855304).
+The Drupal 8 version of Bamboo Twig requires
+[Disrupt Tools](https://www.drupal.org/sandbox/wengerk/2855304).
 
 ## Supporting organizations
 
-This project is sponsored by Antistatique. We are a Swiss Web Agency, Visit us at [www.antistatique.net](https://www.antistatique.net) or Contact us.
+This project is sponsored by Antistatique. We are a Swiss Web Agency,
+Visit us at [www.antistatique.net](https://www.antistatique.net) or
+[Contact us](mailto:info@antistatique.net).
 
 ## Examples
 

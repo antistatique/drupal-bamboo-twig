@@ -2,16 +2,13 @@
 
 /**
  * @file
+ * Contains includes hook to generate help page.
  */
+
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_help().
- *
- * @inheritdoc
- */use Drupal\Core\Routing\RouteMatchInterface;
-
-/**
- *
  */
 function bamboo_twig_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
@@ -30,11 +27,4 @@ function bamboo_twig_help($route_name, RouteMatchInterface $route_match) {
       }
   }
   return NULL;
-}
-
-/**
- * Implements hook_install().
- */
-function bamboo_twig_install() {
-  drupal_set_message(t("Bamboo Twig is installed and ready for action."));
 }
