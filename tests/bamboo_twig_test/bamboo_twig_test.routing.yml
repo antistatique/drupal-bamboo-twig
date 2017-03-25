@@ -1,0 +1,6 @@
+bamboo_twig_test.loaders:
+    path: '/bamboo-twig-loaders'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::loaders'
+    requirements:
+        _permission: 'access content'

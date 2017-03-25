@@ -39,7 +39,7 @@ This project is sponsored by Antistatique. We are a Swiss Web Agency,
 Visit us at [www.antistatique.net](https://www.antistatique.net) or
 [Contact us](mailto:info@antistatique.net).
 
-## Examples
+## Bamboo Twig Extensions
 
 **Dates**
 
@@ -66,7 +66,7 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 ```twig
 {# Load a Block. #}
 <dt>Block:</dt>
-<dd>{{ load_block('bartik_powered') }}</dd>
+<dd>{{ load_block('system_powered_by_block') }}</dd>
 
 {# Load an Entity. #}
 <dt>Entity:</dt>
@@ -79,6 +79,26 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 {# Load a Form. #}
 <dt>Form:</dt>
 <dd>{{ load_form('contact', 'ContactForm') }}</dd>
+
+{# Expand the whole tree of given menu. #}
+<dt>Menu:</dt>
+<dd>{{ drupal_menu('admin') }}</dd>
+
+{# Specify menu level and depth. #}
+<dt>Part of menu:</dt>
+<dd>{{ load_menu('admin', 1, 2) }}</dd>
+
+{# Load a Field. #}
+<dt>Field:</dt>
+<dd>{{ load_field('title', 'node', node.nid.value) }}</dd>
+
+{# Load a region for current theme. #}
+<dt>Region:</dt>
+<dd>{{ load_region('sidebar_first') }}</dd>
+
+{# Load a region from a specific theme. #}
+<dt>Region:</dt>
+<dd>{{ load_region('footer', 'bartik') }}</dd>
 ```
 
 **Image Styles**
@@ -103,4 +123,50 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 {# Configuration from State API. #}
 <dt>State API:</dt>
 <dd>{% set settings = load_state('system.cron_last') %}</dd>
+```
+
+## Core Twig
+
+Drupal core already adds a [handful of custom functions](https://www.drupal.org/docs/8/theming/twig/functions-in-twig-templates) that are Drupal specific.
+
+**Views**
+
+```twig
+{# Load a View. #}
+<dt>View:</dt>
+<dd>{{ views_embed_view('who_s_new', 'block_1') }}</dd>
+```
+
+**i18n**
+
+See the following [link](http://getlevelten.com/blog/mark-carver/drupal-8-twig-templates-and-translations) for more details.
+
+```twig
+{# Using Twig tag. #}
+{% trans %}
+  Submitted by {{ author.username }} on {{ node.created }}
+{% endtrans %}
+
+{# Using Twig filter. #}
+<p class="submitted">{{ "Submitted by !author on @date"|t({ '!author': author, '@date': date }) }}</p>
+```
+
+**Urls**
+
+```twig
+{# Generates an absolute URL given a route name and parameters. #}
+<a href="{{ path('entity.user.canonical', {'user': user.id}) }}">{{ 'View user profile'|t }}</a>
+
+{# Create a link with markup. #}
+{{ link('Homepage', item.url, { 'class':['foo', 'bar', 'baz']} ) }}
+
+{# Generate a relative URI path to the file from a given relative path from the root. #}
+{{ file_url(node.field_example_image.entity.uri.value) }}
+```
+
+**Attachments**
+
+```twig
+{# Attaches an asset library to the template. #}
+{{ attach_library('classy/node') }}
 ```

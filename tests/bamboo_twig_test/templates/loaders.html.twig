@@ -1,0 +1,37 @@
+<div class="test-loaders">
+
+  <!-- Loader Block -->
+  <h2>Loader Block</h2>
+  <hr>
+  <div class="loader-block">{{ load_block('system_powered_by_block') }}</div>
+
+  <!-- Loader Region -->
+  <h2>Loader Region</h2>
+  <hr>
+  <div class="loader-region">{{ load_region('sidebar_first') }}</div>
+
+  <!-- Loader Entity -->
+  <h2>Loader Entity</h2>
+  <hr>
+  <div class="loader-entity">{{ load_entity('node', 1) }}</div>
+  {% set article = load_entity('node', 1) %}
+  <div class="loader-entity-teaser">{{ load_entity('node', 2, 'teaser') }}</div>
+
+  <!-- Loader Field -->
+  <h2>Loader Field</h2>
+  <hr>
+  <div class="loader-field">{{ load_field('title', 'node', 1) }}</div>
+
+  <!-- Loader Menu -->
+  <h2>Loader Menu</h2>
+  <hr>
+  <div class="loader-menu-no-access">{{ load_menu('admin') }}</div>
+  <div class="loader-menu-all">{{ load_menu('admin') }}</div>
+  <div class="loader-menu-level">{{ load_menu('admin', 2) }}</div>
+  <div class="loader-menu-depth">{{ load_menu('admin', 1, 2) }}</div>
+
+  <!-- Loader Form -->
+  <h2>Loader Form</h2>
+  <hr>
+  <div class="loader-form">{{ load_form('system', 'CronForm') }}</div>
+</div>
