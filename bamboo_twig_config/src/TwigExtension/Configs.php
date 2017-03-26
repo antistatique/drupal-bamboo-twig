@@ -54,12 +54,14 @@ class Configs extends \Twig_Extension {
    *
    * @param string $key
    *   The key of the data to retrieve.
+   * @param string $name
+   *   The name of config to retrieve.
    *
    * @return mixed|null
    *   Returns the stored value for a given key, or NULL if no value exists.
    */
-  public function getConfig($key) {
-    return $this->config->get($key);
+  public function getConfig($key, $name) {
+    return $this->config->get($key)->get($name);
   }
 
   /**
