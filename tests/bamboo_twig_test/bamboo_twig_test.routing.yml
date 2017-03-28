@@ -4,3 +4,10 @@ bamboo_twig_test.loaders:
         _controller: '\Drupal\bamboo_twig_test\Controller\testsController::loaders'
     requirements:
         _permission: 'access content'
+
+bamboo_twig_test.security:
+    path: '/bamboo-twig-security'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::security'
+    requirements:
+        _permission: 'access content'

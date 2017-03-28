@@ -125,6 +125,30 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 <dd>{% set settings = load_state('system.cron_last') %}</dd>
 ```
 
+**Security**
+
+```twig
+{# Retrieve the current user. #}
+<dt>Current User:</dt>
+<dd>{% set user = get_current_user() %}</dd>
+
+{# Check Permission. #}
+<dt>Permission of current User:</dt>
+<dd>{{ has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}</dd>
+
+{# Retrieve the current user. #}
+<dt>Permission of User ID 1:</dt>
+<dd>{{ has_permission('administer site configuration', 1) ? 'TRUE' : 'FALSE' }}</dd>
+
+{# Check Roles. #}
+<dt>Role of current User:</dt>
+<dd>{{ has_role('authenticated') ? 'TRUE' : 'FALSE' }}</dd>
+
+{# Retrieve the current user. #}
+<dt>Role of User ID 1:</dt>
+<dd>{{ has_role('authenticated', 1) ? 'TRUE' : 'FALSE' }}</dd>
+```
+
 ## Core Twig
 
 Drupal core already adds a [handful of custom functions](https://www.drupal.org/docs/8/theming/twig/functions-in-twig-templates) that are Drupal specific.
