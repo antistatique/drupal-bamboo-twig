@@ -30,4 +30,11 @@ class TestsController extends ControllerBase {
     return ['#theme' => 'bamboo_twig_test_configs'];
   }
 
+  /**
+   * File page.
+   */
+  public function files() {
+    return ['#theme' => 'bamboo_twig_test_files'];
+  }
+
 }
