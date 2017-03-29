@@ -11,3 +11,10 @@ bamboo_twig_test.security:
         _controller: '\Drupal\bamboo_twig_test\Controller\testsController::security'
     requirements:
         _permission: 'access content'
+
+bamboo_twig_test.configs:
+    path: '/bamboo-twig-configs'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::configs'
+    requirements:
+        _permission: 'access content'

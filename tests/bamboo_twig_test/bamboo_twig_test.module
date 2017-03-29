@@ -19,5 +19,10 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'variables' => ['variables' => []],
       'template'  => 'security',
     ],
+
+    'bamboo_twig_test_configs' => [
+      'variables' => ['variables' => []],
+      'template'  => 'configs',
+    ],
   ];
 }

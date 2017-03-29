@@ -23,4 +23,11 @@ class TestsController extends ControllerBase {
     return ['#theme' => 'bamboo_twig_test_security'];
   }
 
+  /**
+   * Config page.
+   */
+  public function configs() {
+    return ['#theme' => 'bamboo_twig_test_configs'];
+  }
+
 }
