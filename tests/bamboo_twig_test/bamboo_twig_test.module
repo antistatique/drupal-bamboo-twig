@@ -15,9 +15,9 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'template'  => 'loaders',
     ],
 
-    'bamboo_twig_test_security' => [
+    'bamboo_twig_test_user' => [
       'variables' => ['variables' => []],
-      'template'  => 'security',
+      'template'  => 'user',
     ],
 
     'bamboo_twig_test_configs' => [
