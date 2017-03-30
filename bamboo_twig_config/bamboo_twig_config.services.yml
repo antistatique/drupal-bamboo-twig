@@ -1,6 +1,6 @@
 services:
-    bamboo_twig_config.twig.configs:
-        class: Drupal\bamboo_twig_config\TwigExtension\Configs
+    bamboo_twig_config.twig.config:
+        class: Drupal\bamboo_twig_config\TwigExtension\Config
         arguments: ['@config.factory', '@state']
         tags:
             - { name: twig.extension }

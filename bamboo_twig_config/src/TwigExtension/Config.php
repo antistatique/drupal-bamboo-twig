@@ -7,9 +7,9 @@ use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\State\StateInterface;
 
 /**
- * Provides a 'Configs' Twig Extensions.
+ * Provides getter for configs drupal storage as Twig Extensions.
  */
-class Configs extends \Twig_Extension {
+class Config extends \Twig_Extension {
   /**
    * Config API for storing variables that travel between instances.
    *
@@ -37,8 +37,8 @@ class Configs extends \Twig_Extension {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('get_config', [$this, 'getConfig']),
-      new \Twig_SimpleFunction('get_state', [$this, 'getState']),
+      new \Twig_SimpleFunction('bamboo_config_get', [$this, 'getConfig']),
+      new \Twig_SimpleFunction('bamboo_state_get', [$this, 'getState']),
     ];
   }
 
@@ -46,7 +46,7 @@ class Configs extends \Twig_Extension {
    * Unique identifier for this Twig extension.
    */
   public function getName() {
-    return 'bamboo_twig.twig.configs';
+    return 'bamboo_twig_config.twig.config';
   }
 
   /**

@@ -24,10 +24,10 @@ class TestsController extends ControllerBase {
   }
 
   /**
-   * Config page.
+   * Config page for testing config Twig Extensions.
    */
-  public function configs() {
-    return ['#theme' => 'bamboo_twig_test_configs'];
+  public function testConfig() {
+    return ['#theme' => 'bamboo_twig_test_config'];
   }
 
   /**
