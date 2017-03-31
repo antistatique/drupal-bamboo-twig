@@ -15,6 +15,7 @@ class Loader extends TwigExtensionBase {
   public function getFunctions() {
     return [
       new \Twig_SimpleFunction('bamboo_load_entity', [$this, 'loadEntity']),
+      new \Twig_SimpleFunction('bamboo_load_field', [$this, 'loadField']),
       new \Twig_SimpleFunction('bamboo_load_currentuser', [$this, 'loadCurrentUser']),
       new \Twig_SimpleFunction('bamboo_load_image', [$this, 'loadImage']),
     ];
@@ -51,6 +52,33 @@ class Loader extends TwigExtensionBase {
     }
 
     return $entity;
+  }
+
+  /**
+   * Returns the field object for a single entity field.
+   *
+   * @param string $field_name
+   *   The field name.
+   * @param string $entity_type
+   *   The entity type.
+   * @param mixed $id
+   *   (optional) The ID of the entity to render.
+   * @param string $langcode
+   *   (optional) Language code to load translation.
+   *
+   * @return null|Drupal\Core\Field\FieldItemListInterface
+   *   A field object for the entity or NULL if the value does not exist.
+   */
+  public function loadField($field_name, $entity_type, $id = NULL, $langcode = NULL) {
+    $entity = $this->loadEntity($entity_type, $id);
+
+    if ($entity && $langcode && $entity->hasTranslation($langcode)) {
+      $entity = $entity->getTranslation($langcode);
+    }
+    if (isset($entity->{$field_name})) {
+      return $entity->{$field_name};
+    }
+    return NULL;
   }
 
   /**

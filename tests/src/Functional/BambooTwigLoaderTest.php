@@ -81,7 +81,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
 
     // Load entity article.
     $this->assertElementPresent('.test-loaders div.loader-entity-node');
-    $this->assertElementContains('.test-loaders div.loader-entity-node', 'Hello, world!');
+    $this->assertElementContains('.test-loaders div.loader-entity-node', $this->article->getTitle());
 
     // Load entity taxonomy term.
     $this->assertElementPresent('.test-loaders div.loader-entity-taxonomy-term');
@@ -94,6 +94,29 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     // Load entity user.
     $this->assertElementPresent('.test-loaders div.loader-entity-user');
     $this->assertElementContains('.test-loaders div.loader-entity-user', 'admin');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadField
+   */
+  public function testField() {
+    $this->drupalGet('/bamboo-twig-loader');
+
+    // Load field article.
+    $this->assertElementPresent('.test-loaders div.loader-field-node');
+    $this->assertElementContains('.test-loaders div.loader-field-node', $this->article->getTitle());
+
+    // Load field taxonomy term.
+    $this->assertElementPresent('.test-loaders div.loader-field-taxonomy-term');
+    $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term', $this->term->getName());
+
+    // Load field file.
+    $this->assertElementPresent('.test-loaders div.loader-field-file');
+    $this->assertElementContains('.test-loaders div.loader-field-file', $this->file->filename->value);
+
+    // Load field user.
+    $this->assertElementPresent('.test-loaders div.loader-field-user');
+    $this->assertElementContains('.test-loaders div.loader-field-user', 'admin');
   }
 
   /**

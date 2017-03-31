@@ -19,6 +19,18 @@
   {% set user = bamboo_load_entity('user', 1) %}
   <div class="loader-entity-user">{{ user.name.value }}</div>
 
+  <!-- Loader Field -->
+  <h2>Loader Field</h2>
+  <hr>
+  {% set article_title = bamboo_load_field('title', 'node', 1) %}
+  <div class="loader-field-node">{{ article_title.value }}</div>
+  {% set term_name = bamboo_load_field('name', 'taxonomy_term', 1) %}
+  <div class="loader-field-taxonomy-term">{{ term_name.value }}</div>
+  {% set filename = bamboo_load_field('filename', 'file', 1) %}
+  <div class="loader-field-file">{{ filename.value }}</div>
+  {% set username = bamboo_load_field('name', 'user', 1) %}
+  <div class="loader-field-user">{{ username.value }}</div>
+
   <!-- Loader Image -->
   <h2>Loader Image</h2>
   <hr>
