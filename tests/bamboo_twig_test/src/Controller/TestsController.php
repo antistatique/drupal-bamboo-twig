@@ -10,10 +10,10 @@ use Drupal\Core\Controller\ControllerBase;
 class TestsController extends ControllerBase {
 
   /**
-   * Loaders page.
+   * Loader page.
    */
-  public function loaders() {
-    return ['#theme' => 'bamboo_twig_test_loaders'];
+  public function testLoader() {
+    return ['#theme' => 'bamboo_twig_test_loader'];
   }
 
   /**

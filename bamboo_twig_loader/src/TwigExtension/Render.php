@@ -1,71 +1,13 @@
 <?php
 
-namespace Drupal\bamboo_twig_loaders\TwigExtension;
+namespace Drupal\bamboo_twig_loader\TwigExtension;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Block\BlockManagerInterface;
-use Drupal\Core\Form\FormBuilderInterface;
-use Drupal\Core\Menu\MenuLinkTreeInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
- * Provides a 'Loader' Twig Extensions.
+ * Provides a 'Render' Twig Extensions.
  */
-class Loader extends \Twig_Extension {
-  /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
-   * The route match.
-   *
-   * @var \Drupal\Core\Routing\RouteMatchInterface
-   */
-  protected $routeMatch;
-
-  /**
-   * The block manager.
-   *
-   * @var \Drupal\Core\Block\BlockManagerInterface
-   */
-  protected $blockManager;
-
-  /**
-   * The form builder service.
-   *
-   * @var \Drupal\Core\Form\FormBuilderInterface
-   */
-  protected $formBuilder;
-
-  /**
-   * The menu link tree service.
-   *
-   * @var \Drupal\Core\Menu\MenuLinkTreeInterface
-   */
-  protected $menuTree;
-
-  /**
-   * The configuration factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected $configFactory;
-
-  /**
-   * TwigExtension constructor.
-   */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, BlockManagerInterface $blockManager, FormBuilderInterface $formBuilder, MenuLinkTreeInterface $menu_tree, ConfigFactoryInterface $config_factory) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->routeMatch        = $route_match;
-    $this->blockManager      = $blockManager;
-    $this->formBuilder       = $formBuilder;
-    $this->menuTree          = $menu_tree;
-    $this->configFactory     = $config_factory;
-  }
+class Render extends TwigExtensionBase {
 
   /**
    * List of all Twig functions.
@@ -235,6 +177,33 @@ class Loader extends \Twig_Extension {
     $tree = $this->menuTree->transform($tree, $manipulators);
 
     return $this->menuTree->build($tree);
+  }
+
+  /**
+   * Returns image derivative for an original image path or URI.
+   *
+   * @param string $path
+   *   The path or URI to the original image.
+   * @param string $style
+   *   The image style.
+   * @param bool $preprocess
+   *   Choose to preprocess the image style before first HTTP(s) GET request.
+   *   By Default Drupal never preprocess an image before his
+   *   first requesting http(s) GET.
+   *
+   * @return string
+   *   The absolute URL where a style image can be downloaded, suitable for use
+   *   in an <img> tag.
+   *   Requesting the URL will cause the image to be created
+   *   when $preprocess is FALSE.
+   */
+  public function renderImageStyle($path, $style, $preprocess = FALSE) {
+    /** @var \Drupal\disrupt_tools\Service\ImageStyleGenerator $ImageStyleGenerator */
+    $imageStyleGenerator = $this->container->get('disrupt_tools.image_style_generator');
+
+    if ($image_style = $this->getImageStyleStorage()->load($style)) {
+      return $image_style->buildUrl($path);
+    }
   }
 
 }

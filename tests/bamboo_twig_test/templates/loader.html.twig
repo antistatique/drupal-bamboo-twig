@@ -1,0 +1,29 @@
+<div class="test-loaders">
+
+
+  <!-- Get Current User -->
+  <h2>Current User</h2>
+  <hr>
+  {% set user = bamboo_load_currentuser() %}
+  <div class="loader-current-user">{{ user.name.value }}</div>
+
+  <!-- Loader Entity -->
+  <h2>Loader Entity</h2>
+  <hr>
+  {% set article = bamboo_load_entity('node', 1) %}
+  <div class="loader-entity-node">{{ article.title.value }}</div>
+  {% set term = bamboo_load_entity('taxonomy_term', 1) %}
+  <div class="loader-entity-taxonomy-term">{{ term.name.value }}</div>
+  {% set file = bamboo_load_entity('file', 1) %}
+  <div class="loader-entity-file">{{ file.filename.value }}</div>
+  {% set user = bamboo_load_entity('user', 1) %}
+  <div class="loader-entity-user">{{ user.name.value }}</div>
+
+  <!-- Loader Image -->
+  <h2>Loader Image</h2>
+  <hr>
+  {% set image = bamboo_load_image('public://antistatique.png') %}
+  <div class="loader-image-uri">{{ image.getSource }}</div>
+  {% set image = bamboo_load_image('modules/contrib/bamboo_twig/tests/bamboo_twig_test/files/antistatique.png') %}
+  <div class="loader-image-path">{{ image.getSource }}</div>
+</div>
