@@ -5,6 +5,13 @@ bamboo_twig_test.loader:
     requirements:
         _permission: 'access content'
 
+bamboo_twig_test.render:
+    path: '/bamboo-twig-render'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testRender'
+    requirements:
+        _permission: 'access content'
+
 bamboo_twig_test.security:
     path: '/bamboo-twig-security'
     defaults:

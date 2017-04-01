@@ -20,7 +20,6 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   public static $modules = [
     'bamboo_twig',
     'bamboo_twig_loader',
-    'disrupt_tools',
     'bamboo_twig_test',
     'node',
     'user',

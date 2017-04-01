@@ -17,6 +17,13 @@ class TestsController extends ControllerBase {
   }
 
   /**
+   * Render page.
+   */
+  public function testRender() {
+    return ['#theme' => 'bamboo_twig_test_render'];
+  }
+
+  /**
    * Security page.
    */
   public function security() {

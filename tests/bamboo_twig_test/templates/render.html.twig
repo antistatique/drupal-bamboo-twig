@@ -1,37 +1,48 @@
-<div class="test-loaders">
+<div class="test-render">
 
-  <!-- Loader Block -->
-  <h2>Loader Block</h2>
+  <!-- Render Block -->
+  <h2>Render Block</h2>
   <hr>
-  <div class="loader-block">{{ load_block('system_powered_by_block') }}</div>
+  <div class="render-block">{{ bamboo_render_block('system_powered_by_block') }}</div>
 
-  <!-- Loader Region -->
-  <h2>Loader Region</h2>
+  <!-- Render Region -->
+  <h2>Render Region</h2>
   <hr>
-  <div class="loader-region">{{ load_region('sidebar_first') }}</div>
+  <div class="render-region">{{ bamboo_render_region('sidebar_first') }}</div>
 
-  <!-- Loader Entity -->
-  <h2>Loader Entity</h2>
+  <!-- Render Entity -->
+  <h2>Render Entity</h2>
   <hr>
-  <div class="loader-entity">{{ load_entity('node', 1) }}</div>
-  {% set article = load_entity('node', 1) %}
-  <div class="loader-entity-teaser">{{ load_entity('node', 2, 'teaser') }}</div>
+  <div class="render-entity-node">{{ bamboo_render_entity('node', 1) }}</div>
+  <div class="render-entity-node-teaser">{{ bamboo_render_entity('node', 1, 'teaser') }}</div>
+  <div class="render-entity-taxonomy-term">{{ bamboo_render_entity('taxonomy_term', 1) }}</div>
+  <div class="render-entity-taxonomy-term-link">{{ bamboo_render_entity('taxonomy_term', 1, 'link') }}</div>
+  <div class="render-entity-user">{{ bamboo_render_entity('user', 1) }}</div>
+  <div class="render-entity-user-compact">{{ bamboo_render_entity('user', 1, 'compact') }}</div>
 
-  <!-- Loader Field -->
-  <h2>Loader Field</h2>
+  <!-- Render Image -->
+  <h2>Render Image</h2>
   <hr>
-  <div class="loader-field">{{ load_field('title', 'node', 1) }}</div>
+  <div class="render-image">{{ bamboo_render_image(1, 'thumbnail') }}</div>
 
-  <!-- Loader Menu -->
-  <h2>Loader Menu</h2>
+  <!-- Render Field -->
+  <h2>Render Field</h2>
   <hr>
-  <div class="loader-menu-no-access">{{ load_menu('admin') }}</div>
-  <div class="loader-menu-all">{{ load_menu('admin') }}</div>
-  <div class="loader-menu-level">{{ load_menu('admin', 2) }}</div>
-  <div class="loader-menu-depth">{{ load_menu('admin', 1, 2) }}</div>
+  <div class="render-field-node">{{ bamboo_render_field('title', 'node', 1) }}</div>
+  <div class="render-field-taxonomy-term">{{ bamboo_render_field('name', 'taxonomy_term', 1) }}</div>
+  <div class="render-field-file">{{ bamboo_render_field('filename', 'file', 1) }}</div>
+  <div class="render-field-user">{{ bamboo_render_field('name', 'user', 1) }}</div>
 
-  <!-- Loader Form -->
-  <h2>Loader Form</h2>
+  <!-- Render Menu -->
+  <h2>Render Menu</h2>
   <hr>
-  <div class="loader-form">{{ load_form('system', 'CronForm') }}</div>
+  <div class="render-menu-no-access">{{ bamboo_render_menu('admin') }}</div>
+  <div class="render-menu-all">{{ bamboo_render_menu('admin') }}</div>
+  <div class="render-menu-level">{{ bamboo_render_menu('admin', 2) }}</div>
+  <div class="render-menu-depth">{{ bamboo_render_menu('admin', 1, 2) }}</div>
+
+  <!-- Render Form -->
+  <h2>Render Form</h2>
+  <hr>
+  <div class="render-form">{{ bamboo_render_form('system', 'CronForm') }}</div>
 </div>

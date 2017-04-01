@@ -40,11 +40,8 @@ class Loader extends TwigExtensionBase {
    *   An entity object for the entity or NULL if the entity does not exist.
    */
   public function loadEntity($entity_type, $id = NULL) {
-    // Lazy load the entity type manager only when needed.
-    $entityTypeManager = $this->getEntityTypeManager();
-
     $entity = $id ?
-      $entityTypeManager->getStorage($entity_type)->load($id) :
+      $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
       $this->getCurrentRouteMatch()->getParameter($entity_type);
 
     if (!$entity) {
@@ -75,9 +72,21 @@ class Loader extends TwigExtensionBase {
     if ($entity && $langcode && $entity->hasTranslation($langcode)) {
       $entity = $entity->getTranslation($langcode);
     }
+
+    // Ensure the entity has the requested field.
+    if (!$entity->hasField($field_name)) {
+      return NULL;
+    }
+
+    // Do not continue if the field is empty.
+    if ($entity->get($field_name)->isEmpty()) {
+      return NULL;
+    }
+
     if (isset($entity->{$field_name})) {
       return $entity->{$field_name};
     }
+
     return NULL;
   }
 

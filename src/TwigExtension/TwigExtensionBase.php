@@ -91,6 +91,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * Return the block storage.
+   *
+   * @return \Drupal\user\UserStorageInterface
+   *   Return the block storage.
+   */
+  protected function getBlockStorage() {
+    return $this->getEntityTypeManager()->getStorage('block');
+  }
+
+  /**
    * Return the file storage.
    *
    * @return \Drupal\Component\PhpStorage\FileStorage
@@ -118,6 +128,16 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getImageFactory() {
     return $this->container->get('image.factory');
+  }
+
+  /**
+   * Return the factory for image objects.
+   *
+   * @return \Drupal\Core\Field\FieldTypePluginManager
+   *   Return the factory for image objects.
+   */
+  protected function getFieldTypeManager() {
+    return $this->container->get('plugin.manager.field.field_type');
   }
 
 }

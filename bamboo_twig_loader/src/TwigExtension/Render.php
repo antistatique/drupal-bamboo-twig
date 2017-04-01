@@ -3,9 +3,11 @@
 namespace Drupal\bamboo_twig_loader\TwigExtension;
 
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Drupal\Core\Block\TitleBlockPluginInterface;
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 /**
- * Provides a 'Render' Twig Extensions.
+ * Provides some renderer as Twig Extensions.
  */
 class Render extends TwigExtensionBase {
 
@@ -14,12 +16,13 @@ class Render extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('load_block', [$this, 'loadBlock'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('load_form', [$this, 'loadForm'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('load_entity', [$this, 'loadEntity']),
-      new \Twig_SimpleFunction('load_region', [$this, 'loadRegion'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('load_field', [$this, 'loadField']),
-      new \Twig_SimpleFunction('load_menu', [$this, 'loadMenu'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_form', [$this, 'renderForm'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_entity', [$this, 'renderEntity'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
     ];
   }
 
@@ -27,22 +30,22 @@ class Render extends TwigExtensionBase {
    * Unique identifier for this Twig extension.
    */
   public function getName() {
-    return 'bamboo_twig.twig.loader';
+    return 'bamboo_twig_loader.twig.render';
   }
 
   /**
    * Load a given block with or whitout parameters.
    */
-  public function loadBlock($block_id, $params = []) {
-    $instance = $this->blockManager->createInstance($block_id, $params);
+  public function renderBlock($block_id, $params = []) {
+    $instance = $this->getPluginManagerBlock()->createInstance($block_id, $params);
     return $instance->build($params);
   }
 
   /**
    * Load a given block with or whitout parameters.
    */
-  public function loadForm($module, $form, $params = []) {
-    return $this->formBuilder->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
+  public function renderForm($module, $form, $params = []) {
+    return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
   }
 
   /**
@@ -61,14 +64,42 @@ class Render extends TwigExtensionBase {
    * @return null|array
    *   A render array for the entity or NULL if the entity does not exist.
    */
-  public function loadEntity($entity_type, $id = NULL, $view_mode = NULL, $langcode = NULL) {
+  public function renderEntity($entity_type, $id = NULL, $view_mode = NULL, $langcode = NULL) {
+    // Lazy load the entity type manager only when needed.
+    $entityTypeManager = $this->getEntityTypeManager();
+
     $entity = $id ?
-      $this->entityTypeManager->getStorage($entity_type)->load($id) :
-      $this->routeMatch->getParameter($entity_type);
+      $entityTypeManager->getStorage($entity_type)->load($id) :
+      $this->getCurrentRouteMatch()->getParameter($entity_type);
 
     if ($entity) {
-      $render_controller = $this->entityTypeManager->getViewBuilder($entity_type);
+      $render_controller = $entityTypeManager->getViewBuilder($entity_type);
       return $render_controller->view($entity, $view_mode, $langcode);
+    }
+    return NULL;
+  }
+
+  /**
+   * Returns the render array for an image style.
+   *
+   * @param int $id
+   *   The image File ID of the entity to render.
+   * @param string $style
+   *   The image style.
+   *
+   * @return string
+   *   A render array for the image style or NULL if the image does not exist.
+   */
+  public function renderImage($id, $style) {
+    $file = $this->getFileStorage()->load($id);
+
+    // Check the entity exist.
+    if ($file) {
+      return [
+        '#theme'      => 'image_style',
+        '#style_name' => $style,
+        '#uri'        => $file->getFileUri(),
+      ];
     }
     return NULL;
   }
@@ -85,13 +116,13 @@ class Render extends TwigExtensionBase {
    * @return array
    *   A render array to display the region content.
    */
-  public function loadRegion($region, $theme = NULL) {
-    $blocks = $this->entityTypeManager->getStorage('block')->loadByProperties([
+  public function renderRegion($region, $theme = NULL) {
+    $blocks = $this->getBlockStorage()->loadByProperties([
       'region' => $region,
-      'theme'  => $theme ?: $this->configFactory->get('system.theme')->get('default'),
+      'theme'  => $theme ?: $this->getConfigFactory()->get('system.theme')->get('default'),
     ]);
 
-    $view_builder = $this->entityTypeManager->getViewBuilder('block');
+    $view_builder = $this->getEntityTypeManager()->getViewBuilder('block');
 
     $build = [];
     /* @var $blocks \Drupal\block\BlockInterface[] */
@@ -118,25 +149,47 @@ class Render extends TwigExtensionBase {
    *   The entity type.
    * @param mixed $id
    *   (optional) The ID of the entity to render.
-   * @param string $view_mode
-   *   (optional) The view mode that should be used to render the field.
+   * @param string $formatter
+   *   (optional) The formatter that should be used to render the field.
    * @param string $langcode
    *   (optional) Language code to load translation.
    *
    * @return null|array
    *   A render array for the field or NULL if the value does not exist.
    */
-  public function loadField($field_name, $entity_type, $id = NULL, $view_mode = 'default', $langcode = NULL) {
+  public function renderField($field_name, $entity_type, $id = NULL, $formatter = NULL, $langcode = NULL) {
     $entity = $id ?
-        $this->entityTypeManager->getStorage($entity_type)->load($id) :
-        $this->routeMatch->getParameter($entity_type);
+        $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
+        $this->getCurrentRouteMatch()->getParameter($entity_type);
+
+    // Ensure the entity has the requested field.
+    if (!$entity->hasField($field_name)) {
+      return NULL;
+    }
+
+    // Do not continue if the field is empty.
+    if ($entity->get($field_name)->isEmpty()) {
+      return NULL;
+    }
+
     if ($langcode && $entity->hasTranslation($langcode)) {
       $entity = $entity->getTranslation($langcode);
     }
-    if (isset($entity->{$field_name})) {
-      return $entity->{$field_name}->view($view_mode);
+
+    $display_options = ['label' => 'hidden'];
+    if (!is_null($formatter)) {
+      $display_options['type'] = $formatter;
     }
-    return NULL;
+    else {
+      // We don't have the formatter view display and should fall back on
+      // default formatters.
+      $field_type_definition = $this->getFieldTypeManager()->getDefinition($entity->getFieldDefinition($field_name)->getType());
+      $display_options['type'] = $field_type_definition['default_formatter'];
+    }
+
+    if (isset($entity->{$field_name})) {
+      return $entity->{$field_name}->view($display_options);
+    }
   }
 
   /**
@@ -152,8 +205,11 @@ class Render extends TwigExtensionBase {
    * @return array
    *   A render array for the menu.
    */
-  public function loadMenu($menu_name, $level = 1, $depth = 0) {
-    $parameters = $this->menuTree->getCurrentRouteMenuTreeParameters($menu_name);
+  public function renderMenu($menu_name, $level = 1, $depth = 0) {
+    // Lazy load the entity type manager only when needed.
+    $menuLinkTree = $this->getMenuLinkTree();
+
+    $parameters = $menuLinkTree->getCurrentRouteMenuTreeParameters($menu_name);
 
     // Adjust the menu tree parameters based on the block's configuration.
     $parameters->setMinDepth($level);
@@ -163,47 +219,20 @@ class Render extends TwigExtensionBase {
     // Hence this is a relative depth that we must convert to an actual
     // (absolute) depth, that may never exceed the maximum depth.
     if ($depth > 0) {
-      $parameters->setMaxDepth(min($level + $depth - 1, $this->menuTree->maxDepth()));
+      $parameters->setMaxDepth(min($level + $depth - 1, $menuLinkTree->maxDepth()));
     }
 
     $parameters->onlyEnabledLinks();
     $parameters->expandedParents = [];
 
-    $tree = $this->menuTree->load($menu_name, $parameters);
+    $tree = $menuLinkTree->load($menu_name, $parameters);
     $manipulators = [
       ['callable' => 'menu.default_tree_manipulators:checkAccess'],
       ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
     ];
-    $tree = $this->menuTree->transform($tree, $manipulators);
+    $tree = $menuLinkTree->transform($tree, $manipulators);
 
-    return $this->menuTree->build($tree);
-  }
-
-  /**
-   * Returns image derivative for an original image path or URI.
-   *
-   * @param string $path
-   *   The path or URI to the original image.
-   * @param string $style
-   *   The image style.
-   * @param bool $preprocess
-   *   Choose to preprocess the image style before first HTTP(s) GET request.
-   *   By Default Drupal never preprocess an image before his
-   *   first requesting http(s) GET.
-   *
-   * @return string
-   *   The absolute URL where a style image can be downloaded, suitable for use
-   *   in an <img> tag.
-   *   Requesting the URL will cause the image to be created
-   *   when $preprocess is FALSE.
-   */
-  public function renderImageStyle($path, $style, $preprocess = FALSE) {
-    /** @var \Drupal\disrupt_tools\Service\ImageStyleGenerator $ImageStyleGenerator */
-    $imageStyleGenerator = $this->container->get('disrupt_tools.image_style_generator');
-
-    if ($image_style = $this->getImageStyleStorage()->load($style)) {
-      return $image_style->buildUrl($path);
-    }
+    return $menuLinkTree->build($tree);
   }
 
 }
