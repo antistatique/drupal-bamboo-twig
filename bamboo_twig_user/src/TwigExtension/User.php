@@ -2,40 +2,12 @@
 
 namespace Drupal\bamboo_twig_user\TwigExtension;
 
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
  * Provides checker about users permissions and roles as Twig Extensions.
  */
-class User extends \Twig_Extension {
-
-  /**
-   * The account object.
-   *
-   * @var \Drupal\Core\Session\AccountInterface
-   */
-  protected $currentUser;
-
-  /**
-   * The storage handler class for users.
-   *
-   * @var \Drupal\user\UserStorage
-   */
-  protected $userStorage;
-
-  /**
-   * TwigExtension constructor class.
-   *
-   * @param \Drupal\Core\Session\AccountInterface $currentUser
-   *   The current user.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity
-   *   The Entity type manager service.
-   */
-  public function __construct(AccountInterface $currentUser, EntityTypeManagerInterface $entity) {
-    $this->currentUser = $currentUser;
-    $this->userStorage = $entity->getStorage('user');
-  }
+class User extends TwigExtensionBase {
 
   /**
    * List of all Twig functions.
@@ -67,16 +39,17 @@ class User extends \Twig_Extension {
    *   Otherwise FALSE.
    */
   public function hasPermission($permission, $user = NULL) {
-    if (is_null($user) && $this->currentUser->isAnonymous()) {
+    $currentUser = $this->getCurrentUser();
+    if (is_null($user) && $currentUser->isAnonymous()) {
       return NULL;
     }
 
-    $user_id = $this->currentUser->id();
+    $user_id = $currentUser->id();
     if (!is_null($user) && is_int($user)) {
       $user_id = $user;
     }
 
-    $account = $this->userStorage->load($user_id);
+    $account = $this->getUserStorage()->load($user_id);
     if (!$account) {
       return NULL;
     }
@@ -96,16 +69,18 @@ class User extends \Twig_Extension {
    *   Otherwise FALSE.
    */
   public function hasRole($role, $user = NULL) {
-    if (is_null($user) && $this->currentUser->isAnonymous()) {
+    $currentUser = $this->getCurrentUser();
+
+    if (is_null($user) && $currentUser->isAnonymous()) {
       return NULL;
     }
 
-    $user_id = $this->currentUser->id();
+    $user_id = $currentUser->id();
     if (!is_null($user) && is_int($user)) {
       $user_id = $user;
     }
 
-    $account = $this->userStorage->load($user_id);
+    $account = $this->getUserStorage()->load($user_id);
     if (!$account) {
       return NULL;
     }
