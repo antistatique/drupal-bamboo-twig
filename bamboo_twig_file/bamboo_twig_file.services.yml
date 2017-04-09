@@ -1,0 +1,6 @@
+services:
+    bamboo_twig_file.twig.file:
+        class: Drupal\bamboo_twig_file\TwigExtension\File
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base

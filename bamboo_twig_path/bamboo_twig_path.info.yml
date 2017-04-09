@@ -1,0 +1,5 @@
+name: Bamboo Twig - Path & Url
+description: 'Several "Path & Url" Twig extensions.'
+package: Bamboo Twig
+type: module
+core: 8.x

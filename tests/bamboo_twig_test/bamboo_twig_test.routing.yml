@@ -26,9 +26,23 @@ bamboo_twig_test.configs:
     requirements:
         _permission: 'access content'
 
-bamboo_twig_test.files:
-    path: '/bamboo-twig-files'
+bamboo_twig_test.file:
+    path: '/bamboo-twig-file'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::files'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testFile'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.path:
+    path: '/bamboo-twig-path'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testPath'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.i18n:
+    path: '/bamboo-twig-i18n'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testI18n'
     requirements:
         _permission: 'access content'
