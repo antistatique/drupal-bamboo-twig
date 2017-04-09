@@ -2,35 +2,12 @@
 
 namespace Drupal\bamboo_twig_config\TwigExtension;
 
-// Injection.
-use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\State\StateInterface;
+use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
  * Provides getter for configs drupal storage as Twig Extensions.
  */
-class Config extends \Twig_Extension {
-  /**
-   * Config API for storing variables that travel between instances.
-   *
-   * @var Drupal\Core\Config\ConfigFactory
-   */
-  private $config;
-
-  /**
-   * State API for storing variables that shouldn't travel between instances.
-   *
-   * @var Drupal\Core\State\StateInterface
-   */
-  private $state;
-
-  /**
-   * TwigExtension constructor.
-   */
-  public function __construct(ConfigFactory $config, StateInterface $state) {
-    $this->config = $config;
-    $this->state = $state;
-  }
+class Config extends TwigExtensionBase {
 
   /**
    * List of all Twig functions.
@@ -61,7 +38,7 @@ class Config extends \Twig_Extension {
    *   Returns the stored value for a given key, or NULL if no value exists.
    */
   public function getConfig($key, $name) {
-    return $this->config->get($key)->get($name);
+    return $this->getConfigFactory()->get($key)->get($name);
   }
 
   /**
@@ -74,7 +51,7 @@ class Config extends \Twig_Extension {
    *   Returns the stored value for a given key, or NULL if no value exists.
    */
   public function getState($key) {
-    return $this->state->get($key);
+    return $this->getStateFactory()->get($key);
   }
 
 }

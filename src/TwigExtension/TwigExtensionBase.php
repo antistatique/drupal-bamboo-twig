@@ -71,6 +71,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * The state storage service.
+   *
+   * @return \\Drupal\Core\State\StateInterface
+   *   Return the state storage service.
+   */
+  protected function getStateFactory() {
+    return $this->container->get('state');
+  }
+
+  /**
    * Lazy loading for the Drupal current user account proxy.
    *
    * @return \Drupal\Core\Session\AccountInterface
