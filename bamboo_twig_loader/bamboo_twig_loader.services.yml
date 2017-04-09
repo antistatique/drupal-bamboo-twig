@@ -1,0 +1,12 @@
+services:
+    # Custom Twig extensions
+    bamboo_twig_loader.twig.loader:
+        class: Drupal\bamboo_twig_loader\TwigExtension\Loader
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base
+    bamboo_twig_loader.twig.render:
+        class: Drupal\bamboo_twig_loader\TwigExtension\Render
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base

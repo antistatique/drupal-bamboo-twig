@@ -1,4 +1,10 @@
 services:
+    bamboo_twig.twig.base:
+        private: true
+        class: Drupal\bamboo_twig\TwigExtension\TwigExtensionBase
+        calls:
+            - [setContainer, ['@service_container']]
+
     # Custom Twig extensions
     bamboo_twig.twig.dates:
         class: Drupal\bamboo_twig\TwigExtension\Dates
