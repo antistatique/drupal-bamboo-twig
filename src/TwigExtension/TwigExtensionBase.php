@@ -140,4 +140,14 @@ class TwigExtensionBase extends \Twig_Extension {
     return $this->container->get('plugin.manager.field.field_type');
   }
 
+  /**
+   * Return the token service.
+   *
+   * @return \Drupal\Core\Utility\Token
+   *   Return the token service.
+   */
+  protected function getToken() {
+    return $this->container->get('token');
+  }
+
 }

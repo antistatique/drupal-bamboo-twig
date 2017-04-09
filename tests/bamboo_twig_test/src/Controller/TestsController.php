@@ -44,4 +44,11 @@ class TestsController extends ControllerBase {
     return ['#theme' => 'bamboo_twig_test_files'];
   }
 
+  /**
+   * Token page.
+   */
+  public function testToken() {
+    return ['#theme' => 'bamboo_twig_test_token'];
+  }
+
 }

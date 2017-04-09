@@ -1,0 +1,6 @@
+services:
+    bamboo_twig_token.twig.token:
+        class: Drupal\bamboo_twig_token\TwigExtension\Token
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base

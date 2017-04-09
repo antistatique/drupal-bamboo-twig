@@ -32,3 +32,10 @@ bamboo_twig_test.files:
         _controller: '\Drupal\bamboo_twig_test\Controller\testsController::files'
     requirements:
         _permission: 'access content'
+
+bamboo_twig_test.token:
+    path: '/bamboo-twig-token'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testToken'
+    requirements:
+        _permission: 'access content'
