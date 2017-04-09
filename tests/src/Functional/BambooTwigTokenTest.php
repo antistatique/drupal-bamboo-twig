@@ -45,11 +45,9 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
    */
   public function testSubstituteToken() {
     $this->drupalGet('/bamboo-twig-token');
-    // Load an image using uri public://antistatique.png.
     $this->assertElementPresent('.test-token div.token-site');
     $this->assertElementContains('.test-token div.token-site', 'Drupal');
 
-    // Load an image using uri public://antistatique.png.
     $this->assertElementPresent('.test-token div.token-node');
     $this->assertElementContains('.test-token div.token-node', 'Hello, world!');
   }
