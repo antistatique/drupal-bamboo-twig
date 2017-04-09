@@ -1,8 +1,0 @@
-name: Bamboo Twig - Images
-description: 'Several "Images" Twig extensions.'
-package: Bamboo Twig
-type: module
-core: 8.x
-
-dependencies:
- - drupal:disrupt_tools
