@@ -45,7 +45,7 @@ class Render extends TwigExtensionBase {
    * @return null|array
    *   A render array for the block or NULL if the block does not exist.
    */
-  public function renderBlock($block_id, $params = []) {
+  public function renderBlock($block_id, array $params = []) {
     $instance = $this->getPluginManagerBlock()->createInstance($block_id, $params);
     return $instance->build($params);
   }
@@ -63,7 +63,7 @@ class Render extends TwigExtensionBase {
    * @return null|array
    *   A render array for the form or NULL if the form does not exist.
    */
-  public function renderForm($module, $form, $params = []) {
+  public function renderForm($module, $form, array $params = []) {
     return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\\Form\\' . $form, $params);
   }
 
@@ -182,7 +182,7 @@ class Render extends TwigExtensionBase {
         }
 
         // Create the new image derivative.
-        $derivative = $image_style->createDerivative($image_uri, $image_style_uri);
+        $image_style->createDerivative($image_uri, $image_style_uri);
       }
     }
 
