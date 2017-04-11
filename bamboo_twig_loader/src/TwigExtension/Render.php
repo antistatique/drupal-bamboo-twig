@@ -167,15 +167,16 @@ class Render extends TwigExtensionBase {
    *   The entity type.
    * @param mixed $id
    *   (optional) The ID of the entity to render.
-   * @param string $formatter
-   *   (optional) The formatter that should be used to render the field.
    * @param string $langcode
    *   (optional) Language code to load translation.
+   * @param string $formatter
+   *   (optional) The formatter that should be used to render the field.
+   *   Eg. 'text' for textfield or 'url' for linkfield.
    *
    * @return null|array
    *   A render array for the field or NULL if the value does not exist.
    */
-  public function renderField($field_name, $entity_type, $id = NULL, $formatter = NULL, $langcode = NULL) {
+  public function renderField($field_name, $entity_type, $id = NULL, $langcode = NULL, $formatter = NULL) {
     $entity = $id ?
         $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
         $this->getCurrentRouteMatch()->getParameter($entity_type);
