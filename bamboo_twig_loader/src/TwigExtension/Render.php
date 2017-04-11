@@ -206,9 +206,7 @@ class Render extends TwigExtensionBase {
       $display_options['type'] = $field_type_definition['default_formatter'];
     }
 
-    if (isset($entity->{$field_name})) {
-      return $entity->{$field_name}->view($display_options);
-    }
+    return $entity->get($field_name)->view($display_options);
   }
 
   /**
