@@ -63,7 +63,7 @@ class Render extends TwigExtensionBase {
    *   A render array for the form or NULL if the form does not exist.
    */
   public function renderForm($module, $form, $params = []) {
-    return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
+    return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\\Form\\' . $form, $params);
   }
 
   /**
