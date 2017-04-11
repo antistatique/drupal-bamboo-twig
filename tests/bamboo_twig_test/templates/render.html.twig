@@ -24,6 +24,8 @@
   <h2>Render Image</h2>
   <hr>
   <div class="render-image">{{ bamboo_render_image(1, 'thumbnail') }}</div>
+  <div class="render-image-style-uri">style-uri-{{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail') }}</div>
+  <div class="render-image-style-uri-preprocess">style-uri-preprocess-{{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail', TRUE) }}</div>
 
   <!-- Render Field -->
   <h2>Render Field</h2>

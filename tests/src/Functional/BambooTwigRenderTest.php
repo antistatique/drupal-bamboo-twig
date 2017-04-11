@@ -130,6 +130,19 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderImageStyle
+   */
+  public function testImageStyle() {
+    $this->drupalGet('/bamboo-twig-render');
+
+    $this->assertElementPresent('.test-render div.render-image-style-uri');
+    $this->assertElementContains('.test-render div.render-image-style-uri', 'files/styles/thumbnail/public/antistatique.jpg');
+
+    $this->assertElementPresent('.test-render div.render-image-style-uri-preprocess');
+    $this->assertElementContains('.test-render div.render-image-style-uri-preprocess', 'files/styles/thumbnail/public/antistatique.jpg');
+  }
+
+  /**
    * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderField
    */
   public function testField() {

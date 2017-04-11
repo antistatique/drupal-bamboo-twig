@@ -22,6 +22,7 @@ class Render extends TwigExtensionBase {
       new \Twig_SimpleFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
     ];
   }
@@ -120,6 +121,72 @@ class Render extends TwigExtensionBase {
       ];
     }
     return NULL;
+  }
+
+  /**
+   * Returns the URL of this image derivative for an original image path or URI.
+   *
+   * @param string $path
+   *   The path or URI to the original image.
+   * @param string $style
+   *   The image style.
+   * @param bool $preprocess
+   *   Bypass the standard Drupal process to pre-generate the image style.
+   *
+   * @return string|null
+   *   The absolute URL where a style image can be downloaded, suitable for use
+   *   in an <img> tag.
+   *   Requesting the URL will cause the image to be created. Exceptend when
+   *   preprocess is enabled, the image will already be available on the fso.
+   */
+  public function renderImageStyle($path, $style, $preprocess = FALSE) {
+    $image_style = $this->getImageStyleStorage()->load($style);
+
+    // Assert the requested style exist, otherwise return null.
+    if (!$image_style) {
+      return NULL;
+    }
+
+    // From an uri or path retrieve an image object.
+    $image = $this->getImageFactory()->get($path);
+
+    // Assert the image exist, otherwise return null.
+    if (empty($image)) {
+      return NULL;
+    }
+
+    // Lazy load the fso.
+    $fso = $this->getFileSystemObject();
+
+    // Assert the image exist on the file system.
+    $image_path = $fso->realpath($image->getSource());
+
+    if (!is_file($image_path)) {
+      return NULL;
+    }
+
+    $image_style_uri = $image_style->buildUri($path);
+
+    // When user want to preprocess the derivated instead of waiting first
+    // HTTP call.
+    if ($preprocess) {
+      // Assert the image style doesn't already exist.
+      $image_style_path = $fso->realpath($image_style_uri);
+      if (!is_file($image_style_path)) {
+        // createDerivative need an URI so transform none uri.
+        if (file_valid_uri($path)) {
+          $image_uri = $path;
+        }
+        else {
+          $image_uri = file_build_uri($path);
+        }
+
+        // Create the new image derivative.
+        $derivative = $image_style->createDerivative($image_uri, $image_style_uri);
+      }
+    }
+
+    return file_create_url($image_style_uri);
   }
 
   /**
