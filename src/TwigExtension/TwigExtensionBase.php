@@ -140,4 +140,14 @@ class TwigExtensionBase extends \Twig_Extension {
     return $this->container->get('plugin.manager.field.field_type');
   }
 
+  /**
+   * Provides helpers to operate on files and stream wrappers.
+   *
+   * @var Drupal\Core\File\FileSystemInterface
+   *   Return the File System object.
+   */
+  protected function getFileSystemObject() {
+    return $this->container->get('file_system');
+  }
+
 }
