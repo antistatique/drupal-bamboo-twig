@@ -35,6 +35,14 @@ class Render extends TwigExtensionBase {
 
   /**
    * Load a given block with or whitout parameters.
+   *
+   * @param string $block_id
+   *   The ID of the block to render.
+   * @param array $params
+   *   (optional) An array of parameters passed to the block.
+   *
+   * @return null|array
+   *   A render array for the block or NULL if the block does not exist.
    */
   public function renderBlock($block_id, $params = []) {
     $instance = $this->getPluginManagerBlock()->createInstance($block_id, $params);
@@ -42,7 +50,17 @@ class Render extends TwigExtensionBase {
   }
 
   /**
-   * Load a given block with or whitout parameters.
+   * Load a given form with or whitout parameters.
+   *
+   * @param string $module
+   *   The module name where the form below.
+   * @param string $form
+   *   The form class name.
+   * @param array $params
+   *   (optional) An array of parameters passed to the form.
+   *
+   * @return null|array
+   *   A render array for the form or NULL if the form does not exist.
    */
   public function renderForm($module, $form, $params = []) {
     return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
@@ -181,8 +199,8 @@ class Render extends TwigExtensionBase {
       $display_options['type'] = $formatter;
     }
     else {
-      // We don't have the formatter view display and should fall back on
-      // default formatters.
+      // We don't have the formatter view display and should fallback on
+      // the default formatter.
       $field_type_definition = $this->getFieldTypeManager()->getDefinition($entity->getFieldDefinition($field_name)->getType());
       $display_options['type'] = $field_type_definition['default_formatter'];
     }
