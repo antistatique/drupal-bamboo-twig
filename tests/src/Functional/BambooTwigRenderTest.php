@@ -190,9 +190,9 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   protected function createFile() {
     /** @var \Drupal\Component\PhpStorage\FileStorage $fileStorage */
     $fileStorage = $this->container->get('entity_type.manager')->getStorage('file');
-    file_unmanaged_copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.png', PublicStream::basePath());
+    file_unmanaged_copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg', PublicStream::basePath());
     $file = $fileStorage->create([
-      'uri' => 'public://antistatique.png',
+      'uri' => 'public://antistatique.jpg',
       'status' => FILE_STATUS_PERMANENT,
     ]);
     $file->save();
