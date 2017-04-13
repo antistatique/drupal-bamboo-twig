@@ -20,6 +20,33 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   ];
 
   /**
+   * Salt used in our tests for one-time login links, cancel links, ...
+   *
+   * @var string
+   */
+  private $hashSalt;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
+    parent::setUp();
+
+    // Used in our tests to retrieve settings.
+    $this->hashSalt = $this->container->get('settings')->get('hash_salt');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_config\TwigExtension\Config::getSettings
+   */
+  public function testGetSettings() {
+    $this->drupalGet('/bamboo-twig-config');
+
+    $this->assertElementPresent('.test-configs div.config-settings');
+    $this->assertElementContains('.test-configs div.config-settings', $this->hashSalt);
+  }
+
+  /**
    * @covers Drupal\bamboo_twig_config\TwigExtension\Config::getConfig
    */
   public function testGetConfig() {

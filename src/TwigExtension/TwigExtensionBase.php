@@ -61,6 +61,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * Read only settings singleton.
+   *
+   * @return \Drupal\Core\Site\Settings
+   *   Return The settings object.
+   */
+  protected function getSettingsSingleton() {
+    return $this->container->get('settings');
+  }
+
+  /**
    * Provides an interface for a configuration object factory.
    *
    * @return \Drupal\Core\Config\ConfigFactoryInterface

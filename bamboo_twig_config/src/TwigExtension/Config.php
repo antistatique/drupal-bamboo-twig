@@ -14,6 +14,7 @@ class Config extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
+      new \Twig_SimpleFunction('bamboo_settings_get', [$this, 'getSettings']),
       new \Twig_SimpleFunction('bamboo_config_get', [$this, 'getConfig']),
       new \Twig_SimpleFunction('bamboo_state_get', [$this, 'getState']),
     ];
@@ -24,6 +25,19 @@ class Config extends TwigExtensionBase {
    */
   public function getName() {
     return 'bamboo_twig_config.twig.config';
+  }
+
+  /**
+   * Load given Config Settings from the settings.php file.
+   *
+   * @param string $key
+   *   The key of the data to retrieve.
+   *
+   * @return mixed|null
+   *   Returns the stored value for a given key, or NULL if no value exists.
+   */
+  public function getSettings($key) {
+    return $this->getSettingsSingleton()->get($key);
   }
 
   /**
