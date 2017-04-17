@@ -1,5 +1,5 @@
-name: Bamboo Twig - Config
-description: 'Several "Config" Twig extensions.'
+name: Bamboo Twig - Token
+description: 'Several "Token" Twig extensions.'
 package: Bamboo Twig
 type: module
 core: 8.x
