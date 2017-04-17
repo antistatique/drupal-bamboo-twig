@@ -27,17 +27,17 @@ class TestsController extends ControllerBase {
   }
 
   /**
-   * Security page.
+   * User page.
    */
-  public function security() {
-    return ['#theme' => 'bamboo_twig_test_security'];
+  public function testUser() {
+    return ['#theme' => 'bamboo_twig_test_user'];
   }
 
   /**
-   * Config page.
+   * Config page for testing config Twig Extensions.
    */
-  public function configs() {
-    return ['#theme' => 'bamboo_twig_test_configs'];
+  public function testConfig() {
+    return ['#theme' => 'bamboo_twig_test_config'];
   }
 
   /**
@@ -66,6 +66,13 @@ class TestsController extends ControllerBase {
       ],
       '#theme' => 'bamboo_twig_test_i18n',
     ];
+  }
+
+  /**
+   * Twig Extensions page.
+   */
+  public function extensions() {
+    return ['#theme' => 'bamboo_twig_test_extensions'];
   }
 
 }

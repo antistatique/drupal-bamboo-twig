@@ -62,6 +62,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * Read only settings singleton.
+   *
+   * @return \Drupal\Core\Site\Settings
+   *   Return The settings object.
+   */
+  protected function getSettingsSingleton() {
+    return $this->container->get('settings');
+  }
+
+  /**
    * Provides an interface for a configuration object factory.
    *
    * @return \Drupal\Core\Config\ConfigFactoryInterface
@@ -69,6 +79,16 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getConfigFactory() {
     return $this->container->get('config.factory');
+  }
+
+  /**
+   * The state storage service.
+   *
+   * @return \\Drupal\Core\State\StateInterface
+   *   Return the state storage service.
+   */
+  protected function getStateFactory() {
+    return $this->container->get('state');
   }
 
   /**
@@ -167,6 +187,16 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getLanguageManager() {
     return $this->container->get('language_manager');
+  }
+
+  /**
+   * Provides helpers to operate on files and stream wrappers.
+   *
+   * @var Drupal\Core\File\FileSystemInterface
+   *   Return the File System object.
+   */
+  protected function getFileSystemObject() {
+    return $this->container->get('file_system');
   }
 
 }

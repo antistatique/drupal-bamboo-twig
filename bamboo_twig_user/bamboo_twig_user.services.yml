@@ -1,6 +1,6 @@
 services:
-    bamboo_twig_config.twig.config:
-        class: Drupal\bamboo_twig_config\TwigExtension\Config
+    bamboo_twig_user.twig.user:
+        class: Drupal\bamboo_twig_user\TwigExtension\User
         tags:
             - { name: twig.extension }
         parent: bamboo_twig.twig.base
