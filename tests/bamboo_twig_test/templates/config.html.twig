@@ -1,0 +1,26 @@
+<div class="test-configs">
+
+
+  <!-- Get Settings -->
+  <h2>Settings</h2>
+  <hr>
+  <div class="config-settings">
+    {{ bamboo_settings_get('hash_salt') }}
+  </div>
+
+
+  <!-- Get Config -->
+  <h2>Config API</h2>
+  <hr>
+  <div class="config-system">
+    {{ bamboo_config_get('system.site', 'mail') }}
+  </div>
+
+  <!-- Get State -->
+  <h2>State API</h2>
+  <hr>
+  <div class="config-state">
+    {{ bamboo_state_get('system.cron_last') }}
+  </div>
+
+</div>

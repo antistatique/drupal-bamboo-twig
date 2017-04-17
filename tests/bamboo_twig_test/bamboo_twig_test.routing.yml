@@ -12,24 +12,45 @@ bamboo_twig_test.render:
     requirements:
         _permission: 'access content'
 
-bamboo_twig_test.security:
-    path: '/bamboo-twig-security'
+bamboo_twig_test.user:
+    path: '/bamboo-twig-user'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::security'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testUser'
     requirements:
         _permission: 'access content'
 
-bamboo_twig_test.configs:
-    path: '/bamboo-twig-configs'
+bamboo_twig_test.config:
+    path: '/bamboo-twig-config'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::configs'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testConfig'
     requirements:
         _permission: 'access content'
 
-bamboo_twig_test.files:
-    path: '/bamboo-twig-files'
+bamboo_twig_test.file:
+    path: '/bamboo-twig-file'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::files'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testFile'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.path:
+    path: '/bamboo-twig-path'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testPath'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.i18n:
+    path: '/bamboo-twig-i18n'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testI18n'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.extensions:
+    path: '/bamboo-twig-extensions'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::extensions'
     requirements:
         _permission: 'access content'
 

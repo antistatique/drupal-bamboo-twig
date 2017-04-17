@@ -20,24 +20,40 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'template'  => 'render',
     ],
 
-    'bamboo_twig_test_security' => [
+    'bamboo_twig_test_user' => [
       'variables' => ['variables' => []],
-      'template'  => 'security',
+      'template'  => 'user',
     ],
 
-    'bamboo_twig_test_configs' => [
+    'bamboo_twig_test_config' => [
       'variables' => ['variables' => []],
-      'template'  => 'configs',
+      'template'  => 'config',
     ],
 
-    'bamboo_twig_test_files' => [
+    'bamboo_twig_test_file' => [
       'variables' => ['variables' => []],
-      'template'  => 'files',
+      'template'  => 'file',
     ],
 
     'bamboo_twig_test_token' => [
       'variables' => ['variables' => []],
       'template'  => 'token',
     ],
+
+    'bamboo_twig_test_path' => [
+      'variables' => ['variables' => []],
+      'template'  => 'path',
+    ],
+
+    'bamboo_twig_test_i18n' => [
+      'variables' => ['variables' => []],
+      'template'  => 'i18n',
+    ],
+
+    'bamboo_twig_test_extensions' => [
+      'variables' => ['variables' => []],
+      'template'  => 'extensions',
+    ],
+
   ];
 }

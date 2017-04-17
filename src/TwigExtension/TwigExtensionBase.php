@@ -3,6 +3,7 @@
 namespace Drupal\bamboo_twig\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
@@ -61,6 +62,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * Read only settings singleton.
+   *
+   * @return \Drupal\Core\Site\Settings
+   *   Return The settings object.
+   */
+  protected function getSettingsSingleton() {
+    return $this->container->get('settings');
+  }
+
+  /**
    * Provides an interface for a configuration object factory.
    *
    * @return \Drupal\Core\Config\ConfigFactoryInterface
@@ -68,6 +79,16 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getConfigFactory() {
     return $this->container->get('config.factory');
+  }
+
+  /**
+   * The state storage service.
+   *
+   * @return \\Drupal\Core\State\StateInterface
+   *   Return the state storage service.
+   */
+  protected function getStateFactory() {
+    return $this->container->get('state');
   }
 
   /**
@@ -148,6 +169,44 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getToken() {
     return $this->container->get('token');
+  }
+
+  /**
+   * Return a singleton mime type to file extension guesser.
+   *
+   * @return \Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
+   *   Return a singleton mime type to file extension guesser.
+   */
+  protected function getExtensionGuesser() {
+    return ExtensionGuesser::getInstance();
+  }
+
+  /**
+   * Provides a service to handle various date related functionality.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected function getDateFormatter() {
+    return $this->container->get('date.formatter');
+  }
+
+  /**
+   * Returns the language manager service.
+   *
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  protected function getLanguageManager() {
+    return $this->container->get('language_manager');
+  }
+
+  /**
+   * Provides helpers to operate on files and stream wrappers.
+   *
+   * @var Drupal\Core\File\FileSystemInterface
+   *   Return the File System object.
+   */
+  protected function getFileSystemObject() {
+    return $this->container->get('file_system');
   }
 
 }

@@ -43,86 +43,143 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 
 **Dates**
 
+Use the `format_date_i18n` filter to return a date string in the right language.
+
+- `date` string or DateTime
+
 ```twig
-{# Format date using Drupal i118n. #}
+{# Print the formatted date using Drupal i18n. #}
 <dt>Format date:</dt>
 <dd>{{ node.changed.value|format_date_i18n('d M, h:i A') }}</dd>
 ```
 
 **Files**
 
-```twig
-{# Retrieve file Url into theme. #}
-<dt>Files:</dt>
-<dd>{{ theme_url('bartik', 'images/required.svg') }}</dd>
+The `theme_url` function returns the absolute URL of a file in the
+specified theme.
 
-{# Retrieve the Extension file from given mimeType. #}
-<dt>Files:</dt>
-<dd>{{ file.entity.mimeType|extension_guesser() }}</dd>
+- `theme_name` string
+- `relative/path/file.ext` string - relative path from theme root
+
+```twig
+{# Print the absolute URL to `hook.png` inside `stable` theme #}
+{{ theme_url('stable', 'images/color/hook.png') }}
+```
+
+The `extension_guesser` filter returns the extension of a file based on its
+mimeType.
+
+- `mimeType` string
+
+```twig
+{# Print the extension of the `application/pdf` mimeType #}
+{{ 'application/pdf'|extension_guesser() }}
 ```
 
 **Loaders**
 
+The `load_block` function returns a render array of the specified block.
+
+- `block_name` string
+- `params` array (optional)
+
 ```twig
-{# Load a Block. #}
-<dt>Block:</dt>
-<dd>{{ load_block('system_powered_by_block') }}</dd>
+{# Render the `system_powered_by_block` block #}
+{{ load_block('system_powered_by_block') }}
+```
 
-{# Load an Entity. #}
-<dt>Entity:</dt>
-<dd>{{ load_entity('node', node.nid.value) }}</dd>
+The `load_entity` function returns a render array of the specified node. Can load a specific `view`
 
-{# Load an Entity with view mode. #}
-<dt>Entity:</dt>
-<dd>{{ load_entity('node', node.nid.value, 'teaser') }}</dd>
+- `entity_type` string
+- `id` int (optional)
+- `view_mode` string (optional) - machine name of the view mode
+- `langcode` string (optional) - defaults to current language
 
-{# Load a Form. #}
-<dt>Form:</dt>
-<dd>{{ load_form('contact', 'ContactForm') }}</dd>
+```twig
+{# Render node with nid 1 #}
+{{ load_entity('node', 1) }}
 
-{# Expand the whole tree of given menu. #}
-<dt>Menu:</dt>
-<dd>{{ drupal_menu('admin') }}</dd>
+{# Render the teaser of node with nid 2 #}
+{{ load_entity('node', 2, 'teaser') }}
+```
 
-{# Specify menu level and depth. #}
-<dt>Part of menu:</dt>
-<dd>{{ load_menu('admin', 1, 2) }}</dd>
+The `load_form` function returns a render array of the specified Form.
 
-{# Load a Field. #}
-<dt>Field:</dt>
-<dd>{{ load_field('title', 'node', node.nid.value) }}</dd>
+- `module` string
+- `formName` string
+- `params` array (optional)
 
-{# Load a region for current theme. #}
-<dt>Region:</dt>
-<dd>{{ load_region('sidebar_first') }}</dd>
+```twig
+{# Render a the CronForm #}
+{{ load_form('system', 'CronForm') }}
+```
 
-{# Load a region from a specific theme. #}
-<dt>Region:</dt>
-<dd>{{ load_region('footer', 'bartik') }}</dd>
+The `load_menu` function returns a render array of the specified menu.
+
+- `menu_name` string
+- `level` int (optional) - defaults to 1
+- `depth` int (optional) - defaults to 0
+
+```twig
+{# Render a part of the admin menu #}
+{{ load_menu('admin', 1, 2) }}
+```
+
+The `load_field` function returns a render array of an entity field.
+
+- `field_name` string
+- `entity_type` string
+- `id` int (optional)
+- `view_mode` string - defaults to "default"
+- `langcode` string - defaults to current language
+
+```twig
+{# Load the title of node 1  #}
+{{ load_field('title', 'node', 1) }}
+```
+
+The `load_region` function returns a render array of the specified region.
+
+- `region` string
+- `theme_name` string (optional) - defaults to default theme
+
+```twig
+{# Load the sidebar_first region for current theme. #}
+{{ load_region('sidebar_first') }}
 ```
 
 **Image Styles**
 
-```twig
-{# Image Style from File ID. #}
-<dt>Image Styles:</dt>
-<dd>{% set images = image_style_field(node.field_image, {'thumb': 'thumbnail', 'lg': 'large'}) %}</dd>
+The `image_style_file` function returns an array of links to the rendered image
+with specified styles.
 
-{# Image Style from Field. #}
-<dt>Image Styles:</dt>
-<dd>{% set images = image_style_file(node.field_image.entity.fid.value, {'thumb': 'thumbnail', 'lg': 'large'}) %}</dd>
+- `fid` int
+- `styles` array
+
+```twig
+{# Get thumbnail and large image styles from image with fid 12. #}
+{% set images = image_style_file(12, {'thumb': 'thumbnail', 'lg': 'large'}) %}
 ```
 
 **Configurations**
 
-```twig
-{# Configuration from Config API. #}
-<dt>Config API:</dt>
-<dd>{% set settings = load_config('system.site') %}</dd>
+The `get_config` function returns the specified setting.
 
-{# Configuration from State API. #}
-<dt>State API:</dt>
-<dd>{% set settings = load_state('system.cron_last') %}</dd>
+- `config_key` string
+- `name` string
+
+```twig
+{# Get system mail setting #}
+{% set settings = get_config('system.site', 'mail') %}
+```
+
+The `get_state` function returns the specified setting.
+
+- `state_key` string
+
+```twig
+{# Get system.cron_last from state #}
+{% set settings = get_state('system.cron_last') %}
 ```
 
 **Security**
