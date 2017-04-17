@@ -165,11 +165,11 @@ class Render extends TwigExtensionBase {
       return NULL;
     }
 
-    $image_style_uri = $image_style->buildUri($path);
-
     // When user want to preprocess the derivated instead of waiting first
     // HTTP call.
     if ($preprocess) {
+      $image_style_uri = $image_style->buildUri($path);
+
       // Assert the image style doesn't already exist.
       $image_style_path = $fso->realpath($image_style_uri);
       if (!is_file($image_style_path)) {
@@ -183,10 +183,13 @@ class Render extends TwigExtensionBase {
 
         // Create the new image derivative.
         $image_style->createDerivative($image_uri, $image_style_uri);
+
+        return file_create_url($image_style_uri);
       }
     }
 
-    return file_create_url($image_style_uri);
+    return $image_style->buildUrl($path);
+
   }
 
   /**
