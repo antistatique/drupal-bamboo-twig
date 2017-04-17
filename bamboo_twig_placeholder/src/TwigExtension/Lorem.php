@@ -15,6 +15,7 @@ class Lorem extends TwigExtensionBase {
   public function getFunctions() {
     return [
       new \Twig_SimpleFunction('bamboo_placeholder_lorem', [$this, 'loremIpsum'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_placeholder_image', [$this, 'loremImage']),
     ];
   }
 
@@ -63,5 +64,11 @@ class Lorem extends TwigExtensionBase {
 
     return $sentence;
   }
+
+  public function loremImage($width, $height, $label = FALSE, $background = NULL, $color = NULL) {
+    $lorem = $this->container->get('bamboo_twig_placeholder.lorem_image');
+
+  }
+
 
 }

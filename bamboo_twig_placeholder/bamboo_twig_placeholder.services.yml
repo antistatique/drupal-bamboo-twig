@@ -6,3 +6,5 @@ services:
         parent: bamboo_twig.twig.base
     bamboo_twig_placeholder.lorem_ipsum:
         class: Drupal\bamboo_twig_placeholder\Service\LoremIpsum
+    bamboo_twig_placeholder.lorem_image:
+        class: Drupal\bamboo_twig_placeholder\Service\LoremImage
