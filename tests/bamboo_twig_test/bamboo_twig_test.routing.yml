@@ -53,3 +53,10 @@ bamboo_twig_test.extensions:
         _controller: '\Drupal\bamboo_twig_test\Controller\testsController::extensions'
     requirements:
         _permission: 'access content'
+
+bamboo_twig_test.token:
+    path: '/bamboo-twig-token'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testToken'
+    requirements:
+        _permission: 'access content'

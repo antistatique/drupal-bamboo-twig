@@ -162,6 +162,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * Return the token service.
+   *
+   * @return \Drupal\Core\Utility\Token
+   *   Return the token service.
+   */
+  protected function getToken() {
+    return $this->container->get('token');
+  }
+
+  /**
    * Return a singleton mime type to file extension guesser.
    *
    * @return \Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface

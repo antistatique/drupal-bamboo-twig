@@ -1,0 +1,11 @@
+<div class="test-token">
+
+  <!-- Substitute Token -->
+  <h2>Substitute Token</h2>
+  <hr>
+  <div class="token-site">{{ bamboo_token('site:name') }}</div>
+
+  {% set article = bamboo_load_entity('node', 1) %}
+  <div class="token-node">{{ bamboo_token('node:title', {'node': article}) }}</div>
+
+</div>

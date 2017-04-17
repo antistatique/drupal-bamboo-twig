@@ -35,6 +35,11 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'template'  => 'file',
     ],
 
+    'bamboo_twig_test_token' => [
+      'variables' => ['variables' => []],
+      'template'  => 'token',
+    ],
+
     'bamboo_twig_test_path' => [
       'variables' => ['variables' => []],
       'template'  => 'path',
