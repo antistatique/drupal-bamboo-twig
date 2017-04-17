@@ -1,0 +1,6 @@
+services:
+    bamboo_twig_i18n.twig.i18n:
+        class: Drupal\bamboo_twig_i18n\TwigExtension\I18n
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base

@@ -1,0 +1,30 @@
+<div class="test-i18n">
+
+  <!-- Curent Langauge -->
+  <h2>Curent Langauge</h2>
+  <hr>
+  <div class="i18n-current-lang">
+    {{ bamboo_i18n_current_lang() }}
+  </div>
+
+  <!-- Format Date -->
+  <h2>Format Date</h2>
+  <hr>
+  <div class="i18n-format-date-string">
+    {{ '24-07-2014 17:33:03'|bamboo_i18n_format_date('custom', 'l dS F Y') }}
+  </div>
+  <div class="i18n-format-date-timestamp">
+    {{ 1406187183|bamboo_i18n_format_date('custom', 'l dS F Y') }}
+  </div>
+  <div class="i18n-format-date-datetime">
+    {{ variables.datetime|bamboo_i18n_format_date('custom', 'l dS F Y') }}
+  </div>
+  <div class="i18n-format-date-datetimeplus">
+    {{ variables.datetimeplus|bamboo_i18n_format_date('custom', 'l dS F Y') }}
+  <div class="i18n-format-date-drupaldatetime">
+    {{ variables.drupaldatetime|bamboo_i18n_format_date('custom', 'l dS F Y') }}
+  </div>
+  <div class="i18n-format-date-datetime-medium">
+    {{ variables.datetime|bamboo_i18n_format_date() }}
+  </div>
+</div>

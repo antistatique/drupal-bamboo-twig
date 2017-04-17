@@ -3,6 +3,7 @@
 namespace Drupal\bamboo_twig\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
@@ -158,6 +159,34 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getFieldTypeManager() {
     return $this->container->get('plugin.manager.field.field_type');
+  }
+
+  /**
+   * Return a singleton mime type to file extension guesser.
+   *
+   * @return \Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
+   *   Return a singleton mime type to file extension guesser.
+   */
+  protected function getExtensionGuesser() {
+    return ExtensionGuesser::getInstance();
+  }
+
+  /**
+   * Provides a service to handle various date related functionality.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected function getDateFormatter() {
+    return $this->container->get('date.formatter');
+  }
+
+  /**
+   * Returns the language manager service.
+   *
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  protected function getLanguageManager() {
+    return $this->container->get('language_manager');
   }
 
   /**
