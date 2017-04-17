@@ -10,9 +10,14 @@
  */
 function bamboo_twig_test_theme($existing, $type, $theme, $path) {
   return [
-    'bamboo_twig_test_loaders' => [
+    'bamboo_twig_test_loader' => [
       'variables' => ['variables' => []],
-      'template'  => 'loaders',
+      'template'  => 'loader',
+    ],
+
+    'bamboo_twig_test_render' => [
+      'variables' => ['variables' => []],
+      'template'  => 'render',
     ],
 
     'bamboo_twig_test_security' => [
@@ -20,9 +25,9 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'template'  => 'security',
     ],
 
-    'bamboo_twig_test_configs' => [
+    'bamboo_twig_test_config' => [
       'variables' => ['variables' => []],
-      'template'  => 'configs',
+      'template'  => 'config',
     ],
 
     'bamboo_twig_test_files' => [

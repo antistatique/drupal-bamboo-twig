@@ -10,10 +10,17 @@ use Drupal\Core\Controller\ControllerBase;
 class TestsController extends ControllerBase {
 
   /**
-   * Loaders page.
+   * Loader page.
    */
-  public function loaders() {
-    return ['#theme' => 'bamboo_twig_test_loaders'];
+  public function testLoader() {
+    return ['#theme' => 'bamboo_twig_test_loader'];
+  }
+
+  /**
+   * Render page.
+   */
+  public function testRender() {
+    return ['#theme' => 'bamboo_twig_test_render'];
   }
 
   /**
@@ -24,10 +31,10 @@ class TestsController extends ControllerBase {
   }
 
   /**
-   * Config page.
+   * Config page for testing config Twig Extensions.
    */
-  public function configs() {
-    return ['#theme' => 'bamboo_twig_test_configs'];
+  public function testConfig() {
+    return ['#theme' => 'bamboo_twig_test_config'];
   }
 
   /**

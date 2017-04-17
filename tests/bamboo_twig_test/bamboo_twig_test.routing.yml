@@ -1,7 +1,14 @@
-bamboo_twig_test.loaders:
-    path: '/bamboo-twig-loaders'
+bamboo_twig_test.loader:
+    path: '/bamboo-twig-loader'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::loaders'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testLoader'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.render:
+    path: '/bamboo-twig-render'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testRender'
     requirements:
         _permission: 'access content'
 
@@ -12,10 +19,10 @@ bamboo_twig_test.security:
     requirements:
         _permission: 'access content'
 
-bamboo_twig_test.configs:
-    path: '/bamboo-twig-configs'
+bamboo_twig_test.config:
+    path: '/bamboo-twig-config'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::configs'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testConfig'
     requirements:
         _permission: 'access content'
 
