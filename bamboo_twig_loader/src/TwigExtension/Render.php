@@ -22,6 +22,7 @@ class Render extends TwigExtensionBase {
       new \Twig_SimpleFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
     ];
   }
@@ -35,17 +36,35 @@ class Render extends TwigExtensionBase {
 
   /**
    * Load a given block with or whitout parameters.
+   *
+   * @param string $block_id
+   *   The ID of the block to render.
+   * @param array $params
+   *   (optional) An array of parameters passed to the block.
+   *
+   * @return null|array
+   *   A render array for the block or NULL if the block does not exist.
    */
-  public function renderBlock($block_id, $params = []) {
+  public function renderBlock($block_id, array $params = []) {
     $instance = $this->getPluginManagerBlock()->createInstance($block_id, $params);
     return $instance->build($params);
   }
 
   /**
-   * Load a given block with or whitout parameters.
+   * Load a given form with or whitout parameters.
+   *
+   * @param string $module
+   *   The module name where the form below.
+   * @param string $form
+   *   The form class name.
+   * @param array $params
+   *   (optional) An array of parameters passed to the form.
+   *
+   * @return null|array
+   *   A render array for the form or NULL if the form does not exist.
    */
-  public function renderForm($module, $form, $params = []) {
-    return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\Form\\' . $form, $params);
+  public function renderForm($module, $form, array $params = []) {
+    return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\\Form\\' . $form, $params);
   }
 
   /**
@@ -105,6 +124,72 @@ class Render extends TwigExtensionBase {
   }
 
   /**
+   * Returns the URL of this image derivative for an original image path or URI.
+   *
+   * @param string $path
+   *   The path or URI to the original image.
+   * @param string $style
+   *   The image style.
+   * @param bool $preprocess
+   *   Bypass the standard Drupal process to pre-generate the image style.
+   *
+   * @return string|null
+   *   The absolute URL where a style image can be downloaded, suitable for use
+   *   in an <img> tag.
+   *   Requesting the URL will cause the image to be created. Exceptend when
+   *   preprocess is enabled, the image will already be available on the fso.
+   */
+  public function renderImageStyle($path, $style, $preprocess = FALSE) {
+    $image_style = $this->getImageStyleStorage()->load($style);
+
+    // Assert the requested style exist, otherwise return null.
+    if (!$image_style) {
+      return NULL;
+    }
+
+    // From an uri or path retrieve an image object.
+    $image = $this->getImageFactory()->get($path);
+
+    // Assert the image exist, otherwise return null.
+    if (empty($image)) {
+      return NULL;
+    }
+
+    // Lazy load the fso.
+    $fso = $this->getFileSystemObject();
+
+    // Assert the image exist on the file system.
+    $image_path = $fso->realpath($image->getSource());
+
+    if (!is_file($image_path)) {
+      return NULL;
+    }
+
+    $image_style_uri = $image_style->buildUri($path);
+
+    // When user want to preprocess the derivated instead of waiting first
+    // HTTP call.
+    if ($preprocess) {
+      // Assert the image style doesn't already exist.
+      $image_style_path = $fso->realpath($image_style_uri);
+      if (!is_file($image_style_path)) {
+        // createDerivative need an URI so transform none uri.
+        if (file_valid_uri($path)) {
+          $image_uri = $path;
+        }
+        else {
+          $image_uri = file_build_uri($path);
+        }
+
+        // Create the new image derivative.
+        $image_style->createDerivative($image_uri, $image_style_uri);
+      }
+    }
+
+    return file_create_url($image_style_uri);
+  }
+
+  /**
    * Builds the render array of a given region.
    *
    * @param string $region
@@ -149,15 +234,16 @@ class Render extends TwigExtensionBase {
    *   The entity type.
    * @param mixed $id
    *   (optional) The ID of the entity to render.
-   * @param string $formatter
-   *   (optional) The formatter that should be used to render the field.
    * @param string $langcode
    *   (optional) Language code to load translation.
+   * @param string $formatter
+   *   (optional) The formatter that should be used to render the field.
+   *   Eg. 'text' for textfield or 'url' for linkfield.
    *
    * @return null|array
    *   A render array for the field or NULL if the value does not exist.
    */
-  public function renderField($field_name, $entity_type, $id = NULL, $formatter = NULL, $langcode = NULL) {
+  public function renderField($field_name, $entity_type, $id = NULL, $langcode = NULL, $formatter = NULL) {
     $entity = $id ?
         $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
         $this->getCurrentRouteMatch()->getParameter($entity_type);
@@ -181,15 +267,13 @@ class Render extends TwigExtensionBase {
       $display_options['type'] = $formatter;
     }
     else {
-      // We don't have the formatter view display and should fall back on
-      // default formatters.
+      // We don't have the formatter view display and should fallback on
+      // the default formatter.
       $field_type_definition = $this->getFieldTypeManager()->getDefinition($entity->getFieldDefinition($field_name)->getType());
       $display_options['type'] = $field_type_definition['default_formatter'];
     }
 
-    if (isset($entity->{$field_name})) {
-      return $entity->{$field_name}->view($display_options);
-    }
+    return $entity->get($field_name)->view($display_options);
   }
 
   /**
