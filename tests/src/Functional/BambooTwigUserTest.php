@@ -3,18 +3,19 @@
 namespace Drupal\Tests\bamboo_twig\Functional;
 
 /**
- * Tests Security twig filters and functions.
+ * Tests User twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_user
  */
-class BambooTwigSecurityTest extends BambooTwigTestBase {
+class BambooTwigUserTest extends BambooTwigTestBase {
 
   /**
    * {@inheritdoc}
    */
   public static $modules = [
     'bamboo_twig',
-    'bamboo_twig_security',
+    'bamboo_twig_user',
     'bamboo_twig_test',
     'user',
   ];
@@ -38,26 +39,10 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::getCurrentUser
-   */
-  public function testCurrentUser() {
-    $this->drupalGet('/bamboo-twig-security');
-
-    $this->assertElementPresent('.test-security div.security-current-user');
-    $this->assertElementContains('.test-security div.security-current-user', '');
-
-    $this->drupalLogin($this->admin_user);
-    $this->drupalGet('/bamboo-twig-security');
-
-    $this->assertElementPresent('.test-security div.security-current-user');
-    $this->assertElementContains('.test-security div.security-current-user', $this->admin_user->getUsername());
-  }
-
-  /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermission
+   * @covers Drupal\bamboo_twig_user\TwigExtension\User::hasPermission
    */
   public function testHasPermission() {
-    $this->drupalGet('/bamboo-twig-security');
+    $this->drupalGet('/bamboo-twig-user');
 
     $this->assertElementPresent('.test-security div.security-permission-current');
     $this->assertElementContains('.test-security div.security-permission-current', 'FALSE');
@@ -69,7 +54,7 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-security div.security-permission-nobody', 'FALSE');
 
     $this->drupalLogin($this->admin_user);
-    $this->drupalGet('/bamboo-twig-security');
+    $this->drupalGet('/bamboo-twig-user');
 
     $this->assertElementPresent('.test-security div.security-permission-current');
     $this->assertElementContains('.test-security div.security-permission-current', 'TRUE');
@@ -82,10 +67,10 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRole
+   * @covers Drupal\bamboo_twig_user\TwigExtension\User::hasRole
    */
   public function testHasRole() {
-    $this->drupalGet('/bamboo-twig-security');
+    $this->drupalGet('/bamboo-twig-user');
 
     $this->assertElementPresent('.test-security div.security-role-current');
     $this->assertElementContains('.test-security div.security-role-current', 'FALSE');
@@ -97,7 +82,7 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-security div.security-role-nobody', 'FALSE');
 
     $this->drupalLogin($this->admin_user);
-    $this->drupalGet('/bamboo-twig-security');
+    $this->drupalGet('/bamboo-twig-user');
 
     $this->assertElementPresent('.test-security div.security-role-current');
     $this->assertElementContains('.test-security div.security-role-current', 'TRUE');

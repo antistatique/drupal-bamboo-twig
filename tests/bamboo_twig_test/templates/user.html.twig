@@ -1,0 +1,16 @@
+<div class="test-security">
+
+  <!-- Permissions -->
+  <h2>Has Permission</h2>
+  <hr>
+  <div class="security-permission-current">{{ bamboo_has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permission-admin">{{ bamboo_has_permission('administer site configuration', 1) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permission-nobody">{{ bamboo_has_permission('administer site configuration', 10) ? 'TRUE' : 'FALSE' }}</div>
+
+  <!-- Roles -->
+  <h2>Has Roles</h2>
+  <hr>
+  <div class="security-role-current">{{ bamboo_has_role('authenticated') ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-role-admin">{{ bamboo_has_role('authenticated', 1) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-role-nobody">{{ bamboo_has_role('authenticated', 10) ? 'TRUE' : 'FALSE' }}</div>
+</div>

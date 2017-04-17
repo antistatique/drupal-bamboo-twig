@@ -12,10 +12,10 @@ bamboo_twig_test.render:
     requirements:
         _permission: 'access content'
 
-bamboo_twig_test.security:
-    path: '/bamboo-twig-security'
+bamboo_twig_test.user:
+    path: '/bamboo-twig-user'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::security'
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testUser'
     requirements:
         _permission: 'access content'
 
