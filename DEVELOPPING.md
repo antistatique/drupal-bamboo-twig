@@ -5,6 +5,19 @@ https://www.drupal.org/project/issues/bamboo_twig
 * Pull requests can be made against
 https://github.com/antistatique/drupal-bamboo-twig/pulls
 
+## 📦 Repositories
+
+Github repo
+
+  ```
+  $ git remote add github https://wengerk@git.drupal.org:project/bamboo_twig.git
+  ```
+
+Drupal repo
+  ```
+  $ git remote add drupal https://github.com/antistatique/drupal-bamboo-twig.git
+  ```
+
 ## 🔧 Prerequisites
 
 First of all, you need to have the following tools installed
