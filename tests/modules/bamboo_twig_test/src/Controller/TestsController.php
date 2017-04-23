@@ -71,7 +71,7 @@ class TestsController extends ControllerBase {
   /**
    * Twig Extensions page.
    */
-  public function extensions() {
+  public function testExtensions() {
     return ['#theme' => 'bamboo_twig_test_extensions'];
   }
 

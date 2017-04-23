@@ -50,7 +50,7 @@ bamboo_twig_test.i18n:
 bamboo_twig_test.extensions:
     path: '/bamboo-twig-extensions'
     defaults:
-        _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::extensions'
+        _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testExtensions'
     requirements:
         _permission: 'access content'
 
