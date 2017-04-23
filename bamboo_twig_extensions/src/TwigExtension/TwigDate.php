@@ -42,7 +42,7 @@ class TwigDate extends \Twig_Extension {
    *   The converted time.
    */
   public function diff(TwigEnvironment $env, $date, $now = NULL) {
-    $extension = new \Twig_Extensions_Extension_date();
+    $extension = new \Twig_Extensions_Extension_Date();
     $filters = $extension->getFilters();
 
     foreach ($filters as $filter) {
