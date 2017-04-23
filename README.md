@@ -5,15 +5,29 @@ Bamboo Twig. Drupal 8 powered module.
 Bamboo Twig module provides some Twig extensions with some useful functions
 and filters that can improve development experience.
 
+Bamboo Twig has a lot of advantages and brings a lot of new features in the Twig landscape of Drupal 8.
+It boost the performances by using lazy loading, improve the code quality
+with automated workflow and include automated unit and kernel tests
+to ensure stability.
+
 ## You need Bamboo Twig if
 
-  - You need to "Format date using Drupal I118n" from your twig.
-  - You need to "Load a Block" from your twig.
-  - You need to "Load an Entity with view mode" from your twig.
-  - You need to "Load a Form" from your twig.
-  - You need to "Load a ImageStyle" from your twig.
-  - You need to "Retrieve the Extension file from given mimeType"
-  from your twig.
+  - You need to "Format date using Drupal I118n".
+  - You need to "Render a Block".
+  - You need to "Render a Region".
+  - You need to "Render an Entity with view mode".
+  - You need to "Load an Entity".
+  - You need to "Render a Field".
+  - You need to "Retrieve the current user".
+  - You need to "Check permission or roles".
+  - You need to "Render a Form".
+  - You need to "Deal with image styles".
+  - You need to "Use Token".
+  - You need to "Create absolute URL from theme".
+  - You need to "Retrieve the Extension file from given mimeType".
+  - You want to use a module that follow all the best practices.
+  - You want to use a module that ensure stability with tests.
+  - You want to use a module that will be compatible Drupal 9.
 
 Bamboo Twig can do a lot more than that, but those are some of the
 obvious uses of Bamboo Twig.
@@ -28,10 +42,36 @@ for each topics he provides Twigs.
 Bamboo Twig is only available for Drupal 8 !   
 The module is ready to be used in Drupal 8, there are no known issues.
 
+If you need some help to upgrade from the version 8.x-1.x to 8.x-2.x check
+[the guide](https://www.drupal.org/docs/8/modules/bamboo-twig/migrate-from-8x-1x-to-8x-2x#comment-12051399) about it.
+
 ## Dependencies
 
-The Drupal 8 version of Bamboo Twig requires
-[Disrupt Tools](https://www.drupal.org/sandbox/wengerk/2855304).
+The Drupal 8 version of Bamboo Twig requires nothing !
+Feel free to use it.
+
+## Similar modules
+
+At the first sight, Bamboo Twig seems very similar to those modules.
+It's fairly true excepted that Bamboo Twig normalize the way you use twig
+in your Drupal project instead of installing a bunch of modules.
+
+Plus, add a lots of functionnalities, ensure stability with tests, include automated quality control and open minded to contribute throught Github PR.
+Finally, Bamboo Twig use all the best practices of Drupal 8 to ensure
+compatibility with Drupal 9.
+
+  - Only expose a set of Renderer functions & filters[Twig Tweak](https://www.drupal.org/project/twig_tweak).
+  - Clean away twig debugging output [Twig Clean Up](https://www.drupal.org/project/twig_clean_debug).
+  - Define and expose self-contained UI patterns [UI Patterns](https://www.drupal.org/project/ui_patterns).
+  - Provides the raulfraile/ladybug Dumper [Devel Ladybug](https://www.drupal.org/project/devel_ladybug).
+  - Add attributes to link() item.url's [Twig Link Attributes](https://www.drupal.org/project/twig_link_attributes).
+  - Reuse small self contained parts of their theme templates [Partial](https://www.drupal.org/project/partial).
+  - Allows to embed views [TVE](https://www.drupal.org/project/tve).
+  - Porting Twig extensions to Drupal [Twig Extensions](https://www.drupal.org/project/twig_extensions).
+  - Set of tools to debug Drupal [LGP](https://www.drupal.org/project/lgp).
+  - Set of tools to deal with render arrays [Twig Renderable](https://www.drupal.org/project/twig_renderable).
+  - Get partial data from field render arrays [Twig Field Value](https://www.drupal.org/project/twig_field_value).
+  - This module allows you to execute PHP code from Twig - **Do not use this module** - [Twig PHP](https://www.drupal.org/project/twig_php).
 
 ## Supporting organizations
 
@@ -41,54 +81,119 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 
 ## Bamboo Twig Extensions
 
-**Dates**
+**Internationalization**
 
-Use the `format_date_i18n` filter to return a date string in the right language.
+Use the `bamboo_i18n_format_date` filter to return a date string in the right language.
+bamboo_i18n_current_lang
 
-- `date` string or DateTime
+- `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
 
 ```twig
 {# Print the formatted date using Drupal i18n. #}
 <dt>Format date:</dt>
-<dd>{{ node.changed.value|format_date_i18n('d M, h:i A') }}</dd>
+<dd>{{ node.changed.value|bamboo_i18n_format_date('d M, h:i A') }}</dd>
+```
+
+Use the `bamboo_i18n_current_lang` function to return the current lang iso code.
+
+```twig
+{# Print the current language ID. #}
+<dt>Current lang:</dt>
+<dd>{{ bamboo_i18n_current_lang() }}</dd>
 ```
 
 **Files**
 
-The `theme_url` function returns the absolute URL of a file in the
-specified theme.
-
-- `theme_name` string
-- `relative/path/file.ext` string - relative path from theme root
-
-```twig
-{# Print the absolute URL to `hook.png` inside `stable` theme #}
-{{ theme_url('stable', 'images/color/hook.png') }}
-```
-
-The `extension_guesser` filter returns the extension of a file based on its
+The `bamboo_file_extension_guesser` filter returns the extension of a file based on its
 mimeType.
 
 - `mimeType` string
 
 ```twig
 {# Print the extension of the `application/pdf` mimeType #}
-{{ 'application/pdf'|extension_guesser() }}
+{{ 'application/pdf'|bamboo_file_extension_guesser }}
+```
+
+The `bamboo_file_url_absolute` function returns absolute url of a given URI
+or path to a file.
+
+- `uri` string - URI or string path to a file.
+
+```twig
+{# Print the absolute url to access `image.jpg` #}
+{{ bamboo_file_url_absolute('public://image.jpg') }}
+```
+
+**Paths**
+
+The `bamboo_path_system` function returns the relative URL of a system entity.
+
+- `type` string - one of 'core', 'profile', 'module', 'theme' or 'theme_engine'.
+- `item` string
+
+```twig
+{# Print the relative URL to the system entity `theme` named `stable` #}
+{{ bamboo_path_system('theme', 'stable') }}
 ```
 
 **Loaders**
 
-The `load_block` function returns a render array of the specified block.
+The `bamboo_load_currentuser` function returns a User object
+of the current logged user.
+
+```twig
+{# Load the current user #}
+{% set user = bamboo_load_currentuser() %}
+```
+
+The `bamboo_load_entity` function returns a EntityInterface object
+of the requested entity.
+
+- `entity_type` string
+- `id` int (optional)
+
+```twig
+{# Load the entity node with nid 1 #}
+{% set node = bamboo_load_entity('node', 1) %}
+```
+
+The `bamboo_load_field` function returns a FieldItemListInterface object
+of the requested field.
+
+- `field` string
+- `entity_type` string
+- `id` int
+
+```twig
+{# Load the title of node 1 with nid 1 #}
+{% set title = bamboo_load_field('title', 'node', 1) %}
+```
+
+The `bamboo_load_image` function returns a ImageInterface object
+of the requested image.
+
+- `path` string - The path or URI to the original image.
+
+```twig
+{# Load image with uri `public://antistatique.jpg` #}
+{% set image = bamboo_load_image('public://antistatique.jpg') %}
+```
+
+**Render**
+
+The `bamboo_render_block` function returns a render array of the
+specified block.
 
 - `block_name` string
 - `params` array (optional)
 
 ```twig
 {# Render the `system_powered_by_block` block #}
-{{ load_block('system_powered_by_block') }}
+{{ bamboo_render_block('system_powered_by_block') }}
 ```
 
-The `load_entity` function returns a render array of the specified node. Can load a specific `view`
+The `bamboo_render_entity` function returns a render array of the specified
+entity type. Can render a specific `view`.
 
 - `entity_type` string
 - `id` int (optional)
@@ -97,13 +202,13 @@ The `load_entity` function returns a render array of the specified node. Can loa
 
 ```twig
 {# Render node with nid 1 #}
-{{ load_entity('node', 1) }}
+{{ bamboo_render_entity('node', 1) }}
 
 {# Render the teaser of node with nid 2 #}
-{{ load_entity('node', 2, 'teaser') }}
+{{ bamboo_render_entity('node', 2, 'teaser') }}
 ```
 
-The `load_form` function returns a render array of the specified Form.
+The `bamboo_render_form` function returns a render array of the specified Form.
 
 - `module` string
 - `formName` string
@@ -111,10 +216,10 @@ The `load_form` function returns a render array of the specified Form.
 
 ```twig
 {# Render a the CronForm #}
-{{ load_form('system', 'CronForm') }}
+{{ bamboo_render_form('system', 'CronForm') }}
 ```
 
-The `load_menu` function returns a render array of the specified menu.
+The `bamboo_render_menu` function returns a render array of the specified menu.
 
 - `menu_name` string
 - `level` int (optional) - defaults to 1
@@ -122,10 +227,10 @@ The `load_menu` function returns a render array of the specified menu.
 
 ```twig
 {# Render a part of the admin menu #}
-{{ load_menu('admin', 1, 2) }}
+{{ bamboo_render_menu('admin', 1, 2) }}
 ```
 
-The `load_field` function returns a render array of an entity field.
+The `bamboo_render_field` function returns a render array of an entity field.
 
 - `field_name` string
 - `entity_type` string
@@ -134,76 +239,179 @@ The `load_field` function returns a render array of an entity field.
 - `langcode` string - defaults to current language
 
 ```twig
-{# Load the title of node 1  #}
-{{ load_field('title', 'node', 1) }}
+{# Render the title of node 1  #}
+{{ bamboo_render_field('title', 'node', 1) }}
 ```
 
-The `load_region` function returns a render array of the specified region.
+The `bamboo_render_region` function returns a render array of the
+specified region.
 
 - `region` string
 - `theme_name` string (optional) - defaults to default theme
 
 ```twig
-{# Load the sidebar_first region for current theme. #}
-{{ load_region('sidebar_first') }}
+{# Render the sidebar_first region for current theme. #}
+{{ bamboo_render_region('sidebar_first') }}
 ```
 
 **Image Styles**
 
-The `image_style_file` function returns an array of links to the rendered image
-with specified styles.
+The `bamboo_render_image` function returns an render array of the
+specified image file.
 
 - `fid` int
-- `styles` array
+- `styles` string
 
 ```twig
-{# Get thumbnail and large image styles from image with fid 12. #}
-{% set images = image_style_file(12, {'thumb': 'thumbnail', 'lg': 'large'}) %}
+{# Get thumbnail from image with fid 12. #}
+{{ bamboo_render_image(1, 'thumbnail') }}
+```
+
+The `bamboo_render_image_style` function returns URL string of the
+specified image path or URI.
+
+- `path` string
+- `styles` string
+- `preprocess` boolean - preprocess the image style before first HTTP call.
+
+```twig
+{# Get thumbnail from image `public://antistatique.jpg`. #}
+{{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail') }}
 ```
 
 **Configurations**
 
-The `get_config` function returns the specified setting.
+The `bamboo_config_get` function returns the specified config.
 
 - `config_key` string
 - `name` string
 
 ```twig
 {# Get system mail setting #}
-{% set settings = get_config('system.site', 'mail') %}
+{{ bamboo_config_get('system.site', 'mail') }}
 ```
 
-The `get_state` function returns the specified setting.
+The `bamboo_state_get` function returns the specified state.
 
 - `state_key` string
 
 ```twig
 {# Get system.cron_last from state #}
-{% set settings = get_state('system.cron_last') %}
+{{ bamboo_state_get('system.cron_last') }}
+```
+
+The `bamboo_settings_get` function returns the specified setting.
+
+- `state_key` string
+
+```twig
+{# Get hash_salt from settings #}
+{{ bamboo_settings_get('hash_salt') }}
 ```
 
 **Security**
 
+The `bamboo_has_role` function returns a boolean of the current|given user
+has the requested role.
+
+- `role` string
+- `user` int - User id instead of the current logged user.
+
 ```twig
-{# Retrieve the current user. #}
-<dt>Current User:</dt>
-<dd>{% set user = get_current_user() %}</dd>
+{# Does the current|given user has the given role ? #}
+{{ bamboo_has_role('authenticated') ? 'TRUE' : 'FALSE' }}
+```
 
-{# Check Permission. #}
-<dt>Permission of current User:</dt>
-<dd>{{ has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}</dd>
+The `bamboo_has_permission` function returns a boolean of the current|given user
+has the requested permission.
 
-{# Retrieve the current user. #}
-<dt>Permission of User ID 1:</dt>
-<dd>{{ has_permission('administer site configuration', 1) ? 'TRUE' : 'FALSE' }}</dd>
+- `permission` string
+- `user` int - User id instead of the current logged user.
 
-{# Check Roles. #}
-<dt>Role of current User:</dt>
-<dd>{{ has_role('authenticated') ? 'TRUE' : 'FALSE' }}</dd>
+```twig
+{# Does the current|given user has the given permission ? #}
+{{ bamboo_has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}
+```
 
-{# Retrieve the current user. #}
-<dt>Role of User ID 1:</dt>
-<dd>{{ has_role('authenticated', 1) ? 'TRUE' : 'FALSE' }}</dd>
+**Extensions**
+
+The `truncate` filter from Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text.html).
+
+- `sentence` string
+- `word` boolean - Truncat at the end of words.
+- `ellipsis` string
+
+```twig
+{# Truncate a sentence #}
+{{ "This is a very long sentence."|truncate(2, false, '...') }}
+```
+
+The *coming soon* `bamboo_truncate_html` filter to truncates sentences html and preserves tags.
+
+- `sentence` string
+- `word` boolean - Truncate at the end of words.
+- `ellipsis` string
+
+```twig
+{# Truncate a HTML sentence #}
+{{ "<p>This <b>is a very</b> long sentence.</p>"|bamboo_truncate_html(2, false, '...') }}
+```
+
+The `shuffle` filter from Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/array.html).
+
+- `array` array
+
+```twig
+{# Shuffle the given array #}
+[1, 2, 3]|shuffle
+```
+
+The `time_diff` filter from Twig-extensions [Date](http://twig-extensions.readthedocs.io/en/latest/date.html).
+
+- `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
+
+```twig
+{# Difference between two dates #}
+{{ '24-07-2014 17:28:01'|time_diff('24-07-2014 17:28:06') }}
+```
+
+**Token**
+
+The `bamboo_token` function substitute a given tokens with appropriate value.
+
+- `token` string
+
+```twig
+{# Substitute token #}
+{{ bamboo_token('site:name') }}
+```
+
+**Placeholder**
+
+The *coming soon* `bamboo_placeholder_lorem` function returns a string of lorem.
+
+- `type` string - One of 'words', 'sentences' or 'paragraphs'.
+- `min` int
+- `max` int
+
+```twig
+{# Generate Lorem #}
+{{ bamboo_placeholder_lorem('words', 5, 20) }}
+```
+
+The *coming soon* `bamboo_placeholder_image` function returns a string URL
+of a placeholder image.
+
+- `width` int
+- `height` int
+- `backgroundColor` string - Hex color.
+- `textColor` string - Hex color.
+- `cache` boolean
+- `expires` integer
+
+```twig
+{# Generate Lorem #}
+{{ bamboo_placeholder_image('256', '256') }}
 ```
 
 ## Core Twig
@@ -212,40 +420,61 @@ Drupal core already adds a [handful of custom functions](https://www.drupal.org/
 
 **Views**
 
+The `views_embed_view` function render the requested view.
+
+- `view` string
+- `item` string
+
 ```twig
-{# Load a View. #}
-<dt>View:</dt>
-<dd>{{ views_embed_view('who_s_new', 'block_1') }}</dd>
+{# Render the View `who_s_new` block `block_1` #}
+{{ views_embed_view('who_s_new', 'block_1') }}
 ```
 
 **i18n**
 
+The `trans` tag to translate string.
+
 See the following [link](http://getlevelten.com/blog/mark-carver/drupal-8-twig-templates-and-translations) for more details.
-
-```twig
-{# Using Twig tag. #}
-{% trans %}
-  Submitted by {{ author.username }} on {{ node.created }}
-{% endtrans %}
-
-{# Using Twig filter. #}
-<p class="submitted">{{ "Submitted by !author on @date"|t({ '!author': author, '@date': date }) }}</p>
-```
 
 **Urls**
 
-```twig
-{# Generates an absolute URL given a route name and parameters. #}
-<a href="{{ path('entity.user.canonical', {'user': user.id}) }}">{{ 'View user profile'|t }}</a>
+The `path` functions return an absolute URL given a route name and parameters.
 
+- `route` string
+- `params` (optional) array
+- `options` (optional) array
+
+```twig
+{# Generates URL from route 'entity.user.canonical'. #}
+<a href="{{ path('entity.user.canonical', {'user': user.id}) }}">View user profile</a>
+```
+
+The `link` functions return `<a>` tag for the URL.
+
+- `text` string
+- `url` string
+- `params` (optional) array
+
+```twig
 {# Create a link with markup. #}
 {{ link('Homepage', item.url, { 'class':['foo', 'bar', 'baz']} ) }}
+```
 
-{# Generate a relative URI path to the file from a given relative path from the root. #}
-{{ file_url(node.field_example_image.entity.uri.value) }}
+The `file_url` function returns relative url of a given URI or path to a file.
+
+- `uri` string - URI or string path to a file.
+
+```twig
+{# Generate a relative URI path to the file. #}
+{{ file_url('public://antistatique.jpg') }}
 ```
 
 **Attachments**
+
+The `attach_library` function Attaches an asset library to the template,
+and hence to the response.
+
+- `library` string
 
 ```twig
 {# Attaches an asset library to the template. #}
