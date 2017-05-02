@@ -38,4 +38,13 @@ class BambooTwigPlaceholderTest extends BambooTwigTestBase {
     $this->assertElementIsNotEmpty('.test-placeholders div.placeholder-lorem-paragraphs-random');
   }
 
+  /**
+   * @covers Drupal\bamboo_twig_placeholder\TwigExtension\Lorem::loremImage
+   */
+  public function testLoremImage() {
+    $this->drupalGet('/bamboo-twig-placeholder');
+
+    $this->assertElementIsNotEmpty('.test-placeholders div.placeholder-lorem-image');
+  }
+
 }

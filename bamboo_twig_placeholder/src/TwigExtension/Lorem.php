@@ -44,31 +44,34 @@ class Lorem extends TwigExtensionBase {
   public function loremIpsum($type, $size = NULL, $max = NULL) {
     $lorem = $this->container->get('bamboo_twig_placeholder.lorem_ipsum');
 
-    $sentence = NULL;
+    $text = NULL;
     switch ($type) {
       case 'paragraphs':
-        $sentence $lorem->getParagraphs($size, $max);
-
+        $text = $lorem->getParagraphs($size, $max);
         break;
 
       case 'sentences':
-        $sentence $lorem->getSentences($size, $max);
-
+        $text = $lorem->getSentences($size, $max);
         break;
 
       case 'words':
-        $sentence $lorem->getWords($size, $max);
-
+        $text = $lorem->getWords($size, $max);
         break;
     }
 
-    return $sentence;
+    return $text;
   }
 
-  public function loremImage($width, $height, $label = FALSE, $background = NULL, $color = NULL) {
+  /**
+   *
+   */
+  public function loremImage($width, $height, $background = NULL, $color = NULL, $label = FALSE, $override = FALSE) {
     $lorem = $this->container->get('bamboo_twig_placeholder.lorem_image');
 
-  }
+    $image = $lorem->render($width, $height, $background, $color, $label, $override);
 
+    dump($image);
+    die();
+  }
 
 }

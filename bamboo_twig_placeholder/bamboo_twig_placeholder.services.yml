@@ -8,3 +8,5 @@ services:
         class: Drupal\bamboo_twig_placeholder\Service\LoremIpsum
     bamboo_twig_placeholder.lorem_image:
         class: Drupal\bamboo_twig_placeholder\Service\LoremImage
+        arguments:
+            - @file_system
