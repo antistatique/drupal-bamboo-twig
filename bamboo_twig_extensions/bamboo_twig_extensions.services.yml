@@ -1,0 +1,18 @@
+services:
+  bamboo_twig_extensions.twig.array:
+    class: Drupal\bamboo_twig_extensions\TwigExtension\TwigArray
+    # class: \Twig_Extensions_Extension_Array
+    tags:
+      - { name: twig.extension }
+
+  bamboo_twig_extensions.twig.date:
+    class: Drupal\bamboo_twig_extensions\TwigExtension\TwigDate
+    # class: \Twig_Extensions_Extension_Date
+    tags:
+      - { name: twig.extension }
+
+  bamboo_twig_extensions.twig.text:
+    class: Drupal\bamboo_twig_extensions\TwigExtension\TwigText
+    # class: \Twig_Extensions_Extension_Text
+    tags:
+      - { name: twig.extension }

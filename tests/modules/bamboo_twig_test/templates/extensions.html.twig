@@ -1,0 +1,51 @@
+<div class="test-extensions">
+
+  <!-- Twig Extensions Text -->
+  <h2>Twig Extensions Text - Truncat</h2>
+  <hr>
+  <div class="text-truncat-1">{{ "This is a very long sentence."|bamboo_extensions_truncate(2, false, '...') }}</div>
+  <div class="text-truncat-2">{{ "This is a very long sentence."|bamboo_extensions_truncate(6, false, '...') }}</div>
+  <div class="text-truncat-3">{{ "This is a very long sentence."|bamboo_extensions_truncate(2, true, '...') }}</div>
+  <div class="text-truncat-4">{{ "This is a very long sentence."|bamboo_extensions_truncate(2, true, '[...]') }}</div>
+  <div class="text-truncat-5">{{ "This is a very long sentence."|bamboo_extensions_truncate(23, false, '...') }}</div>
+  <div class="text-truncat-6">{{ "This is a very long sentence."|bamboo_extensions_truncate(23, true, '...') }}</div>
+
+  <!-- Twig Extensions Array -->
+  <h2>Twig Extensions Array - Shuffle</h2>
+  <hr>
+  {% set ar = [1, 2, 3]|bamboo_extensions_shuffle %}
+  <div class="array-shuffle-1">{{ ar|join(', ') }}</div>
+  {% set ar = {'a': 'apple', 'b': 'orange', 'c': 'citrus'}|bamboo_extensions_shuffle %}
+  <div class="array-shuffle-2">{{ ar|join(', ') }}</div>
+
+  <!-- Twig Extensions Date -->
+  <h2>Twig Extensions Date - Time Diff</h2>
+  <hr>
+  <div class="date-diff-ago-1">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02') }}</div>
+  <div class="date-diff-ago-2">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:06') }}</div>
+  <div class="date-diff-ago-3">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01') }}</div>
+  <div class="date-diff-ago-4">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:33:03') }}</div>
+  <div class="date-diff-ago-5">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 18:29:01') }}</div>
+  <div class="date-diff-ago-6">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014 02:33:03') }}</div>
+  <div class="date-diff-ago-7">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014') }}</div>
+  <div class="date-diff-ago-8">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('29-07-2014') }}</div>
+  <div class="date-diff-ago-9">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-08-2014') }}</div>
+  <div class="date-diff-ago-10">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-08-2014') }}</div>
+  <div class="date-diff-ago-11">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-01-2015') }}</div>
+  <div class="date-diff-ago-12">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2015') }}</div>
+  <div class="date-diff-ago-13">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017') }}</div>
+
+  <div class="date-diff-in-1">{{ '24-07-2014 17:28:02'|bamboo_extensions_time_diff('24-07-2014 17:28:01') }}</div>
+  <div class="date-diff-in-2">{{ '24-07-2014 17:28:06'|bamboo_extensions_time_diff('24-07-2014 17:28:01') }}</div>
+  <div class="date-diff-in-3">{{ '24-07-2014 17:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01') }}</div>
+  <div class="date-diff-in-4">{{ '24-07-2014 17:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01') }}</div>
+  <div class="date-diff-in-5">{{ '24-07-2014 18:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01') }}</div>
+  <div class="date-diff-in-6">{{ '25-07-2014 02:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01') }}</div>
+  <div class="date-diff-in-7">{{ '24-07-2014'|bamboo_extensions_time_diff('23-07-2014') }}</div>
+  <div class="date-diff-in-8">{{ '24-07-2014'|bamboo_extensions_time_diff('19-07-2014') }}</div>
+  <div class="date-diff-in-9">{{ '24-08-2014'|bamboo_extensions_time_diff('23-07-2014') }}</div>
+  <div class="date-diff-in-10">{{ '24-01-2015'|bamboo_extensions_time_diff('19-07-2014') }}</div>
+  <div class="date-diff-in-11">{{ '20-08-2015'|bamboo_extensions_time_diff('19-07-2014') }}</div>
+  <div class="date-diff-in-12">{{ '20-08-2017'|bamboo_extensions_time_diff('19-07-2014') }}</div>
+
+</div>

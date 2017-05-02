@@ -2,49 +2,20 @@
 
 namespace Drupal\bamboo_twig_security\TwigExtension;
 
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
  * Provides a 'Security' Twig Extensions.
  */
-class Security extends \Twig_Extension {
-
-  /**
-   * The account object.
-   *
-   * @var \Drupal\Core\Session\AccountInterface
-   */
-  protected $currentUser;
-
-  /**
-   * The storage handler class for users.
-   *
-   * @var \Drupal\user\UserStorage
-   */
-  protected $userStorage;
-
-  /**
-   * TwigExtension constructor class.
-   *
-   * @param \Drupal\Core\Session\AccountInterface $currentUser
-   *   The current user.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity
-   *   The Entity type manager service.
-   */
-  public function __construct(AccountInterface $currentUser, EntityTypeManagerInterface $entity) {
-    $this->currentUser = $currentUser;
-    $this->userStorage = $entity->getStorage('user');
-  }
+class Security extends TwigExtensionBase {
 
   /**
    * List of all Twig functions.
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('get_current_user', [$this, 'getCurrentUser']),
-      new \Twig_SimpleFunction('has_permission', [$this, 'hasPermission']),
-      new \Twig_SimpleFunction('has_role', [$this, 'hasRole']),
+      new \Twig_SimpleFunction('bamboo_has_permission', [$this, 'hasPermission']),
+      new \Twig_SimpleFunction('bamboo_has_role', [$this, 'hasRole']),
     ];
   }
 
@@ -53,19 +24,6 @@ class Security extends \Twig_Extension {
    */
   public function getName() {
     return 'bamboo_twig.twig.security';
-  }
-
-  /**
-   * Return the current user.
-   *
-   * @return \Drupal\Core\Session\AccountInterface|null
-   *   The current user AccountInterface or NULL when anonymous.
-   */
-  public function getCurrentUser($user = NULL) {
-    if ($this->currentUser->isAnonymous()) {
-      return NULL;
-    }
-    return $this->userStorage->load($this->currentUser->id());
   }
 
   /**
@@ -80,16 +38,16 @@ class Security extends \Twig_Extension {
    *   True if the current|given user has the given permission. Otherwise FALSE.
    */
   public function hasPermission($permission, $user = NULL) {
-    if (is_null($user) && $this->currentUser->isAnonymous()) {
+    $currentUser = $this->getCurrentUser();
+    if (is_null($user) && $currentUser->isAnonymous()) {
       return NULL;
     }
-
-    $user_id = $this->currentUser->id();
+    $user_id = $currentUser->id();
     if (!is_null($user) && is_int($user)) {
       $user_id = $user;
     }
 
-    $account = $this->userStorage->load($user_id);
+    $account = $this->getUserStorage()->load($user_id);
     if (!$account) {
       return NULL;
     }
@@ -108,16 +66,17 @@ class Security extends \Twig_Extension {
    *   True if the current|given user has the given permission. Otherwise FALSE.
    */
   public function hasRole($role, $user = NULL) {
-    if (is_null($user) && $this->currentUser->isAnonymous()) {
+    $currentUser = $this->getCurrentUser();
+    if (is_null($user) && $currentUser->isAnonymous()) {
       return NULL;
     }
 
-    $user_id = $this->currentUser->id();
+    $user_id = $currentUser->id();
     if (!is_null($user) && is_int($user)) {
       $user_id = $user;
     }
 
-    $account = $this->userStorage->load($user_id);
+    $account = $this->getUserStorage()->load($user_id);
     if (!$account) {
       return NULL;
     }

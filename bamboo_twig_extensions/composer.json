@@ -1,6 +1,6 @@
 {
-  "name": "drupal/bamboo_twig",
-  "description": "Several Twig extensions with some useful functions and filters that can improve development experience.",
+  "name": "drupal/bamboo_twig_extensions",
+  "description": "Twig extensions (Text, Date & Array) from http://twig.sensiolabs.org/doc/extensions/index.html.",
   "type": "drupal-module",
   "homepage": "https://www.drupal.org/project/bamboo_twig",
   "authors": [
@@ -21,9 +21,7 @@
     "issues": "https://www.drupal.org/project/issues/bamboo_twig"
   },
   "license": "GPL-2.0+",
-  "require-dev": {
-      "squizlabs/php_codesniffer": "^2.7",
-      "drupal/coder": "*",
-      "twig/extensions": "^1.4.1"
+  "require": {
+    "twig/extensions": "^1.4.1",
   }
 }

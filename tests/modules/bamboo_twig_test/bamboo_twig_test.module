@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Bamboo Twig test module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bamboo_twig_test_theme($existing, $type, $theme, $path) {
+  return [
+    'bamboo_twig_test_loader' => [
+      'variables' => ['variables' => []],
+      'template'  => 'loader',
+    ],
+
+    'bamboo_twig_test_render' => [
+      'variables' => ['variables' => []],
+      'template'  => 'render',
+    ],
+
+    'bamboo_twig_test_security' => [
+      'variables' => ['variables' => []],
+      'template'  => 'security',
+    ],
+
+    'bamboo_twig_test_config' => [
+      'variables' => ['variables' => []],
+      'template'  => 'config',
+    ],
+
+    'bamboo_twig_test_file' => [
+      'variables' => ['variables' => []],
+      'template'  => 'file',
+    ],
+
+    'bamboo_twig_test_token' => [
+      'variables' => ['variables' => []],
+      'template'  => 'token',
+    ],
+
+    'bamboo_twig_test_path' => [
+      'variables' => ['variables' => []],
+      'template'  => 'path',
+    ],
+
+    'bamboo_twig_test_i18n' => [
+      'variables' => ['variables' => []],
+      'template'  => 'i18n',
+    ],
+
+    'bamboo_twig_test_extensions' => [
+      'variables' => ['variables' => []],
+      'template'  => 'extensions',
+    ],
+
+    'bamboo_twig_test_placeholder' => [
+      'variables' => ['variables' => []],
+      'template'  => 'placeholder',
+    ],
+
+  ];
+}

@@ -6,6 +6,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
  * Tests Security twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_security
  */
 class BambooTwigSecurityTest extends BambooTwigTestBase {
 
@@ -35,22 +36,6 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
       'administer menu',
       'access administration pages',
     ]);
-  }
-
-  /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::getCurrentUser
-   */
-  public function testCurrentUser() {
-    $this->drupalGet('/bamboo-twig-security');
-
-    $this->assertElementPresent('.test-security div.security-current-user');
-    $this->assertElementContains('.test-security div.security-current-user', '');
-
-    $this->drupalLogin($this->admin_user);
-    $this->drupalGet('/bamboo-twig-security');
-
-    $this->assertElementPresent('.test-security div.security-current-user');
-    $this->assertElementContains('.test-security div.security-current-user', $this->admin_user->getUsername());
   }
 
   /**

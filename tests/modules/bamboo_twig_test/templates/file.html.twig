@@ -1,0 +1,28 @@
+<div class="test-files">
+
+  <!-- Extension Guesser -->
+  <h2>Extension Guesser</h2>
+  <hr>
+  <div class="ext-guesser-pdf">
+    {{ 'application/pdf'|bamboo_file_extension_guesser }}
+  </div>
+  <div class="ext-guesser-word-legacy">
+    {{ 'application/msword'|bamboo_file_extension_guesser }}
+  </div>
+  <div class="ext-guesser-word">
+    {{ 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'|bamboo_file_extension_guesser }}
+  </div>
+  <div class="ext-guesser-jpg">
+    {{ 'image/jpeg'|bamboo_file_extension_guesser }}
+  </div>
+
+  <!-- System Url -->
+  <h2>System Url</h2>
+  <hr>
+  <div class="url-module-file-relative">
+    {{ file_url(bamboo_path_system('module', 'bamboo_twig_test') ~'/files/antistatique.jpg') }}
+  </div>
+  <div class="url-module-file-absolute">
+    {{ bamboo_file_url_absolute(bamboo_path_system('module', 'bamboo_twig_test') ~'/files/antistatique.jpg') }}
+  </div>
+</div>

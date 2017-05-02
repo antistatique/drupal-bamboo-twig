@@ -1,12 +1,6 @@
 services:
-    # Custom Twig extensions
-    bamboo_twig.twig.dates:
-        class: Drupal\bamboo_twig\TwigExtension\Dates
-        arguments: ['@date.formatter']
-        tags:
-            - { name: twig.extension }
-    bamboo_twig.twig.langs:
-        class: Drupal\bamboo_twig\TwigExtension\Langs
-        arguments: ['@language_manager']
-        tags:
-            - { name: twig.extension }
+    bamboo_twig.twig.base:
+        private: true
+        class: Drupal\bamboo_twig\TwigExtension\TwigExtensionBase
+        calls:
+            - [setContainer, ['@service_container']]

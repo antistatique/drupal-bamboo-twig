@@ -1,0 +1,8 @@
+name: Bamboo Twig - Extensions
+description: 'Twig extensions (Text, Date & Array) from http://twig-extensions.readthedocs.io/en/latest/index.html.'
+package: Bamboo Twig
+type: module
+core: 8.x
+
+dependencies:
+ - drupal:bamboo_twig

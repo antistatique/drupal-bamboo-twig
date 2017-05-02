@@ -1,0 +1,8 @@
+name: Bamboo Twig - Internationalization
+description: 'Several "i18n" Twig extensions.'
+package: Bamboo Twig
+type: module
+core: 8.x
+
+dependencies:
+ - drupal:bamboo_twig

@@ -1,0 +1,41 @@
+<div class="test-loaders">
+
+
+  <!-- Get Current User -->
+  <h2>Current User</h2>
+  <hr>
+  {% set user = bamboo_load_currentuser() %}
+  <div class="loader-current-user">{{ user.name.value }}</div>
+
+  <!-- Loader Entity -->
+  <h2>Loader Entity</h2>
+  <hr>
+  {% set article = bamboo_load_entity('node', 1) %}
+  <div class="loader-entity-node">{{ article.title.value }}</div>
+  {% set term = bamboo_load_entity('taxonomy_term', 1) %}
+  <div class="loader-entity-taxonomy-term">{{ term.name.value }}</div>
+  {% set file = bamboo_load_entity('file', 1) %}
+  <div class="loader-entity-file">{{ file.filename.value }}</div>
+  {% set user = bamboo_load_entity('user', 1) %}
+  <div class="loader-entity-user">{{ user.name.value }}</div>
+
+  <!-- Loader Field -->
+  <h2>Loader Field</h2>
+  <hr>
+  {% set article_title = bamboo_load_field('title', 'node', 1) %}
+  <div class="loader-field-node">{{ article_title.value }}</div>
+  {% set term_name = bamboo_load_field('name', 'taxonomy_term', 1) %}
+  <div class="loader-field-taxonomy-term">{{ term_name.value }}</div>
+  {% set filename = bamboo_load_field('filename', 'file', 1) %}
+  <div class="loader-field-file">{{ filename.value }}</div>
+  {% set username = bamboo_load_field('name', 'user', 1) %}
+  <div class="loader-field-user">{{ username.value }}</div>
+
+  <!-- Loader Image -->
+  <h2>Loader Image</h2>
+  <hr>
+  {% set image = bamboo_load_image('public://antistatique.png') %}
+  <div class="loader-image-uri">{{ image.source }}</div>
+  {% set image = bamboo_load_image('modules/contrib/bamboo_twig/tests/modules/bamboo_twig_test/files/antistatique.png') %}
+  <div class="loader-image-path">{{ image.source }}</div>
+</div>
