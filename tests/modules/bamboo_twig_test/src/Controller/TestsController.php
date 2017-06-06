@@ -27,10 +27,10 @@ class TestsController extends ControllerBase {
   }
 
   /**
-   * User page.
+   * Security page.
    */
-  public function testUser() {
-    return ['#theme' => 'bamboo_twig_test_user'];
+  public function testSecurity() {
+    return ['#theme' => 'bamboo_twig_test_security'];
   }
 
   /**
@@ -71,7 +71,7 @@ class TestsController extends ControllerBase {
   /**
    * Twig Extensions page.
    */
-  public function extensions() {
+  public function testExtensions() {
     return ['#theme' => 'bamboo_twig_test_extensions'];
   }
 

@@ -17,7 +17,6 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
     'bamboo_twig_token',
     'bamboo_twig_loader',
     'bamboo_twig_test',
-    'token',
     'node',
   ];
 

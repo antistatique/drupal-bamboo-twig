@@ -6,5 +6,3 @@ core: 8.x
 
 dependencies:
   - drupal:bamboo_twig
-
-name: Bamboo Twig
