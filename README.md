@@ -88,7 +88,6 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 **Internationalization**
 
 Use the `bamboo_i18n_format_date` filter to return a date string in the correct locality.
-bamboo_i18n_current_lang
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
 - `type` string (optional) - The format to use, one of the built-in formats: 'short', 'medium', 'long'. Use 'custom' to use $format.
