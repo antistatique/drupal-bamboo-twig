@@ -20,7 +20,7 @@ Drupal repo
 
 ## 🔧 Prerequisites
 
-First of all, you need to have the following tools installed
+First of all, you will need to have the following tools installed
 globally on your environment:
 
   * drush
