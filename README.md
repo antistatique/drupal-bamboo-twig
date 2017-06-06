@@ -39,11 +39,15 @@ for each topics he provides Twigs.
 
 ## Bamboo Twig versions
 
-Bamboo Twig is only available for Drupal 8 !   
+Bamboo Twig is only available for Drupal 8 !
 The module is ready to be used in Drupal 8, there are no known issues.
 
 If you need some help to upgrade from the version 8.x-1.x to 8.x-2.x check
 [the guide](https://www.drupal.org/docs/8/modules/bamboo-twig/migrate-from-8x-1x-to-8x-2x#comment-12051399) about it.
+
+In the case you are looking for the documentation of version 8.x-1.x, check
+the [README.md](https://github.com/antistatique/drupal-bamboo-twig/blob/8.x-1.x/README.md)
+or the previous [project page](https://www.drupal.org/node/2884024).
 
 ## Dependencies
 
@@ -87,11 +91,16 @@ Use the `bamboo_i18n_format_date` filter to return a date string in the right la
 bamboo_i18n_current_lang
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
+- `type` string (optional) - The format to use, one of the built-in formats: 'short', 'medium', 'long'. Use 'custom' to use $format.
+- `format` string (optional) - PHP date format string suitable for input to date()
+- `timezone` string (optional) - Time zone identifier, as described at http://php.net/manual/timezones.php Defaults to the time zone used to display the page.
+- `langcode` string (optional) - Language code to translate to. NULL (default) means to use the user interface language for the page.
 
 ```twig
 {# Print the formatted date using Drupal i18n. #}
 <dt>Format date:</dt>
-<dd>{{ node.changed.value|bamboo_i18n_format_date('d M, h:i A') }}</dd>
+<dd>{{ node.changed.value|bamboo_i18n_format_date('medium') }}</dd>
+<dd>{{ node.changed.value|bamboo_i18n_format_date('custom', 'Y-m-d') }}</dd>
 ```
 
 Use the `bamboo_i18n_current_lang` function to return the current lang iso code.
