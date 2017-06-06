@@ -83,6 +83,26 @@ This project is sponsored by Antistatique. We are a Swiss Web Agency,
 Visit us at [www.antistatique.net](https://www.antistatique.net) or
 [Contact us](mailto:info@antistatique.net).
 
+## Getting Started
+
+We highly recommend you to install the module using `composer`. 
+
+  ```bash
+  $ composer require drupal/bamboo_twig
+  ```
+
+You can also install it using the `drush` or `drupal console` cli.
+
+  ```bash
+  $ drush dl bamboo_twig
+  ```
+
+  ```bash
+  $ drupal module:install bamboo_twig
+  ```
+
+Don't forget to enable the  modules you need from Bamboo Twig.
+
 ## Bamboo Twig Extensions
 
 **Internationalization**
