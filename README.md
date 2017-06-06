@@ -1,45 +1,45 @@
 # BAMBOO TWIG
 
-Bamboo Twig. Drupal 8 powered module.
+Bamboo Twig. A Drupal 8 powered module.
 
-Bamboo Twig module provides some Twig extensions with some useful functions
-and filters that can improve development experience.
+The Bamboo Twig module provides some Twig extensions with some useful functions
+and filters aimed to improve the development experience.
 
-Bamboo Twig has a lot of advantages and brings a lot of new features in the Twig landscape of Drupal 8.
-It boost the performances by using lazy loading, improve the code quality
-with automated workflow and include automated unit and kernel tests
+Bamboo Twig has a lot of advantages and brings a lot of new features to the Twig landscape of Drupal 8.
+It boosts performance by using lazy loading, improves the code quality
+with automated workflow. It also includes automated unit and kernel tests
 to ensure stability.
 
-## You need Bamboo Twig if
+## Use Bamboo Twig if
 
-  - You need to "Format date using Drupal I118n".
+  - You need to "Format dates using Drupal I118n".
   - You need to "Render a Block".
   - You need to "Render a Region".
   - You need to "Render an Entity with view mode".
   - You need to "Load an Entity".
   - You need to "Render a Field".
   - You need to "Retrieve the current user".
-  - You need to "Check permission or roles".
+  - You need to "Check permissions or roles".
   - You need to "Render a Form".
   - You need to "Deal with image styles".
   - You need to "Use Token".
-  - You need to "Create absolute URL from theme".
+  - You need to "Create an absolute URL from a theme".
   - You need to "Retrieve the Extension file from given mimeType".
-  - You want to use a module that follow all the best practices.
-  - You want to use a module that ensure stability with tests.
-  - You want to use a module that will be compatible Drupal 9.
+  - You want to use a twig module that follows all the best practices.
+  - You want to use a twig module that ensure stability with tests.
+  - You want to use a twig module that will be compatible Drupal 9.
 
-Bamboo Twig can do a lot more than that, but those are some of the
+Bamboo Twig can do a lot more than that, but perhaps these are some of the
 obvious uses of Bamboo Twig.
 
 ## Performances
 
-For performances reasons, Bamboo Twig has been splitted in multiple sub-modules
-for each topics he provides Twigs.
+For performances reasons, Bamboo Twig has been split into multiple sub-modules
+for each topic he provides Twigs.
 
 ## Bamboo Twig versions
 
-Bamboo Twig is only available for Drupal 8 !
+Bamboo Twig is only available for Drupal 8!
 The module is ready to be used in Drupal 8, there are no known issues.
 
 If you need some help to upgrade from the version 8.x-1.x to 8.x-2.x check
@@ -56,11 +56,11 @@ Feel free to use it.
 
 ## Similar modules
 
-At the first sight, Bamboo Twig seems very similar to those modules.
-It's fairly true excepted that Bamboo Twig normalize the way you use twig
-in your Drupal project instead of installing a bunch of modules.
+From the first sight, Bamboo Twig offers similar functionality to the following modules.
+It's excepted that Bamboo Twig will normalize the way you use twig
+in your Drupal project reducing the need to install a bunch of extra modules.
 
-Plus, add a lots of functionnalities, ensure stability with tests, include automated quality control and open minded to contribute throught Github PR.
+Plus, it adds a lots of functionality, ensures stability with tests, includes automated quality control and open minded to contribute throught Github PR.
 Finally, Bamboo Twig use all the best practices of Drupal 8 to ensure
 compatibility with Drupal 9.
 
@@ -87,8 +87,7 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 
 **Internationalization**
 
-Use the `bamboo_i18n_format_date` filter to return a date string in the right language.
-bamboo_i18n_current_lang
+Use the `bamboo_i18n_format_date` filter to return a date string in the correct locality.
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
 - `type` string (optional) - The format to use, one of the built-in formats: 'short', 'medium', 'long'. Use 'custom' to use $format.
@@ -265,7 +264,7 @@ specified region.
 
 **Image Styles**
 
-The `bamboo_render_image` function returns an render array of the
+The `bamboo_render_image` function returns a render array of the
 specified image file.
 
 - `fid` int
@@ -401,7 +400,7 @@ Drupal core already adds a [handful of custom functions](https://www.drupal.org/
 
 **Views**
 
-The `views_embed_view` function render the requested view.
+The `views_embed_view` function renders the requested view.
 
 - `view` string
 - `item` string
@@ -419,7 +418,7 @@ See the following [link](http://getlevelten.com/blog/mark-carver/drupal-8-twig-t
 
 **Urls**
 
-The `path` functions return an absolute URL given a route name and parameters.
+The `path` functions returns an absolute URL given a route name and parameters.
 
 - `route` string
 - `params` (optional) array
@@ -441,7 +440,7 @@ The `link` functions return `<a>` tag for the URL.
 {{ link('Homepage', item.url, { 'class':['foo', 'bar', 'baz']} ) }}
 ```
 
-The `file_url` function returns relative url of a given URI or path to a file.
+The `file_url` function returns a relative url of a given URI or path to a file.
 
 - `uri` string - URI or string path to a file.
 
