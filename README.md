@@ -395,34 +395,6 @@ The `bamboo_token` function substitute a given tokens with appropriate value.
 {{ bamboo_token('site:name') }}
 ```
 
-**Placeholder**
-
-The *coming soon* `bamboo_placeholder_lorem` function returns a string of lorem.
-
-- `type` string - One of 'words', 'sentences' or 'paragraphs'.
-- `min` int
-- `max` int
-
-```twig
-{# Generate Lorem #}
-{{ bamboo_placeholder_lorem('words', 5, 20) }}
-```
-
-The *coming soon* `bamboo_placeholder_image` function returns a string URL
-of a placeholder image.
-
-- `width` int
-- `height` int
-- `backgroundColor` string - Hex color.
-- `textColor` string - Hex color.
-- `cache` boolean
-- `expires` integer
-
-```twig
-{# Generate Lorem #}
-{{ bamboo_placeholder_image('256', '256') }}
-```
-
 ## Core Twig
 
 Drupal core already adds a [handful of custom functions](https://www.drupal.org/docs/8/theming/twig/functions-in-twig-templates) that are Drupal specific.
