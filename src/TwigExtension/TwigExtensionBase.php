@@ -12,6 +12,13 @@ class TwigExtensionBase extends \Twig_Extension {
   use ContainerAwareTrait;
 
   /**
+   * Unique identifier for this Twig extension.
+   */
+  public function getName() {
+    return 'bamboo_twig.twig.base';
+  }
+
+  /**
    * Lazy loading for the Drupal entity type manager.
    *
    * @return \Drupal\Core\Entity\EntityTypeManagerInterface

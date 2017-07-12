@@ -49,6 +49,10 @@ In the case you are looking for the documentation of version 8.x-1.x, check
 the [README.md](https://github.com/antistatique/drupal-bamboo-twig/blob/8.x-1.x/README.md)
 or the previous [project page](https://www.drupal.org/node/2884024).
 
+The version `8.x-2.1` is not compatible with Drupal `8.4.x`.
+Drupal `8.4.x` brings some breaking change with tests and so you
+must upgrade to the the `8.x-3.x` version of **Bamboo Twig**.
+
 ## Dependencies
 
 The Drupal 8 version of Bamboo Twig requires nothing !
@@ -85,7 +89,7 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 
 ## Getting Started
 
-We highly recommend you to install the module using `composer`. 
+We highly recommend you to install the module using `composer`.
 
   ```bash
   $ composer require drupal/bamboo_twig
