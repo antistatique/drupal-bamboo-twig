@@ -48,4 +48,102 @@
   <div class="date-diff-in-11">{{ '20-08-2015'|bamboo_extensions_time_diff('19-07-2014') }}</div>
   <div class="date-diff-in-12">{{ '20-08-2017'|bamboo_extensions_time_diff('19-07-2014') }}</div>
 
+  <!-- Twig Extensions Date -->
+  <h2>Twig Extensions Date - Time Diff Forced units</h2>
+  <hr>
+  <div class="date-diff-unit-ago-1">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02', 's') }}</div>
+  <div class="date-diff-unit-ago-2">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02', 'i') }}</div>
+  <div class="date-diff-unit-ago-3">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:06', 's') }}</div>
+  <div class="date-diff-unit-ago-4">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01', 's') }}</div>
+  <div class="date-diff-unit-ago-5">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01', 'i') }}</div>
+  <div class="date-diff-unit-ago-6">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:33:03', 's') }}</div>
+  <div class="date-diff-unit-ago-7">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 18:29:01', 's') }}</div>
+  <div class="date-diff-unit-ago-8">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014 02:33:03', 's') }}</div>
+  <div class="date-diff-unit-ago-9">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014', 'd') }}</div>
+  <div class="date-diff-unit-ago-10">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('29-07-2014', 'd') }}</div>
+  <div class="date-diff-unit-ago-11">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-08-2014', 'd') }}</div>
+  <div class="date-diff-unit-ago-12">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-08-2014', 'm') }}</div>
+  <div class="date-diff-unit-ago-13">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-01-2015', 'm') }}</div>
+  <div class="date-diff-unit-ago-14">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2015', 'd') }}</div>
+  <div class="date-diff-unit-ago-15">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017', 'm') }}</div>
+  <div class="date-diff-unit-ago-16">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017', 'y') }}</div>
+
+  <div class="date-diff-unit-in-1">{{ '24-07-2014 17:28:02'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's') }}</div>
+  <div class="date-diff-unit-in-2">{{ '24-07-2014 17:28:06'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's') }}</div>
+  <div class="date-diff-unit-in-3">{{ '24-07-2014 17:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 'i') }}</div>
+  <div class="date-diff-unit-in-4">{{ '24-07-2014 17:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's') }}</div>
+  <div class="date-diff-unit-in-5">{{ '24-07-2014 18:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 'i') }}</div>
+  <div class="date-diff-unit-in-6">{{ '25-07-2014 02:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's') }}</div>
+  <div class="date-diff-unit-in-7">{{ '24-07-2014'|bamboo_extensions_time_diff('23-07-2014', 'd') }}</div>
+  <div class="date-diff-unit-in-8">{{ '24-07-2014'|bamboo_extensions_time_diff('19-07-2014', 'm') }}</div>
+  <div class="date-diff-unit-in-9">{{ '24-08-2014'|bamboo_extensions_time_diff('23-07-2014', 'm') }}</div>
+  <div class="date-diff-unit-in-10">{{ '24-01-2015'|bamboo_extensions_time_diff('19-07-2014', 'd') }}</div>
+  <div class="date-diff-unit-in-11">{{ '20-08-2015'|bamboo_extensions_time_diff('19-07-2014', 'm') }}</div>
+  <div class="date-diff-unit-in-12">{{ '20-08-2017'|bamboo_extensions_time_diff('19-07-2014', 'y') }}</div>
+
+  <!-- Twig Extensions Date -->
+  <h2>Twig Extensions Date - Time Diff Forced units not Humanized</h2>
+  <hr>
+  <div class="date-diff-unit-robot-ago-1">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-2">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02', 'i', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-3">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:06', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-4">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-5">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01', 'i', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-6">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:33:03', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-7">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 18:29:01', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-8">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014 02:33:03', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-9">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014', 'd', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-10">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('29-07-2014', 'd', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-11">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-08-2014', 'd', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-12">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-08-2014', 'm', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-13">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-01-2015', 'm', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-14">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2015', 'd', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-15">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017', 'm', FALSE) }}</div>
+  <div class="date-diff-unit-robot-ago-16">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017', 'y', FALSE) }}</div>
+
+  <div class="date-diff-unit-robot-in-1">{{ '24-07-2014 17:28:02'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-2">{{ '24-07-2014 17:28:06'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-3">{{ '24-07-2014 17:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 'i', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-4">{{ '24-07-2014 17:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-5">{{ '24-07-2014 18:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 'i', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-6">{{ '25-07-2014 02:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01', 's', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-7">{{ '24-07-2014'|bamboo_extensions_time_diff('23-07-2014', 'd', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-8">{{ '24-07-2014'|bamboo_extensions_time_diff('19-07-2014', 'm', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-9">{{ '24-08-2014'|bamboo_extensions_time_diff('23-07-2014', 'm', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-10">{{ '24-01-2015'|bamboo_extensions_time_diff('19-07-2014', 'd', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-11">{{ '20-08-2015'|bamboo_extensions_time_diff('19-07-2014', 'm', FALSE) }}</div>
+  <div class="date-diff-unit-robot-in-12">{{ '20-08-2017'|bamboo_extensions_time_diff('19-07-2014', 'y', FALSE) }}</div>
+
+  <!-- Twig Extensions Date -->
+  <h2>Twig Extensions Date - Time Diff not Humanized</h2>
+  <hr>
+  <div class="date-diff-robot-ago-1">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-2">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:02', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-3">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:06', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-4">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-5">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:29:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-6">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:33:03', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-7">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 18:29:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-8">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014 02:33:03', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-9">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-10">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('29-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-11">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-08-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-12">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('25-08-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-13">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-01-2015', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-14">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2015', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-15">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-ago-16">{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('20-08-2017', NULL, FALSE) }}</div>
+
+  <div class="date-diff-robot-in-1">{{ '24-07-2014 17:28:02'|bamboo_extensions_time_diff('24-07-2014 17:28:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-2">{{ '24-07-2014 17:28:06'|bamboo_extensions_time_diff('24-07-2014 17:28:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-3">{{ '24-07-2014 17:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-4">{{ '24-07-2014 17:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-5">{{ '24-07-2014 18:29:01'|bamboo_extensions_time_diff('24-07-2014 17:28:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-6">{{ '25-07-2014 02:33:03'|bamboo_extensions_time_diff('24-07-2014 17:28:01', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-7">{{ '24-07-2014'|bamboo_extensions_time_diff('23-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-8">{{ '24-07-2014'|bamboo_extensions_time_diff('19-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-9">{{ '24-08-2014'|bamboo_extensions_time_diff('23-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-10">{{ '24-01-2015'|bamboo_extensions_time_diff('19-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-11">{{ '20-08-2015'|bamboo_extensions_time_diff('19-07-2014', NULL, FALSE) }}</div>
+  <div class="date-diff-robot-in-12">{{ '20-08-2017'|bamboo_extensions_time_diff('19-07-2014', NULL, FALSE) }}</div>
 </div>

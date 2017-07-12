@@ -30,8 +30,27 @@ globally on your environment:
 
   ```bash
   $ cd core
-  $ ../vendor/bin/phpunit --group bamboo_twig
+  $ ../../vendor/bin/phpunit --group bamboo_twig
   ```
+
+For kernel tests you need a working database connection and for browser tests your Drupal installation needs to be reachable via a web server. Copy the phpunit config file:
+
+  ```bash
+  $ cd core
+  $ cp phpunit.xml.dist phpunit.xml
+  ```
+
+You must provide a `SIMPLETEST_BASE_URL`, Eg. `http://localhost`.
+You must provide a `SIMPLETEST_DB`, Eg. `sqlite://localhost/build/bamboo_twig.sqlite`.
+
+Debug using
+
+  ```bash
+  $ cd core
+  $ ../../vendor/bin/phpunit --group bamboo_twig  --printer="\Drupal\Tests\Listeners\HtmlOutputPrinter" --stop-on-error
+  ```
+
+You must provide a `BROWSERTEST_OUTPUT_DIRECTORY`, Eg. `/path/to/webroot/sites/simpletest/browser_output`.
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 

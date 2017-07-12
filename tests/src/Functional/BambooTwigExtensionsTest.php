@@ -64,7 +64,7 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
   /**
    * Cover the \Twig_Extensions_Extension_Date::diff.
    */
-  public function testDateDiffTimeAgo() {
+  public function testDateDiffTimeAgoAuto() {
     $this->drupalGet('/bamboo-twig-extensions');
 
     $this->assertElementContains('.test-extensions div.date-diff-ago-1', '1 second ago');
@@ -85,7 +85,7 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
   /**
    * Cover the \Twig_Extensions_Extension_Date::diff.
    */
-  public function testDateDiffTimeIn() {
+  public function testDateDiffTimeInAuto() {
     $this->drupalGet('/bamboo-twig-extensions');
 
     $this->assertElementContains('.test-extensions div.date-diff-in-1', 'in 1 second');
@@ -100,6 +100,138 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-extensions div.date-diff-in-10', 'in 6 months');
     $this->assertElementContains('.test-extensions div.date-diff-in-11', 'in 1 year');
     $this->assertElementContains('.test-extensions div.date-diff-in-12', 'in 3 years');
+  }
+
+  /**
+   * Cover the \Twig_Extensions_Extension_Date::diff.
+   */
+  public function testDateDiffTimeAgoForcedUnit() {
+    $this->drupalGet('/bamboo-twig-extensions');
+
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-1', '1 second ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-2', '0.016666666666667 minute ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-3', '5 seconds ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-4', '60 seconds ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-5', '1 minute ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-6', '302 seconds ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-7', '3660 seconds ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-8', '32702 seconds ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-9', '0.76666666666667 day ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-10', '4.7666666666667 days ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-11', '30.766666666667 days ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-12', '1.2833333333333 month ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-13', '6.35 months ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-14', '391.76666666667 days ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-15', '37.65 months ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-16', '3.3218685831622 years ago');
+  }
+
+  /**
+   * Cover the \Twig_Extensions_Extension_Date::diff.
+   */
+  public function testDateDiffTimeInForcedUnit() {
+    $this->drupalGet('/bamboo-twig-extensions');
+
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-1', 'in 1 second');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-2', 'in 5 seconds');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-3', 'in 1 minute');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-4', 'in 302 seconds');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-5', 'in 61 minutes');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-6', 'in 32702 seconds');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-7', 'in 1 day');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-8', 'in 0.16666666666667 month');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-9', 'in 1.0666666666667 month');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-10', 'in 189 days');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-11', 'in 13.233333333333 months');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-in-12', 'in 3.088295687885 years');
+  }
+
+  /**
+   * Cover the \Twig_Extensions_Extension_Date::diff.
+   */
+  public function testDateDiffTimeAgoForcedUnitNotHumanized() {
+    $this->drupalGet('/bamboo-twig-extensions');
+
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-1', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-2', '-0.016666666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-3', '-5');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-4', '-60');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-5', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-6', '-302');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-7', '-3660');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-8', '-32702');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-9', '-0.76666666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-10', '-4.7666666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-11', '-30.766666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-12', '-1.2833333333333');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-13', '-6.35');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-14', '-391.76666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-15', '-37.65');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-16', '-3.3218685831622');
+  }
+
+  /**
+   * Cover the \Twig_Extensions_Extension_Date::diff.
+   */
+  public function testDateDiffTimeInForcedUnitNotHumanized() {
+    $this->drupalGet('/bamboo-twig-extensions');
+
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-1', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-2', '5');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-3', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-4', '302');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-5', '61');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-6', '32702');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-7', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-8', '0.16666666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-9', '1.0666666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-10', '189');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-11', '13.233333333333');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-in-12', '3.088295687885');
+  }
+
+  /**
+   * Cover the \Twig_Extensions_Extension_Date::diff.
+   */
+  public function testDateDiffTimeAgoNotHumanized() {
+    $this->drupalGet('/bamboo-twig-extensions');
+
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-1', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-2', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-3', '-5');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-4', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-5', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-6', '-5');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-7', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-8', '-9');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-9', '-6');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-10', '-4');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-11', '-30');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-12', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-13', '-5');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-14', '-1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-15', '-3');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-ago-16', '-3');
+  }
+
+  /**
+   * Cover the \Twig_Extensions_Extension_Date::diff.
+   */
+  public function testDateDiffTimeInNotHumanized() {
+    $this->drupalGet('/bamboo-twig-extensions');
+
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-1', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-2', '5');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-3', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-4', '5');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-5', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-6', '9');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-7', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-8', '5');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-9', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-10', '6');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-11', '1');
+    $this->assertElementContains('.test-extensions div.date-diff-robot-in-12', '3');
   }
 
 }

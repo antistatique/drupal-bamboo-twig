@@ -39,7 +39,7 @@ class TwigText extends \Twig_Extension {
    * @param string $string
    *   The input string. Must be one character or longer.
    * @param int $length
-   *   The string returned will contain at most length characters from beginning.
+   *   The string returned will contain at most length chars from beginning.
    * @param bool $preserve
    *   Preserving whole words or not.
    * @param string $separator
