@@ -64,24 +64,24 @@ and DrupalPractice Standard with PHPCS:
 Check Drupal coding standards:
 
   ```
-  $ ./vendor/bin/phpcs --standard=Drupal --colors
-  --extensions=php,module,inc,install,test,profile,theme,css,info,md
+  $ ./vendor/bin/phpcs --standard=Drupal --colors \
+  --extensions=php,module,inc,install,test,profile,theme,css,info,md \
   --ignore=*/vendor/* ./
   ```
 
 Check Drupal best practices:
 
   ```
-  $ ./vendor/bin/phpcs --standard=DrupalPractice --colors
-  --extensions=php,module,inc,install,test,profile,theme,css,info,md
+  $ ./vendor/bin/phpcs --standard=DrupalPractice --colors \
+  --extensions=php,module,inc,install,test,profile,theme,css,info,md \
   --ignore=*/vendor/* ./
   ```
 
 Automatically fix coding standards
 
   ```
-  $ ./vendor/bin/phpcbf --standard=Drupal --colors
-  --extensions=php,module,inc,install,test,profile,theme,css,info
+  $ ./vendor/bin/phpcbf --standard=Drupal --colors \
+  --extensions=php,module,inc,install,test,profile,theme,css,info \
   --ignore=*/vendor/* ./
   ```
 

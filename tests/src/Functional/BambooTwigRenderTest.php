@@ -2,7 +2,7 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
-use Drupal\taxonomy\Tests\TaxonomyTestTrait;
+use Drupal\Tests\taxonomy\Functional\TaxonomyTestTrait;
 use Drupal\Core\StreamWrapper\PublicStream;
 
 /**
