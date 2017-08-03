@@ -4,6 +4,8 @@ namespace Drupal\Tests\bamboo_twig\Functional;
 
 use Drupal\Tests\BrowserTestBase;
 
+use Behat\Mink\Exception\ElementHtmlException;
+
 /**
  * Has some additional helper methods to make test code more readable.
  */
@@ -74,6 +76,40 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
    */
   public function assertElementContains($css_selector, $html) {
     $this->assertSession()->elementContains('css', $css_selector, $html);
+  }
+
+  /**
+   * Asserts that the element with the given CSS selector is not empty.
+   *
+   * @param string $css_selector
+   *   The CSS selector identifying the element to check.
+   *
+   * @throws Behat\Mink\Exception\ElementHtmlException
+   *   When the condition is not fulfilled.
+   */
+  public function assertElementIsNotEmpty($css_selector) {
+    $this->assertElementPresent($css_selector);
+    $node = $this->getSession()->getPage()->find('css', $css_selector);
+    if (empty($node->getText())) {
+      throw new ElementHtmlException("The element " . $css_selector . " appears on this page, it should not be empty but it is.", $this->getSession()->getDriver(), $node);
+    }
+  }
+
+  /**
+   * Asserts that the element with the given CSS selector is empty.
+   *
+   * @param string $css_selector
+   *   The CSS selector identifying the element to check.
+   *
+   * @throws Behat\Mink\Exception\ElementHtmlException
+   *   When the condition is not fulfilled.
+   */
+  public function assertElementIsEmpty($css_selector) {
+    $this->assertElementPresent($css_selector);
+    $node = $this->getSession()->getPage()->find('css', $css_selector);
+    if (!empty($node->getText())) {
+      throw new ElementHtmlException("The element " . $css_selector . " appears on this page, it should be empty but it is not.", $this->getSession()->getDriver(), $node);
+    }
   }
 
   /**

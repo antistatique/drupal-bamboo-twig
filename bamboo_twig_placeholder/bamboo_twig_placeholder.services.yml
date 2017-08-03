@@ -1,0 +1,12 @@
+services:
+    bamboo_twig_placeholder.twig.lorem:
+        class: Drupal\bamboo_twig_placeholder\TwigExtension\Lorem
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base
+    bamboo_twig_placeholder.lorem_ipsum:
+        class: Drupal\bamboo_twig_placeholder\Service\LoremIpsum
+    bamboo_twig_placeholder.lorem_image:
+        class: Drupal\bamboo_twig_placeholder\Service\LoremImage
+        arguments:
+            - @file_system

@@ -60,3 +60,10 @@ bamboo_twig_test.token:
         _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testToken'
     requirements:
         _permission: 'access content'
+
+bamboo_twig_test.placeholder:
+    path: '/bamboo-twig-placeholder'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\testsController::testPlaceholder'
+    requirements:
+        _permission: 'access content'

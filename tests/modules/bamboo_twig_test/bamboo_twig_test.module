@@ -55,5 +55,10 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'template'  => 'extensions',
     ],
 
+    'bamboo_twig_test_placeholder' => [
+      'variables' => ['variables' => []],
+      'template'  => 'placeholder',
+    ],
+
   ];
 }

@@ -82,4 +82,11 @@ class TestsController extends ControllerBase {
     return ['#theme' => 'bamboo_twig_test_token'];
   }
 
+  /**
+   * Placeholder page.
+   */
+  public function testPlaceholder() {
+    return ['#theme' => 'bamboo_twig_test_placeholder'];
+  }
+
 }
