@@ -71,8 +71,15 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testBlock() {
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-block');
-    $this->assertElementContains('.test-render div.render-block', '<span>Powered by <a href="https://www.drupal.org">Drupal</a></span>');
+
+    // Tests for Block Plugin.
+    $this->assertElementPresent('.test-render div.render-block-plugin');
+    $this->assertElementContains('.test-render div.render-block-plugin', '<span>Powered by <a href="https://www.drupal.org">Drupal</a></span>');
+
+    // Tests for Block Entity.
+    $this->assertElementPresent('.test-render div.render-block-entity');
+    $this->assertElementPresent('.test-render div.render-block-entity #block-stark-branding');
+    $this->assertElementContains('.test-render div.render-block-entity', '<a href="/" title="Home" rel="home">Drupal</a>');
   }
 
   /**
