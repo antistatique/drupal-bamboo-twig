@@ -24,6 +24,7 @@ class Render extends TwigExtensionBase {
       new \Twig_SimpleFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
       new \Twig_SimpleFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
+      new \Twig_SimpleFunction('bamboo_render_views', 'views_embed_view'),
     ];
   }
 
@@ -321,5 +322,4 @@ class Render extends TwigExtensionBase {
 
     return $menuLinkTree->build($tree);
   }
-
 }

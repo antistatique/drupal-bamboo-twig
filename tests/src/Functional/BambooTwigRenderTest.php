@@ -27,6 +27,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     'image',
     'file',
     'system',
+    'views'
   ];
 
   /**
@@ -48,6 +49,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     // Create a user for tests.
     $this->admin_user = $this->drupalCreateUser([
       'access content',
+      'administer blocks',
       'administer content types',
       'bypass node access',
       'administer site configuration',
@@ -183,10 +185,10 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertElementPresent('.test-render div.render-menu-all');
     $this->assertElementCount('ul', 9, '.test-render div.render-menu-all');
-    $this->assertElementCount('li', 24, '.test-render div.render-menu-all');
+    $this->assertElementCount('li', 25, '.test-render div.render-menu-all');
     $this->assertElementPresent('.test-render div.render-menu-level');
     $this->assertElementCount('ul', 8, '.test-render div.render-menu-level');
-    $this->assertElementCount('li', 23, '.test-render div.render-menu-level');
+    $this->assertElementCount('li', 24, '.test-render div.render-menu-level');
     $this->assertElementPresent('.test-render div.render-menu-depth');
     $this->assertElementCount('ul', 2, '.test-render div.render-menu-depth');
     $this->assertElementCount('li', 3, '.test-render div.render-menu-depth');
@@ -199,6 +201,15 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertElementPresent('.test-render div.render-form');
     $this->assertElementPresent('.test-render div.render-form form.system-cron-settings');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::getFunctions
+   */
+  public function testViews() {
+    $this->drupalGet('/bamboo-twig-render');
+    $this->assertElementPresent('.test-render div.render-views');
+    $this->assertElementPresent('.test-render div.render-views .views-element-container');
   }
 
   /**

@@ -317,6 +317,18 @@ specified image path or URI.
 {{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail') }}
 ```
 
+**Views**
+
+The `bamboo_render_views` function renders the requested view.
+
+- `view` string
+- `item` string
+
+```twig
+{# Render the View `who_s_new` block `block_1` #}
+{{ bamboo_render_views('who_s_new', 'block_1') }}
+```
+
 **Configurations**
 
 The `bamboo_config_get` function returns the specified config.
@@ -427,18 +439,6 @@ The `bamboo_token` function substitute a given tokens with appropriate value.
 ## Core Twig
 
 Drupal core already adds a [handful of custom functions](https://www.drupal.org/docs/8/theming/twig/functions-in-twig-templates) that are Drupal specific.
-
-**Views**
-
-The `views_embed_view` function renders the requested view.
-
-- `view` string
-- `item` string
-
-```twig
-{# Render the View `who_s_new` block `block_1` #}
-{{ views_embed_view('who_s_new', 'block_1') }}
-```
 
 **i18n**
 
