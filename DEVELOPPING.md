@@ -10,12 +10,12 @@ https://github.com/antistatique/drupal-bamboo-twig/pulls
 Github repo
 
   ```
-  $ git remote add github https://wengerk@git.drupal.org:project/bamboo_twig.git
+  $ git remote add drupal https://wengerk@git.drupal.org:project/bamboo_twig.git
   ```
 
 Drupal repo
   ```
-  $ git remote add drupal https://github.com/antistatique/drupal-bamboo-twig.git
+  $ git remote add github https://github.com/antistatique/drupal-bamboo-twig.git
   ```
 
 ## 🔧 Prerequisites
