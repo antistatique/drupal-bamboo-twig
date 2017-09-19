@@ -81,7 +81,6 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     // Tests for Block Entity.
     $this->assertElementPresent('.test-render div.render-block-entity');
     $this->assertElementPresent('.test-render div.render-block-entity #block-stark-branding');
-    $this->assertElementContains('.test-render div.render-block-entity', '<a href="/" title="Home" rel="home">Drupal</a>');
   }
 
   /**
