@@ -214,7 +214,7 @@ of the requested image.
 **Render**
 
 The `bamboo_render_block` function returns a render array of the
-specified block.
+specified block (works only for Block Plugin).
 
 - `block_name` string
 - `params` array (optional)
@@ -223,6 +223,9 @@ specified block.
 {# Render the `system_powered_by_block` block #}
 {{ bamboo_render_block('system_powered_by_block') }}
 ```
+
+In the case you want to render a Block Entity,
+you have to use the `bamboo_render_entity`. See example below.
 
 The `bamboo_render_entity` function returns a render array of the specified
 entity type. Can render a specific `view`.
@@ -238,6 +241,9 @@ entity type. Can render a specific `view`.
 
 {# Render the teaser of node with nid 2 #}
 {{ bamboo_render_entity('node', 2, 'teaser') }}
+
+{# Render Block entity #}
+{{ bamboo_render_entity('block', 'stark_messages') }}
 ```
 
 The `bamboo_render_form` function returns a render array of the specified Form.
