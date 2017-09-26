@@ -1,16 +1,22 @@
 CHANGELOG
 ---------
 
+## 8.x-3.1 (2017-09-26)
+
+Bamboo Twig 8.x-3.1 add some new features:
+ - add a filter to render views: `bamboo_render_views`.
+ - add some tests for the new `bamboo_render_views` filter.
+
 ## 8.x-3.0 (2017-07-12)
 
- - Fixed test fails for breaking change of latest Core (8.4) changes.
+ - fixed test fails for breaking change of latest Core (8.4) changes.
 
 ## 8.x-2.1 (2017-07-12)
 
 Bamboo Twig 8.x-2.1 improve the usage of the `bamboo_extensions_time_diff`.
 
 It had the followings features:
- - Choose the period between s|i|h|d|m|y. When enpty, automatically choose the most accurante one.
+ - Choose the period between s|i|h|d|m|y. When enpty, automatically choose the most accurate one.
  - Apply or not the Humanize format
 
 ## 8.x-2.0 (2017-06-06)
