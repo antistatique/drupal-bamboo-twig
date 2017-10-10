@@ -8,7 +8,6 @@ https://github.com/antistatique/drupal-bamboo-twig/pulls
 ## 📦 Repositories
 
 Github repo
-
   ```
   $ git remote add drupal https://wengerk@git.drupal.org:project/bamboo_twig.git
   ```
