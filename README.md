@@ -273,8 +273,8 @@ The `bamboo_render_field` function returns a render array of an entity field.
 - `field_name` string
 - `entity_type` string
 - `id` int (optional)
-- `view_mode` string - defaults to "default"
 - `langcode` string - defaults to current language
+- `formatter` string (optional) - The formatter that should be used to render the field
 
 ```twig
 {# Render the title of node 1  #}
