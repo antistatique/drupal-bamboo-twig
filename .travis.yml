@@ -23,7 +23,7 @@ env:
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="bamboo_twig"
-    - DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig"
+    - DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_file"
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
@@ -99,7 +99,7 @@ mysql:
 before_install:
   - composer self-update
   - cd ./tests
-  - composer global require "twig/extensions:^1.4.1"
+  - composer require "twig/extensions:^1.4.1" -y
   - composer global require "lionsad/drupal_ti:1.*"
   - drupal-ti before_install
 
