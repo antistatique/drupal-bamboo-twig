@@ -123,13 +123,13 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
    */
   public function testImage() {
     $this->drupalGet('/bamboo-twig-loader');
-    // Load an image using uri public://antistatique.png.
+    // Load an image using uri public://antistatique.jpg.
     $this->assertElementPresent('.test-loaders div.loader-image-uri');
     $this->assertElementContains('.test-loaders div.loader-image-uri', $this->file->getFileUri());
 
-    // Load an image using uri public://antistatique.png.
+    // Load an image using uri public://antistatique.jpg.
     $this->assertElementPresent('.test-loaders div.loader-image-path');
-    $this->assertElementContains('.test-loaders div.loader-image-path', drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.png');
+    $this->assertElementContains('.test-loaders div.loader-image-path', 'bamboo_twig_test/files/antistatique.jpg');
   }
 
   /**
@@ -141,9 +141,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   protected function createFile() {
     /** @var \Drupal\Component\PhpStorage\FileStorage $fileStorage */
     $fileStorage = $this->container->get('entity_type.manager')->getStorage('file');
-    file_unmanaged_copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.png', PublicStream::basePath());
+    file_unmanaged_copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg', PublicStream::basePath());
     $file = $fileStorage->create([
-      'uri' => 'public://antistatique.png',
+      'uri' => 'public://antistatique.jpg',
       'status' => FILE_STATUS_PERMANENT,
     ]);
     $file->save();

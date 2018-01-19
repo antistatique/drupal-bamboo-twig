@@ -1,0 +1,15 @@
+preset: psr2
+
+risky: false
+
+finder:
+  exclude:
+    - "tests"
+    - "vendor"
+  name:
+    - "*.php"
+    - "*.twig"
+  path:
+    - "./"
+  not-path:
+    - "libraries"
