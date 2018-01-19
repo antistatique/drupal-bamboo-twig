@@ -46,11 +46,11 @@ class BambooTwigFileTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-file');
 
     $this->assertElementPresent('.test-files div.url-module-file-relative');
-    $this->assertElementContains('.test-files div.url-module-file-relative', '/modules/contrib/bamboo_twig/tests/modules/bamboo_twig_test/files/antistatique.jpg');
+    $this->assertElementContains('.test-files div.url-module-file-relative', '/bamboo_twig_test/files/antistatique.jpg');
 
     $this->assertElementPresent('.test-files div.url-module-file-absolute');
     $this->assertElementContains('.test-files div.url-module-file-absolute', 'http://');
-    $this->assertElementContains('.test-files div.url-module-file-absolute', '/modules/contrib/bamboo_twig/tests/modules/bamboo_twig_test/files/antistatique.jpg');
+    $this->assertElementContains('.test-files div.url-module-file-absolute', '/bamboo_twig_test/files/antistatique.jpg');
   }
 
 }
