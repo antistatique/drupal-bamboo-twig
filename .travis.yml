@@ -108,6 +108,7 @@ install:
 before_script:
   - drupal-ti before_script
   - composer require "twig/extensions:^1.4.1" --no-interaction
+  - rm -rf /home/travis/build/antistatique/drupal-bamboo-twig/tests/vendor/
 
 script:
   - drupal-ti script
