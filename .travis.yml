@@ -111,7 +111,7 @@ before_script:
   - cd /home/travis/build/antistatique/drupal-8/ && composer require "twig/extensions:^1.4.1" --no-interaction
   - cd /home/travis/build/antistatique/drupal-8/drupal/modules/bamboo_twig/tests
   - ls -la /home/travis/build/antistatique/drupal-8/vendor
-  - ls -la /home/travis/build/antistatique/drupal-8
+  - ls -la /home/travis/build/antistatique/drupal-8/drupal
   # - composer require "twig/extensions:^1.4.1" --working-dir=/home/travis/build/antistatique/drupal-8/ --no-interaction
 
 script:
