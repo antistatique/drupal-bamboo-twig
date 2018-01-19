@@ -106,8 +106,11 @@ install:
   - drupal-ti install
 
 before_script:
+  - echo "$DRUPAL_TI_DRUPAL_DIR"
   - drupal-ti before_script
-  - composer require "twig/extensions:^1.4.1" --working-dir=/home/travis/build/antistatique/drupal-8/ --no-interaction
+  - cd /home/travis/build/antistatique/drupal-8/ && composer require "twig/extensions:^1.4.1" --no-interaction
+  - cd /home/travis/build/antistatique/drupal-8/drupal/modules/bamboo_twig/tests
+  # - composer require "twig/extensions:^1.4.1" --working-dir=/home/travis/build/antistatique/drupal-8/ --no-interaction
 
 script:
   - drupal-ti script
