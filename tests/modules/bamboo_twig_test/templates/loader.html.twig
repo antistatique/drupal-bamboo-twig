@@ -36,6 +36,6 @@
   <hr>
   {% set image = bamboo_load_image('public://antistatique.jpg') %}
   <div class="loader-image-uri">{{ image.source }}</div>
-  {% set image = bamboo_load_image('modules/contrib/bamboo_twig/tests/modules/bamboo_twig_test/files/antistatique.jpg') %}
+  {% set image = bamboo_load_image(variables.image_path) %}
   <div class="loader-image-path">{{ image.source }}</div>
 </div>
