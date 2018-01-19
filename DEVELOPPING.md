@@ -27,12 +27,12 @@ globally on your environment:
 
 ## 🏆 Tests
 
-  ```bash
-  $ cd core
-  $ ../../vendor/bin/phpunit --group bamboo_twig
-  ```
+Bamboo Twig use BrowserTestBase to test
+web-based behaviors and features.
 
-For kernel tests you need a working database connection and for browser tests your Drupal installation needs to be reachable via a web server. Copy the phpunit config file:
+For tests you need a working database connection and for browser tests
+your Drupal installation needs to be reachable via a web server.
+Copy the phpunit config file:
 
   ```bash
   $ cd core
@@ -42,14 +42,31 @@ For kernel tests you need a working database connection and for browser tests yo
 You must provide a `SIMPLETEST_BASE_URL`, Eg. `http://localhost`.
 You must provide a `SIMPLETEST_DB`, Eg. `sqlite://localhost/build/bamboo_twig.sqlite`.
 
+Run the functional tests:
+
+  ```bash
+  # You must be on the drupal-root folder - usually /web.
+  $ cd web
+  $ SIMPLETEST_DB="sqlite://localhost//tmp/bamboo_twig.sqlite" \
+  SIMPLETEST_BASE_URL='http://sandbox.test' \
+  ../vendor/bin/phpunit -c core \
+  --group bamboo_twig
+  ```
+
 Debug using
 
   ```bash
-  $ cd core
-  $ ../../vendor/bin/phpunit --group bamboo_twig  --printer="\Drupal\Tests\Listeners\HtmlOutputPrinter" --stop-on-error
+  # You must be on the drupal-root folder - usually /web.
+  $ cd web
+  $ SIMPLETEST_DB="sqlite://localhost//tmp/bamboo_twig.sqlite" \
+  SIMPLETEST_BASE_URL='http://sandbox.test' \
+  ../vendor/bin/phpunit -c core \
+  --group bamboo_twig \
+  --printer="\Drupal\Tests\Listeners\HtmlOutputPrinter" --stop-on-error
   ```
 
-You must provide a `BROWSERTEST_OUTPUT_DIRECTORY`, Eg. `/path/to/webroot/sites/simpletest/browser_output`.
+You must provide a `BROWSERTEST_OUTPUT_DIRECTORY`,
+Eg. `/path/to/webroot/sites/simpletest/browser_output`.
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
