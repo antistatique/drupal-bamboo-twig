@@ -2,9 +2,6 @@
 # .travis.yml - Drupal for Travis CI Integration
 #
 # Template provided by https://github.com/LionsAd/drupal_ti.
-#
-# Based for simpletest upon:
-#   https://github.com/sonnym/travis-ci-drupal-module-example
 
 language: php
 
@@ -36,7 +33,7 @@ env:
     # The environment to use, supported are: drupal-7, drupal-8
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
 
-    # Switch to 8.4 version instead of 8.1.x by default.
+    # Switch to 8.4.x versions instead of 8.1.x by default.
     - DRUPAL_TI_CORE_BRANCH="8.4.x"
 
     # The installation profile to use:
