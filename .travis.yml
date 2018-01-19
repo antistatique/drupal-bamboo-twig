@@ -23,7 +23,7 @@ env:
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="bamboo_twig"
-    - DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_file"
+    - DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig"
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
@@ -107,8 +107,8 @@ install:
 
 before_script:
   - drupal-ti before_script
-  - composer require "twig/extensions:^1.4.1" --no-interaction
-  - rm -rf /home/travis/build/antistatique/drupal-bamboo-twig/tests/vendor/
+  - cd /home/travis/build/antistatique/drupal-8/ && composer require "twig/extensions:^1.4.1" --no-interaction
+  - cd ./tests
 
 script:
   - drupal-ti script
