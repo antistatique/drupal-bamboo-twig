@@ -104,10 +104,10 @@ before_install:
 
 install:
   - drupal-ti install
-  - composer require "twig/extensions:^1.4.1" --no-interaction
 
 before_script:
   - drupal-ti before_script
+  - composer require "twig/extensions:^1.4.1" --no-interaction
 
 script:
   - drupal-ti script
