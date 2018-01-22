@@ -1,6 +1,11 @@
 CHANGELOG
 ---------
 
+## NEXT RELEASE
+ - add Travis CI
+ - add Style CI
+ - add badges to README.md
+
 ## 8.x-3.1 (2017-09-26)
 
 Bamboo Twig 8.x-3.1 add some new features:
