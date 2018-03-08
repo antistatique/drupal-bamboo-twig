@@ -22,6 +22,6 @@
   },
   "license": "GPL-2.0+",
   "require": {
-    "twig/extensions": "^1.4.1",
+    "twig/extensions": "^1.4.1"
   }
 }
