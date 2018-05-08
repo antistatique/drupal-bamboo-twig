@@ -145,15 +145,15 @@ class TwigDate extends \Twig_Extension {
     $total = 0;
     switch ($unit) {
       case 'y':
-        $total = $diff->days / 365.25 + $diff->h / 24;
+        $total = ($diff->days + $diff->h / 24) / 365.25;
         break;
 
       case 'm':
-        $total = $diff->days / 30 + $diff->h / 24;
+        $total = ($diff->days + $diff->h / 24) / 30;
         break;
 
       case 'd':
-        $total = $diff->days + $diff->h / 24 + $diff->i / 60;
+        $total = $diff->days + ($diff->h + $diff->i / 60) / 24;
         break;
 
       case 'h':

@@ -116,14 +116,14 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-extensions div.date-diff-unit-ago-6', '302 seconds ago');
     $this->assertElementContains('.test-extensions div.date-diff-unit-ago-7', '3660 seconds ago');
     $this->assertElementContains('.test-extensions div.date-diff-unit-ago-8', '32702 seconds ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-9', '0.76666666666667 day ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-10', '4.7666666666667 days ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-11', '30.766666666667 days ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-12', '1.2833333333333 month ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-13', '6.35 months ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-14', '391.76666666667 days ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-15', '37.65 months ago');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-16', '3.3218685831622 years ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-9', '0.27152777777778 day ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-10', '4.2715277777778 days ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-11', '30.271527777778 days ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-12', '1.0416666666667 month ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-13', '6.1083333333333 months ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-14', '391.27152777778 days ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-15', '37.408333333333 months ago');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-ago-16', '3.072553045859 years ago');
   }
 
   /**
@@ -160,14 +160,14 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-6', '-302');
     $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-7', '-3660');
     $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-8', '-32702');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-9', '-0.76666666666667');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-10', '-4.7666666666667');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-11', '-30.766666666667');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-12', '-1.2833333333333');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-13', '-6.35');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-14', '-391.76666666667');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-15', '-37.65');
-    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-16', '-3.3218685831622');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-9', '-0.27152777777778');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-10', '-4.2715277777778');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-11', '-30.271527777778');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-12', '-1.0416666666667');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-13', '-6.1083333333333');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-14', '-391.27152777778');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-15', '-37.408333333333');
+    $this->assertElementContains('.test-extensions div.date-diff-unit-robot-ago-16', '-3.072553045859');
   }
 
   /**
