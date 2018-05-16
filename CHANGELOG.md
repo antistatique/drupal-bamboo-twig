@@ -1,6 +1,9 @@
 CHANGELOG
 ---------
 
+## 8.x-3.3 (2018-05-16)
+ - Fix date diff calcul error - Issue #2966556
+
 ## 8.x-3.2 (2018-03-01)
  - add Travis CI
  - add Style CI
