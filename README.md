@@ -369,22 +369,48 @@ The `bamboo_has_role` function returns a boolean of the current|given user
 has the requested role.
 
 - `role` string
-- `user` int - User id instead of the current logged user.
+- `user` (optional) int - User id instead of the current logged user.
 
 ```twig
 {# Does the current|given user has the given role ? #}
 {{ bamboo_has_role('authenticated') ? 'TRUE' : 'FALSE' }}
 ```
 
+The `bamboo_has_roles` function returns a boolean of the current|given user
+has the requested roles.
+
+- `roles` string[]
+- `conjunction` (optional) string - The conjunction to use on each roles.
+  Only the two values 'AND' or 'OR' are allowed.
+- `user` (optional) int - User id instead of the current logged user.
+
+```twig
+{# Does the current|given user has the given roles ? #}
+{{ bamboo_has_roles(['authenticated', 'administrator']) ? 'TRUE' : 'FALSE' }}
+```
+
 The `bamboo_has_permission` function returns a boolean of the current|given user
 has the requested permission.
 
 - `permission` string
-- `user` int - User id instead of the current logged user.
+- `user` (optional) int - User id instead of the current logged user.
 
 ```twig
 {# Does the current|given user has the given permission ? #}
 {{ bamboo_has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}
+```
+
+The `bamboo_has_permissions` function returns a boolean of the current|given user
+has the requested permissions.
+
+- `permissions` string[]
+- `conjunction` (optional) string - The conjunction to use on each permissions.
+  Only the two values 'AND' or 'OR' are allowed.
+- `user` (optional) int - User id instead of the current logged user.
+
+```twig
+{# Does the current|given user has the given roles ? #}
+{{ bamboo_has_permissions(['administer site configuration', 'bypass node access']) ? 'TRUE' : 'FALSE' }}
 ```
 
 **Extensions**
