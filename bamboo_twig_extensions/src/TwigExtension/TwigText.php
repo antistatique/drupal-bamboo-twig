@@ -17,6 +17,7 @@ class TwigText extends \Twig_Extension {
   public function getFilters() {
     return [
       new \Twig_SimpleFilter('bamboo_extensions_truncate', [$this, 'truncate'], ['needs_environment' => TRUE]),
+      new \Twig_SimpleFilter('bamboo_extensions_strpad', [$this, 'strpad']),
     ];
   }
 
@@ -63,4 +64,28 @@ class TwigText extends \Twig_Extension {
     return FALSE;
   }
 
+  /**
+   * Pad a string to a certain length with another string.
+   *
+   * @see str_pad()
+   *
+   * @param string $input
+   *   The input string.
+   * @param int $pad_length
+   *   If the value of pad_length is negative, less than, or equal to
+   *   the length of the input string, no padding takes place,
+   *   and input will be returned.
+   * @param string $pad_string
+   *   The pad_string may be truncated if the required number of padding
+   *   characters can't be evenly divided by the pad_string's length.
+   * @param string $pad_type
+   *    Optional argument pad_type can be STR_PAD_RIGHT, STR_PAD_LEFT, or
+   *    STR_PAD_BOTH. When not specified it is assumed to be STR_PAD_RIGHT.
+   *
+   * @return string
+   *   Returns the padded string.
+   */
+  public function strpad($input, $pad_length, $pad_string = " ", $pad_type = STR_PAD_RIGHT) {
+    return str_pad($input, $pad_length, $pad_string, $pad_type);
+  }
 }
