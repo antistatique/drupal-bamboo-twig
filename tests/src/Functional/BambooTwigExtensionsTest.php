@@ -3,7 +3,7 @@
 namespace Drupal\Tests\bamboo_twig\Functional;
 
 /**
- * Tests Configs twig filters and functions.
+ * Tests Extensions twig filters and functions.
  *
  * @group bamboo_twig
  * @group bamboo_twig_extensions

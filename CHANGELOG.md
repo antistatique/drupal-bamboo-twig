@@ -1,6 +1,9 @@
 CHANGELOG
 ---------
 
+## NEXT RELEASE
+ - add a filter to mimic PHP `str_pad`: `bamboo_extensions_strpad`.
+
 ## 8.x-3.3 (2018-05-16)
  - Fix date diff calcul error - Issue #2966556
 

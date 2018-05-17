@@ -389,7 +389,7 @@ has the requested permission.
 
 **Extensions**
 
-The `truncate` filter from Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text.html).
+The `bamboo_extensions_truncate` filter from Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text.html).
 
 - `sentence` string
 - `word` boolean - Truncat at the end of words.
@@ -397,7 +397,24 @@ The `truncate` filter from Twig-extensions [Text](http://twig-extensions.readthe
 
 ```twig
 {# Truncate a sentence #}
-{{ "This is a very long sentence."|truncate(2, false, '...') }}
+{{ "This is a very long sentence."|bamboo_extensions_truncate(2, false, '...') }}
+```
+
+The `bamboo_extensions_strpad` filter provide a way to pad a string to a certain length with another string.
+
+- `input` string
+- `pad_length` string - If the value of pad_length is negative, less than,
+   or equal to the length of the input string, no padding takes place.
+- `pad_string` (optional) string - The pad_string may be truncated if the
+   required number of padding characters can't be evenly divided by the length.
+- `pad_type` (optional) boolean - can be STR_PAD_RIGHT (1), STR_PAD_LEFT (0), or
+   STR_PAD_BOTH (2). When not specified it is assumed to be STR_PAD_RIGHT.
+
+```twig
+{# Pad a string #}
+{{ "Alien"|bamboo_extensions_strpad(10, '  ') }}
+{{ "Alien"|bamboo_extensions_strpad(10, '-=', 0) }}
+{{ "Alien"|bamboo_extensions_strpad(10, 'pp', 2) }}
 ```
 
 The *coming soon* `bamboo_truncate_html` filter to truncates sentences html and preserves tags.
@@ -411,22 +428,22 @@ The *coming soon* `bamboo_truncate_html` filter to truncates sentences html and 
 {{ "<p>This <b>is a very</b> long sentence.</p>"|bamboo_truncate_html(2, false, '...') }}
 ```
 
-The `shuffle` filter from Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/array.html).
+The `bamboo_extensions_shuffle` filter from Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/array.html).
 
 - `array` array
 
 ```twig
 {# Shuffle the given array #}
-[1, 2, 3]|shuffle
+[1, 2, 3]|bamboo_extensions_shuffle
 ```
 
-The `time_diff` filter from Twig-extensions [Date](http://twig-extensions.readthedocs.io/en/latest/date.html).
+The `bamboo_extensions_time_diff` filter from Twig-extensions [Date](http://twig-extensions.readthedocs.io/en/latest/date.html).
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
 
 ```twig
 {# Difference between two dates #}
-{{ '24-07-2014 17:28:01'|time_diff('24-07-2014 17:28:06') }}
+{{ '24-07-2014 17:28:01'|bamboo_extensions_time_diff('24-07-2014 17:28:06') }}
 ```
 
 **Token**
