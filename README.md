@@ -407,12 +407,14 @@ The `bamboo_extensions_strpad` filter provide a way to pad a string to a certain
    or equal to the length of the input string, no padding takes place.
 - `pad_string` (optional) string - The pad_string may be truncated if the
    required number of padding characters can't be evenly divided by the length.
-- `pad_type` (optional) boolean - can be STR_PAD_RIGHT, STR_PAD_LEFT, or
-   STR_PAD_BOTH. When not specified it is assumed to be STR_PAD_RIGHT.
+- `pad_type` (optional) boolean - can be STR_PAD_RIGHT (1), STR_PAD_LEFT (0), or
+   STR_PAD_BOTH (2). When not specified it is assumed to be STR_PAD_RIGHT.
 
 ```twig
 {# Pad a string #}
 {{ "Alien"|bamboo_extensions_strpad(10, '  ') }}
+{{ "Alien"|bamboo_extensions_strpad(10, '-=', 0) }}
+{{ "Alien"|bamboo_extensions_strpad(10, 'pp', 2) }}
 ```
 
 The *coming soon* `bamboo_truncate_html` filter to truncates sentences html and preserves tags.
