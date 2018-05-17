@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+## NEXT RELEASE
+ - add `bamboo_has_permissions`
+ - add `bamboo_has_roles`
+
 ## 8.x-3.3 (2018-05-16)
  - Fix date diff calcul error - Issue #2966556
 
