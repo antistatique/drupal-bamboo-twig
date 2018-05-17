@@ -63,8 +63,15 @@ class TestsController extends ControllerBase {
    * Internationalization page.
    */
   public function testI18n() {
+    $nodeStorage = $this->entityTypeManager()->getStorage('node');
+
     return [
       '#variables' => [
+        'articles'       => [
+          0 => $nodeStorage->load(1),
+          1 => $nodeStorage->load(2),
+          2 => $nodeStorage->load(3),
+        ],
         'datetime'       => DateTime::createFromFormat('d-m-Y', '24-07-2014'),
         'datetimeplus'   => DateTimePlus::createFromFormat('d-m-Y', '24-07-2014'),
         'drupaldatetime' => DrupalDateTime::createFromFormat('d-m-Y', '24-07-2014'),

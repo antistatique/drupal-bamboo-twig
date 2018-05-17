@@ -254,4 +254,56 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 07/24/2014');
   }
 
+  /**
+   * @covers Drupal\bamboo_twig_i18n\TwigExtension\I18n::getTranslation
+   */
+  public function testGetTranslation() {
+    $this->drupalGet('/bamboo-twig-i18n');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-ru');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1-ru');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-en');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-en', 'News N°1');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-de');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1-de');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-fr');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1-fr');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-2-en');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2-en', 'News N°2');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-2-de');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-2-de');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-2-fr');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2-fr', 'Article N°2');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-3-en');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-en', 'News N°3');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-3-de');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-de', 'Artikel N°3');
+
+    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-3-fr');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-fr', 'Article N°3');
+
+    $this->drupalGet('/bamboo-twig-i18n');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1', 'News N°1');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'News N°2');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'News N°3');
+
+    $this->drupalGet('/fr/bamboo-twig-i18n');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'Article N°2');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'Article N°3');
+
+    $this->drupalGet('/de/bamboo-twig-i18n');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1');
+    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-2');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'Artikel N°3');
+  }
+
 }

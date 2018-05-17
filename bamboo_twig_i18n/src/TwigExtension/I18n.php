@@ -4,6 +4,7 @@ namespace Drupal\bamboo_twig_i18n\TwigExtension;
 
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Template\TwigEnvironment;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Provides some 'Internationalization' Twig Extensions.
@@ -16,6 +17,7 @@ class I18n extends TwigExtensionBase {
   public function getFilters() {
     return [
       new \Twig_SimpleFilter('bamboo_i18n_format_date', [$this, 'formatDate'], ['needs_environment' => TRUE]),
+      new \Twig_SimpleFilter('bamboo_i18n_get_translation', [$this, 'getTranslation']),
     ];
   }
 
@@ -85,4 +87,33 @@ class I18n extends TwigExtensionBase {
     return NULL;
   }
 
+  /**
+   * Gets a translation of the entity.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity for which to get the translation.
+   * @param string|null $langcode
+   *   (optional) The language code of the translation to get. NULL (default) means to use
+   *   the user interface language for the page.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface|null
+   *   An entity object when translations exists or NULL.
+   */
+  public function getTranslation(EntityInterface $entity, $langcode = NULL) {
+    /** @var \Drupal\Core\Language\LanguageManagerInterface $language_manager */
+    $language_manager = $this->getLanguageManager();
+
+    if (!$langcode) {
+      $langcode = $this->getCurrentLanguage();
+    }
+
+    // Check the given langcode exists.
+    $languages = $language_manager->getLanguages();
+    if (!isset($languages[$langcode])) {
+      return NULL;
+    }
+
+    // Return the translation of this entity or NULL when not translated.
+    return $entity->hasTranslation($langcode) ? $entity->getTranslation($langcode) : NULL;
+  }
 }
