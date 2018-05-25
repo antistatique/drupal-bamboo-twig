@@ -66,109 +66,24 @@ class TwigDate extends \Twig_Extension {
     // Get the difference between the two DateTime objects.
     $diff = $date->diff($now);
 
-    $count = 0;
+    // Check for each interval if it appears in the $diff object.
+    foreach (self::$units as $attribute => $attribute_unit) {
+      $count = $diff->$attribute;
 
-    // Check existing units.
-    if ($unit != NULL && array_key_exists($unit, self::$units)) {
-      $count = $this->getIntervalUnits($diff, $unit);
-      $duration = self::$units[$unit];
-    }
-    else {
-      // Check for each interval if it appears in the $diff object.
-      foreach (self::$units as $attribute => $duration) {
-        $count = $diff->$attribute;
-        if (0 !== $count) {
-          break;
+      // Force the unit to the ont passed in parameters.
+      if ($unit) {
+        $attribute_unit = $unit;
+      }
+
+      if (0 !== $count) {
+        if ($humanize) {
+          $id = sprintf('diff.%s.%s %s', $diff->invert ? 'in' : 'ago', $attribute_unit, '@count');
+          return $this->formatPlural((int) $count, $id, $id, ['@count' => $count], ['context' => 'Time difference']);
+        } else {
+          return $diff->invert ? $count : $count * -1;
         }
       }
     }
-
-    if ($humanize) {
-      return $this->humanize($count, $diff->invert, $duration);
-    }
-
-    return $diff->invert ? $count : $count * -1;
-  }
-
-  /**
-   * Humanize a period of time according the given unit.
-   *
-   * @param int $count
-   *   The number of @units before/after.
-   * @param bool $invert
-   *   Is 1 if the interval represents a negative time period and 0 otherwise.
-   * @param string $unit
-   *   A unit from y, m, d, h, i, s.
-   *
-   * @return string
-   *   Humanized period of time.
-   */
-  protected function humanize($count, $invert, $unit) {
-    if (intval($count) > 0) {
-      if ($invert) {
-        return $this->formatPlural(
-          intval($count), 'in @duration @unit',
-          'in @duration @units',
-          ['@duration' => $count, '@unit' => $unit]
-        );
-      }
-      else {
-        return $this->formatPlural(
-          intval($count), '@duration @unit ago',
-          '@duration @units ago',
-          ['@duration' => $count, '@unit' => $unit]
-        );
-      }
-    }
-    else {
-      if ($invert) {
-        return $this->t('in @duration @unit', ['@duration' => $count, '@unit' => $unit]);
-      }
-      else {
-        return $this->t('@duration @unit ago', ['@duration' => $count, '@unit' => $unit]);
-      }
-    }
-  }
-
-  /**
-   * Retrieve the diff between two dates for the given unit.
-   *
-   * @param \DateInterval $diff
-   *   The diff between two dates.
-   * @param string $unit
-   *   The unit that we want to retreive diff.
-   *
-   * @return float
-   *   The differences for the given unit.
-   */
-  protected function getIntervalUnits(\DateInterval $diff, $unit) {
-    $total = 0;
-    switch ($unit) {
-      case 'y':
-        $total = ($diff->days + $diff->h / 24) / 365.25;
-        break;
-
-      case 'm':
-        $total = ($diff->days + $diff->h / 24) / 30;
-        break;
-
-      case 'd':
-        $total = $diff->days + ($diff->h + $diff->i / 60) / 24;
-        break;
-
-      case 'h':
-        $total = $diff->days * 24 + $diff->h + $diff->i / 60;
-        break;
-
-      case 'i':
-        $total = ($diff->days * 24 + $diff->h) * 60 + $diff->i + $diff->s / 60;
-        break;
-
-      case 's':
-        $total = (($diff->days * 24 + $diff->h) * 60 + $diff->i) * 60 + $diff->s;
-        break;
-    }
-    return $total;
   }
 
 }
