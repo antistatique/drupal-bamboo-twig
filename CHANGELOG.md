@@ -1,14 +1,18 @@
 CHANGELOG
 ---------
 
-## 8.x-3.3 (2018-05-16)
- - Fix date diff calcul error - Issue #2966556
+## NEXT RELEASE
+ - improve i18n with better tests coverage.
+ - add i18n filter to get translation of entity: `bamboo_i18n_get_translation`.
+
+## 8.x-3.3 (2018-05-16)
+ - Fix date diff calcul error - Issue #2966556.
 
 ## 8.x-3.2 (2018-03-01)
- - add Travis CI
- - add Style CI
- - add badges to README.md
- - fix composer invalid warning
+ - add Travis CI.
+ - add Style CI.
+ - add badges to README.md.
+ - fix composer invalid warning.
 
 ## 8.x-3.1 (2017-09-26)
 

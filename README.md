@@ -138,6 +138,25 @@ Use the `bamboo_i18n_current_lang` function to return the current lang iso code.
 <dd>{{ bamboo_i18n_current_lang() }}</dd>
 ```
 
+Use the `bamboo_i18n_get_translation` filter to retrieve a translation of an entity.
+
+```twig
+{# Get the entity translations in french #}
+<dt>Get the french title of entity:</dt>
+<dd>{{ entity|bamboo_i18n_get_translation('fr').title.value }}</dd>
+```
+
+If you don't already have a `Drupal\Core\Entity\EntityInterface` object,
+load it using `bamboo_load_entity`.
+
+```twig
+{# Load the entity node with nid 1 #}
+{% set node = bamboo_load_entity('node', 1) %}
+{# Get the entity translations in german #}
+<dt>Get the german title of entity:</dt>
+<dd>{% set translation = node|bamboo_i18n_get_translation('de') %}</dd>
+```
+
 **Files**
 
 The `bamboo_file_extension_guesser` filter returns the extension of a file based on its

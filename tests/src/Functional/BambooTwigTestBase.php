@@ -77,6 +77,27 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
   }
 
   /**
+   * Asserts that the element with the given CSS selector is empty.
+   *
+   * @param string $css_selector
+   *   The CSS selector identifying the element to check.
+   *
+   * @throws Behat\Mink\Exception\ElementHtmlException
+   *   When the condition is not fulfilled.
+   */
+  public function assertElementEmpty($css_selector) {
+    $element = $this->assertSession()->elementExists('css', $css_selector);
+    $actual = trim($element->getHtml());
+
+    $message = sprintf(
+      'The element "%s" was not empty, but it should not be.',
+      $css_selector
+    );
+
+    $this->assert(empty($actual), $message);
+  }
+
+  /**
    * Passes if a link with the specified label is found.
    *
    * An optional link index may be passed.
