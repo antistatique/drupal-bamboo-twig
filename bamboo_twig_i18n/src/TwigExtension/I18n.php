@@ -107,12 +107,6 @@ class I18n extends TwigExtensionBase {
       $langcode = $this->getCurrentLanguage();
     }
 
-    // Check the given langcode exists.
-    $languages = $language_manager->getLanguages();
-    if (!isset($languages[$langcode])) {
-      return NULL;
-    }
-
     // Return the translation of this entity or NULL when not translated.
     return $entity->hasTranslation($langcode) ? $entity->getTranslation($langcode) : NULL;
   }
