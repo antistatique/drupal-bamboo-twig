@@ -10,10 +10,10 @@ CHANGELOG
  - Fix date diff calcul error - Issue #2966556.
 
 ## 8.x-3.2 (2018-03-01)
- - add Travis CI
- - add Style CI
- - add badges to README.md
- - fix composer invalid warning
+ - add Travis CI.
+ - add Style CI.
+ - add badges to README.md.
+ - fix composer invalid warning.
 
 ## 8.x-3.1 (2017-09-26)
 
