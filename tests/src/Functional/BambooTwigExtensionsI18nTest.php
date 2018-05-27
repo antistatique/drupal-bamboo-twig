@@ -54,7 +54,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
     /** @var \Drupal\locale\StringStorageInterface $localStorage */
     $localStorage = $this->container->get('locale.storage');
 
-    // Second/Seconds
+    // Second/Seconds.
     $second = $localStorage->createString([
       'source'  => 'second',
       'context' => 'Time difference unit',
@@ -86,7 +86,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
       'translation' => 'Sekunden',
     ])->save();
 
-    // Minute/Minutes
+    // Minute/Minutes.
     $minute = $localStorage->createString([
       'source'  => 'minute',
       'context' => 'Time difference unit',
@@ -118,7 +118,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
       'translation' => 'Minuten',
     ])->save();
 
-    // Hour/Hours
+    // Hour/Hours.
     $hour = $localStorage->createString([
       'source'  => 'hour',
       'context' => 'Time difference unit',
@@ -150,7 +150,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
       'translation' => 'Stunden',
     ])->save();
 
-    // Day & Days
+    // Day & Days.
     $day = $localStorage->createString([
       'source'  => 'day',
       'context' => 'Time difference unit',
@@ -182,7 +182,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
       'translation' => 'Tagen',
     ])->save();
 
-    // Month/Months
+    // Month/Months.
     $month = $localStorage->createString([
       'source'  => 'month',
       'context' => 'Time difference unit',
@@ -214,7 +214,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
       'translation' => 'Monaten',
     ])->save();
 
-    // Year/Years
+    // Year/Years.
     $year = $localStorage->createString([
       'source'  => 'year',
       'context' => 'Time difference unit',
@@ -248,36 +248,36 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
 
     // Durations & Unit - Futur.
     $in_duration_unit = $localStorage->createString([
-      'source'  => 'in @duration @unit'.PluralTranslatableMarkup::DELIMITER.'in @duration @units',
+      'source'  => 'in @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'in @duration @units',
       'context' => 'Time difference',
-      ]);
+    ]);
     $in_duration_unit->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $in_duration_unit->lid,
       'language'    => 'fr',
-      'translation' => 'dans @duration @unit'.PluralTranslatableMarkup::DELIMITER.'dans @duration @units',
+      'translation' => 'dans @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'dans @duration @units',
     ])->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $in_duration_unit->lid,
       'language'    => 'de',
-      'translation' => 'in @duration @unit'.PluralTranslatableMarkup::DELIMITER.'in @duration @units',
+      'translation' => 'in @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'in @duration @units',
     ])->save();
 
     // Durations & Unit - Past.
     $duration_unit_ago = $localStorage->createString([
-      'source'  => '@duration @unit ago'.PluralTranslatableMarkup::DELIMITER.'@duration @units ago',
+      'source'  => '@duration @unit ago' . PluralTranslatableMarkup::DELIMITER . '@duration @units ago',
       'context' => 'Time difference',
-      ]);
+    ]);
     $duration_unit_ago->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $duration_unit_ago->lid,
       'language'    => 'fr',
-      'translation' => 'il y a @duration @unit'.PluralTranslatableMarkup::DELIMITER.'il y a @duration @units',
+      'translation' => 'il y a @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'il y a @duration @units',
     ])->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $duration_unit_ago->lid,
       'language'    => 'de',
-      'translation' => 'vor @duration @unit'.PluralTranslatableMarkup::DELIMITER.'vor @duration @units',
+      'translation' => 'vor @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'vor @duration @units',
     ])->save();
   }
 
@@ -346,4 +346,5 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-extensions div.date-diff-in-11', 'in 1 Jahr');
     $this->assertElementContains('.test-extensions div.date-diff-in-12', 'in 3 Jahren');
   }
+
 }
