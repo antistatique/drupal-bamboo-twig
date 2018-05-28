@@ -115,6 +115,12 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
     $this->assertElementPresent('.test-security div.security-permissions-admin');
     $this->assertElementContains('.test-security div.security-permissions-admin', 'TRUE');
 
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-or');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-and');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-and', 'FALSE');
+
     $this->assertElementPresent('.test-security div.security-permissions-nobody-or');
     $this->assertElementContains('.test-security div.security-permissions-nobody-or', 'FALSE');
 
@@ -129,6 +135,12 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
 
     $this->assertElementPresent('.test-security div.security-permissions-admin');
     $this->assertElementContains('.test-security div.security-permissions-admin', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-or');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-and');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-and', 'FALSE');
 
     $this->assertElementPresent('.test-security div.security-permissions-nobody-or');
     $this->assertElementContains('.test-security div.security-permissions-nobody-or', 'FALSE');
@@ -149,6 +161,12 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
     $this->assertElementPresent('.test-security div.security-roles-admin');
     $this->assertElementContains('.test-security div.security-roles-admin', 'TRUE');
 
+    $this->assertElementPresent('.test-security div.security-roles-user-none-or');
+    $this->assertElementContains('.test-security div.security-roles-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-and');
+    $this->assertElementContains('.test-security div.security-roles-user-none-and', 'FALSE');
+
     $this->assertElementPresent('.test-security div.security-roles-nobody-or');
     $this->assertElementContains('.test-security div.security-roles-nobody-or', 'FALSE');
 
@@ -166,6 +184,12 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
 
     $this->assertElementPresent('.test-security div.security-roles-admin-or');
     $this->assertElementContains('.test-security div.security-roles-admin-or', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-or');
+    $this->assertElementContains('.test-security div.security-roles-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-and');
+    $this->assertElementContains('.test-security div.security-roles-user-none-and', 'FALSE');
 
     $this->assertElementPresent('.test-security div.security-roles-nobody-or');
     $this->assertElementContains('.test-security div.security-roles-nobody-or', 'FALSE');

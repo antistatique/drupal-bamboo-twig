@@ -90,12 +90,16 @@ class Security extends TwigExtensionBase {
         return TRUE;
       }
 
+      // When AND is requested, return FALSE on any unmatch.
       if ($conjunction == 'AND' AND !$account->hasPermission($permission) ) {
         return FALSE;
       }
     }
 
-    return TRUE;
+    // The previous loop may not return when:
+    // - The conjunction is AND & the user has all roles.
+    // - The conjunction is OR & the user has not any roles.
+    return $conjunction == 'AND' ? TRUE : FALSE;
   }
 
   /**
@@ -160,12 +164,16 @@ class Security extends TwigExtensionBase {
         return TRUE;
       }
 
+      // When AND is requested, return FALSE on any unmatch.
       if ($conjunction == 'AND' AND !$account->hasRole($role) ) {
         return FALSE;
       }
     }
 
-    return TRUE;
+    // The previous loop may not return when:
+    // - The conjunction is AND & the user has all roles.
+    // - The conjunction is OR & the user has not any roles.
+    return $conjunction == 'AND' ? TRUE : FALSE;
   }
 
 }
