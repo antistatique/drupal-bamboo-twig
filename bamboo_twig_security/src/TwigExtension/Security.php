@@ -40,17 +40,14 @@ class Security extends TwigExtensionBase {
    *   True if the current|given user has the given permission. Otherwise FALSE.
    */
   public function hasPermission($permission, $user = NULL) {
-    $currentUser = $this->getCurrentUser();
-    if (is_null($user) && $currentUser->isAnonymous()) {
-      return NULL;
+    // Get the current user when $user is not provided.
+    if (!$user) {
+      $user = $this->getCurrentUser()->id();
     }
-    $user_id = $currentUser->id();
-    if (!is_null($user) && is_int($user)) {
-      $user_id = $user;
-    }
+    $account = $this->getUserStorage()->load($user);
 
-    $account = $this->getUserStorage()->load($user_id);
-    if (!$account) {
+    // If given user do not exists or is anonymous - don't go further.
+    if (!$account || $account->isAnonymous()) {
       return NULL;
     }
     return $account->hasPermission($permission);
@@ -71,26 +68,24 @@ class Security extends TwigExtensionBase {
    *   True if the current|given user has all the given permissions. Otherwise FALSE.
    */
   public function hasPermissions(array $permissions, $conjunction = 'AND', $user = NULL) {
+    // Get the current user when $user is not provided.
+    if (!$user) {
+      $user = $this->getCurrentUser()->id();
+    }
+    $account = $this->getUserStorage()->load($user);
+
+    // If given user do not exists or is anonymous - don't go further.
+    if (!$account || $account->isAnonymous()) {
+      return NULL;
+    }
+
     // Sanitize the conjunction to AND / OR values.
     if (!in_array($conjunction, ['AND', 'OR'])) {
       $conjunction = 'AND';
     }
 
-    $currentUser = $this->getCurrentUser();
-    if (is_null($user) && $currentUser->isAnonymous()) {
-      return NULL;
-    }
-    $user_id = $currentUser->id();
-    if (!is_null($user) && is_int($user)) {
-      $user_id = $user;
-    }
-
-    $account = $this->getUserStorage()->load($user_id);
-    if (!$account) {
-      return NULL;
-    }
-
     foreach ($permissions as $permission) {
+      // When OR is requested, return TRUE on any match.
       if ($conjunction == 'OR' AND $account->hasPermission($permission) ) {
         return TRUE;
       }
@@ -115,18 +110,14 @@ class Security extends TwigExtensionBase {
    *   True if the current|given user has the given role. Otherwise FALSE.
    */
   public function hasRole($role, $user = NULL) {
-    $currentUser = $this->getCurrentUser();
-    if (is_null($user) && $currentUser->isAnonymous()) {
-      return NULL;
+    // Get the current user when $user is not provided.
+    if (!$user) {
+      $user = $this->getCurrentUser()->id();
     }
+    $account = $this->getUserStorage()->load($user);
 
-    $user_id = $currentUser->id();
-    if (!is_null($user) && is_int($user)) {
-      $user_id = $user;
-    }
-
-    $account = $this->getUserStorage()->load($user_id);
-    if (!$account) {
+    // If given user do not exists or is anonymous - don't go further.
+    if (!$account || $account->isAnonymous()) {
       return NULL;
     }
     return $account->hasRole($role);
@@ -147,27 +138,24 @@ class Security extends TwigExtensionBase {
    *   True if the current|given user has the given permission. Otherwise FALSE.
    */
   public function hasRoles($roles, $conjunction = 'AND', $user = NULL) {
+    // Get the current user when $user is not provided.
+    if (!$user) {
+      $user = $this->getCurrentUser()->id();
+    }
+    $account = $this->getUserStorage()->load($user);
+
+    // If given user do not exists or is anonymous - don't go further.
+    if (!$account || $account->isAnonymous()) {
+      return NULL;
+    }
+
     // Sanitize the conjunction to AND / OR values.
     if (!in_array($conjunction, ['AND', 'OR'])) {
       $conjunction = 'AND';
     }
 
-    $currentUser = $this->getCurrentUser();
-    if (is_null($user) && $currentUser->isAnonymous()) {
-      return NULL;
-    }
-
-    $user_id = $currentUser->id();
-    if (!is_null($user) && is_int($user)) {
-      $user_id = $user;
-    }
-
-    $account = $this->getUserStorage()->load($user_id);
-    if (!$account) {
-      return NULL;
-    }
-
     foreach ($roles as $role) {
+      // When OR is requested, return TRUE on any match.
       if ($conjunction == 'OR' AND $account->hasRole($role) ) {
         return TRUE;
       }
