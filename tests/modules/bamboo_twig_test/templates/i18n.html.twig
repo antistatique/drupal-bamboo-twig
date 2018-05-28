@@ -1,5 +1,4 @@
 <div class="test-i18n">
-
   <!-- Curent Langauge -->
   <h2>Curent Langauge</h2>
   <hr>
@@ -21,10 +20,57 @@
   </div>
   <div class="i18n-format-date-datetimeplus">
     {{ variables.datetimeplus|bamboo_i18n_format_date('custom', 'l dS F Y') }}
+  </div>
   <div class="i18n-format-date-drupaldatetime">
     {{ variables.drupaldatetime|bamboo_i18n_format_date('custom', 'l dS F Y') }}
   </div>
   <div class="i18n-format-date-datetime-medium">
     {{ variables.datetime|bamboo_i18n_format_date() }}
+  </div>
+
+  <!-- Get Translation -->
+  <h2>Get Translation</h2>
+  <hr>
+  <div class="i18n-get-translation-node-1-ru">
+    {{ variables.articles[0]|bamboo_i18n_get_translation('ru').title.value }}
+  </div>
+
+  <div class="i18n-get-translation-node-1">
+    {{ variables.articles[0]|bamboo_i18n_get_translation().title.value }}
+  </div>
+  <div class="i18n-get-translation-node-1-en">
+    {{ variables.articles[0]|bamboo_i18n_get_translation('en').title.value }}
+  </div>
+  <div class="i18n-get-translation-node-1-fr">
+    {{ variables.articles[0]|bamboo_i18n_get_translation('fr').title.value }}
+  </div>
+  <div class="i18n-get-translation-node-1-de">
+    {{ variables.articles[0]|bamboo_i18n_get_translation('de').title.value }}
+  </div>
+
+  <div class="i18n-get-translation-node-2">
+    {{ variables.articles[1]|bamboo_i18n_get_translation().title.value }}
+  </div>
+  <div class="i18n-get-translation-node-2-en">
+    {{ variables.articles[1]|bamboo_i18n_get_translation('en').title.value }}
+  </div>
+  <div class="i18n-get-translation-node-2-fr">
+    {{ variables.articles[1]|bamboo_i18n_get_translation('fr').title.value }}
+  </div>
+  <div class="i18n-get-translation-node-2-de">
+    {{ variables.articles[1]|bamboo_i18n_get_translation('de').title.value }}
+  </div>
+
+  <div class="i18n-get-translation-node-3">
+    {{ variables.articles[2]|bamboo_i18n_get_translation().title.value }}
+  </div>
+  <div class="i18n-get-translation-node-3-en">
+    {{ variables.articles[2]|bamboo_i18n_get_translation('en').title.value }}
+  </div>
+  <div class="i18n-get-translation-node-3-fr">
+    {{ variables.articles[2]|bamboo_i18n_get_translation('fr').title.value }}
+  </div>
+  <div class="i18n-get-translation-node-3-de">
+    {{ variables.articles[2]|bamboo_i18n_get_translation('de').title.value }}
   </div>
 </div>
