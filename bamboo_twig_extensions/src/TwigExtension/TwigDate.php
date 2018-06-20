@@ -90,6 +90,7 @@ class TwigDate extends \Twig_Extension {
     return $diff->invert ? $count : $count * -1;
   }
 
+
   /**
    * Humanize a period of time according the given unit.
    *
@@ -98,36 +99,50 @@ class TwigDate extends \Twig_Extension {
    * @param bool $invert
    *   Is 1 if the interval represents a negative time period and 0 otherwise.
    * @param string $unit
-   *   A unit from y, m, d, h, i, s.
+   *   A unit from year, minute, day, hour, minute, second.
    *
    * @return string
    *   Humanized period of time.
    */
   protected function humanize($count, $invert, $unit) {
-    if (intval($count) > 0) {
+
+    // Get singular translatable unit of time.
+    $t_unit = $this->t($unit, [], ['context' => 'Time difference unit']);
+
+    // Get plural translatable unit of time.
+    $t_units = $this->t($unit.'s', [], ['context' => 'Time difference unit']);
+
+    // Don't generate pluralized strings when count less than 0.
+    if ((int)$count <= 0) {
       if ($invert) {
-        return $this->formatPlural(
-          intval($count), 'in @duration @unit',
-          'in @duration @units',
-          ['@duration' => $count, '@unit' => $unit]
-        );
+        return $this->t('in @duration @unit', [
+          '@duration' => $count,
+          '@unit'     => $t_unit,
+        ], ['context' => 'Time difference']);
       }
-      else {
-        return $this->formatPlural(
-          intval($count), '@duration @unit ago',
-          '@duration @units ago',
-          ['@duration' => $count, '@unit' => $unit]
-        );
-      }
+      return $this->t('@duration @unit ago', [
+        '@duration' => $count,
+        '@unit'     => $t_unit,
+      ], ['context' => 'Time difference']);
     }
-    else {
-      if ($invert) {
-        return $this->t('in @duration @unit', ['@duration' => $count, '@unit' => $unit]);
-      }
-      else {
-        return $this->t('@duration @unit ago', ['@duration' => $count, '@unit' => $unit]);
-      }
+
+    // From here, we need to humanize a potential plural Time difference.
+    if ($invert) {
+      return $this->formatPlural(
+        (int)$count,
+        'in @duration @unit',
+        'in @duration @units',
+        ['@duration' => $count, '@unit' => $t_unit, '@units' => $t_units],
+        ['context' => 'Time difference']
+      );
     }
+    return $this->formatPlural(
+      (int)$count,
+      '@duration @unit ago',
+      '@duration @units ago',
+      ['@duration' => $count, '@unit' => $t_unit, '@units' => $t_units],
+      ['context' => 'Time difference']
+    );
   }
 
   /**
