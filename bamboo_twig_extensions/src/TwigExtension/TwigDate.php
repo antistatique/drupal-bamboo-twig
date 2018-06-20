@@ -113,7 +113,7 @@ class TwigDate extends \Twig_Extension {
     $t_units = $this->t($unit.'s', [], ['context' => 'Time difference unit']);
 
     // Don't generate pluralized strings when count less than 0.
-    if (intval($count) <= 0) {
+    if ((int)$count <= 0) {
       if ($invert) {
         return $this->t('in @duration @unit', [
           '@duration' => $count,
@@ -129,7 +129,7 @@ class TwigDate extends \Twig_Extension {
     // From here, we need to humanize a potential plural Time difference.
     if ($invert) {
       return $this->formatPlural(
-        intval($count),
+        (int)$count,
         'in @duration @unit',
         'in @duration @units',
         ['@duration' => $count, '@unit' => $t_unit, '@units' => $t_units],
@@ -137,7 +137,7 @@ class TwigDate extends \Twig_Extension {
       );
     }
     return $this->formatPlural(
-      intval($count),
+      (int)$count,
       '@duration @unit ago',
       '@duration @units ago',
       ['@duration' => $count, '@unit' => $t_unit, '@units' => $t_units],
