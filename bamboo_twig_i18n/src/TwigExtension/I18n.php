@@ -91,23 +91,21 @@ class I18n extends TwigExtensionBase {
    * Gets a translation of the entity.
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
-   *   The entity for which to get the translation.
+   *   The entity to translate.
    * @param string|null $langcode
    *   (optional) The language code of the translation to get. NULL (default) means to use
    *   the user interface language for the page.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|null
-   *   An entity object when translations exists or NULL.
+   * @return \Drupal\Core\Entity\EntityInterface
+   *   An entity object when translations exists or the original entity.
    */
   public function getTranslation(EntityInterface $entity, $langcode = NULL) {
-    /** @var \Drupal\Core\Language\LanguageManagerInterface $language_manager */
-    $language_manager = $this->getLanguageManager();
+    $entityRepository = $this->getEntityRepository();
 
     if (!$langcode) {
       $langcode = $this->getCurrentLanguage();
     }
 
-    // Return the translation of this entity or NULL when not translated.
-    return $entity->hasTranslation($langcode) ? $entity->getTranslation($langcode) : NULL;
+    return $entityRepository->getTranslationFromContext($entity, $langcode);
   }
 }

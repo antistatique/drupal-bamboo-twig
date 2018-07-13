@@ -140,6 +140,8 @@ Use the `bamboo_i18n_current_lang` function to return the current lang iso code.
 
 Use the `bamboo_i18n_get_translation` filter to retrieve a translation of an entity.
 
+- `langcode` string (optional) - Language code to translate to. NULL (default) means to use the user interface language for the page.
+
 ```twig
 {# Get the entity translations in french #}
 <dt>Get the french title of entity:</dt>
@@ -206,10 +208,28 @@ of the requested entity.
 
 - `entity_type` string
 - `id` int (optional)
+- `langcode` string (optional) - defaults to current context language
 
 ```twig
 {# Load the entity node with nid 1 #}
 {% set node = bamboo_load_entity('node', 1) %}
+```
+
+Keep in mind, when loading an entity it will fetch it in the current context lang.
+But When you will access a *EntityReferenceField* or *Paragraph*,
+the given entity is always in his own original language
+(not in the current context lang neither in the entity lang).
+You should then use the `bamboo_i18n_get_translation` filter.
+
+```twig
+{# Load the entity node with nid 1 #}
+{% set node = bamboo_load_entity('node', 1) %}
+{# show the entity title in the current context lang (page language) #}
+{{ node.title.value }}
+{# show the entity name in his original lang #}
+{{ node.field_referenced_tags.entity.name.value }}
+{# show the entity name in the current context lang (page language) #}
+{{ node.field_referenced_tags.entity|bamboo_i18n_get_translation.name.value }}
 ```
 
 The `bamboo_load_field` function returns a FieldItemListInterface object
@@ -222,6 +242,24 @@ of the requested field.
 ```twig
 {# Load the title of node 1 with nid 1 #}
 {% set title = bamboo_load_field('title', 'node', 1) %}
+```
+
+Keep in mind, when loading a field it will fetch it in the current context lang.
+But When you will access a *EntityReferenceField* or *Paragraph*,
+the given entity is always in his own original language
+(not in the current context lang neither in the entity lang).
+You should then use the `bamboo_i18n_get_translation` filter.
+
+```twig
+{# Load the entity node with nid 1 #}
+{% set title = bamboo_load_field('title', 'node', 1) %}
+{# show the entity title in the current context lang (page language) #}
+{{ title.value }}
+{% set tags = bamboo_load_field('field_tags', 'node', 1) %}
+{# show the entity name in his original lang #}
+{{ tags.entity.name.value }}
+{# show the entity name in the current context lang (page language) #}
+{{ tags.entity|bamboo_i18n_get_translation.name.value }}
 ```
 
 The `bamboo_load_image` function returns a ImageInterface object
