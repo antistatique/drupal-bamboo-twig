@@ -1,6 +1,8 @@
 # BAMBOO TWIG
 
-Bamboo Twig. A Drupal 8 powered module.
+All the Twig features you missed until now.
+
+A Drupal 8 powered module.
 
 |       Travis-CI        |        Style-CI         |        Downloads        |         Releases         |
 |:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
@@ -29,6 +31,7 @@ to ensure stability.
   - You need to "Use Token".
   - You need to "Create an absolute URL from a theme".
   - You need to "Retrieve the Extension file from given mimeType".
+  - You want to use a twig module which is design to works on multilingual websites.
   - You want to use a twig module that follows all the best practices.
   - You want to use a twig module that ensure stability with tests.
   - You want to use a twig module that will be compatible Drupal 9.
@@ -64,13 +67,14 @@ Feel free to use it.
 
 ## Similar modules
 
-From the first sight, Bamboo Twig offers similar functionality to the following modules, 
+At first sight, Bamboo Twig offers similar functionality to the following modules, 
 although Bamboo Twig will normalize the way you use twig in your Drupal project, 
 thus reducing the need to install a bunch of extra modules.
 
-Plus, it adds a lots of functionality, ensures stability with tests, includes automated 
-quality control and is totally open to contribute through [Github](https://github.com/antistatique/drupal-bamboo-twig).
-Finally, Bamboo Twig uses all the best practices of Drupal 8 to ensure
+Plus, it adds a lots of functionalities, ensures stability with tests, includes automated 
+quality control and is totally open to contribution via [Github](https://github.com/antistatique/drupal-bamboo-twig) or [Drupal Issue Queue](https://www.drupal.org/project/issues/bamboo_twig).
+
+Finally, Bamboo Twig follows all the best practices of Drupal 8 to ensure
 compatibility with Drupal 9.
 
   - Only expose a set of Renderer functions & filters [Twig Tweak](https://www.drupal.org/project/twig_tweak).
