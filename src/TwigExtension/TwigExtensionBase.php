@@ -29,6 +29,16 @@ class TwigExtensionBase extends \Twig_Extension {
   }
 
   /**
+   * Lazy loading for the Drupal entity repository.
+   *
+   * @return \Drupal\Core\Entity\EntityRepositoryInterface
+   *   Return the Drupal entity repository.
+   */
+  protected function getEntityRepository() {
+    return $this->container->get('entity.repository');
+  }
+
+  /**
    * Return the current route match.
    *
    * @return \Drupal\Core\Routing\RouteMatchInterface

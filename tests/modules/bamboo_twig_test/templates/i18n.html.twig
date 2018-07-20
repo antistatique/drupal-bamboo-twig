@@ -73,4 +73,23 @@
   <div class="i18n-get-translation-node-3-de">
     {{ variables.articles[2]|bamboo_i18n_get_translation('de').title.value }}
   </div>
+
+  <!-- Referenced field -->
+  <h2>Referenced field</h2>
+  <hr>
+  <div class="loader-entity-reference-field-1">
+    {{ variables.articles[0].field_tags.entity|bamboo_i18n_get_translation.name.value }}
+  </div>
+  <div class="loader-entity-reference-field-2">
+    {{ variables.articles[1].field_tags.entity|bamboo_i18n_get_translation.name.value }}
+  </div>
+  <div class="loader-entity-reference-field-3">
+    {{ variables.articles[2].field_tags.entity|bamboo_i18n_get_translation.name.value }}
+  </div>
+  <div class="loader-entity-reference-field-4">
+    {{ variables.articles[3].field_tags.entity|bamboo_i18n_get_translation.name.value }}
+  </div>
+  <div class="loader-entity-reference-field-5">
+    {{ variables.articles[4].field_tags.entity|bamboo_i18n_get_translation.name.value }}
+  </div>
 </div>

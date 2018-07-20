@@ -15,13 +15,37 @@
   <hr>
   <div class="render-region">{{ bamboo_render_region('sidebar_first') }}</div>
 
-  <!-- Render Entity -->
-  <h2>Render Entity</h2>
+  <!-- Render Node -->
+  <h2>Render Node</h2>
   <hr>
-  <div class="render-entity-node">{{ bamboo_render_entity('node', 1) }}</div>
-  <div class="render-entity-node-teaser">{{ bamboo_render_entity('node', 1, 'teaser') }}</div>
-  <div class="render-entity-taxonomy-term">{{ bamboo_render_entity('taxonomy_term', 1) }}</div>
-  <div class="render-entity-taxonomy-term-link">{{ bamboo_render_entity('taxonomy_term', 1, 'link') }}</div>
+  <div class="render-entity-node-1">{{ bamboo_render_entity('node', 1) }}</div>
+  <div class="render-entity-node-1-teaser">{{ bamboo_render_entity('node', 1, 'teaser') }}</div>
+  <div class="render-entity-node-2">{{ bamboo_render_entity('node', 2) }}</div>
+  <div class="render-entity-node-2-teaser">{{ bamboo_render_entity('node', 2, 'teaser') }}</div>
+  <div class="render-entity-node-3">{{ bamboo_render_entity('node', 3) }}</div>
+  <div class="render-entity-node-3-teaser">{{ bamboo_render_entity('node', 3, 'teaser') }}</div>
+  <div class="render-entity-node-4">{{ bamboo_render_entity('node', 4) }}</div>
+  <div class="render-entity-node-4-teaser">{{ bamboo_render_entity('node', 4, 'teaser') }}</div>
+  <div class="render-entity-node-5">{{ bamboo_render_entity('node', 5) }}</div>
+  <div class="render-entity-node-5-teaser">{{ bamboo_render_entity('node', 5, 'teaser') }}</div>
+
+  <!-- Render Taxonomy -->
+  <h2>Render Taxonomy</h2>
+  <hr>
+  <div class="render-entity-taxonomy-term-1">{{ bamboo_render_entity('taxonomy_term', 1) }}</div>
+  <div class="render-entity-taxonomy-term-1-link">{{ bamboo_render_entity('taxonomy_term', 1, 'link') }}</div>
+  <div class="render-entity-taxonomy-term-2">{{ bamboo_render_entity('taxonomy_term', 2) }}</div>
+  <div class="render-entity-taxonomy-term-2-link">{{ bamboo_render_entity('taxonomy_term', 2, 'link') }}</div>
+  <div class="render-entity-taxonomy-term-3">{{ bamboo_render_entity('taxonomy_term', 3) }}</div>
+  <div class="render-entity-taxonomy-term-3-link">{{ bamboo_render_entity('taxonomy_term', 3, 'link') }}</div>
+  <div class="render-entity-taxonomy-term-4">{{ bamboo_render_entity('taxonomy_term', 4) }}</div>
+  <div class="render-entity-taxonomy-term-4-link">{{ bamboo_render_entity('taxonomy_term', 4, 'link') }}</div>
+  <div class="render-entity-taxonomy-term-5">{{ bamboo_render_entity('taxonomy_term', 5) }}</div>
+  <div class="render-entity-taxonomy-term-5-link">{{ bamboo_render_entity('taxonomy_term', 5, 'link') }}</div>
+
+  <!-- Render User -->
+  <h2>Render User</h2>
+  <hr>
   <div class="render-entity-user">{{ bamboo_render_entity('user', 1) }}</div>
   <div class="render-entity-user-compact">{{ bamboo_render_entity('user', 1, 'compact') }}</div>
 
@@ -35,8 +59,24 @@
   <!-- Render Field -->
   <h2>Render Field</h2>
   <hr>
-  <div class="render-field-node">{{ bamboo_render_field('title', 'node', 1) }}</div>
-  <div class="render-field-taxonomy-term">{{ bamboo_render_field('name', 'taxonomy_term', 1) }}</div>
+  <div class="render-field-title-node-1">{{ bamboo_render_field('title', 'node', 1) }}</div>
+  <div class="render-field-title-node-2">{{ bamboo_render_field('title', 'node', 2) }}</div>
+  <div class="render-field-title-node-3">{{ bamboo_render_field('title', 'node', 3) }}</div>
+  <div class="render-field-title-node-4">{{ bamboo_render_field('title', 'node', 4) }}</div>
+  <div class="render-field-title-node-5">{{ bamboo_render_field('title', 'node', 5) }}</div>
+  <br>
+  <div class="render-field-taxonomy-term-1">{{ bamboo_render_field('name', 'taxonomy_term', 1) }}</div>
+  <div class="render-field-taxonomy-term-2">{{ bamboo_render_field('name', 'taxonomy_term', 2) }}</div>
+  <div class="render-field-taxonomy-term-3">{{ bamboo_render_field('name', 'taxonomy_term', 3) }}</div>
+  <div class="render-field-taxonomy-term-4">{{ bamboo_render_field('name', 'taxonomy_term', 4) }}</div>
+  <div class="render-field-taxonomy-term-5">{{ bamboo_render_field('name', 'taxonomy_term', 5) }}</div>
+  <br>
+  <div class="render-field-reference-node-1">{{ bamboo_render_field('field_tags', 'node', 1) }}</div>
+  <div class="render-field-reference-node-2">{{ bamboo_render_field('field_tags', 'node', 2) }}</div>
+  <div class="render-field-reference-node-3">{{ bamboo_render_field('field_tags', 'node', 3) }}</div>
+  <div class="render-field-reference-node-4">{{ bamboo_render_field('field_tags', 'node', 4) }}</div>
+  <div class="render-field-reference-node-5">{{ bamboo_render_field('field_tags', 'node', 5) }}</div>
+  <br>
   <div class="render-field-file">{{ bamboo_render_field('filename', 'file', 1) }}</div>
   <div class="render-field-user">{{ bamboo_render_field('name', 'user', 1) }}</div>
 

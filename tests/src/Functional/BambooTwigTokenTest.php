@@ -13,11 +13,14 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
    * {@inheritdoc}
    */
   public static $modules = [
+    'locale',
+    'language',
+    'node',
+    'taxonomy',
     'bamboo_twig',
     'bamboo_twig_token',
     'bamboo_twig_loader',
     'bamboo_twig_test',
-    'node',
   ];
 
   /**
@@ -26,15 +29,9 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
   public function setUp() {
     parent::setUp();
 
-    // Create an article content type that we will use for testing.
-    $this->drupalCreateContentType(['type' => 'article', 'name' => 'Article']);
-
-    // Create an article node that we will use for testing.
-    $this->article = $this->drupalCreateNode([
-      'title' => 'Hello, world!',
-      'type' => 'article',
-    ]);
-    $this->article->save();
+    $this->setUpLanguages();
+    $this->setUpTags();
+    $this->setUpArticles();
 
     $this->container->get('router.builder')->rebuild();
   }
@@ -44,11 +41,28 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
    */
   public function testSubstituteToken() {
     $this->drupalGet('/bamboo-twig-token');
-    $this->assertElementPresent('.test-token div.token-site');
     $this->assertElementContains('.test-token div.token-site', 'Drupal');
+    $this->assertElementContains('.test-token div.token-node-1', 'News N°1');
+    $this->assertElementContains('.test-token div.token-node-2', 'News N°2');
+    $this->assertElementContains('.test-token div.token-node-3', 'News N°3');
+    $this->assertElementContains('.test-token div.token-node-4', 'Article N°4');
+    $this->assertElementContains('.test-token div.token-node-5', 'News N°5');
 
-    $this->assertElementPresent('.test-token div.token-node');
-    $this->assertElementContains('.test-token div.token-node', 'Hello, world!');
+    $this->drupalGet('/fr/bamboo-twig-token');
+    $this->assertElementContains('.test-token div.token-site', 'Drupal');
+    $this->assertElementContains('.test-token div.token-node-1', 'News N°1');
+    $this->assertElementContains('.test-token div.token-node-2', 'Article N°2');
+    $this->assertElementContains('.test-token div.token-node-3', 'Article N°3');
+    $this->assertElementContains('.test-token div.token-node-4', 'Article N°4');
+    $this->assertElementContains('.test-token div.token-node-5', 'Article N°5');
+
+    $this->drupalGet('/de/bamboo-twig-token');
+    $this->assertElementContains('.test-token div.token-site', 'Drupal');
+    $this->assertElementContains('.test-token div.token-node-1', 'News N°1');
+    $this->assertElementContains('.test-token div.token-node-2', 'News N°2');
+    $this->assertElementContains('.test-token div.token-node-3', 'Artikel N°3');
+    $this->assertElementContains('.test-token div.token-node-4', 'Article N°4');
+    $this->assertElementContains('.test-token div.token-node-5', 'News N°5');
   }
 
 }
