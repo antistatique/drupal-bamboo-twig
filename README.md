@@ -6,7 +6,7 @@ A Drupal 8 powered module.
 
 |       Travis-CI        |        Style-CI         |        Downloads        |         Releases         |
 |:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
-| [![Travis](https://img.shields.io/travis/antistatique/drupal-bamboo-twig.svg?style=flat-square)](https://travis-ci.org/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--3.3-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-3.3.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v3.3-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
+| [![Travis](https://img.shields.io/travis/antistatique/drupal-bamboo-twig.svg?style=flat-square)](https://travis-ci.org/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--4.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-4.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v4.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
 
 The Bamboo Twig module provides some Twig extensions with some useful functions
 and filters aimed to improve the development experience.
@@ -67,11 +67,11 @@ Feel free to use it.
 
 ## Similar modules
 
-At first sight, Bamboo Twig offers similar functionality to the following modules, 
-although Bamboo Twig will normalize the way you use twig in your Drupal project, 
+At first sight, Bamboo Twig offers similar functionality to the following modules,
+although Bamboo Twig will normalize the way you use twig in your Drupal project,
 thus reducing the need to install a bunch of extra modules.
 
-Plus, it adds a lots of functionalities, ensures stability with tests, includes automated 
+Plus, it adds a lots of functionalities, ensures stability with tests, includes automated
 quality control and is totally open to contribution via [Github](https://github.com/antistatique/drupal-bamboo-twig) or [Drupal Issue Queue](https://www.drupal.org/project/issues/bamboo_twig).
 
 Finally, Bamboo Twig follows all the best practices of Drupal 8 to ensure
@@ -221,7 +221,7 @@ of the requested entity.
 ```
 
 Keep in mind, when loading an entity it will fetch it in the current context language.
-When you access it directly through a *EntityReferenceField* or a *Paragraph* 
+When you access it directly through a *EntityReferenceField* or a *Paragraph*
 (e.g. `node.field_referenced_tags.entity`), the entity is always loaded in its original language.
 (it won't be loaded in the current context language or in the entity language)
 You should then use the `|bamboo_i18n_get_translation` filter to make sure you have the
@@ -249,10 +249,10 @@ entity displayed in another language.
 {% set title = bamboo_load_field('title', 'node', 1) %}
 ```
 
-Keep in mind, loading a field with `bamboo_load_field()` will fetch it in the 
+Keep in mind, loading a field with `bamboo_load_field()` will fetch it in the
 current context language.
 When you access it directly through a *EntityReferenceField* or *Paragraph*,
-the entity is always in its original language 
+the entity is always in its original language
 (it won't be loaded in the current context language or in the entity language).
 You should then use the `|bamboo_i18n_get_translation` filter to make sure you have the
 entity displayed in another language.
@@ -451,7 +451,7 @@ has the requested permission.
 
 **Extensions**
 
-`sentence|truncate(count, word, separator)` truncates a string. 
+`sentence|truncate(count, word, separator)` truncates a string.
 From Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text.html).
 
 - `sentence` string
@@ -476,7 +476,7 @@ From Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text
 {{ "<p>This <b>is a very</b> long sentence.</p>"|bamboo_truncate_html(2, false, '...') }}
 ```
 
-`array|shuffle` randomizes an array 
+`array|shuffle` randomizes an array
 From Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/array.html).
 
 - `array` array
@@ -486,7 +486,7 @@ From Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/arr
 [1, 2, 3]|shuffle
 ```
 
-`date|time_diff(date2)` returns a time difference between two dates. 
+`date|time_diff(date2)` returns a time difference between two dates.
 From Twig-extensions [Date](http://twig-extensions.readthedocs.io/en/latest/date.html).
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
