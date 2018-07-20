@@ -6,6 +6,14 @@
   <div class="token-site">{{ bamboo_token('site:name') }}</div>
 
   {% set article = bamboo_load_entity('node', 1) %}
-  <div class="token-node">{{ bamboo_token('node:title', {'node': article}) }}</div>
+  <div class="token-node-1">{{ bamboo_token('node:title', {'node': article}) }}</div>
+  {% set article = bamboo_load_entity('node', 2) %}
+  <div class="token-node-2">{{ bamboo_token('node:title', {'node': article}) }}</div>
+  {% set article = bamboo_load_entity('node', 3) %}
+  <div class="token-node-3">{{ bamboo_token('node:title', {'node': article}) }}</div>
+  {% set article = bamboo_load_entity('node', 4) %}
+  <div class="token-node-4">{{ bamboo_token('node:title', {'node': article}) }}</div>
+  {% set article = bamboo_load_entity('node', 5) %}
+  <div class="token-node-5">{{ bamboo_token('node:title', {'node': article}) }}</div>
 
 </div>

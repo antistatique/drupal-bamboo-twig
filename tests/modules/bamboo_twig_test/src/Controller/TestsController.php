@@ -20,7 +20,7 @@ class TestsController extends ControllerBase {
       '#variables' => [
         'image_path' => drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg',
       ],
-      '#theme' => 'bamboo_twig_test_loader'
+      '#theme' => 'bamboo_twig_test_loader',
     ];
   }
 
@@ -71,6 +71,8 @@ class TestsController extends ControllerBase {
           0 => $nodeStorage->load(1),
           1 => $nodeStorage->load(2),
           2 => $nodeStorage->load(3),
+          3 => $nodeStorage->load(4),
+          4 => $nodeStorage->load(5),
         ],
         'datetime'       => DateTime::createFromFormat('d-m-Y', '24-07-2014'),
         'datetimeplus'   => DateTimePlus::createFromFormat('d-m-Y', '24-07-2014'),
