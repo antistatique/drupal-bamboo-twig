@@ -9,7 +9,7 @@ https://github.com/antistatique/drupal-bamboo-twig/pulls
 
 Github repo
   ```
-  $ git remote add drupal https://wengerk@git.drupal.org:project/bamboo_twig.git
+  $ git remote add drupal git@git.drupal.org:project/bamboo_twig.git
   ```
 
 Drupal repo

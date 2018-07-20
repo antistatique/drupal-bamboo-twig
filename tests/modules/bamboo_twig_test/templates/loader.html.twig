@@ -7,13 +7,52 @@
   {% set user = bamboo_load_currentuser() %}
   <div class="loader-current-user">{{ user.name.value }}</div>
 
+  <!-- Loader Node -->
+  <h2>Loader Node</h2>
+  <hr>
+  {% set article = bamboo_load_entity('node', 1) %}
+  <div class="loader-entity-node-1">{{ article.title.value }}</div>
+  {% set article = bamboo_load_entity('node', 2) %}
+  <div class="loader-entity-node-2">{{ article.title.value }}</div>
+  {% set article = bamboo_load_entity('node', 3) %}
+  <div class="loader-entity-node-3">{{ article.title.value }}</div>
+  {% set article = bamboo_load_entity('node', 4) %}
+  <div class="loader-entity-node-4">{{ article.title.value }}</div>
+  {% set article = bamboo_load_entity('node', 5) %}
+  <div class="loader-entity-node-5">{{ article.title.value }}</div>
+
+  <!-- Loader Taxonomy -->
+  <h2>Loader Taxonomy</h2>
+  <hr>
+  {% set term = bamboo_load_entity('taxonomy_term', 1) %}
+  <div class="loader-entity-taxonomy-term-1">{{ term.name.value }}</div>
+  {% set term = bamboo_load_entity('taxonomy_term', 2) %}
+  <div class="loader-entity-taxonomy-term-2">{{ term.name.value }}</div>
+  {% set term = bamboo_load_entity('taxonomy_term', 3) %}
+  <div class="loader-entity-taxonomy-term-3">{{ term.name.value }}</div>
+  {% set term = bamboo_load_entity('taxonomy_term', 4) %}
+  <div class="loader-entity-taxonomy-term-4">{{ term.name.value }}</div>
+  {% set term = bamboo_load_entity('taxonomy_term', 5) %}
+  <div class="loader-entity-taxonomy-term-5">{{ term.name.value }}</div>
+
+  <!-- Referenced field -->
+  <!-- Referenced field should always show referenced entity in his original lang -->
+  <h2>Referenced field</h2>
+  <hr>
+  {% set article = bamboo_load_entity('node', 1) %}
+  <div class="loader-entity-reference-field-1">{{ article.title.value }} - {{ article.field_tags.entity.name.value }}</div>
+  {% set article = bamboo_load_entity('node', 2) %}
+  <div class="loader-entity-reference-field-2">{{ article.title.value }} - {{ article.field_tags.entity.name.value }}</div>
+  {% set article = bamboo_load_entity('node', 3) %}
+  <div class="loader-entity-reference-field-3">{{ article.title.value }} - {{ article.field_tags.entity.name.value }}</div>
+  {% set article = bamboo_load_entity('node', 4) %}
+  <div class="loader-entity-reference-field-4">{{ article.title.value }} - {{ article.field_tags.entity.name.value }}</div>
+  {% set article = bamboo_load_entity('node', 5) %}
+  <div class="loader-entity-reference-field-5">{{ article.title.value }} - {{ article.field_tags.entity.name.value }}</div>
+
   <!-- Loader Entity -->
   <h2>Loader Entity</h2>
   <hr>
-  {% set article = bamboo_load_entity('node', 1) %}
-  <div class="loader-entity-node">{{ article.title.value }}</div>
-  {% set term = bamboo_load_entity('taxonomy_term', 1) %}
-  <div class="loader-entity-taxonomy-term">{{ term.name.value }}</div>
   {% set file = bamboo_load_entity('file', 1) %}
   <div class="loader-entity-file">{{ file.filename.value }}</div>
   {% set user = bamboo_load_entity('user', 1) %}
@@ -23,9 +62,38 @@
   <h2>Loader Field</h2>
   <hr>
   {% set article_title = bamboo_load_field('title', 'node', 1) %}
-  <div class="loader-field-node">{{ article_title.value }}</div>
+  <div class="loader-field-node-1">{{ article_title.value }}</div>
+  {% set article_title = bamboo_load_field('title', 'node', 2) %}
+  <div class="loader-field-node-2">{{ article_title.value }}</div>
+  {% set article_title = bamboo_load_field('title', 'node', 3) %}
+  <div class="loader-field-node-3">{{ article_title.value }}</div>
+  {% set article_title = bamboo_load_field('title', 'node', 4) %}
+  <div class="loader-field-node-4">{{ article_title.value }}</div>
+  {% set article_title = bamboo_load_field('title', 'node', 5) %}
+  <div class="loader-field-node-5">{{ article_title.value }}</div>
+  <br>
   {% set term_name = bamboo_load_field('name', 'taxonomy_term', 1) %}
-  <div class="loader-field-taxonomy-term">{{ term_name.value }}</div>
+  <div class="loader-field-taxonomy-term-1">{{ term_name.value }}</div>
+  {% set term_name = bamboo_load_field('name', 'taxonomy_term', 2) %}
+  <div class="loader-field-taxonomy-term-2">{{ term_name.value }}</div>
+  {% set term_name = bamboo_load_field('name', 'taxonomy_term', 3) %}
+  <div class="loader-field-taxonomy-term-3">{{ term_name.value }}</div>
+  {% set term_name = bamboo_load_field('name', 'taxonomy_term', 4) %}
+  <div class="loader-field-taxonomy-term-4">{{ term_name.value }}</div>
+  {% set term_name = bamboo_load_field('name', 'taxonomy_term', 5) %}
+  <div class="loader-field-taxonomy-term-5">{{ term_name.value }}</div>
+  <br>
+  {% set article_tag = bamboo_load_field('field_tags', 'node', 1) %}
+  <div class="loader-field-reference-1">{{ article_tag.entity.name.value }}</div>
+  {% set article_tag = bamboo_load_field('field_tags', 'node', 2) %}
+  <div class="loader-field-reference-2">{{ article_tag.entity.name.value }}</div>
+  {% set article_tag = bamboo_load_field('field_tags', 'node', 3) %}
+  <div class="loader-field-reference-3">{{ article_tag.entity.name.value }}</div>
+  {% set article_tag = bamboo_load_field('field_tags', 'node', 4) %}
+  <div class="loader-field-reference-4">{{ article_tag.entity.name.value }}</div>
+  {% set article_tag = bamboo_load_field('field_tags', 'node', 5) %}
+  <div class="loader-field-reference-5">{{ article_tag.entity.name.value }}</div>
+  <br>
   {% set filename = bamboo_load_field('filename', 'file', 1) %}
   <div class="loader-field-file">{{ filename.value }}</div>
   {% set username = bamboo_load_field('name', 'user', 1) %}
