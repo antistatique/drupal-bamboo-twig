@@ -60,7 +60,7 @@ class Security extends TwigExtensionBase {
    *   Drupal permissions string.
    * @param string $conjunction
    *   (Optional) The conjunction to use againts user permissions.
-   *   Allowing 'AND' or 'OR' values. When nothing is given 'AND' is used.
+   *   Allowing 'AND' or 'OR' values. Default to 'AND'.
    * @param int $user
    *   (Optional) user id to check permission. Otherwise current user is used.
    *
@@ -81,7 +81,7 @@ class Security extends TwigExtensionBase {
 
     // Sanitize the conjunction to AND / OR values.
     if (!in_array($conjunction, ['AND', 'OR'])) {
-      $conjunction = 'AND';
+      throw new \InvalidArgumentException(sprintf('Invalid conjunction type "%s".', $conjunction));
     }
 
     foreach ($permissions as $permission) {
@@ -134,7 +134,7 @@ class Security extends TwigExtensionBase {
    *   Drupal roles name.
    * @param string $conjunction
    *   (Optional) The conjunction to use againts user permissions.
-   *   Allowing 'AND' or 'OR' values. When nothing is given 'AND' is used.
+   *   Allowing 'AND' or 'OR' values. Default to 'AND'.
    * @param int $user
    *   (Optional) user id to check permission. Otherwise current user is used.
    *
@@ -155,7 +155,7 @@ class Security extends TwigExtensionBase {
 
     // Sanitize the conjunction to AND / OR values.
     if (!in_array($conjunction, ['AND', 'OR'])) {
-      $conjunction = 'AND';
+      throw new \InvalidArgumentException(sprintf('Invalid conjunction type "%s".', $conjunction));
     }
 
     foreach ($roles as $role) {
