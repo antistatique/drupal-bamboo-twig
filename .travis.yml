@@ -9,6 +9,8 @@ sudo: false
 
 php:
   - 7
+  - 7.1
+  - 7.2
 
 matrix:
   fast_finish: true
@@ -33,8 +35,8 @@ env:
     # The environment to use, supported are: drupal-7, drupal-8
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
 
-    # Switch to 8.4.x versions instead of 8.1.x by default.
-    - DRUPAL_TI_CORE_BRANCH="8.4.x"
+    # Switch to 8.6.x versions instead of 8.1.x by default.
+    - DRUPAL_TI_CORE_BRANCH="8.6.x"
 
     # The installation profile to use:
     #- DRUPAL_TI_INSTALL_PROFILE="testing"
@@ -111,8 +113,13 @@ before_script:
   - drupal-ti before_script
   # Add twig/extensions as required by bamboo_twig_extensions
   - composer require "twig/extensions:^1.4.1" --working-dir=/home/travis/build/antistatique/drupal-8/drupal --no-interaction
+  # Update from PHPUnit 4.x to 6.x as required by Drupal 8.6.x.
+  - composer run-script drupal-phpunit-upgrade --working-dir=/home/travis/build/antistatique/drupal-8/drupal --no-interaction
 
 script:
+  # Disable deprecations helper to avoid build failed caused by usage of
+  # deprecations in Drupal Core.
+  - export SYMFONY_DEPRECATIONS_HELPER=disabled
   - drupal-ti script
 
 after_script:
