@@ -29,17 +29,27 @@ class Loader extends TwigExtensionBase {
   }
 
   /**
-   * Returns an entity object.
+   * Returns an entity object in the current context language.
+   *
+   * Keep in mind languages loading priorities:
+   *  1. Get the entity in the current page lang,
+   *  2. When not found, try to fetch the entity in the default site lang,
+   *  3. When not found in 2 previous attempts, fetch the original entity lang.
    *
    * @param string $entity_type
    *   The entity type.
    * @param mixed $id
    *   (optional) The ID of the entity to load.
+   * @param string $langcode
+   *   (optional) For which language the entity should be rendered, defaults to
+   *   the current content language.
    *
    * @return null|Drupal\Core\Entity\EntityInterface
    *   An entity object for the entity or NULL if the entity does not exist.
    */
-  public function loadEntity($entity_type, $id = NULL) {
+  public function loadEntity($entity_type, $id = NULL, $langcode = NULL) {
+    $entityRepository = $this->getEntityRepository();
+
     $entity = $id ?
       $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
       $this->getCurrentRouteMatch()->getParameter($entity_type);
@@ -48,7 +58,8 @@ class Loader extends TwigExtensionBase {
       return NULL;
     }
 
-    return $entity;
+    // Get the entity in the current context language.
+    return $entityRepository->getTranslationFromContext($entity, $langcode);
   }
 
   /**
@@ -67,10 +78,15 @@ class Loader extends TwigExtensionBase {
    *   A field object for the entity or NULL if the value does not exist.
    */
   public function loadField($field_name, $entity_type, $id = NULL, $langcode = NULL) {
-    $entity = $this->loadEntity($entity_type, $id);
+    // Load the entity view using the current content language.
+    if (!$langcode) {
+      $langcode = $this->getLanguageManager()->getCurrentLanguage()->getId();
+    }
 
-    if ($entity && $langcode && $entity->hasTranslation($langcode)) {
-      $entity = $entity->getTranslation($langcode);
+    $entity = $this->loadEntity($entity_type, $id, $langcode);
+
+    if (!$entity) {
+      return NULL;
     }
 
     // Ensure the entity has the requested field.

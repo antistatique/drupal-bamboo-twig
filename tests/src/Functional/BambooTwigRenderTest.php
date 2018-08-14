@@ -18,16 +18,18 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    * {@inheritdoc}
    */
   public static $modules = [
-    'bamboo_twig',
-    'bamboo_twig_loader',
-    'bamboo_twig_test',
+    'locale',
+    'language',
     'node',
     'user',
     'taxonomy',
     'image',
     'file',
     'system',
-    'views'
+    'views',
+    'bamboo_twig',
+    'bamboo_twig_loader',
+    'bamboo_twig_test',
   ];
 
   /**
@@ -36,15 +38,9 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   public function setUp() {
     parent::setUp();
 
-    // Create an article content type that we will use for testing.
-    $this->drupalCreateContentType(['type' => 'article', 'name' => 'Article']);
-
-    // Create an article node that we will use for testing.
-    $this->article = $this->drupalCreateNode([
-      'title' => 'Hello, world!',
-      'type' => 'article',
-    ]);
-    $this->article->save();
+    $this->setUpLanguages();
+    $this->setUpTags();
+    $this->setUpArticles();
 
     // Create a user for tests.
     $this->admin_user = $this->drupalCreateUser([
@@ -57,10 +53,6 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
       'administer menu',
       'access administration pages',
     ]);
-
-    // Create a taxonomy term for tests.
-    $this->vocabulary = $this->createVocabulary();
-    $this->term = $this->createTerm($this->vocabulary);
 
     // Create a file for tests.
     $this->file = $this->createFile();
@@ -97,35 +89,109 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testEntity() {
     $this->drupalGet('/bamboo-twig-render');
-    // Entity node (article) full loaded.
-    $this->assertElementPresent('.test-render div.render-entity-node');
-    $this->assertElementPresent('.test-render div.render-entity-node h2 a');
-    $this->assertElementContains('.test-render div.render-entity-node h2 a', $this->article->getTitle());
-    $this->assertElementPresent('.test-render div.render-entity-node footer');
-    $this->assertElementContains('.test-render div.render-entity-node footer', 'Submitted by');
-    // Entity node (article) teaser loaded.
-    $this->assertElementPresent('.test-render div.render-entity-node-teaser');
-    $this->assertElementPresent('.test-render div.render-entity-node-teaser h2 a');
-    $this->assertElementContains('.test-render div.render-entity-node-teaser h2 a', $this->article->getTitle());
-    $this->assertElementPresent('.test-render div.render-entity-node-teaser footer');
-    $this->assertElementContains('.test-render div.render-entity-node-teaser footer', 'Submitted by');
-    $this->assertElementContains('.test-render div.render-entity-node-teaser .links', 'Read more');
 
-    // Entity taxonomy term (term) full loaded.
-    $this->assertElementPresent('.test-render div.render-entity-taxonomy-term');
-    $this->assertElementPresent('.test-render div.render-entity-taxonomy-term h2 a');
-    $this->assertElementContains('.test-render div.render-entity-taxonomy-term h2 a', $this->term->getName());
-    // Entity taxonomy term (term) link loaded.
-    $this->assertElementPresent('.test-render div.render-entity-taxonomy-term-link');
-    $this->assertElementPresent('.test-render div.render-entity-taxonomy-term-link h2 a');
-    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-link h2 a', $this->term->getName());
+    // Asserts display mode are rendered properly.
+    $this->assertElementContains('.test-render div.render-entity-node-1 h2 a', 'News N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-1 footer', 'Submitted by');
+    $this->assertElementContains('.test-render div.render-entity-node-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-1-teaser h2 a', 'News N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-1-teaser footer', 'Submitted by');
+    $this->assertElementContains('.test-render div.render-entity-node-1-teaser .links', 'Read more');
+
+    // Asserts node translations works.
+    $this->assertElementContains('.test-render div.render-entity-node-2 h2 a', 'News N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-2', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-2-teaser h2 a', 'News N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-3 h2 a', 'News N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-3', 'Tag N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-3-teaser h2 a', 'News N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-4 h2 a', 'Article N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-4', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-4-teaser h2 a', 'Article N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-5 h2 a', 'News N°5');
+    $this->assertElementContains('.test-render div.render-entity-node-5', 'Tag N°5');
+    $this->assertElementContains('.test-render div.render-entity-node-5-teaser h2 a', 'News N°5');
+
+    // Asserts display mode are rendered properly.
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-1 h2 a', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-1-link h2 a', 'Tag N°1');
+
+    // Asserts taxonomy translations works.
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-2 h2 a', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-2-link h2 a', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-3 h2 a', 'Tag N°3');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-3-link h2 a', 'Tag N°3');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-4 h2 a', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-4-link h2 a', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-5 h2 a', 'Tag N°5');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-5-link h2 a', 'Tag N°5');
 
     // Entity user full loaded.
-    $this->assertElementPresent('.test-render div.render-entity-user');
     $this->assertElementContains('.test-render div.render-entity-user', 'Member for');
     // Entity user compact loaded.
-    $this->assertElementPresent('.test-render div.render-entity-user-compact');
     $this->assertElementContains('.test-render div.render-entity-user-compact', 'Member for');
+
+    $this->drupalGet('/fr/bamboo-twig-render');
+
+    // Asserts node translations works.
+    $this->assertElementContains('.test-render div.render-entity-node-1 h2 a', 'News N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-1-teaser h2 a', 'News N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-2 h2 a', 'Article N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-2', 'Mot clé N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-2-teaser h2 a', 'Article N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-3 h2 a', 'Article N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-3', 'Mot clé N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-3-teaser h2 a', 'Article N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-4 h2 a', 'Article N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-4', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-4-teaser h2 a', 'Article N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-5 h2 a', 'Article N°5');
+    $this->assertElementContains('.test-render div.render-entity-node-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-render div.render-entity-node-5-teaser h2 a', 'Article N°5');
+
+    // Asserts taxonomy translations works.
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-1 h2 a', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-1-link h2 a', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-2 h2 a', 'Mot clé N°2');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-2-link h2 a', 'Mot clé N°2');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-3 h2 a', 'Mot clé N°3');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-3-link h2 a', 'Mot clé N°3');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-4 h2 a', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-4-link h2 a', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-5 h2 a', 'Mot clé N°5');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-5-link h2 a', 'Mot clé N°5');
+
+    $this->drupalGet('/de/bamboo-twig-render');
+
+    // Asserts node translations works.
+    $this->assertElementContains('.test-render div.render-entity-node-1 h2 a', 'News N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-1-teaser h2 a', 'News N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-2 h2 a', 'News N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-2', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-2-teaser h2 a', 'News N°2');
+    $this->assertElementContains('.test-render div.render-entity-node-3 h2 a', 'Artikel N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-3', 'Stichworte N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-3-teaser h2 a', 'Artikel N°3');
+    $this->assertElementContains('.test-render div.render-entity-node-4 h2 a', 'Article N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-4', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-node-4-teaser h2 a', 'Article N°4');
+    $this->assertElementContains('.test-render div.render-entity-node-5 h2 a', 'News N°5');
+    $this->assertElementContains('.test-render div.render-entity-node-5', 'Tag N°5');
+    $this->assertElementContains('.test-render div.render-entity-node-5-teaser h2 a', 'News N°5');
+
+    // Asserts taxonomy translations works.
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-1 h2 a', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-1-link h2 a', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-2 h2 a', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-2-link h2 a', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-3 h2 a', 'Stichworte N°3');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-3-link h2 a', 'Stichworte N°3');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-4 h2 a', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-4-link h2 a', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-5 h2 a', 'Tag N°5');
+    $this->assertElementContains('.test-render div.render-entity-taxonomy-term-5-link h2 a', 'Tag N°5');
   }
 
   /**
@@ -152,25 +218,83 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
 
   /**
    * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderField
+   * @group kevintest
    */
   public function testField() {
     $this->drupalGet('/bamboo-twig-render');
 
-    // Entity node (article) title.
-    $this->assertElementPresent('.test-render div.render-field-node');
-    $this->assertElementContains('.test-render div.render-field-node', '<span>Hello, world!</span>');
+    // Entity articles (nodes) title field.
+    $this->assertElementContains('.test-render div.render-field-title-node-1', '<span>News N°1</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-2', '<span>News N°2</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-3', '<span>News N°3</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-4', '<span>Article N°4</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-5', '<span>Article N°5</span>');
 
-    // Entity taxonomy term (term) name.
-    $this->assertElementPresent('.test-render div.render-field-taxonomy-term');
-    $this->assertElementContains('.test-render div.render-field-taxonomy-term', '<div>' . $this->term->getName() . '</div>');
+    // Entity tags (taxonomy) name field.
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-1', '<div>Tag N°1</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-2', '<div>Tag N°2</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-3', '<div>Tag N°3</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-4', '<div>Mot clé N°4</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-5', '<div>Mot clé N°5</div>');
+
+    // Entity articles (node) tags reference field.
+    $this->assertElementContains('.test-render div.render-field-reference-node-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-field-reference-node-2', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-field-reference-node-3', 'Tag N°3');
+    $this->assertElementContains('.test-render div.render-field-reference-node-4', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-field-reference-node-5', 'Tag N°5');
 
     // Entity file uri.
-    $this->assertElementPresent('.test-render div.render-field-file');
     $this->assertElementContains('.test-render div.render-field-file', $this->file->filename->value);
 
     // Entity user username.
-    $this->assertElementPresent('.test-render div.render-field-user');
     $this->assertElementContains('.test-render div.render-field-user', 'admin');
+
+    $this->drupalGet('/fr/bamboo-twig-render');
+
+    // Entity articles (nodes) title field - French.
+    $this->assertElementContains('.test-render div.render-field-title-node-1', '<span>News N°1</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-2', '<span>News N°2</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-3', '<span>News N°3</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-4', '<span>Article N°4</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-5', '<span>Article N°5</span>');
+
+    // Entity tags (taxonomy) name field - French.
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-1', '<div>Tag N°1</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-2', '<div>Tag N°2</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-3', '<div>Tag N°3</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-4', '<div>Mot clé N°4</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-5', '<div>Mot clé N°5</div>');
+
+    // Entity articles (node) tags reference field - French.
+    $this->assertElementContains('.test-render div.render-field-reference-node-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-field-reference-node-2', 'Mot clé N°2');
+    $this->assertElementContains('.test-render div.render-field-reference-node-3', 'Mot clé N°3');
+    $this->assertElementContains('.test-render div.render-field-reference-node-4', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-field-reference-node-5', 'Mot clé N°5');
+
+    $this->drupalGet('/de/bamboo-twig-render');
+
+    // Entity articles (nodes) title field - German.
+    $this->assertElementContains('.test-render div.render-field-title-node-1', '<span>News N°1</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-2', '<span>News N°2</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-3', '<span>News N°3</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-4', '<span>Article N°4</span>');
+    $this->assertElementContains('.test-render div.render-field-title-node-5', '<span>Article N°5</span>');
+
+    // Entity tags (taxonomy) name field - German.
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-1', '<div>Tag N°1</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-2', '<div>Tag N°2</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-3', '<div>Tag N°3</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-4', '<div>Mot clé N°4</div>');
+    $this->assertElementContains('.test-render div.render-field-taxonomy-term-5', '<div>Mot clé N°5</div>');
+
+    // Entity articles (node) tags reference field - German.
+    $this->assertElementContains('.test-render div.render-field-reference-node-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-render div.render-field-reference-node-2', 'Tag N°2');
+    $this->assertElementContains('.test-render div.render-field-reference-node-3', 'Stichworte N°3');
+    $this->assertElementContains('.test-render div.render-field-reference-node-4', 'Tag N°1');
+    $this->assertElementContains('.test-render div.render-field-reference-node-5', 'Tag N°5');
   }
 
   /**

@@ -3,7 +3,7 @@
 namespace Drupal\Tests\bamboo_twig\Functional;
 
 /**
- * Tests Configs twig filters and functions.
+ * Tests Extensions twig filters and functions.
  *
  * @group bamboo_twig
  * @group bamboo_twig_extensions
@@ -73,7 +73,7 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-extensions div.date-diff-ago-4', '5 minutes ago');
     $this->assertElementContains('.test-extensions div.date-diff-ago-5', '1 hour ago');
     $this->assertElementContains('.test-extensions div.date-diff-ago-6', '9 hours ago');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-7', '6 hours ago');
+    $this->assertElementContains('.test-extensions div.date-diff-ago-7', '1 day ago');
     $this->assertElementContains('.test-extensions div.date-diff-ago-8', '4 days ago');
     $this->assertElementContains('.test-extensions div.date-diff-ago-9', '30 days ago');
     $this->assertElementContains('.test-extensions div.date-diff-ago-10', '1 month ago');

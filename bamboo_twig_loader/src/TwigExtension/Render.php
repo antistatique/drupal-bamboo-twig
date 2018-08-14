@@ -92,11 +92,17 @@ class Render extends TwigExtensionBase {
       $entityTypeManager->getStorage($entity_type)->load($id) :
       $this->getCurrentRouteMatch()->getParameter($entity_type);
 
-    if ($entity) {
-      $render_controller = $entityTypeManager->getViewBuilder($entity_type);
-      return $render_controller->view($entity, $view_mode, $langcode);
+    if (!$entity) {
+      return NULL;
     }
-    return NULL;
+
+    // Load the entity view using the current content language.
+    if (!$langcode) {
+      $langcode = $this->getLanguageManager()->getCurrentLanguage()->getId();
+    }
+
+    $render_controller = $entityTypeManager->getViewBuilder($entity_type);
+    return $render_controller->view($entity, $view_mode, $langcode);
   }
 
   /**
