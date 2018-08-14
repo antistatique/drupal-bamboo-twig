@@ -1,10 +1,12 @@
 # BAMBOO TWIG
 
-Bamboo Twig. A Drupal 8 powered module.
+All the Twig features you missed until now.
+
+A Drupal 8 powered module.
 
 |       Travis-CI        |        Style-CI         |        Downloads        |         Releases         |
 |:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
-| [![Travis](https://img.shields.io/travis/antistatique/drupal-bamboo-twig.svg?style=flat-square)](https://travis-ci.org/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--3.3-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-3.3.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v3.3-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
+| [![Travis](https://img.shields.io/travis/antistatique/drupal-bamboo-twig.svg?style=flat-square)](https://travis-ci.org/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--4.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-4.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v4.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
 
 The Bamboo Twig module provides some Twig extensions with some useful functions
 and filters aimed to improve the development experience.
@@ -29,6 +31,7 @@ to ensure stability.
   - You need to "Use Token".
   - You need to "Create an absolute URL from a theme".
   - You need to "Retrieve the Extension file from given mimeType".
+  - You want to use a twig module which is design to works on multilingual websites.
   - You want to use a twig module that follows all the best practices.
   - You want to use a twig module that ensure stability with tests.
   - You want to use a twig module that will be compatible Drupal 9.
@@ -64,30 +67,32 @@ Feel free to use it.
 
 ## Similar modules
 
-From the first sight, Bamboo Twig offers similar functionality to the following modules.
-It's excepted that Bamboo Twig will normalize the way you use twig
-in your Drupal project reducing the need to install a bunch of extra modules.
+At first sight, Bamboo Twig offers similar functionality to the following modules,
+although Bamboo Twig will normalize the way you use twig in your Drupal project,
+thus reducing the need to install a bunch of extra modules.
 
-Plus, it adds a lots of functionality, ensures stability with tests, includes automated quality control and open minded to contribute throught Github PR.
-Finally, Bamboo Twig use all the best practices of Drupal 8 to ensure
+Plus, it adds a lots of functionalities, ensures stability with tests, includes automated
+quality control and is totally open to contribution via [Github](https://github.com/antistatique/drupal-bamboo-twig) or [Drupal Issue Queue](https://www.drupal.org/project/issues/bamboo_twig).
+
+Finally, Bamboo Twig follows all the best practices of Drupal 8 to ensure
 compatibility with Drupal 9.
 
-  - Only expose a set of Renderer functions & filters[Twig Tweak](https://www.drupal.org/project/twig_tweak).
-  - Clean away twig debugging output [Twig Clean Up](https://www.drupal.org/project/twig_clean_debug).
+  - Only expose a set of Renderer functions & filters [Twig Tweak](https://www.drupal.org/project/twig_tweak).
+  - Output clean Twig debug [Twig Clean Debug](https://www.drupal.org/project/twig_clean_debug).
   - Define and expose self-contained UI patterns [UI Patterns](https://www.drupal.org/project/ui_patterns).
-  - Provides the raulfraile/ladybug Dumper [Devel Ladybug](https://www.drupal.org/project/devel_ladybug).
+  - Provides the [raulfraile/ladybug](https://github.com/raulfraile/ladybug) Dumper [Devel Ladybug](https://www.drupal.org/project/devel_ladybug).
   - Add attributes to link() item.url's [Twig Link Attributes](https://www.drupal.org/project/twig_link_attributes).
-  - Reuse small self contained parts of their theme templates [Partial](https://www.drupal.org/project/partial).
-  - Allows to embed views [TVE](https://www.drupal.org/project/tve).
-  - Porting Twig extensions to Drupal [Twig Extensions](https://www.drupal.org/project/twig_extensions).
-  - Set of tools to debug Drupal [LGP](https://www.drupal.org/project/lgp).
-  - Set of tools to deal with render arrays [Twig Renderable](https://www.drupal.org/project/twig_renderable).
+  - Reuse small self contained parts from theme templates [Partial](https://www.drupal.org/project/partial).
+  - Embed Views [TVE](https://www.drupal.org/project/tve).
+  - Port Twig Extensions to Drupal [Twig Extensions](https://www.drupal.org/project/twig_extensions).
+  - Use a set of tools to debug Drupal [LGP](https://www.drupal.org/project/lgp).
+  - Use a set of tools to deal with render arrays [Twig Renderable](https://www.drupal.org/project/twig_renderable).
   - Get partial data from field render arrays [Twig Field Value](https://www.drupal.org/project/twig_field_value).
-  - This module allows you to execute PHP code from Twig - **Do not use this module** - [Twig PHP](https://www.drupal.org/project/twig_php).
+  - Execute PHP code from Twig - **Do not use this module** - [Twig PHP](https://www.drupal.org/project/twig_php).
 
 ## Supporting organizations
 
-This project is sponsored by Antistatique. We are a Swiss Web Agency,
+This project is sponsored by [Antistatique](https://www.antistatique.net), a Swiss Web Agency.
 Visit us at [www.antistatique.net](https://www.antistatique.net) or
 [Contact us](mailto:info@antistatique.net).
 
@@ -95,19 +100,19 @@ Visit us at [www.antistatique.net](https://www.antistatique.net) or
 
 We highly recommend you to install the module using `composer`.
 
-  ```bash
-  $ composer require drupal/bamboo_twig
-  ```
+```bash
+$ composer require drupal/bamboo_twig
+```
 
 You can also install it using the `drush` or `drupal console` cli.
 
-  ```bash
-  $ drush dl bamboo_twig
-  ```
+```bash
+$ drush dl bamboo_twig
+```
 
-  ```bash
-  $ drupal module:install bamboo_twig
-  ```
+```bash
+$ drupal module:install bamboo_twig
+ ```
 
 Don't forget to enable the  modules you need from Bamboo Twig.
 
@@ -115,51 +120,54 @@ Don't forget to enable the  modules you need from Bamboo Twig.
 
 **Internationalization**
 
-Use the `bamboo_i18n_format_date` filter to return a date string in the correct locality.
+`date|bamboo_i18n_format_date('medium')` returns a date string in the correct locality.
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
-- `type` string (optional) - The format to use, one of the built-in formats: 'short', 'medium', 'long'. Use 'custom' to use $format.
+- `type` string (optional) - The format to use, one of the built-in formats: 'short', 'medium', 'long'. Use 'custom' to use `format`.
 - `format` string (optional) - PHP date format string suitable for input to date()
-- `timezone` string (optional) - Time zone identifier, as described at http://php.net/manual/timezones.php Defaults to the time zone used to display the page.
-- `langcode` string (optional) - Language code to translate to. NULL (default) means to use the user interface language for the page.
+- `timezone` string (optional) - Time zone identifier, as described on [php.net/manual/timezones.php](http://php.net/manual/timezones.php), defaults to the timezone used to display the page.
+- `langcode` string (optional) - defaults to current interface language.
 
 ```twig
 {# Print the formatted date using Drupal i18n. #}
-<dt>Format date:</dt>
-<dd>{{ node.changed.value|bamboo_i18n_format_date('medium') }}</dd>
-<dd>{{ node.changed.value|bamboo_i18n_format_date('custom', 'Y-m-d') }}</dd>
+<p>Format date:</p>
+{{ node.changed.value|bamboo_i18n_format_date('medium') }}<br>
+{{ node.changed.value|bamboo_i18n_format_date('custom', 'Y-m-d') }}
 ```
 
-Use the `bamboo_i18n_current_lang` function to return the current lang iso code.
+`bamboo_i18n_current_lang()` returns the current lang iso code.
 
 ```twig
 {# Print the current language ID. #}
-<dt>Current lang:</dt>
-<dd>{{ bamboo_i18n_current_lang() }}</dd>
+<p>Current lang:</p>
+{{ bamboo_i18n_current_lang() }}
 ```
 
-Use the `bamboo_i18n_get_translation` filter to retrieve a translation of an entity.
+`entity|bamboo_i18n_get_translation` returns the translated entity.
+
+- `langcode` string (optional) - defaults to current interface language.
 
 ```twig
-{# Get the entity translations in french #}
-<dt>Get the french title of entity:</dt>
-<dd>{{ entity|bamboo_i18n_get_translation('fr').title.value }}</dd>
+{# Get the French translation of an entity #}
+<p>French title of entity:</p>
+<p>{{ entity|bamboo_i18n_get_translation('fr').title.value }}</p>
+<p>Title of entity using the current interface language:</p>
+<p>{{ entity|bamboo_i18n_get_translation.title.value }}</p>
 ```
 
-If you don't already have a `Drupal\Core\Entity\EntityInterface` object,
-load it using `bamboo_load_entity`.
+`bamboo_load_entity(entity_type, id)` returns the loaded entity. Use if you don't already have a `Drupal\Core\Entity\EntityInterface` object.
 
 ```twig
 {# Load the entity node with nid 1 #}
 {% set node = bamboo_load_entity('node', 1) %}
-{# Get the entity translations in german #}
-<dt>Get the german title of entity:</dt>
-<dd>{% set translation = node|bamboo_i18n_get_translation('de') %}</dd>
+{# Then get the German translation of node #}
+<p>German title of entity:</p>
+<p>{{ node|bamboo_i18n_get_translation('de').title.value }}</p>
 ```
 
 **Files**
 
-The `bamboo_file_extension_guesser` filter returns the extension of a file based on its
+`filetype|bamboo_file_extension_guesser` returns the extension of a file based on its
 mimeType.
 
 - `mimeType` string
@@ -169,51 +177,68 @@ mimeType.
 {{ 'application/pdf'|bamboo_file_extension_guesser }}
 ```
 
-The `bamboo_file_url_absolute` function returns absolute url of a given URI
+`bamboo_file_url_absolute(uri)` returns the absolute URL of a given URI
 or path to a file.
 
 - `uri` string - URI or string path to a file.
 
 ```twig
-{# Print the absolute url to access `image.jpg` #}
+{# Print the absolute URL to access `image.jpg` #}
 {{ bamboo_file_url_absolute('public://image.jpg') }}
 ```
 
 **Paths**
 
-The `bamboo_path_system` function returns the relative URL of a system entity.
+`bamboo_path_system(type, item)` returns the relative URL of a system entity.
 
-- `type` string - one of 'core', 'profile', 'module', 'theme' or 'theme_engine'.
+- `type` string - must be either of 'core', 'profile', 'module', 'theme' or 'theme_engine'.
 - `item` string
 
 ```twig
-{# Print the relative URL to the system entity `theme` named `stable` #}
+{# Print the relative URL of the system entity `theme` named `stable` #}
 {{ bamboo_path_system('theme', 'stable') }}
 ```
 
 **Loaders**
 
-The `bamboo_load_currentuser` function returns a User object
-of the current logged user.
+`bamboo_load_currentuser()` returns the User object of the current logged user.
 
 ```twig
 {# Load the current user #}
 {% set user = bamboo_load_currentuser() %}
 ```
 
-The `bamboo_load_entity` function returns a EntityInterface object
+`bamboo_load_entity(entity_type, id, langcode)` returns a EntityInterface object
 of the requested entity.
 
 - `entity_type` string
 - `id` int (optional)
+- `langcode` string (optional) - defaults to current context language
 
 ```twig
 {# Load the entity node with nid 1 #}
 {% set node = bamboo_load_entity('node', 1) %}
 ```
 
-The `bamboo_load_field` function returns a FieldItemListInterface object
-of the requested field.
+Keep in mind, when loading an entity it will fetch it in the current context language.
+When you access it directly through a *EntityReferenceField* or a *Paragraph*
+(e.g. `node.field_referenced_tags.entity`), the entity is always loaded in its original language.
+(it won't be loaded in the current context language or in the entity language)
+You should then use the `|bamboo_i18n_get_translation` filter to make sure you have the
+entity displayed in another language.
+
+```twig
+{# Load the entity node with nid 1 #}
+{% set node = bamboo_load_entity('node', 1) %}
+{# Display the entity title in the current context lang (page language) #}
+{{ node.title.value }}
+{# Display the referenced entity name in its original lang #}
+{{ node.field_referenced_tags.entity.name.value }}
+{# Display the referenced entity name in the current context lang (page language) #}
+{{ node.field_referenced_tags.entity|bamboo_i18n_get_translation.name.value }}
+```
+
+`bamboo_load_field(field, entity_type, id)` returns a FieldItemListInterface object of the requested field.
 
 - `field` string
 - `entity_type` string
@@ -224,20 +249,40 @@ of the requested field.
 {% set title = bamboo_load_field('title', 'node', 1) %}
 ```
 
-The `bamboo_load_image` function returns a ImageInterface object
+Keep in mind, loading a field with `bamboo_load_field()` will fetch it in the
+current context language.
+When you access it directly through a *EntityReferenceField* or *Paragraph*,
+the entity is always in its original language
+(it won't be loaded in the current context language or in the entity language).
+You should then use the `|bamboo_i18n_get_translation` filter to make sure you have the
+entity displayed in another language.
+
+```twig
+{# Load the entity node with nid 1 #}
+{% set title = bamboo_load_field('title', 'node', 1) %}
+{# Display the entity title in the current context lang (page language) #}
+{{ title.value }}
+{% set tags = bamboo_load_field('field_tags', 'node', 1) %}
+{# Display the entity name in his original lang #}
+{{ tags.entity.name.value }}
+{# Display the entity name in the current context lang (page language) #}
+{{ tags.entity|bamboo_i18n_get_translation.name.value }}
+```
+
+`bamboo_load_image(path)` returns a ImageInterface object
 of the requested image.
 
 - `path` string - The path or URI to the original image.
 
 ```twig
-{# Load image with uri `public://antistatique.jpg` #}
+{# Load image with URI `public://antistatique.jpg` #}
 {% set image = bamboo_load_image('public://antistatique.jpg') %}
 ```
 
 **Render**
 
-The `bamboo_render_block` function returns a render array of the
-specified block (works only for Block Plugin).
+`bamboo_render_block(block_name, params)` returns a render array of the
+specified block (works only for Plugin Block).
 
 - `block_name` string
 - `params` array (optional)
@@ -247,11 +292,11 @@ specified block (works only for Block Plugin).
 {{ bamboo_render_block('system_powered_by_block') }}
 ```
 
-In the case you want to render a Block Entity,
-you have to use the `bamboo_render_entity`. See example below.
+In case you want to render a Block Entity,
+you have to use `bamboo_render_entity()`. See example below.
 
-The `bamboo_render_entity` function returns a render array of the specified
-entity type. Can render a specific `view`.
+`bamboo_render_entity(entity_type, id, view_mode, langcode)` returns a render array of the specified
+entity type. Can be rendered a specific `view_mode`.
 
 - `entity_type` string
 - `id` int (optional)
@@ -269,7 +314,7 @@ entity type. Can render a specific `view`.
 {{ bamboo_render_entity('block', 'stark_messages') }}
 ```
 
-The `bamboo_render_form` function returns a render array of the specified Form.
+`bamboo_render_form(module, formName)` returns a render array of the specified Form.
 
 - `module` string
 - `formName` string
@@ -280,7 +325,7 @@ The `bamboo_render_form` function returns a render array of the specified Form.
 {{ bamboo_render_form('system', 'CronForm') }}
 ```
 
-The `bamboo_render_menu` function returns a render array of the specified menu.
+`bamboo_render_menu(menu_name, level, depth)` returns a render array of the specified menu.
 
 - `menu_name` string
 - `level` int (optional) - defaults to 1
@@ -291,7 +336,7 @@ The `bamboo_render_menu` function returns a render array of the specified menu.
 {{ bamboo_render_menu('admin', 1, 2) }}
 ```
 
-The `bamboo_render_field` function returns a render array of an entity field.
+`bamboo_render_field(field_name, entity_type, id, langcode, formatter)` returns a render array of an entity field.
 
 - `field_name` string
 - `entity_type` string
@@ -304,8 +349,7 @@ The `bamboo_render_field` function returns a render array of an entity field.
 {{ bamboo_render_field('title', 'node', 1) }}
 ```
 
-The `bamboo_render_region` function returns a render array of the
-specified region.
+`bamboo_render_region(region, theme_name)` returns a render array of the specified region.
 
 - `region` string
 - `theme_name` string (optional) - defaults to default theme
@@ -317,22 +361,21 @@ specified region.
 
 **Image Styles**
 
-The `bamboo_render_image` function returns a render array of the
-specified image file.
+`bamboo_render_image(fid, style)` returns a render array of the specified image file.
 
 - `fid` int
-- `styles` string
+- `style` string
 
 ```twig
 {# Get thumbnail from image with fid 12. #}
 {{ bamboo_render_image(1, 'thumbnail') }}
 ```
 
-The `bamboo_render_image_style` function returns URL string of the
+`bamboo_render_image_style(path, style, preprocess)` returns the URL string of the
 specified image path or URI.
 
 - `path` string
-- `styles` string
+- `style` string
 - `preprocess` boolean - preprocess the image style before first HTTP call.
 
 ```twig
@@ -342,29 +385,29 @@ specified image path or URI.
 
 **Views**
 
-The `bamboo_render_views` function renders the requested view.
+`bamboo_render_views(view, item)` renders the requested view.
 
 - `view` string
 - `item` string
 
 ```twig
-{# Render the View `who_s_new` block `block_1` #}
+{# Render the `who_s_new` View `block_1` block #}
 {{ bamboo_render_views('who_s_new', 'block_1') }}
 ```
 
 **Configurations**
 
-The `bamboo_config_get` function returns the specified config.
+`bamboo_config_get(config_key, name)` returns the specified config value.
 
 - `config_key` string
 - `name` string
 
 ```twig
-{# Get system mail setting #}
+{# Get system mail setting value #}
 {{ bamboo_config_get('system.site', 'mail') }}
 ```
 
-The `bamboo_state_get` function returns the specified state.
+`bamboo_state_get(state_key)` returns the specified state.
 
 - `state_key` string
 
@@ -373,7 +416,7 @@ The `bamboo_state_get` function returns the specified state.
 {{ bamboo_state_get('system.cron_last') }}
 ```
 
-The `bamboo_settings_get` function returns the specified setting.
+`bamboo_settings_get(state_key)` returns the specified setting.
 
 - `state_key` string
 
@@ -384,45 +427,74 @@ The `bamboo_settings_get` function returns the specified setting.
 
 **Security**
 
-The `bamboo_has_role` function returns a boolean of the current|given user
+`bamboo_has_role(role, user)` returns a boolean of the current|given user
 has the requested role.
 
 - `role` string
-- `user` int - User id instead of the current logged user.
+- `user` (optional) int - User id instead of the current logged user.
 
 ```twig
 {# Does the current|given user has the given role ? #}
 {{ bamboo_has_role('authenticated') ? 'TRUE' : 'FALSE' }}
 ```
 
-The `bamboo_has_permission` function returns a boolean of the current|given user
+The `bamboo_has_roles` function returns a boolean of the current|given user
+has the requested roles.
+
+- `roles` string[]
+- `conjunction` (optional) string - The conjunction to use on each roles.
+  Only the two values 'AND' or 'OR' are allowed.
+- `user` (optional) int - User id instead of the current logged user.
+
+```twig
+{# Does the current|given user has the given roles ? #}
+{{ bamboo_has_roles(['authenticated', 'administrator']) ? 'TRUE' : 'FALSE' }}
+```
+
+`bamboo_has_permission(permission, user)` returns TRUE if the current|given user
 has the requested permission.
 
 - `permission` string
-- `user` int - User id instead of the current logged user.
+- `user` (optional) int - User id instead of the current logged user.
 
 ```twig
 {# Does the current|given user has the given permission ? #}
 {{ bamboo_has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}
 ```
 
+The `bamboo_has_permissions` function returns a boolean of the current|given user
+has the requested permissions.
+
+- `permissions` string[]
+- `conjunction` (optional) string - The conjunction to use on each permissions.
+  Only the two values 'AND' or 'OR' are allowed.
+- `user` (optional) int - User id instead of the current logged user.
+
+```twig
+{# Does the current|given user has the given roles ? #}
+{{ bamboo_has_permissions(['administer site configuration', 'bypass node access']) ? 'TRUE' : 'FALSE' }}
+```
+
 **Extensions**
 
-The `truncate` filter from Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text.html).
+`sentence|truncate(count, word, separator)` truncates a string.
+From Twig-extensions [Text](http://twig-extensions.readthedocs.io/en/latest/text.html).
 
 - `sentence` string
-- `word` boolean - Truncat at the end of words.
-- `ellipsis` string
+- `count` int
+- `word` boolean - preserve whole words.
+- `separator` string - add characters to signify the ellipsis
 
 ```twig
 {# Truncate a sentence #}
 {{ "This is a very long sentence."|truncate(2, false, '...') }}
 ```
 
-The *coming soon* `bamboo_truncate_html` filter to truncates sentences html and preserves tags.
+*coming soon* `sentence|bamboo_truncate_html(count, word, ellipsis)` truncates HTML sentences and preserves tags.
 
 - `sentence` string
-- `word` boolean - Truncate at the end of words.
+- `count` int
+- `word` boolean - preserve whole words.
 - `ellipsis` string
 
 ```twig
@@ -430,7 +502,8 @@ The *coming soon* `bamboo_truncate_html` filter to truncates sentences html and 
 {{ "<p>This <b>is a very</b> long sentence.</p>"|bamboo_truncate_html(2, false, '...') }}
 ```
 
-The `shuffle` filter from Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/array.html).
+`array|shuffle` randomizes an array
+From Twig-extensions [Array](http://twig-extensions.readthedocs.io/en/latest/array.html).
 
 - `array` array
 
@@ -439,9 +512,11 @@ The `shuffle` filter from Twig-extensions [Array](http://twig-extensions.readthe
 [1, 2, 3]|shuffle
 ```
 
-The `time_diff` filter from Twig-extensions [Date](http://twig-extensions.readthedocs.io/en/latest/date.html).
+`date|time_diff(date2)` returns a time difference between two dates.
+From Twig-extensions [Date](http://twig-extensions.readthedocs.io/en/latest/date.html).
 
 - `date` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
+- `date2` string - date, timestamp, DrupalDateTimePlus, DateTimePlus or DateTime
 
 ```twig
 {# Difference between two dates #}
@@ -450,7 +525,7 @@ The `time_diff` filter from Twig-extensions [Date](http://twig-extensions.readth
 
 **Token**
 
-The `bamboo_token` function substitute a given tokens with appropriate value.
+`bamboo_token(token)` substitutes a given tokens with its appropriate value.
 
 - `token` string
 
@@ -465,13 +540,13 @@ Drupal core already adds a [handful of custom functions](https://www.drupal.org/
 
 **i18n**
 
-The `trans` tag to translate string.
+`string|trans` translates strings.
 
 See the following [link](http://getlevelten.com/blog/mark-carver/drupal-8-twig-templates-and-translations) for more details.
 
 **Urls**
 
-The `path` functions returns an absolute URL given a route name and parameters.
+`path(route, params, options)` returns an absolute URL from route name and parameters.
 
 - `route` string
 - `params` (optional) array
@@ -482,7 +557,7 @@ The `path` functions returns an absolute URL given a route name and parameters.
 <a href="{{ path('entity.user.canonical', {'user': user.id}) }}">View user profile</a>
 ```
 
-The `link` functions return `<a>` tag for the URL.
+`link(text, url, params)` returns `<a>` tag for the URL.
 
 - `text` string
 - `url` string
@@ -493,7 +568,7 @@ The `link` functions return `<a>` tag for the URL.
 {{ link('Homepage', item.url, { 'class':['foo', 'bar', 'baz']} ) }}
 ```
 
-The `file_url` function returns a relative url of a given URI or path to a file.
+`file_url(uri)` returns a relative URL of a given URI or path to a file.
 
 - `uri` string - URI or string path to a file.
 
@@ -504,7 +579,7 @@ The `file_url` function returns a relative url of a given URI or path to a file.
 
 **Attachments**
 
-The `attach_library` function Attaches an asset library to the template,
+`attach_library(library)` attaches an asset library to the template,
 and hence to the response.
 
 - `library` string

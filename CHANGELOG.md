@@ -1,9 +1,11 @@
 CHANGELOG
 ---------
 
-## NEXT RELEASE
+## NEXT RELEASE
  - improve i18n with better tests coverage.
  - add i18n filter to get translation of entity: `bamboo_i18n_get_translation`.
+ - add `bamboo_has_permissions`
+ - add `bamboo_has_roles`
  - fix translatability of time_diff: `bamboo_extensions_time_diff`.
 
 ## 8.x-3.3 (2018-05-16)

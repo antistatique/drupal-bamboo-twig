@@ -2,8 +2,6 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
-use Drupal\language\Entity\ConfigurableLanguage;
-
 /**
  * Tests I18n twig filters and functions.
  *
@@ -26,133 +24,15 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   ];
 
   /**
-   * The articles Node used by this test.
-   *
-   * @var \Drupal\node\NodeInterface[]
-   */
-  protected $articles;
-
-  /**
-   * The tags Term used by this test.
-   *
-   * @var \Drupal\taxonomy\TermInterface[]
-   */
-  protected $tags;
-
-  /**
    * {@inheritdoc}
    */
   public function setUp() {
     parent::setUp();
 
-    /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
-    $this->entityTypeManager = $this->container->get('entity_type.manager');
-
     $this->setUpLanguages();
-    $this->setUpArticles();
     $this->setUpTags();
+    $this->setUpArticles();
     $this->setUpTranslations();
-  }
-
-  /**
-   * Sets up languages needed for test.
-   */
-  protected function setUpLanguages() {
-    // English (en) is created by default.
-    ConfigurableLanguage::createFromLangcode('fr')->save();
-    ConfigurableLanguage::createFromLangcode('de')->save();
-  }
-
-  /**
-   * Setup default node for testing.
-   */
-  protected function setUpArticles() {
-    // Create an article content type that we will use for testing.
-    $this->drupalCreateContentType(['type' => 'article', 'name' => 'Article']);
-
-    // Add default nodes.
-    $this->articles = [];
-
-    $article = $this->entityTypeManager->getStorage('node')->create([
-      'type'  => 'article',
-      'title' => 'News N°1',
-    ]);
-    $article->save();
-    $this->articles[] = $article;
-
-    $article = $this->entityTypeManager->getStorage('node')->create([
-      'type'  => 'article',
-      'title' => 'News N°2',
-    ]);
-    $article->save();
-    $article_translation = $article->addTranslation('fr', $article->toArray());
-    $article_translation->title = 'Article N°2';
-    $article_translation->save();
-    $this->articles[] = $article;
-
-    $article = $this->entityTypeManager->getStorage('node')->create([
-      'type'  => 'article',
-      'title' => 'News N°3',
-    ]);
-    $article->save();
-
-    $article_translation = $article->addTranslation('fr', $article->toArray());
-    $article_translation->title = 'Article N°3';
-    $article_translation->save();
-
-    $article_translation = $article->addTranslation('de', $article->toArray());
-    $article_translation->title = 'Artikel N°3';
-    $article_translation->save();
-
-    $this->articles[] = $article;
-  }
-
-  /**
-   * Setup default taxonomy vocabulary with terms for testing.
-   */
-  protected function setUpTags() {
-    // Create a taxonomy vocabulary that we will use for testing.
-    $this->entityTypeManager->getStorage('taxonomy_vocabulary')->create([
-      'vid'  => 'tags',
-      'name' => 'Tags',
-    ])->save();
-
-    // Add tests tags.
-    $this->tags = [];
-    $tag = $this->entityTypeManager->getStorage('taxonomy_term')->create([
-      'name' => 'Tags N°1',
-      'vid'  => 'tags',
-    ]);
-    $tag->save();
-    $this->tags[] = $tag;
-
-    $tag = $this->entityTypeManager->getStorage('taxonomy_term')->create([
-      'name' => 'Tags N°2',
-      'vid'  => 'tags',
-    ]);
-    $tag->save();
-
-    $tag_translation = $tag->addTranslation('fr', $tag->toArray());
-    $tag_translation->title = 'Mot clé N°2';
-    $tag_translation->save();
-
-    $this->tags[] = $tag;
-
-    $tag = $this->entityTypeManager->getStorage('taxonomy_term')->create([
-      'name' => 'Tags N°3',
-      'vid'  => 'tags',
-    ]);
-    $tag->save();
-
-    $tag_translation = $tag->addTranslation('fr', $tag->toArray());
-    $tag_translation->title = 'Mot clé N°3';
-    $tag_translation->save();
-
-    $tag_translation = $tag->addTranslation('de', $tag->toArray());
-    $tag_translation->title = 'Stichworte N°3';
-    $tag_translation->save();
-
-    $this->tags[] = $tag;
   }
 
   /**
@@ -200,12 +80,10 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   public function testCurrentLang() {
     $this->drupalGet('/bamboo-twig-i18n');
 
-    $this->assertElementPresent('.test-i18n div.i18n-current-lang');
     $this->assertElementContains('.test-i18n div.i18n-current-lang', 'en');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
 
-    $this->assertElementPresent('.test-i18n div.i18n-current-lang');
     $this->assertElementContains('.test-i18n div.i18n-current-lang', 'fr');
   }
 
@@ -215,42 +93,30 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   public function testFormatDate() {
     $this->drupalGet('/bamboo-twig-i18n');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-string');
     $this->assertElementContains('.test-i18n div.i18n-format-date-string', 'Thursday 24th July 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-timestamp');
     $this->assertElementContains('.test-i18n div.i18n-format-date-timestamp', 'Thursday 24th July 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-datetime');
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetime', 'Thursday 24th July 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-datetimeplus');
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetimeplus', 'Thursday 24th July 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-drupaldatetime');
     $this->assertElementContains('.test-i18n div.i18n-format-date-drupaldatetime', 'Thursday 24th July 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-datetime-medium');
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetime-medium', 'Thu, 07/24/2014');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-string');
     $this->assertElementContains('.test-i18n div.i18n-format-date-string', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-timestamp');
     $this->assertElementContains('.test-i18n div.i18n-format-date-timestamp', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-datetime');
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetime', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-datetimeplus');
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetimeplus', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-drupaldatetime');
     $this->assertElementContains('.test-i18n div.i18n-format-date-drupaldatetime', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementPresent('.test-i18n div.i18n-format-date-datetime-medium');
     $this->assertElementContains('.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 07/24/2014');
   }
 
@@ -260,34 +126,24 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   public function testGetTranslation() {
     $this->drupalGet('/bamboo-twig-i18n');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-ru');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1-ru');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-ru', 'News N°1');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-en');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-en', 'News N°1');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-de');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1-de');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-de', 'News N°1');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-1-fr');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1-fr');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-fr', 'News N°1');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-2-en');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2-en', 'News N°2');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-2-de');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-2-de');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-de', 'News N°1');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-2-fr');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2-fr', 'Article N°2');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-3-en');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-en', 'News N°3');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-3-de');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-de', 'Artikel N°3');
 
-    $this->assertElementPresent('.test-i18n div.i18n-get-translation-node-3-fr');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-fr', 'Article N°3');
 
     $this->drupalGet('/bamboo-twig-i18n');
@@ -296,14 +152,41 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'News N°3');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1', 'News N°1');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'Article N°2');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'Article N°3');
 
     $this->drupalGet('/de/bamboo-twig-i18n');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-1');
-    $this->assertElementEmpty('.test-i18n div.i18n-get-translation-node-2');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1', 'News N°1');
+    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'News N°2');
     $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'Artikel N°3');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_i18n\TwigExtension\I18n::getTranslation
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntity
+   */
+  public function testGetTranslationReferencedField() {
+    $this->drupalGet('/bamboo-twig-i18n');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-2', 'Tag N°2');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-3', 'Tag N°3');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-5', 'Tag N°5');
+
+    $this->drupalGet('/fr/bamboo-twig-i18n');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-2', 'Mot clé N°2');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-3', 'Mot clé N°3');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-5', 'Mot clé N°5');
+
+    $this->drupalGet('/de/bamboo-twig-i18n');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-2', 'Tag N°2');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-3', 'Stichworte N°3');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
+    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-5', 'Tag N°5');
   }
 
 }

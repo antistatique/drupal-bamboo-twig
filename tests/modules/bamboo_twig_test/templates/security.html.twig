@@ -6,11 +6,28 @@
   <div class="security-permission-current">{{ bamboo_has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}</div>
   <div class="security-permission-admin">{{ bamboo_has_permission('administer site configuration', 1) ? 'TRUE' : 'FALSE' }}</div>
   <div class="security-permission-nobody">{{ bamboo_has_permission('administer site configuration', 10) ? 'TRUE' : 'FALSE' }}</div>
+  <h2>Has Permissions</h2>
+  <hr>
+  <div class="security-permissions-current">{{ bamboo_has_permissions(['bypass node access', 'administer site configuration']) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permissions-admin">{{ bamboo_has_permissions(['bypass node access', 'administer site configuration'], 'AND', 1) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permissions-user-none-or">{{ bamboo_has_permissions(['lorem', 'ipsum'], 'OR', 2) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permissions-user-none-and">{{ bamboo_has_permissions(['lorem', 'ipsum'], 'AND', 2) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permissions-nobody-and">{{ bamboo_has_permissions(['bypass node access', 'administer site configuration'], 'AND', 10) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-permissions-nobody-or">{{ bamboo_has_permissions(['bypass node access', 'administer site configuration'], 'OR', 10) ? 'TRUE' : 'FALSE' }}</div>
 
   <!-- Roles -->
-  <h2>Has Roles</h2>
+  <h2>Has Role</h2>
   <hr>
   <div class="security-role-current">{{ bamboo_has_role('authenticated') ? 'TRUE' : 'FALSE' }}</div>
   <div class="security-role-admin">{{ bamboo_has_role('authenticated', 1) ? 'TRUE' : 'FALSE' }}</div>
   <div class="security-role-nobody">{{ bamboo_has_role('authenticated', 10) ? 'TRUE' : 'FALSE' }}</div>
+  <h2>Has Roles</h2>
+  <hr>
+  <div class="security-roles-current">{{ bamboo_has_roles(['authenticated', 'administrator']) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-roles-admin">{{ bamboo_has_roles(['authenticated', 'administrator'], 'AND', 1) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-roles-admin-or">{{ bamboo_has_roles(['authenticated', 'lorem'], 'OR', 1) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-roles-user-none-or">{{ bamboo_has_roles(['lorem', 'ipsum'], 'OR', 2) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-roles-user-none-and">{{ bamboo_has_roles(['lorem', 'ipsum'], 'AND', 2) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-roles-nobody-and">{{ bamboo_has_roles(['authenticated', 'administrator'], 'AND', 10) ? 'TRUE' : 'FALSE' }}</div>
+  <div class="security-roles-nobody-or">{{ bamboo_has_roles(['authenticated', 'administrator'], 'OR', 10) ? 'TRUE' : 'FALSE' }}</div>
 </div>

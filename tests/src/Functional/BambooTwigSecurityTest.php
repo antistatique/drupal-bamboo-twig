@@ -26,7 +26,9 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   public function setUp() {
     parent::setUp();
 
-    // Create a user for tests.
+    /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
+    $this->entityTypeManager = $this->container->get('entity_type.manager');
+
     $this->admin_user = $this->drupalCreateUser([
       'access content',
       'administer content types',
@@ -36,6 +38,13 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
       'administer menu',
       'access administration pages',
     ]);
+    $this->admin_user->addRole('administrator');
+    $this->admin_user->save();
+
+    // Add the administrator roles to the default user 1.
+    $admin = $this->entityTypeManager->getStorage('user')->load(1);
+    $admin->addRole('administrator');
+    $admin->save();
   }
 
   /**
@@ -92,6 +101,101 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
 
     $this->assertElementPresent('.test-security div.security-role-nobody');
     $this->assertElementContains('.test-security div.security-role-nobody', 'FALSE');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermissions
+   */
+  public function testHasPermissions() {
+    $this->drupalGet('/bamboo-twig-security');
+
+    $this->assertElementPresent('.test-security div.security-permissions-current');
+    $this->assertElementContains('.test-security div.security-permissions-current', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-admin');
+    $this->assertElementContains('.test-security div.security-permissions-admin', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-or');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-and');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-and', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-nobody-or');
+    $this->assertElementContains('.test-security div.security-permissions-nobody-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-nobody-and');
+    $this->assertElementContains('.test-security div.security-permissions-nobody-and', 'FALSE');
+
+    $this->drupalLogin($this->admin_user);
+    $this->drupalGet('/bamboo-twig-security');
+
+    $this->assertElementPresent('.test-security div.security-permissions-current');
+    $this->assertElementContains('.test-security div.security-permissions-current', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-admin');
+    $this->assertElementContains('.test-security div.security-permissions-admin', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-or');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-user-none-and');
+    $this->assertElementContains('.test-security div.security-permissions-user-none-and', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-nobody-or');
+    $this->assertElementContains('.test-security div.security-permissions-nobody-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-permissions-nobody-and');
+    $this->assertElementContains('.test-security div.security-permissions-nobody-and', 'FALSE');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRoles
+   */
+  public function testHasRoles() {
+    $this->drupalGet('/bamboo-twig-security');
+
+    $this->assertElementPresent('.test-security div.security-roles-current');
+    $this->assertElementContains('.test-security div.security-roles-current', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-admin');
+    $this->assertElementContains('.test-security div.security-roles-admin', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-or');
+    $this->assertElementContains('.test-security div.security-roles-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-and');
+    $this->assertElementContains('.test-security div.security-roles-user-none-and', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-nobody-or');
+    $this->assertElementContains('.test-security div.security-roles-nobody-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-nobody-and');
+    $this->assertElementContains('.test-security div.security-roles-nobody-and', 'FALSE');
+
+    $this->drupalLogin($this->admin_user);
+    $this->drupalGet('/bamboo-twig-security');
+
+    $this->assertElementPresent('.test-security div.security-roles-current');
+    $this->assertElementContains('.test-security div.security-roles-current', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-roles-admin');
+    $this->assertElementContains('.test-security div.security-roles-admin', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-roles-admin-or');
+    $this->assertElementContains('.test-security div.security-roles-admin-or', 'TRUE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-or');
+    $this->assertElementContains('.test-security div.security-roles-user-none-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-user-none-and');
+    $this->assertElementContains('.test-security div.security-roles-user-none-and', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-nobody-or');
+    $this->assertElementContains('.test-security div.security-roles-nobody-or', 'FALSE');
+
+    $this->assertElementPresent('.test-security div.security-roles-nobody-and');
+    $this->assertElementContains('.test-security div.security-roles-nobody-and', 'FALSE');
   }
 
 }
