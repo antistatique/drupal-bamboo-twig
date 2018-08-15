@@ -1,12 +1,15 @@
 CHANGELOG
 ---------
 
-## NEXT RELEASE
- - improve i18n with better tests coverage.
- - add i18n filter to get translation of entity: `bamboo_i18n_get_translation`.
+## NEXT RELEASE
  - add `bamboo_has_permissions`
  - add `bamboo_has_roles`
+
+## 8.x-4.0 (2018-07-20)
+ - add i18n filter to get translation of entity: `bamboo_i18n_get_translation`.
  - fix translatability of time_diff: `bamboo_extensions_time_diff`.
+ - refactoring complete loader & renderer to works on multilingual websites.
+ - improve i18n with better tests coverage.
 
 ## 8.x-3.3 (2018-05-16)
  - Fix date diff calcul error - Issue #2966556.
