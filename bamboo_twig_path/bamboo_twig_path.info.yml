@@ -5,4 +5,4 @@ type: module
 core: 8.x
 
 dependencies:
- - drupal:bamboo_twig
+ - bamboo_twig:bamboo_twig
