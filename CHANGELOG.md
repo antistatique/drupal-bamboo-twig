@@ -1,7 +1,7 @@
 CHANGELOG
 ---------
 
-## NEXT RELEASE
+## 8.x-4.1 (2018-08-25)
  - add `bamboo_has_permissions` - Issue #2955808
  - add `bamboo_has_roles` - Issue #2955808
  - fix Dependency namespacing in .info.yml file - Issue #2992564
