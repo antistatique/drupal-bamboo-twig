@@ -427,28 +427,30 @@ specified image path or URI.
 
 **Security**
 
-`bamboo_has_role(role, user)` returns a boolean of the current|given user
+`bamboo_has_role(role, user)` returns a boolean if the current|given user
 has the requested role.
 
 - `role` string
 - `user` (optional) int - User id instead of the current logged user.
 
 ```twig
-{# Does the current|given user has the given role ? #}
+{# Does the current|given user have the given role ? #}
 {{ bamboo_has_role('authenticated') ? 'TRUE' : 'FALSE' }}
 ```
 
-The `bamboo_has_roles` function returns a boolean of the current|given user
+The `bamboo_has_roles` function returns a boolean if the current|given user
 has the requested roles.
 
 - `roles` string[]
-- `conjunction` (optional) string - The conjunction to use on each roles.
+- `conjunction` (optional) string - The conjunction to use on the set of roles.
   Only the two values 'AND' or 'OR' are allowed.
 - `user` (optional) int - User id instead of the current logged user.
 
 ```twig
-{# Does the current|given user has the given roles ? #}
+{# Does the current user have all the given roles ? #}
 {{ bamboo_has_roles(['authenticated', 'administrator']) ? 'TRUE' : 'FALSE' }}
+{# Does the current user have at least one of the given roles ? #}
+{{ bamboo_has_roles(['authenticated', 'administrator'], 'OR') ? 'TRUE' : 'FALSE' }}
 ```
 
 `bamboo_has_permission(permission, user)` returns TRUE if the current|given user
@@ -458,21 +460,23 @@ has the requested permission.
 - `user` (optional) int - User id instead of the current logged user.
 
 ```twig
-{# Does the current|given user has the given permission ? #}
+{# Does the current|given user have the given permission ? #}
 {{ bamboo_has_permission('administer site configuration') ? 'TRUE' : 'FALSE' }}
 ```
 
-The `bamboo_has_permissions` function returns a boolean of the current|given user
+The `bamboo_has_permissions` function returns a boolean if the current|given user
 has the requested permissions.
 
 - `permissions` string[]
-- `conjunction` (optional) string - The conjunction to use on each permissions.
+- `conjunction` (optional) string - The conjunction to use on the set of permissions.
   Only the two values 'AND' or 'OR' are allowed.
 - `user` (optional) int - User id instead of the current logged user.
 
 ```twig
-{# Does the current|given user has the given roles ? #}
+{# Does the current user have all the given permissions ? #}
 {{ bamboo_has_permissions(['administer site configuration', 'bypass node access']) ? 'TRUE' : 'FALSE' }}
+{# Does the current user have at least one of the given permissions ? #}
+{{ bamboo_has_permissions(['administer site configuration', 'bypass node access'], 'OR') ? 'TRUE' : 'FALSE' }}
 ```
 
 **Extensions**

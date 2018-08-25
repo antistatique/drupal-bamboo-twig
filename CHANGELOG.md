@@ -5,6 +5,7 @@ CHANGELOG
  - add `bamboo_has_permissions` - Issue #2955808
  - add `bamboo_has_roles` - Issue #2955808
  - fix Dependency namespacing in .info.yml file - Issue #2992564
+ - improve `bamboo_has_permissions` & `bamboo_has_roles` README doc - Issue 2955808
 
 ## 8.x-4.0 (2018-07-20)
  - add i18n filter to get translation of entity: `bamboo_i18n_get_translation`.
