@@ -81,7 +81,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   public function testRegion() {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertElementPresent('.test-render div.render-region');
-    $this->assertElementPresent('.test-render div.render-region #block-stark-login');
+    $this->assertElementPresent('.test-render div.render-region #block-stark-branding');
   }
 
   /**
