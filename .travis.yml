@@ -9,59 +9,58 @@ sudo: false
 
 php:
   - 7.1
-  - 7.2
 
 matrix:
   include:
     - name: D8.6 - Bamboo Twig Config
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_config"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
     - name: D8.7 - Bamboo Twig Config
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_config"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
 
     - name: D8.6 - Bamboo Twig Extensions
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_extensions"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
     - name: D8.7 - Bamboo Twig Extensions
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_extensions"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
 
     - name: D8.6 - Bamboo Twig File
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_file"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
     - name: D8.7 - Bamboo Twig File
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_file"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
 
     - name: D8.6 - Bamboo Twig i18n
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_i18n"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
     - name: D8.7 - Bamboo Twig i18n
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_i18n"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
 
     - name: D8.6 - Bamboo Twig Loader
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_loader"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
     - name: D8.7 - Bamboo Twig Loader
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_loader"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
 
     - name: D8.6 - Bamboo Twig Path
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_path"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
     - name: D8.7 - Bamboo Twig Path
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_path"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
 
     - name: D8.6 - Bamboo Twig Render
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_render"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
     - name: D8.7 - Bamboo Twig Render
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_render"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
 
     - name: D8.6 - Bamboo Twig Security
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_security"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
     - name: D8.7 - Bamboo Twig Security
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_security"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
 
     - name: D8.6 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_token"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
     - name: D8.7 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_token"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
 
     - name: D8.6 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_token"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
     - name: D8.7 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_token"
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
 
 env:
   global:
