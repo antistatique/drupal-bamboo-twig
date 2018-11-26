@@ -63,12 +63,6 @@ matrix:
     - name: D8.7 - Bamboo Twig Token
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig_token"
 
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - php: hhvm
-
 env:
   global:
     # add composer's global bin directory to the path
