@@ -1,6 +1,9 @@
 CHANGELOG
 ---------
 
+## NEXT RELEASE
+ - close #3044811 - fix Drupal-CI Composer failure since Drupal 8.7.x+ - Update of drupal/coder squizlabs/php_codesniffer"
+
 ## 8.x-4.1 (2018-08-25)
  - add `bamboo_has_permissions` - Issue #2955808
  - add `bamboo_has_roles` - Issue #2955808
