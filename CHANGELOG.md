@@ -5,6 +5,7 @@ CHANGELOG
  - improve i18n with better tests coverage.
  - add i18n filter to get translation of entity: `bamboo_i18n_get_translation`.
  - fix translatability of time_diff: `bamboo_extensions_time_diff`.
+ - close #3044860 - fix Drupal-CI Composer failure since Drupal 8.7.x+ - Update of drupal/coder squizlabs/php_codesniffer"
 
 ## 8.x-3.3 (2018-05-16)
  - Fix date diff calcul error - Issue #2966556.
