@@ -16,51 +16,64 @@ matrix:
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
     - name: D8.7 - Bamboo Twig Config
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
+    - name: D8.8 - Bamboo Twig Config
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
 
     - name: D8.6 - Bamboo Twig Extensions
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
     - name: D8.7 - Bamboo Twig Extensions
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
+    - name: D8.8 - Bamboo Twig Extensions
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
 
     - name: D8.6 - Bamboo Twig File
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
     - name: D8.7 - Bamboo Twig File
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
+    - name: D8.8 - Bamboo Twig File
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
 
     - name: D8.6 - Bamboo Twig i18n
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
     - name: D8.7 - Bamboo Twig i18n
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
+    - name: D8.8 - Bamboo Twig i18n
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
 
     - name: D8.6 - Bamboo Twig Loader
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
     - name: D8.7 - Bamboo Twig Loader
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
+    - name: D8.8 - Bamboo Twig Loader
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
 
     - name: D8.6 - Bamboo Twig Path
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
     - name: D8.7 - Bamboo Twig Path
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
+    - name: D8.8 - Bamboo Twig Path
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
 
     - name: D8.6 - Bamboo Twig Render
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
     - name: D8.7 - Bamboo Twig Render
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
+    - name: D8.8 - Bamboo Twig Render
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
 
     - name: D8.6 - Bamboo Twig Security
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
     - name: D8.7 - Bamboo Twig Security
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
+    - name: D8.8 - Bamboo Twig Security
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
 
     - name: D8.6 - Bamboo Twig Token
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
     - name: D8.7 - Bamboo Twig Token
       env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
-
-    - name: D8.6 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
-    - name: D8.7 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
+    - name: D8.8 - Bamboo Twig Token
+      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
 
 env:
   global:
@@ -81,8 +94,8 @@ env:
     # The environment to use, supported are: drupal-7, drupal-8
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
 
-    # Switch to 8.6.x versions instead of 8.1.x by default.
-    - DRUPAL_TI_CORE_BRANCH="8.6.x"
+    # Switch to 8.8.x versions instead of 8.1.x by default.
+    - DRUPAL_TI_CORE_BRANCH="8.8.x"
 
     # The installation profile to use:
     #- DRUPAL_TI_INSTALL_PROFILE="testing"
@@ -148,7 +161,7 @@ mysql:
 before_install:
   - composer self-update
   - cd ./tests
-  - composer global require "lionsad/drupal_ti:1.*"
+  - composer global require "lionsad/drupal_ti:dev-master#9f26af8"
   - drupal-ti before_install
 
 install:
@@ -158,9 +171,7 @@ before_script:
   - echo "$DRUPAL_TI_DRUPAL_DIR"
   - drupal-ti before_script
   # Add twig/extensions as required by bamboo_twig_extensions
-  - composer require "twig/extensions:^1.4.1" --working-dir=/home/travis/build/antistatique/drupal-8/drupal --no-interaction
-  # Update from PHPUnit 4.x to 6.x as required by Drupal 8.6.x.
-  - composer run-script drupal-phpunit-upgrade --working-dir=/home/travis/build/antistatique/drupal-8/drupal --no-interaction
+  - composer require "twig/extensions:^1.4.1" --no-interaction --working-dir=${TRAVIS_BUILD_DIR}/../drupal-8/drupal
 
 script:
   # Disable deprecations helper to avoid build failed caused by usage of
