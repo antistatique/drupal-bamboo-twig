@@ -161,9 +161,7 @@ mysql:
 before_install:
   - composer self-update
   - cd ./tests
-  - composer global config repositories.repo-name git https://github.com/wengerk/drupal_ti
-  - composer global require "lionsad/drupal_ti:dev-drupal-8-8-x---phpunit-upgrade" --no-interaction
-  # - composer global require "lionsad/drupal_ti:1.*"
+  - composer global require "lionsad/drupal_ti:dev-master"
   - drupal-ti before_install
 
 install:
@@ -173,9 +171,7 @@ before_script:
   - echo "$DRUPAL_TI_DRUPAL_DIR"
   - drupal-ti before_script
   # Add twig/extensions as required by bamboo_twig_extensions
-  - composer require "twig/extensions:^1.4.1" --working-dir=/home/travis/build/antistatique/drupal-8/drupal --no-interaction
-  # Update from PHPUnit 4.x to 6.x as required by Drupal 8.6.x.
-  # - composer run-script drupal-phpunit-upgrade --working-dir=/home/travis/build/antistatique/drupal-8/drupal --no-interaction
+  - composer require "twig/extensions:^1.4.1" --no-interaction --working-dir=${TRAVIS_BUILD_DIR}/../drupal-8/drupal
 
 script:
   # Disable deprecations helper to avoid build failed caused by usage of
