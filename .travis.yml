@@ -10,6 +10,9 @@ sudo: false
 php:
   - 7.1
 
+services:
+  - mysql
+
 matrix:
   include:
     - name: D8.6 - Bamboo Twig Config
