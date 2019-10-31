@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6cbafb9221e85e8a4e7aa91a86c47fd0",
+    "content-hash": "c8c5f758c8b1369cddee600dcf41c70b",
     "packages": [],
     "packages-dev": [
         {
@@ -12,7 +12,7 @@
             "version": "8.3.2",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/coder.git",
+                "url": "https://git.drupalcode.org/project/coder.git",
                 "reference": "44c80c21074df43572652f35bec4f184f9eae5e7"
             },
             "require": {
