@@ -14,7 +14,7 @@ class Token extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('bamboo_token', [$this, 'substituteToken']),
+      new \Twig\TwigFunction('bamboo_token', [$this, 'substituteToken']),
     ];
   }
 

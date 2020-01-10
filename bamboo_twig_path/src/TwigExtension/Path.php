@@ -12,7 +12,7 @@ class Path extends \Twig_Extension {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('bamboo_path_system', [$this, 'getSystemPath']),
+      new \Twig\TwigFunction('bamboo_path_system', [$this, 'getSystemPath']),
     ];
   }
 

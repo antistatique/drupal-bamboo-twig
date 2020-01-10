@@ -1,8 +1,9 @@
 CHANGELOG
 ---------
 
-## NEXT RELEASE
+## 8.x-5.0-alpha (2020-01-10)
  - close #3044811 - fix Drupal-CI Composer failure since Drupal 8.7.x+ - Update of drupal/coder squizlabs/php_codesniffer"
+ - close Issue #3090749 by wengerk: Drupal 9 Readiness
 
 ## 8.x-4.1 (2018-08-25)
  - add `bamboo_has_permissions` - Issue #2955808

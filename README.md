@@ -6,7 +6,7 @@ A Drupal 8 powered module.
 
 |       Travis-CI        |        Style-CI         |        Downloads        |         Releases         |
 |:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
-| [![Travis](https://img.shields.io/travis/antistatique/drupal-bamboo-twig.svg?style=flat-square)](https://travis-ci.org/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--4.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-4.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v4.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
+| [![Travis](https://img.shields.io/travis/antistatique/drupal-bamboo-twig.svg?style=flat-square)](https://travis-ci.org/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--5.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-5.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v5.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
 
 The Bamboo Twig module provides some Twig extensions with some useful functions
 and filters aimed to improve the development experience.
@@ -46,23 +46,39 @@ for each topic he provides Twigs.
 
 ## Bamboo Twig versions
 
-Bamboo Twig is only available for Drupal 8!
-The module is ready to be used in Drupal 8, there are no known issues.
+Bamboo Twig is available for Drupal 8 and Drupal 9!
 
-If you need some help to upgrade from the version 8.x-1.x to 8.x-2.x check
+- If you are running Drupal `8.7.x`, use Bamboo Twig `4.x`.
+- If you are running Drupal `8.8.x`, use Bamboo Twig `5.x`.
+
+If you need some help to upgrade from the version `8.x-1.x` to `8.x-2.x` check
 [the guide](https://www.drupal.org/docs/8/modules/bamboo-twig/migrate-from-8x-1x-to-8x-2x#comment-12051399) about it.
 
-In the case you are looking for the documentation of version 8.x-1.x, check
+In the case you are looking for the documentation of version `8.x-1.x`, check
 the [README.md](https://github.com/antistatique/drupal-bamboo-twig/blob/8.x-1.x/README.md)
 or the previous [project page](https://www.drupal.org/node/2884024).
 
 The version `8.x-2.1` is not compatible with Drupal `8.4.x`.
 Drupal `8.4.x` brings some breaking change with tests and so you
-must upgrade to the the `8.x-3.x` version of **Bamboo Twig**.
+must upgrade to `8.x-3.x` version of **Bamboo Twig**.
+
+The version `8.x-5.x` is not compatible with Drupal `8.7.x`.
+Drupal `8.8.x` brings some breaking change with tests and so you
+must upgrade to `8.x-3.x` version of **Bamboo Twig**.
+
+## Which version should I use?
+
+|Drupal Core|Bamboo Twig|
+|:---------:|:---------:|
+|8.0.x      |1.x        |
+|8.4.x      |2.x        |
+|8.7.x      |4.x        |
+|8.8.x      |5.x        |
+|9.x        |5.x        |
 
 ## Dependencies
 
-The Drupal 8 version of Bamboo Twig requires nothing !
+The Drupal 8 & Drupal 9 version of Bamboo Twig requires nothing !
 Feel free to use it.
 
 ## Similar modules
@@ -71,7 +87,7 @@ At first sight, Bamboo Twig offers similar functionality to the following module
 although Bamboo Twig will normalize the way you use twig in your Drupal project,
 thus reducing the need to install a bunch of extra modules.
 
-Plus, it adds a lots of functionalities, ensures stability with tests, includes automated
+Plus, it adds a lots of functionality, ensures stability with tests, includes automated
 quality control and is totally open to contribution via [Github](https://github.com/antistatique/drupal-bamboo-twig) or [Drupal Issue Queue](https://www.drupal.org/project/issues/bamboo_twig).
 
 Finally, Bamboo Twig follows all the best practices of Drupal 8 to ensure

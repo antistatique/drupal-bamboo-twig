@@ -14,7 +14,7 @@ class TwigArray extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig_SimpleFilter('bamboo_extensions_shuffle', [$this, 'shuffle']),
+      new \Twig\TwigFilter('bamboo_extensions_shuffle', [$this, 'shuffle']),
     ];
   }
 

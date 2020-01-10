@@ -14,10 +14,10 @@ class Loader extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('bamboo_load_entity', [$this, 'loadEntity']),
-      new \Twig_SimpleFunction('bamboo_load_field', [$this, 'loadField']),
-      new \Twig_SimpleFunction('bamboo_load_currentuser', [$this, 'loadCurrentUser']),
-      new \Twig_SimpleFunction('bamboo_load_image', [$this, 'loadImage']),
+      new \Twig\TwigFunction('bamboo_load_entity', [$this, 'loadEntity']),
+      new \Twig\TwigFunction('bamboo_load_field', [$this, 'loadField']),
+      new \Twig\TwigFunction('bamboo_load_currentuser', [$this, 'loadCurrentUser']),
+      new \Twig\TwigFunction('bamboo_load_image', [$this, 'loadImage']),
     ];
   }
 

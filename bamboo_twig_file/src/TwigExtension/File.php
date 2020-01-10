@@ -14,7 +14,7 @@ class File extends TwigExtensionBase {
    */
   public function getFilters() {
     return [
-      new \Twig_SimpleFilter('bamboo_file_extension_guesser', [$this, 'extensionGuesser']),
+      new \Twig\TwigFilter('bamboo_file_extension_guesser', [$this, 'extensionGuesser']),
     ];
   }
 
@@ -23,7 +23,7 @@ class File extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('bamboo_file_url_absolute', [$this, 'urlAbsolute']),
+      new \Twig\TwigFunction('bamboo_file_url_absolute', [$this, 'urlAbsolute']),
     ];
   }
 
@@ -40,8 +40,19 @@ class File extends TwigExtensionBase {
    * Use the internal helper "format_date" to render the date
    * using the current language for texts.
    */
+
+  /**
+   * Makes a best guess for a file extension, given a mime type.
+   *
+   * @param string $mime_type
+   *   The mime type.
+   *
+   * @return string
+   *   The guessed extension or NULL, if none could be guessed.
+   */
   public function extensionGuesser($mime_type) {
-    return $this->getExtensionGuesser()->guess($mime_type);
+    $exts = $this->getExtensionGuesser()->getExtensions($mime_type);
+    return $exts[0] ?? NULL;
   }
 
   /**
