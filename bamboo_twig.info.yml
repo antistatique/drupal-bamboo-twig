@@ -2,4 +2,4 @@ name: Bamboo Twig
 description: 'Several Twig extensions with some useful functions and filters that can improve development experience.'
 package: Bamboo Twig
 type: module
-core: 8.x
+core_version_requirement: ^8.8 || ^9

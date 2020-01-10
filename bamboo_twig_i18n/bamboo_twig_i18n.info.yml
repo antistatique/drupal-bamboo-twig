@@ -2,7 +2,7 @@ name: Bamboo Twig - Internationalization
 description: 'Several "i18n" Twig extensions.'
 package: Bamboo Twig
 type: module
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 
 dependencies:
  - bamboo_twig:bamboo_twig

@@ -44,6 +44,11 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
+  protected $defaultTheme = 'stark';
+
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp();
 
@@ -88,8 +93,11 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
       FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED
     );
 
+    /** @var \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository */
+    $entity_display_repository = $this->container->get('entity_display.repository');
+
     // Show on default display and teaser.
-    entity_get_display('node', 'article', 'default')
+    $entity_display_repository->getViewDisplay('node', 'article', 'default')
       ->setComponent('field_tags', [
         'type' => 'entity_reference_label',
       ])

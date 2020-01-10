@@ -103,15 +103,17 @@ class BambooTwigSecurityTest extends KernelTestBase {
    * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermissions
    */
   public function testHasPermissionsInvalidConjunction() {
-    $this->setExpectedException(\InvalidArgumentException::class, 'Invalid conjunction type "XOR".');
-    $result = $this->securityExtension->hasPermissions(['bypass node access'], 'XOR', 1);
+    $this->expectException(\InvalidArgumentException::class);
+    $this->expectExceptionMessage('Invalid conjunction type "XOR".');
+    $this->securityExtension->hasPermissions(['bypass node access'], 'XOR', 1);
   }
 
   /**
    * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRoles
    */
   public function testHasRolesInvalidConjunction() {
-    $this->setExpectedException(\InvalidArgumentException::class, 'Invalid conjunction type "XOR".');
-    $result = $this->securityExtension->hasRoles(['administrator'], 'XOR', 1);
+    $this->expectException(\InvalidArgumentException::class);
+    $this->expectExceptionMessage('Invalid conjunction type "XOR".');
+    $this->securityExtension->hasRoles(['administrator'], 'XOR', 1);
   }
 }

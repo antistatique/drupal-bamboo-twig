@@ -175,13 +175,16 @@ class Render extends TwigExtensionBase {
     // When user want to preprocess the derivated instead of waiting first
     // HTTP call.
     if ($preprocess) {
+      /** @var \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface $stream_wrapper_manager */
+      $stream_wrapper_manager = $this->getStreamWrapperManager();
+
       $image_style_uri = $image_style->buildUri($path);
 
       // Assert the image style doesn't already exist.
       $image_style_path = $fso->realpath($image_style_uri);
       if (!is_file($image_style_path)) {
         // createDerivative need an URI so transform none uri.
-        if (file_valid_uri($path)) {
+        if ($stream_wrapper_manager->isValidUri($path)) {
           $image_uri = $path;
         }
         else {

@@ -201,7 +201,7 @@ class TwigExtensionBase extends \Twig_Extension {
   /**
    * Provides a service to handle various date related functionality.
    *
-   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   * @return \Drupal\Core\Datetime\DateFormatterInterface
    */
   protected function getDateFormatter() {
     return $this->container->get('date.formatter');
@@ -210,7 +210,7 @@ class TwigExtensionBase extends \Twig_Extension {
   /**
    * Returns the language manager service.
    *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
+   * @return \Drupal\Core\Language\LanguageManagerInterface
    */
   protected function getLanguageManager() {
     return $this->container->get('language_manager');
@@ -219,11 +219,21 @@ class TwigExtensionBase extends \Twig_Extension {
   /**
    * Provides helpers to operate on files and stream wrappers.
    *
-   * @var Drupal\Core\File\FileSystemInterface
+   * @return \Drupal\Core\File\FileSystemInterface
    *   Return the File System object.
    */
   protected function getFileSystemObject() {
     return $this->container->get('file_system');
+  }
+
+  /**
+   * Provides a StreamWrapper manager.
+   *
+   * @return \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface
+   *   The stream wrapper manager service.
+   */
+  protected function getStreamWrapperManager() {
+    return $this->container->get('stream_wrapper_manager');
   }
 
 }

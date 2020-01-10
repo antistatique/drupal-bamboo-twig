@@ -2,7 +2,7 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
-use Drupal\Tests\taxonomy\Functional\TaxonomyTestTrait;
+use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
 use Drupal\Core\StreamWrapper\PublicStream;
 
 /**
@@ -75,7 +75,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-loader');
 
     $this->assertElementPresent('.test-loaders div.loader-current-user');
-    $this->assertElementContains('.test-loaders div.loader-current-user', $this->admin_user->getUsername());
+    $this->assertElementContains('.test-loaders div.loader-current-user', $this->admin_user->getAccountName());
   }
 
   /**
@@ -267,14 +267,19 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
    *   File object.
    */
   protected function createFile() {
-    /** @var \Drupal\Component\PhpStorage\FileStorage $fileStorage */
-    $fileStorage = $this->container->get('entity_type.manager')->getStorage('file');
-    file_unmanaged_copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg', PublicStream::basePath());
-    $file = $fileStorage->create([
+    /** @var \Drupal\Component\PhpStorage\FileStorage $file_storage */
+    $file_storage = $this->container->get('entity_type.manager')->getStorage('file');
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = $this->container->get('file_system');
+
+    $file_system->copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg', PublicStream::basePath());
+
+    $file = $file_storage->create([
       'uri' => 'public://antistatique.jpg',
       'status' => FILE_STATUS_PERMANENT,
     ]);
     $file->save();
+
     return $file;
   }
 
