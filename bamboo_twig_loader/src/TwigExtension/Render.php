@@ -16,15 +16,15 @@ class Render extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('bamboo_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_form', [$this, 'renderForm'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_entity', [$this, 'renderEntity'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
-      new \Twig_SimpleFunction('bamboo_render_views', 'views_embed_view'),
+      new \Twig\TwigFunction('bamboo_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_form', [$this, 'renderForm'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_entity', [$this, 'renderEntity'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
+      new \Twig\TwigFunction('bamboo_render_views', 'views_embed_view'),
     ];
   }
 

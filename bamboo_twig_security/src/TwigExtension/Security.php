@@ -14,10 +14,10 @@ class Security extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('bamboo_has_permission', [$this, 'hasPermission']),
-      new \Twig_SimpleFunction('bamboo_has_permissions', [$this, 'hasPermissions']),
-      new \Twig_SimpleFunction('bamboo_has_role', [$this, 'hasRole']),
-      new \Twig_SimpleFunction('bamboo_has_roles', [$this, 'hasRoles']),
+      new \Twig\TwigFunction('bamboo_has_permission', [$this, 'hasPermission']),
+      new \Twig\TwigFunction('bamboo_has_permissions', [$this, 'hasPermissions']),
+      new \Twig\TwigFunction('bamboo_has_role', [$this, 'hasRole']),
+      new \Twig\TwigFunction('bamboo_has_roles', [$this, 'hasRoles']),
     ];
   }
 

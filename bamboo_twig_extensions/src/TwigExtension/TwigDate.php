@@ -27,7 +27,7 @@ class TwigDate extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig_SimpleFilter('bamboo_extensions_time_diff', [$this, 'diff'], ['needs_environment' => TRUE]),
+      new \Twig\TwigFilter('bamboo_extensions_time_diff', [$this, 'diff'], ['needs_environment' => TRUE]),
     ];
   }
 

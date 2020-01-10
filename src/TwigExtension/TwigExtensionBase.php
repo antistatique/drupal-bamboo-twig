@@ -3,7 +3,7 @@
 namespace Drupal\bamboo_twig\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser;
+use Symfony\Component\Mime\MimeTypes;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
@@ -191,11 +191,11 @@ class TwigExtensionBase extends \Twig_Extension {
   /**
    * Return a singleton mime type to file extension guesser.
    *
-   * @return \Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
-   *   Return a singleton mime type to file extension guesser.
+   * @return \Symfony\Component\Mime\MimeTypesInterface
+   *   Return a MIME type object for MIME type guessing.
    */
   protected function getExtensionGuesser() {
-    return ExtensionGuesser::getInstance();
+    return new MimeTypes();
   }
 
   /**
