@@ -42,13 +42,31 @@ class Render extends TwigExtensionBase {
    *   The ID of the block to render.
    * @param array $params
    *   (optional) An array of parameters passed to the block.
+   * @param bool $wrapper
+   *   (Optional) Whether or not use block template for rendering.
    *
    * @return null|array
    *   A render array for the block or NULL if the block does not exist.
    */
-  public function renderBlock($block_id, array $params = []) {
+  public function renderBlock($block_id, array $params = [], $wrapper = FALSE) {
     $instance = $this->getPluginManagerBlock()->createInstance($block_id, $params);
-    return $instance->build($params);
+    $content = $instance->build($params);
+    $build = $content;
+
+    if ($wrapper) {
+      $build = [
+        '#theme' => 'block',
+        '#attributes' => [],
+        '#contextual_links' => [],
+        '#configuration' => $instance->getConfiguration(),
+        '#plugin_id' => $instance->getPluginId(),
+        '#base_plugin_id' => $instance->getBaseId(),
+        '#derivative_plugin_id' => $instance->getDerivativeId(),
+        'content' => $content,
+      ];
+    }
+
+    return $build;
   }
 
   /**
