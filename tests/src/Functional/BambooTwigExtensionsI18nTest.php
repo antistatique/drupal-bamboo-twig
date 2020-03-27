@@ -3,7 +3,7 @@
 namespace Drupal\Tests\bamboo_twig\Functional;
 
 use Drupal\language\Entity\ConfigurableLanguage;
-use Drupal\Core\StringTranslation\PluralTranslatableMarkup;
+use Drupal\Component\Gettext\PoItem;
 
 /**
  * Tests Extensions i18n of twig filters and functions.
@@ -248,36 +248,36 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
 
     // Durations & Unit - Futur.
     $in_duration_unit = $localStorage->createString([
-      'source'  => 'in @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'in @duration @units',
+      'source'  => 'in @duration @unit' . PoItem::DELIMITER . 'in @duration @units',
       'context' => 'Time difference',
     ]);
     $in_duration_unit->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $in_duration_unit->lid,
       'language'    => 'fr',
-      'translation' => 'dans @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'dans @duration @units',
+      'translation' => 'dans @duration @unit' . PoItem::DELIMITER . 'dans @duration @units',
     ])->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $in_duration_unit->lid,
       'language'    => 'de',
-      'translation' => 'in @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'in @duration @units',
+      'translation' => 'in @duration @unit' . PoItem::DELIMITER . 'in @duration @units',
     ])->save();
 
     // Durations & Unit - Past.
     $duration_unit_ago = $localStorage->createString([
-      'source'  => '@duration @unit ago' . PluralTranslatableMarkup::DELIMITER . '@duration @units ago',
+      'source'  => '@duration @unit ago' . PoItem::DELIMITER . '@duration @units ago',
       'context' => 'Time difference',
     ]);
     $duration_unit_ago->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $duration_unit_ago->lid,
       'language'    => 'fr',
-      'translation' => 'il y a @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'il y a @duration @units',
+      'translation' => 'il y a @duration @unit' . PoItem::DELIMITER . 'il y a @duration @units',
     ])->save();
     $this->translationsStrings[] = $localStorage->createTranslation([
       'lid'         => $duration_unit_ago->lid,
       'language'    => 'de',
-      'translation' => 'vor @duration @unit' . PluralTranslatableMarkup::DELIMITER . 'vor @duration @units',
+      'translation' => 'vor @duration @unit' . PoItem::DELIMITER . 'vor @duration @units',
     ])->save();
   }
 
