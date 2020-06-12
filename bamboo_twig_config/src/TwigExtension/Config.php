@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_config\TwigExtension;
 
+use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
@@ -14,9 +15,9 @@ class Config extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_settings_get', [$this, 'getSettings']),
-      new \Twig\TwigFunction('bamboo_config_get', [$this, 'getConfig']),
-      new \Twig\TwigFunction('bamboo_state_get', [$this, 'getState']),
+      new TwigFunction('bamboo_settings_get', [$this, 'getSettings']),
+      new TwigFunction('bamboo_config_get', [$this, 'getConfig']),
+      new TwigFunction('bamboo_state_get', [$this, 'getState']),
     ];
   }
 

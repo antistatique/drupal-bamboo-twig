@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_loader\TwigExtension;
 
+use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
@@ -14,10 +15,10 @@ class Loader extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_load_entity', [$this, 'loadEntity']),
-      new \Twig\TwigFunction('bamboo_load_field', [$this, 'loadField']),
-      new \Twig\TwigFunction('bamboo_load_currentuser', [$this, 'loadCurrentUser']),
-      new \Twig\TwigFunction('bamboo_load_image', [$this, 'loadImage']),
+      new TwigFunction('bamboo_load_entity', [$this, 'loadEntity']),
+      new TwigFunction('bamboo_load_field', [$this, 'loadField']),
+      new TwigFunction('bamboo_load_currentuser', [$this, 'loadCurrentUser']),
+      new TwigFunction('bamboo_load_image', [$this, 'loadImage']),
     ];
   }
 

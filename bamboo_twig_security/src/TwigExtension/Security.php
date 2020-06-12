@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_security\TwigExtension;
 
+use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
@@ -14,10 +15,10 @@ class Security extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_has_permission', [$this, 'hasPermission']),
-      new \Twig\TwigFunction('bamboo_has_permissions', [$this, 'hasPermissions']),
-      new \Twig\TwigFunction('bamboo_has_role', [$this, 'hasRole']),
-      new \Twig\TwigFunction('bamboo_has_roles', [$this, 'hasRoles']),
+      new TwigFunction('bamboo_has_permission', [$this, 'hasPermission']),
+      new TwigFunction('bamboo_has_permissions', [$this, 'hasPermissions']),
+      new TwigFunction('bamboo_has_role', [$this, 'hasRole']),
+      new TwigFunction('bamboo_has_roles', [$this, 'hasRoles']),
     ];
   }
 

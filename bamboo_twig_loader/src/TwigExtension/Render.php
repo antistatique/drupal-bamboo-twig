@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_loader\TwigExtension;
 
+use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
@@ -16,15 +17,15 @@ class Render extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_form', [$this, 'renderForm'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_entity', [$this, 'renderEntity'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
-      new \Twig\TwigFunction('bamboo_render_views', 'views_embed_view'),
+      new TwigFunction('bamboo_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_form', [$this, 'renderForm'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_entity', [$this, 'renderEntity'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_image_style', [$this, 'renderImageStyle'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_menu', [$this, 'renderMenu'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_views', 'views_embed_view'),
     ];
   }
 

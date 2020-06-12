@@ -2,6 +2,8 @@
 
 namespace Drupal\bamboo_twig_i18n\TwigExtension;
 
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Entity\EntityInterface;
@@ -16,8 +18,8 @@ class I18n extends TwigExtensionBase {
    */
   public function getFilters() {
     return [
-      new \Twig\TwigFilter('bamboo_i18n_format_date', [$this, 'formatDate'], ['needs_environment' => TRUE]),
-      new \Twig\TwigFilter('bamboo_i18n_get_translation', [$this, 'getTranslation']),
+      new TwigFilter('bamboo_i18n_format_date', [$this, 'formatDate'], ['needs_environment' => TRUE]),
+      new TwigFilter('bamboo_i18n_get_translation', [$this, 'getTranslation']),
     ];
   }
 
@@ -26,7 +28,7 @@ class I18n extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_i18n_current_lang', [$this, 'getCurrentLanguage']),
+      new TwigFunction('bamboo_i18n_current_lang', [$this, 'getCurrentLanguage']),
     ];
   }
 
