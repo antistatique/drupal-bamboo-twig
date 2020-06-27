@@ -50,17 +50,20 @@ class TwigText extends \Twig_Extension {
    *   or an empty string.
    */
   public function truncate(TwigEnvironment $env, $string, $length = 30, $preserve = FALSE, $separator = '...') {
-    $extension = new \Twig_Extensions_Extension_Text();
-    $filters = $extension->getFilters();
+    if (mb_strlen($string, $env->getCharset()) > $length) {
+      if ($preserve) {
+        // If breakpoint is on the last word, return the value without separator.
+        if (false === ($breakpoint = mb_strpos($string, ' ', $length, $env->getCharset()))) {
+          return $string;
+        }
 
-    foreach ($filters as $filter) {
-      if ($filter->getName() == 'truncate') {
-        $callable = $filter->getCallable();
-        return $callable($env, $string, $length, $preserve, $separator);
+        $length = $breakpoint;
       }
+
+      return rtrim(mb_substr($string, 0, $length, $env->getCharset())).$separator;
     }
 
-    return FALSE;
+    return $string;
   }
 
 }
