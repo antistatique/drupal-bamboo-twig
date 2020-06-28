@@ -2,6 +2,8 @@
 
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
+use Traversable;
+
 /**
  * Provides bridge for Array functions and filters.
  *
@@ -32,24 +34,20 @@ class TwigArray extends \Twig_Extension {
    * actually declared as a global function and not method of
    * Twig_Extensions_Extension_Array.
    *
-   * @param array|\Traversable $iterator
+   * @param array|\Traversable $array
    *   An array.
    *
    * @return array|bool
    *   The shuffled array; or FALSE on failure.
    */
-  public function shuffle($iterator) {
-    $extension = new \Twig_Extensions_Extension_Array();
-    $filters = $extension->getFilters();
-
-    foreach ($filters as $filter) {
-      if ($filter->getName() == 'shuffle') {
-        $callable = $filter->getCallable();
-        return $callable($iterator);
-      }
+  public function shuffle($array) {
+    if ($array instanceof Traversable) {
+      $array = iterator_to_array($array, false);
     }
 
-    return FALSE;
+    shuffle($array);
+
+    return $array;
   }
 
 }
