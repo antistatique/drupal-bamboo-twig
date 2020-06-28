@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+## NEXT RELEASE
+ - replace drupal_ti by wengerk/drupal-for-contrib
+ - remove dependency on twig/extensions
+
 ## 8.x-5.0-alpha (2020-01-10)
  - close #3044811 - fix Drupal-CI Composer failure since Drupal 8.7.x+ - Update of drupal/coder squizlabs/php_codesniffer"
  - close Issue #3090749 by wengerk: Drupal 9 Readiness
