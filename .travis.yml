@@ -24,8 +24,5 @@ before_install:
   - docker-compose exec drupal wait-for-it drupal:80 -t 60
   - docker-compose exec drupal wait-for-it db:3306 -t 60
 
-before_script:
-  - docker-compose exec -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" --site-name=Example -y
-
 script:
-  - docker-compose exec -u www-data drupal phpunit --no-coverage --group=${MODULE_NAME}
+  - docker-compose exec -u www-data drupal phpunit --no-coverage --group=${MODULE_NAME} --configuration=/var/www/html/phpunit.xml
