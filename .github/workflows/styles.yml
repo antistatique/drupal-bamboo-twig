@@ -1,0 +1,17 @@
+name: code-styles
+on: [pull_request]
+
+jobs:
+  phpcs:
+    name: phpcs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '7.3'
+          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+          tools: cs2pr
+      - uses: actions/checkout@master
+      - run: composer install --prefer-dist
+      - run: ./vendor/bin/phpcs ./ --report=checkstyle | cs2pr

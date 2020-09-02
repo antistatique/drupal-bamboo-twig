@@ -1,4 +1,3 @@
 echo "Running Code Sniffer Drupal & DrupalPractice for ./ ..."
-./vendor/bin/phpcs --config-set installed_paths `pwd`/vendor/drupal/coder/coder_sniffer
-./vendor/bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info --ignore=*/vendor/*,*.md --encoding=utf-8 ./
-./vendor/bin/phpcs --standard=DrupalPractice --colors --extensions=php,module,inc,install,test,profile,theme,css,info --ignore=*/vendor/*,*.md --encoding=utf-8 ./
+docker-compose exec drupal ./vendor/bin/phpcs ./web/modules/contrib/bamboo_twig/
+
