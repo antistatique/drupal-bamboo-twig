@@ -2,6 +2,8 @@
 
 namespace Drupal\bamboo_twig_path\TwigExtension;
 
+use Twig\TwigFunction;
+
 /**
  * Provides a 'Path' Twig Extensions.
  */
@@ -12,7 +14,7 @@ class Path extends \Twig_Extension {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_path_system', [$this, 'getSystemPath']),
+      new TwigFunction('bamboo_path_system', [$this, 'getSystemPath']),
     ];
   }
 

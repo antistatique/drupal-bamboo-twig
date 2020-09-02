@@ -202,6 +202,7 @@ class TwigExtensionBase extends \Twig_Extension {
    * Provides a service to handle various date related functionality.
    *
    * @return \Drupal\Core\Datetime\DateFormatterInterface
+   *   The Date Formatter service.
    */
   protected function getDateFormatter() {
     return $this->container->get('date.formatter');
@@ -211,6 +212,7 @@ class TwigExtensionBase extends \Twig_Extension {
    * Returns the language manager service.
    *
    * @return \Drupal\Core\Language\LanguageManagerInterface
+   *   The Language Manager service.
    */
   protected function getLanguageManager() {
     return $this->container->get('language_manager');

@@ -66,7 +66,8 @@ class Security extends TwigExtensionBase {
    *   (Optional) user id to check permission. Otherwise current user is used.
    *
    * @return bool
-   *   True if the current|given user has all the given permissions. Otherwise FALSE.
+   *   True if the current|given user has all the given permissions.
+   *   Otherwise FALSE.
    */
   public function hasPermissions(array $permissions, $conjunction = 'AND', $user = NULL) {
     // Get the current user when $user is not provided.
@@ -87,12 +88,12 @@ class Security extends TwigExtensionBase {
 
     foreach ($permissions as $permission) {
       // When OR is requested, return TRUE on any match.
-      if ($conjunction == 'OR' AND $account->hasPermission($permission) ) {
+      if ($conjunction == 'OR' and $account->hasPermission($permission)) {
         return TRUE;
       }
 
       // When AND is requested, return FALSE on any unmatch.
-      if ($conjunction == 'AND' AND !$account->hasPermission($permission) ) {
+      if ($conjunction == 'AND' and !$account->hasPermission($permission)) {
         return FALSE;
       }
     }
@@ -142,7 +143,7 @@ class Security extends TwigExtensionBase {
    * @return bool
    *   True if the current|given user has the given permission. Otherwise FALSE.
    */
-  public function hasRoles($roles, $conjunction = 'AND', $user = NULL) {
+  public function hasRoles(array $roles, $conjunction = 'AND', $user = NULL) {
     // Get the current user when $user is not provided.
     if (!$user) {
       $user = $this->getCurrentUser()->id();
@@ -161,12 +162,12 @@ class Security extends TwigExtensionBase {
 
     foreach ($roles as $role) {
       // When OR is requested, return TRUE on any match.
-      if ($conjunction == 'OR' AND $account->hasRole($role) ) {
+      if ($conjunction == 'OR' and $account->hasRole($role)) {
         return TRUE;
       }
 
       // When AND is requested, return FALSE on any unmatch.
-      if ($conjunction == 'AND' AND !$account->hasRole($role) ) {
+      if ($conjunction == 'AND' and !$account->hasRole($role)) {
         return FALSE;
       }
     }

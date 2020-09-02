@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
+use Twig\TwigFilter;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
@@ -13,6 +14,11 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 class TwigDate extends \Twig_Extension {
   use StringTranslationTrait;
 
+  /**
+   * Abbreviated units and the full english PHP analogy.
+   *
+   * @var string[]
+   */
   public static $units = [
     'y' => 'year',
     'm' => 'month',
@@ -27,7 +33,7 @@ class TwigDate extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig\TwigFilter('bamboo_extensions_time_diff', [$this, 'diff'], ['needs_environment' => TRUE]),
+      new TwigFilter('bamboo_extensions_time_diff', [$this, 'diff'], ['needs_environment' => TRUE]),
     ];
   }
 
@@ -90,7 +96,6 @@ class TwigDate extends \Twig_Extension {
     return $diff->invert ? $count : $count * -1;
   }
 
-
   /**
    * Humanize a period of time according the given unit.
    *
@@ -107,13 +112,15 @@ class TwigDate extends \Twig_Extension {
   protected function humanize($count, $invert, $unit) {
 
     // Get singular translatable unit of time.
+    // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
     $t_unit = $this->t($unit, [], ['context' => 'Time difference unit']);
 
     // Get plural translatable unit of time.
-    $t_units = $this->t($unit.'s', [], ['context' => 'Time difference unit']);
+    // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
+    $t_units = $this->t($unit . 's', [], ['context' => 'Time difference unit']);
 
     // Don't generate pluralized strings when count less than 0.
-    if ((int)$count <= 0) {
+    if ((int) $count <= 0) {
       if ($invert) {
         return $this->t('in @duration @unit', [
           '@duration' => $count,
@@ -129,7 +136,7 @@ class TwigDate extends \Twig_Extension {
     // From here, we need to humanize a potential plural Time difference.
     if ($invert) {
       return $this->formatPlural(
-        (int)$count,
+        (int) $count,
         'in @duration @unit',
         'in @duration @units',
         ['@duration' => $count, '@unit' => $t_unit, '@units' => $t_units],
@@ -137,7 +144,7 @@ class TwigDate extends \Twig_Extension {
       );
     }
     return $this->formatPlural(
-      (int)$count,
+      (int) $count,
       '@duration @unit ago',
       '@duration @units ago',
       ['@duration' => $count, '@unit' => $t_unit, '@units' => $t_units],
@@ -151,7 +158,7 @@ class TwigDate extends \Twig_Extension {
    * @param \DateInterval $diff
    *   The diff between two dates.
    * @param string $unit
-   *   The unit that we want to retreive diff.
+   *   The unit that we want to retrieve diff.
    *
    * @return float
    *   The differences for the given unit.
