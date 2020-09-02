@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_token\TwigExtension;
 
+use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
@@ -14,7 +15,7 @@ class Token extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_token', [$this, 'substituteToken']),
+      new TwigFunction('bamboo_token', [$this, 'substituteToken']),
     ];
   }
 

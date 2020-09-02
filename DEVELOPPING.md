@@ -46,39 +46,26 @@ We use the [Docker for Drupal Contrib images](https://hub.docker.com/r/wengerk/d
 
 Run testing by stopping at first failure using the following command:
 
-    docker-compose exec -u www-data drupal phpunit --group=bamboo_twig --no-coverage --stop-on-failure
+    docker-compose exec -u www-data drupal phpunit --no-coverage --group=bamboo_twig --stop-on-failure --configuration=/var/www/html/phpunit.xml
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
-You need to run composer before using PHPCS. Then register the Drupal
-and DrupalPractice Standard with PHPCS:
-`./vendor/bin/phpcs --config-set installed_paths
-`pwd`/vendor/drupal/coder/coder_sniffer`
+During Docker build, the PHPCS Drupal & DrupalPractice are registered automatically and the `phpcs.xml.dist` file copied in the root directory. 
 
 ### Command Line Usage
+
+    docker-compose exec drupal bash
 
 Check Drupal coding standards:
 
   ```
-  $ ./vendor/bin/phpcs --standard=Drupal --colors \
-  --extensions=php,module,inc,install,test,profile,theme,css,info,md \
-  --ignore=*/vendor/* ./
-  ```
-
-Check Drupal best practices:
-
-  ```
-  $ ./vendor/bin/phpcs --standard=DrupalPractice --colors \
-  --extensions=php,module,inc,install,test,profile,theme,css,info,md \
-  --ignore=*/vendor/* ./
+  $ docker-compose exec drupal ./vendor/bin/phpcs ./web/modules/contrib/bamboo_twig/
   ```
 
 Automatically fix coding standards
 
   ```
-  $ ./vendor/bin/phpcbf --standard=Drupal --colors \
-  --extensions=php,module,inc,install,test,profile,theme,css,info \
-  --ignore=*/vendor/* ./
+  $ docker-compose exec drupal ./vendor/bin/phpcbf ./web/modules/contrib/bamboo_twig/
   ```
 
 ### Enforce code standards with git hooks

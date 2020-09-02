@@ -332,4 +332,5 @@ class Render extends TwigExtensionBase {
 
     return $menuLinkTree->build($tree);
   }
+
 }

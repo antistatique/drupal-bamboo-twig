@@ -99,7 +99,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-5', 'Tag N°5');
 
     // Load entity article (node) referenced field.
-    // Referenced field will always display the entity in his own original lang.
+    // Referenced field will always display the entity in its own original lang.
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-1', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-2', 'Tag N°2');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-3', 'Tag N°3');
@@ -131,7 +131,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-5', 'Mot clé N°5');
 
     // Load entity article (node) referenced field - French.
-    // Referenced field will always display the entity in his own original lang.
+    // Referenced field will always display the entity in its own original lang.
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-1', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-2', 'Tag N°2');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-3', 'Tag N°3');
@@ -155,7 +155,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-5', 'Tag N°5');
 
     // Load entity article (node) referenced field - German.
-    // Referenced field will always display the entity in his own original lang.
+    // Referenced field will always display the entity in its own original lang.
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-1', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-2', 'Tag N°2');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-3', 'Tag N°3');
@@ -184,7 +184,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-5', 'Tag N°5');
 
     // Load entity article (node) referenced field.
-    // Referenced field will always display the entity in his own original lang.
+    // Referenced field will always display the entity in its own original lang.
     $this->assertElementContains('.test-loaders div.loader-field-reference-1', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-field-reference-2', 'Tag N°2');
     $this->assertElementContains('.test-loaders div.loader-field-reference-3', 'Tag N°3');
@@ -214,7 +214,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-5', 'Mot clé N°5');
 
     // Load entity article (node) referenced field - French.
-    // Referenced field will always display the entity in his own original lang.
+    // Referenced field will always display the entity in its own original lang.
     $this->assertElementContains('.test-loaders div.loader-field-reference-1', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-field-reference-2', 'Tag N°2');
     $this->assertElementContains('.test-loaders div.loader-field-reference-3', 'Tag N°3');
@@ -238,7 +238,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-5', 'Tag N°5');
 
     // Load entity article (node) referenced field - German.
-    // Referenced field will always display the entity in his own original lang.
+    // Referenced field will always display the entity in its own original lang.
     $this->assertElementContains('.test-loaders div.loader-field-reference-1', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-field-reference-2', 'Tag N°2');
     $this->assertElementContains('.test-loaders div.loader-field-reference-3', 'Tag N°3');

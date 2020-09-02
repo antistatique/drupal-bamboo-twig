@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
+use Twig\TwigFilter;
 use Traversable;
 
 /**
@@ -16,7 +17,7 @@ class TwigArray extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig\TwigFilter('bamboo_extensions_shuffle', [$this, 'shuffle']),
+      new TwigFilter('bamboo_extensions_shuffle', [$this, 'shuffle']),
     ];
   }
 
@@ -42,7 +43,7 @@ class TwigArray extends \Twig_Extension {
    */
   public function shuffle($array) {
     if ($array instanceof Traversable) {
-      $array = iterator_to_array($array, false);
+      $array = iterator_to_array($array, FALSE);
     }
 
     shuffle($array);

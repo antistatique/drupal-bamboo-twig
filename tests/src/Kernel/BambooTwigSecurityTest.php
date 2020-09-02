@@ -3,7 +3,6 @@
 namespace Drupal\Tests\bamboo_twig\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\bamboo_twig\Entity\TemplateWhispererSuggestionEntityInterface;
 
 /**
  * Tests Security twig filters and functions.
@@ -116,4 +115,5 @@ class BambooTwigSecurityTest extends KernelTestBase {
     $this->expectExceptionMessage('Invalid conjunction type "XOR".');
     $this->securityExtension->hasRoles(['administrator'], 'XOR', 1);
   }
+
 }

@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
+use Twig\TwigFilter;
 use Drupal\Core\Template\TwigEnvironment;
 
 /**
@@ -16,7 +17,7 @@ class TwigText extends \Twig_Extension {
    */
   public function getFilters() {
     return [
-      new \Twig\TwigFilter('bamboo_extensions_truncate', [$this, 'truncate'], ['needs_environment' => TRUE]),
+      new TwigFilter('bamboo_extensions_truncate', [$this, 'truncate'], ['needs_environment' => TRUE]),
     ];
   }
 
@@ -52,15 +53,15 @@ class TwigText extends \Twig_Extension {
   public function truncate(TwigEnvironment $env, $string, $length = 30, $preserve = FALSE, $separator = '...') {
     if (mb_strlen($string, $env->getCharset()) > $length) {
       if ($preserve) {
-        // If breakpoint is on the last word, return the value without separator.
-        if (false === ($breakpoint = mb_strpos($string, ' ', $length, $env->getCharset()))) {
+        // If breakpoint is on the last word, return the value w/o separator.
+        if (FALSE === ($breakpoint = mb_strpos($string, ' ', $length, $env->getCharset()))) {
           return $string;
         }
 
         $length = $breakpoint;
       }
 
-      return rtrim(mb_substr($string, 0, $length, $env->getCharset())).$separator;
+      return rtrim(mb_substr($string, 0, $length, $env->getCharset())) . $separator;
     }
 
     return $string;

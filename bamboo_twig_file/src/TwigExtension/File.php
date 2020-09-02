@@ -2,6 +2,8 @@
 
 namespace Drupal\bamboo_twig_file\TwigExtension;
 
+use Twig\TwigFunction;
+use Twig\TwigFilter;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 
 /**
@@ -14,7 +16,7 @@ class File extends TwigExtensionBase {
    */
   public function getFilters() {
     return [
-      new \Twig\TwigFilter('bamboo_file_extension_guesser', [$this, 'extensionGuesser']),
+      new TwigFilter('bamboo_file_extension_guesser', [$this, 'extensionGuesser']),
     ];
   }
 
@@ -23,7 +25,7 @@ class File extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new \Twig\TwigFunction('bamboo_file_url_absolute', [$this, 'urlAbsolute']),
+      new TwigFunction('bamboo_file_url_absolute', [$this, 'urlAbsolute']),
     ];
   }
 
