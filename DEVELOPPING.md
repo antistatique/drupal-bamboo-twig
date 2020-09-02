@@ -46,7 +46,7 @@ We use the [Docker for Drupal Contrib images](https://hub.docker.com/r/wengerk/d
 
 Run testing by stopping at first failure using the following command:
 
-    docker-compose exec -u www-data drupal phpunit --group=bamboo_twig --no-coverage --stop-on-failure
+    docker-compose exec -u www-data drupal phpunit --no-coverage --group=bamboo_twig --stop-on-failure --configuration=/var/www/html/phpunit.xml
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
