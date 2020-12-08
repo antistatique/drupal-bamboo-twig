@@ -1,189 +1,26 @@
-# @file
-# .travis.yml - Drupal for Travis CI Integration
-#
-# Template provided by https://github.com/LionsAd/drupal_ti.
-
 language: php
 
-sudo: false
-
-php:
-  - 7.1
-
 services:
-  - mysql
-
-matrix:
-  include:
-    - name: D8.6 - Bamboo Twig Config
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
-    - name: D8.7 - Bamboo Twig Config
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
-    - name: D8.8 - Bamboo Twig Config
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_config"
-
-    - name: D8.6 - Bamboo Twig Extensions
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
-    - name: D8.7 - Bamboo Twig Extensions
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
-    - name: D8.8 - Bamboo Twig Extensions
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_extensions"
-
-    - name: D8.6 - Bamboo Twig File
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
-    - name: D8.7 - Bamboo Twig File
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
-    - name: D8.8 - Bamboo Twig File
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_file"
-
-    - name: D8.6 - Bamboo Twig i18n
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
-    - name: D8.7 - Bamboo Twig i18n
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
-    - name: D8.8 - Bamboo Twig i18n
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_i18n"
-
-    - name: D8.6 - Bamboo Twig Loader
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
-    - name: D8.7 - Bamboo Twig Loader
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
-    - name: D8.8 - Bamboo Twig Loader
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_loader"
-
-    - name: D8.6 - Bamboo Twig Path
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
-    - name: D8.7 - Bamboo Twig Path
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
-    - name: D8.8 - Bamboo Twig Path
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_path"
-
-    - name: D8.6 - Bamboo Twig Render
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
-    - name: D8.7 - Bamboo Twig Render
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
-    - name: D8.8 - Bamboo Twig Render
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_render"
-
-    - name: D8.6 - Bamboo Twig Security
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
-    - name: D8.7 - Bamboo Twig Security
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
-    - name: D8.8 - Bamboo Twig Security
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_security"
-
-    - name: D8.6 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.6.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
-    - name: D8.7 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.7.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
-    - name: D8.8 - Bamboo Twig Token
-      env: DRUPAL_TI_RUNNERS="phpunit-core" DRUPAL_TI_CORE_BRANCH="8.8.x" DRUPAL_TI_PHPUNIT_ARGS="--group bamboo_twig_token"
+  - docker
 
 env:
   global:
-    # add composer's global bin directory to the path
-    # see: https://github.com/drush-ops/drush#install---composer
-    - PATH="$PATH:$HOME/.composer/vendor/bin"
-    - export COMPOSER_HOME="$HOME/.composer/"
+    # The module name to be mounted and tested in the Docker.
+    - MODULE_NAME="bamboo_twig"
 
-    # Configuration variables.
-    - DRUPAL_TI_MODULE_NAME="bamboo_twig"
-    - DRUPAL_TI_SIMPLETEST_GROUP="bamboo_twig"
-
-    # Define runners and environment vars to include before and after the
-    # main runners / environment vars.
-    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="./drupal_ti/before"
-    #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
-
-    # The environment to use, supported are: drupal-7, drupal-8
-    - DRUPAL_TI_ENVIRONMENT="drupal-8"
-
-    # Switch to 8.8.x versions instead of 8.1.x by default.
-    - DRUPAL_TI_CORE_BRANCH="8.8.x"
-
-    # The installation profile to use:
-    #- DRUPAL_TI_INSTALL_PROFILE="testing"
-
-    # Drupal specific variables.
-    - DRUPAL_TI_DB="drupal_travis_db"
-    - DRUPAL_TI_DB_URL="mysql://root:@127.0.0.1/drupal_travis_db"
-    # Note: Do not add a trailing slash here.
-    - DRUPAL_TI_WEBSERVER_URL="http://127.0.0.1"
-    - DRUPAL_TI_WEBSERVER_PORT="8080"
-
-    # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
-    - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
-
-    # === Behat specific variables.
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="./tests/behat"
-    # These arguments are passed to the bin/behat command.
-    - DRUPAL_TI_BEHAT_ARGS=""
-    # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
-    - DRUPAL_TI_BEHAT_YML="behat.yml.dist"
-    # This is used to setup Xvfb.
-    - DRUPAL_TI_BEHAT_SCREENSIZE_COLOR="1280x1024x16"
-    # The version of selenium that should be used.
-    - DRUPAL_TI_BEHAT_SELENIUM_VERSION="2.48.2"
-    # Set DRUPAL_TI_BEHAT_DRIVER to "selenium" to use "firefox" or "chrome" here.
-    - DRUPAL_TI_BEHAT_DRIVER="phantomjs"
-    - DRUPAL_TI_BEHAT_BROWSER="firefox"
-
-    # PHPUnit specific commandline arguments.
-    - DRUPAL_TI_PHPUNIT_ARGS=""
-    # Specifying the phpunit-core src/ directory is useful when e.g. a vendor/
-    # directory is present in the module directory, which phpunit would then
-    # try to find tests in. This option is relative to $TRAVIS_BUILD_DIR.
-    #- DRUPAL_TI_PHPUNIT_CORE_SRC_DIRECTORY="./tests/src"
-
-    # Code coverage via coveralls.io
-    - DRUPAL_TI_COVERAGE="satooshi/php-coveralls:0.6.*"
-    # This needs to match your .coveralls.yml file.
-    - DRUPAL_TI_COVERAGE_FILE="build/logs/clover.xml"
-
-    # Debug options
-    # - DRUPAL_TI_DEBUG="-x -v"
-    # Set to "all" to output all files, set to e.g. "xvfb selenium" or "selenium",
-    # etc. to only output those channels.
-    #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
-    # - DRUPAL_TI_DEBUG_FILE_OUTPUT="all"
-
-  matrix:
-    # [[[ SELECT ANY OR MORE OPTIONS ]]]
-    #- DRUPAL_TI_RUNNERS="phpunit"
-    #- DRUPAL_TI_RUNNERS="simpletest"
-    #- DRUPAL_TI_RUNNERS="behat"
-    #- DRUPAL_TI_RUNNERS="phpunit simpletest behat"
-    # Use phpunit-core to test modules with phpunit with Drupal 8 core.
-    - DRUPAL_TI_RUNNERS="phpunit-core"
-
-mysql:
-  database: drupal_travis_db
-  username: root
-  encoding: utf8
+matrix:
+  include:
+    - name: Drupal 8.8.x
+      env: BASE_IMAGE_TAG="8.8"
+    - name: Drupal 8.9.x
+      env: BASE_IMAGE_TAG="8.9"
 
 before_install:
-  - composer self-update
-  - cd ./tests
-  - composer global require "lionsad/drupal_ti:dev-master#9f26af8"
-  - drupal-ti before_install
-
-install:
-  - drupal-ti install
-
-before_script:
-  - echo "$DRUPAL_TI_DRUPAL_DIR"
-  - drupal-ti before_script
-  # Add twig/extensions as required by bamboo_twig_extensions
-  - composer require "twig/extensions:^1.4.1" --no-interaction --working-dir=${TRAVIS_BUILD_DIR}/../drupal-8/drupal
+  - docker-compose build --pull --build-arg BASE_IMAGE_TAG=${BASE_IMAGE_TAG} drupal
+  - docker-compose up -d drupal
+  # wait on Docker to be ready, especially MariaDB that takes many seconds to be up.
+  - docker-compose exec drupal wait-for-it drupal:80 -t 60
+  - docker-compose exec drupal wait-for-it db:3306 -t 60
 
 script:
-  # Disable deprecations helper to avoid build failed caused by usage of
-  # deprecations in Drupal Core.
-  - export SYMFONY_DEPRECATIONS_HELPER=disabled
-  - drupal-ti script
-
-after_script:
-  - drupal-ti after_script
-
-notifications:
-  email: false
+  - docker-compose exec -u www-data drupal phpunit --no-coverage --group=${MODULE_NAME} --configuration=/var/www/html/phpunit.xml

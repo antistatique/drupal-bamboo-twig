@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+
+  drupal:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - 8888:80
+    volumes:
+      # Mount the module in the proper contrib module directory.
+      - .:/var/www/html/modules/contrib/bamboo_twig
+    restart: always
+
+  db:
+    image: mariadb:10.3.7
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
