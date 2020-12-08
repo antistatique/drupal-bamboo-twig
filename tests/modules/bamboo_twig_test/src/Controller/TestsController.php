@@ -3,12 +3,11 @@
 namespace Drupal\bamboo_twig_test\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use DateTime;
 use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
- * TestsController.
+ * Returns renderer-responses for testing Twig functions/filters on templates.
  */
 class TestsController extends ControllerBase {
 
@@ -74,7 +73,7 @@ class TestsController extends ControllerBase {
           3 => $nodeStorage->load(4),
           4 => $nodeStorage->load(5),
         ],
-        'datetime'       => DateTime::createFromFormat('d-m-Y', '24-07-2014'),
+        'datetime'       => \DateTime::createFromFormat('d-m-Y', '24-07-2014'),
         'datetimeplus'   => DateTimePlus::createFromFormat('d-m-Y', '24-07-2014'),
         'drupaldatetime' => DrupalDateTime::createFromFormat('d-m-Y', '24-07-2014'),
       ],

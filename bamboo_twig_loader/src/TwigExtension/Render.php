@@ -224,7 +224,7 @@ class Render extends TwigExtensionBase {
     $view_builder = $this->getEntityTypeManager()->getViewBuilder('block');
 
     $build = [];
-    /* @var $blocks \Drupal\block\BlockInterface[] */
+    /** @var \Drupal\block\BlockInterface[] $blocks */
     foreach ($blocks as $id => $block) {
       $block_plugin = $block->getPlugin();
       if ($block_plugin instanceof TitleBlockPluginInterface) {

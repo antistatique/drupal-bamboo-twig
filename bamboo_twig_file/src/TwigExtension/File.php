@@ -16,7 +16,9 @@ class File extends TwigExtensionBase {
    */
   public function getFilters() {
     return [
-      new TwigFilter('bamboo_file_extension_guesser', [$this, 'extensionGuesser']),
+      new TwigFilter('bamboo_file_extension_guesser', [
+        $this, 'extensionGuesser',
+      ]),
     ];
   }
 
@@ -25,7 +27,9 @@ class File extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new TwigFunction('bamboo_file_url_absolute', [$this, 'urlAbsolute']),
+      new TwigFunction('bamboo_file_url_absolute', [
+        $this, 'urlAbsolute',
+      ]),
     ];
   }
 
