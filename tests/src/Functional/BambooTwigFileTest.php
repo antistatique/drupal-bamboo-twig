@@ -35,8 +35,8 @@ class BambooTwigFileTest extends BambooTwigTestBase {
     $this->assertElementPresent('.test-files div.ext-guesser-word');
     $this->assertElementContains('.test-files div.ext-guesser-word', 'docx');
 
-    $this->assertElementPresent('.test-files div.ext-guesser-jpg');
-    $this->assertElementContains('.test-files div.ext-guesser-jpg', 'jpeg');
+    $this->assertElementPresent('.test-files div.ext-guesser-png');
+    $this->assertElementContains('.test-files div.ext-guesser-png', 'png');
   }
 
   /**

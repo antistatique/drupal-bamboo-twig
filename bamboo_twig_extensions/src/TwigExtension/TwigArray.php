@@ -3,7 +3,6 @@
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
 use Twig\TwigFilter;
-use Traversable;
 
 /**
  * Provides bridge for Array functions and filters.
@@ -42,7 +41,7 @@ class TwigArray extends \Twig_Extension {
    *   The shuffled array; or FALSE on failure.
    */
   public function shuffle($array) {
-    if ($array instanceof Traversable) {
+    if ($array instanceof \Traversable) {
       $array = iterator_to_array($array, FALSE);
     }
 
