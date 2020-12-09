@@ -3,6 +3,7 @@
 namespace Drupal\Tests\bamboo_twig\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\TestTools\PhpUnitCompatibility\RunnerVersion;
 
 /**
  * Tests Security twig filters and functions.
@@ -24,7 +25,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'user',
     'bamboo_twig',
@@ -32,13 +33,39 @@ class BambooTwigSecurityTest extends KernelTestBase {
   ];
 
   /**
+   * Gets the current drupal core version.
+   *
+   * @return array
+   *   Associative array of version info:
+   *   - major: Major version (e.g., "8").
+   *   - minor: Minor version (e.g., "0").
+   *   - patch: Patch version (e.g., "0").
+   *   - extra: Extra version info (e.g., "alpha2").
+   *   - extra_text: The text part of "extra" (e.g., "alpha").
+   *   - extra_number: The number part of "extra" (e.g., "2").
+   */
+  protected function getVersionStringToTest(): array {
+    return _install_get_version_info(\Drupal::VERSION);
+  }
+
+  /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installEntitySchema('user');
-    $this->installSchema('system', ['sequences', 'key_value']);
+    $version = $this->getVersionStringToTest();
+
+    // In Drupal 9.1 calling KernelTestBase::installSchema() for the tables
+    // key_value and key_value_expire is deprecated.
+    // @see https://www.drupal.org/node/3143286
+    // @todo update when dropping support below Drupal:9.0.
+    $system_tables = ['sequences'];
+    if ($version['major'] === '8' || ($version['major'] === '9' && $version['minor'] === '1')) {
+      $system_tables[] = 'key_value';
+    }
+    $this->installSchema('system', $system_tables);
 
     /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
     $this->entityTypeManager = $this->container->get('entity_type.manager');
