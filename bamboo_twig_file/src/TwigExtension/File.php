@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_file\TwigExtension;
 
+use Drupal\bamboo_twig_file\UrlHelper;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
@@ -10,6 +11,21 @@ use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
  * Provides a 'File' Twig Extensions.
  */
 class File extends TwigExtensionBase {
+
+  /**
+   * @var \Drupal\bamboo_twig_file\UrlHelper
+   */
+  private $urlHelper;
+
+  /**
+   * File Twig Extension constructor.
+   *
+   * @param \Drupal\bamboo_twig_file\UrlHelper $urlHelper
+   *   Helper to build absolute url.
+   */
+  public function __construct(UrlHelper $urlHelper) {
+    $this->urlHelper = $urlHelper;
+  }
 
   /**
    * List of all Twig functions.
@@ -30,6 +46,14 @@ class File extends TwigExtensionBase {
       new TwigFunction('bamboo_file_url_absolute', [
         $this, 'urlAbsolute',
       ]),
+      new TwigFunction('bamboo_absolute_url', [
+        $this->urlHelper,
+        'getAbsoluteUrl'
+      ]),
+      new TwigFunction('bamboo_relative_url', [
+        $this->urlHelper,
+        'getRelativePath'
+      ])
     ];
   }
 
