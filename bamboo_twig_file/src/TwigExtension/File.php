@@ -50,7 +50,7 @@ class File extends TwigExtensionBase {
         $this->urlHelper,
         'getAbsoluteUrl'
       ]),
-      new TwigFunction('bamboo_relative_url', [
+      new TwigFunction('bamboo_relative_path', [
         $this->urlHelper,
         'getRelativePath'
       ])
