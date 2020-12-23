@@ -1,15 +1,6 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Drupal\Tests\bamboo_twig\Kernel;
+namespace Drupal\Tests\bamboo_twig\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +8,17 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\bamboo_twig_file\UrlHelper;
 use Symfony\Component\Routing\RequestContext;
 
-class UrlHelperTest extends TestCase
-{
+/**
+ * Test of the UrlHelper class.
+ */
+class UrlHelperTest extends TestCase {
+
   /**
+   * TestGenerateAbsoluteUrl.
+   *
    * @dataProvider getGenerateAbsoluteUrlData()
    */
-  public function testGenerateAbsoluteUrl($expected, $path, $pathinfo)
-  {
+  public function testGenerateAbsoluteUrl($expected, $path, $pathinfo) {
     $stack = new RequestStack();
     $stack->push(Request::create($pathinfo));
     $helper = new UrlHelper($stack);
@@ -31,8 +26,11 @@ class UrlHelperTest extends TestCase
     $this->assertEquals($expected, $helper->getAbsoluteUrl($path));
   }
 
-  public function getGenerateAbsoluteUrlData()
-  {
+  /**
+   * GetGenerateAbsoluteUrlData.
+   */
+  public function getGenerateAbsoluteUrlData() {
+    // phpcs:disable Drupal.Arrays.Array.LongLineDeclaration
     return [
       ['http://localhost/foo.png', '/foo.png', '/foo/bar.html'],
       ['http://localhost/foo/foo.png', 'foo.png', '/foo/bar.html'],
@@ -55,10 +53,11 @@ class UrlHelperTest extends TestCase
   }
 
   /**
+   * TestGenerateAbsoluteUrlWithRequestContext.
+   *
    * @dataProvider getGenerateAbsoluteUrlRequestContextData
    */
-  public function testGenerateAbsoluteUrlWithRequestContext($path, $baseUrl, $host, $scheme, $httpPort, $httpsPort, $expected)
-  {
+  public function testGenerateAbsoluteUrlWithRequestContext($path, $baseUrl, $host, $scheme, $httpPort, $httpsPort, $expected) {
     if (!class_exists('Symfony\Component\Routing\RequestContext')) {
       $this->markTestSkipped('The Routing component is needed to run tests that depend on its request context.');
     }
@@ -70,10 +69,11 @@ class UrlHelperTest extends TestCase
   }
 
   /**
+   * TestGenerateAbsoluteUrlWithoutRequestAndRequestContext.
+   *
    * @dataProvider getGenerateAbsoluteUrlRequestContextData
    */
-  public function testGenerateAbsoluteUrlWithoutRequestAndRequestContext($path)
-  {
+  public function testGenerateAbsoluteUrlWithoutRequestAndRequestContext($path) {
     if (!class_exists('Symfony\Component\Routing\RequestContext')) {
       $this->markTestSkipped('The Routing component is needed to run tests that depend on its request context.');
     }
@@ -83,8 +83,10 @@ class UrlHelperTest extends TestCase
     $this->assertEquals($path, $helper->getAbsoluteUrl($path));
   }
 
-  public function getGenerateAbsoluteUrlRequestContextData()
-  {
+  /**
+   * GetGenerateAbsoluteUrlRequestContextData.
+   */
+  public function getGenerateAbsoluteUrlRequestContextData() {
     return [
       ['/foo.png', '/foo', 'localhost', 'http', 80, 443, 'http://localhost/foo.png'],
       ['foo.png', '/foo', 'localhost', 'http', 80, 443, 'http://localhost/foo/foo.png'],
@@ -97,8 +99,10 @@ class UrlHelperTest extends TestCase
     ];
   }
 
-  public function testGenerateAbsoluteUrlWithScriptFileName()
-  {
+  /**
+   * TestGenerateAbsoluteUrlWithScriptFileName.
+   */
+  public function testGenerateAbsoluteUrlWithScriptFileName() {
     $request = Request::create('http://localhost/app/web/app_dev.php');
     $request->server->set('SCRIPT_FILENAME', '/var/www/app/web/app_dev.php');
 
@@ -113,10 +117,11 @@ class UrlHelperTest extends TestCase
   }
 
   /**
+   * TestGenerateRelativePath.
+   *
    * @dataProvider getGenerateRelativePathData()
    */
-  public function testGenerateRelativePath($expected, $path, $pathinfo)
-  {
+  public function testGenerateRelativePath($expected, $path, $pathinfo) {
     if (!method_exists('Symfony\Component\HttpFoundation\Request', 'getRelativeUriForPath')) {
       $this->markTestSkipped('Your version of Symfony HttpFoundation is too old.');
     }
@@ -128,8 +133,10 @@ class UrlHelperTest extends TestCase
     $this->assertEquals($expected, $urlHelper->getRelativePath($path));
   }
 
-  public function getGenerateRelativePathData()
-  {
+  /**
+   * GetGenerateRelativePathData.
+   */
+  public function getGenerateRelativePathData() {
     return [
       ['../foo.png', '/foo.png', '/foo/bar.html'],
       ['../baz/foo.png', '/baz/foo.png', '/foo/bar.html'],
@@ -140,4 +147,5 @@ class UrlHelperTest extends TestCase
       ['//example.com/baz', '//example.com/baz', '/'],
     ];
   }
+
 }

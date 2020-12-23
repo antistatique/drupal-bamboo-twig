@@ -13,6 +13,8 @@ use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 class File extends TwigExtensionBase {
 
   /**
+   * URL Helper.
+   *
    * @var \Drupal\bamboo_twig_file\UrlHelper
    */
   private $urlHelper;
@@ -48,12 +50,12 @@ class File extends TwigExtensionBase {
       ]),
       new TwigFunction('bamboo_absolute_url', [
         $this->urlHelper,
-        'getAbsoluteUrl'
+        'getAbsoluteUrl',
       ]),
       new TwigFunction('bamboo_relative_path', [
         $this->urlHelper,
-        'getRelativePath'
-      ])
+        'getRelativePath',
+      ]),
     ];
   }
 
