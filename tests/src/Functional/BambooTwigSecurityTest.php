@@ -6,6 +6,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
  * Tests Security twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_functional
  * @group bamboo_twig_security
  */
 class BambooTwigSecurityTest extends BambooTwigTestBase {

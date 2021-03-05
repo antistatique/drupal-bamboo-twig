@@ -6,6 +6,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
  * Tests I18n twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_functional
  * @group bamboo_twig_i18n
  */
 class BambooTwigI18nTest extends BambooTwigTestBase {

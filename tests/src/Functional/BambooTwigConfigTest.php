@@ -6,6 +6,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
  * Tests Config twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_functional
  * @group bamboo_twig_config
  */
 class BambooTwigConfigTest extends BambooTwigTestBase {
