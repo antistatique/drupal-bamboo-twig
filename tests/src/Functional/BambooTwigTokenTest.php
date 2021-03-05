@@ -6,6 +6,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
  * Tests Token twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_functional
  * @group bamboo_twig_token
  */
 class BambooTwigTokenTest extends BambooTwigTestBase {

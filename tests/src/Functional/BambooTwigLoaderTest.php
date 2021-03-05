@@ -9,6 +9,7 @@ use Drupal\Core\StreamWrapper\PublicStream;
  * Tests Loaders twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_functional
  * @group bamboo_twig_loader
  */
 class BambooTwigLoaderTest extends BambooTwigTestBase {

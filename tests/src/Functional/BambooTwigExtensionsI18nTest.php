@@ -9,6 +9,7 @@ use Drupal\Component\Gettext\PoItem;
  * Tests Extensions i18n of twig filters and functions.
  *
  * @group bamboo_twig
+ * @group bamboo_twig_functional
  * @group bamboo_twig_extensions
  * @group bamboo_twig_extensions_i18n
  */
