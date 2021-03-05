@@ -54,7 +54,8 @@ class TwigText extends \Twig_Extension {
     if (mb_strlen($string, $env->getCharset()) > $length) {
       if ($preserve) {
         // If breakpoint is on the last word, return the value w/o separator.
-        if (FALSE === ($breakpoint = mb_strpos($string, ' ', $length, $env->getCharset()))) {
+        $breakpoint = mb_strpos($string, ' ', $length, $env->getCharset());
+        if (FALSE === $breakpoint) {
           return $string;
         }
 

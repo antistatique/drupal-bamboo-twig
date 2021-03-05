@@ -229,7 +229,8 @@ class Render extends TwigExtensionBase {
       $block_plugin = $block->getPlugin();
       if ($block_plugin instanceof TitleBlockPluginInterface) {
         $request = $this->requestStack->getCurrentRequest();
-        if ($route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT)) {
+        $route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
+        if ($route) {
           $block_plugin->setTitle($this->titleResolver->getTitle($request, $route));
         }
       }
