@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<ruleset name="Drupal 8 PHPMD Ruleset"
+  xmlns="http://pmd.sf.net/ruleset/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+  xsi:noNamespaceSchemaLocation=" http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+  <description>
+    Ruleset for PHPMD analysis of Drupal projects. Excludes coding issues
+    handled better by PHPCS and rules which have too many false positives
+    in a typical Drupal codebase.
+  </description>
+  <rule ref="rulesets/cleancode.xml">
+    <exclude name="ElseExpression" />
+    <exclude name="StaticAccess" />
+    <exclude name="BooleanArgumentFlag" />
+    <exclude name="MissingImport" />
+  </rule>
+  <rule ref="rulesets/codesize.xml">
+    <exclude name="NPathComplexity" />
+    <exclude name="CyclomaticComplexity" />
+    <exclude name="ExcessiveMethodLength" />
+    <exclude name="ExcessiveClassComplexity" />
+  </rule>
+  <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
+    <properties>
+      <property name="minimum" value="200" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity">
+    <properties>
+      <property name="maximum" value="60" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/controversial.xml/Superglobals" />
+  <rule ref="rulesets/design.xml">
+    <exclude name="CouplingBetweenObjects" />
+  </rule>
+  <rule ref="rulesets/design.xml/CouplingBetweenObjects">
+    <properties>
+      <property name="maximum" value="25" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/naming.xml">
+     <exclude name="ShortVariable" />
+     <exclude name="ShortMethodName" />
+     <exclude name="LongVariable" />
+  </rule>
+  <rule ref="rulesets/naming.xml/ShortVariable">
+    <properties>
+      <property name="exceptions" value="id,q,i,j,v,e,f,fp,dn,me,ip,dt,d,n" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/naming.xml/LongVariable">
+    <properties>
+      <property name="maximum" description="The variable length reporting threshold" value="30"/>
+    </properties>
+  </rule>
+  <rule ref="rulesets/naming.xml/ShortMethodName">
+    <properties>
+      <property name="exceptions" value="ip,me" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/unusedcode.xml">
+    <exclude name="UnusedFormalParameter" />
+    <exclude name="UnusedLocalVariable" />
+  </rule>
+  <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable">
+    <properties>
+      <property name="allow-unused-foreach-variables" value="true" />
+    </properties>
+  </rule>
+</ruleset>
