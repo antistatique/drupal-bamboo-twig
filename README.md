@@ -4,9 +4,9 @@ All the Twig features you missed until now.
 
 A Drupal 8 powered module.
 
-|       Travis-CI        |        Style-CI         |        Downloads        |         Releases         |
+|       Tests-CI        |        Style-CI         |        Downloads        |         Releases         |
 |:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
-| [![Build Status](https://travis-ci.com/antistatique/drupal-bamboo-twig.svg?branch=8.x-5.x)](https://travis-ci.com/antistatique/drupal-bamboo-twig) | [![StyleCI](https://styleci.io/repos/85471768/shield)](https://styleci.io/repos/85471768) | [![Downloads](https://img.shields.io/badge/downloads-8.x--5.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-5.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v5.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
+| [![Build Status](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/ci.yml/badge.svg)](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/ci.yml) | [![Code styles](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/styles.yml/badge.svg)](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/styles.yml) | [![Downloads](https://img.shields.io/badge/downloads-8.x--5.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-5.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v5.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
 
 The Bamboo Twig module provides some Twig extensions with some useful functions
 and filters aimed to improve the development experience.
