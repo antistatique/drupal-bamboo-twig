@@ -1,6 +1,14 @@
 services:
+    bamboo_twig_file.url_helper:
+        class: Drupal\bamboo_twig_file\UrlHelper
+        arguments:
+          - '@request_stack'
+          - '@router.request_context'
+
     bamboo_twig_file.twig.file:
         class: Drupal\bamboo_twig_file\TwigExtension\File
         tags:
             - { name: twig.extension }
+        arguments:
+          - '@bamboo_twig_file.url_helper'
         parent: bamboo_twig.twig.base
