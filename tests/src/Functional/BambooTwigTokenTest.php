@@ -13,7 +13,7 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'locale',
     'language',
     'node',
@@ -27,7 +27,8 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     $this->setUpLanguages();

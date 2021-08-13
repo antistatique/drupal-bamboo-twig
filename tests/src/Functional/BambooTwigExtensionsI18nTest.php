@@ -18,7 +18,7 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'locale',
     'language',
     'bamboo_twig',
@@ -29,7 +29,8 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */

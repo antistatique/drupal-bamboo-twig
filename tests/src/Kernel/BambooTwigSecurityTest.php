@@ -24,7 +24,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'user',
     'bamboo_twig',
@@ -34,11 +34,11 @@ class BambooTwigSecurityTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installEntitySchema('user');
-    $this->installSchema('system', ['sequences', 'key_value']);
+    $this->installSchema('system', ['sequences']);
 
     /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
     $this->entityTypeManager = $this->container->get('entity_type.manager');

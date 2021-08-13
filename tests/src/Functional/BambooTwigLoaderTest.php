@@ -18,7 +18,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'locale',
     'language',
     'node',
@@ -47,7 +47,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     $this->setUpLanguages();
@@ -69,13 +70,13 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   public function testCurrentUser() {
     $this->drupalGet('/bamboo-twig-loader');
 
-    $this->assertElementPresent('.test-loaders div.loader-current-user');
+    $this->assertSession()->elementExists('css', '.test-loaders div.loader-current-user');
     $this->assertElementContains('.test-loaders div.loader-current-user', '');
 
     $this->drupalLogin($this->admin_user);
     $this->drupalGet('/bamboo-twig-loader');
 
-    $this->assertElementPresent('.test-loaders div.loader-current-user');
+    $this->assertSession()->elementExists('css', '.test-loaders div.loader-current-user');
     $this->assertElementContains('.test-loaders div.loader-current-user', $this->admin_user->getAccountName());
   }
 
@@ -108,11 +109,11 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-5', 'Mot clé N°5');
 
     // Load entity file.
-    $this->assertElementPresent('.test-loaders div.loader-entity-file');
+    $this->assertSession()->elementExists('css', '.test-loaders div.loader-entity-file');
     $this->assertElementContains('.test-loaders div.loader-entity-file', 'antistatique.jpg');
 
     // Load entity user.
-    $this->assertElementPresent('.test-loaders div.loader-entity-user');
+    $this->assertSession()->elementExists('css', '.test-loaders div.loader-entity-user');
     $this->assertElementContains('.test-loaders div.loader-entity-user', 'admin');
 
     $this->drupalGet('/fr/bamboo-twig-loader');
@@ -253,11 +254,11 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   public function testImage() {
     $this->drupalGet('/bamboo-twig-loader');
     // Load an image using uri public://antistatique.jpg.
-    $this->assertElementPresent('.test-loaders div.loader-image-uri');
+    $this->assertSession()->elementExists('css', '.test-loaders div.loader-image-uri');
     $this->assertElementContains('.test-loaders div.loader-image-uri', $this->file->getFileUri());
 
     // Load an image using uri public://antistatique.jpg.
-    $this->assertElementPresent('.test-loaders div.loader-image-path');
+    $this->assertSession()->elementExists('css', '.test-loaders div.loader-image-path');
     $this->assertElementContains('.test-loaders div.loader-image-path', 'bamboo_twig_test/files/antistatique.jpg');
   }
 

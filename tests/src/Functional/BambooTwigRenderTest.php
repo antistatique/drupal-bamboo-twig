@@ -18,7 +18,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'locale',
     'language',
     'node',
@@ -36,7 +36,8 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     $this->setUpLanguages();
@@ -68,12 +69,12 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-render');
 
     // Tests for Block Plugin.
-    $this->assertElementPresent('.test-render div.render-block-plugin');
+    $this->assertSession()->elementExists('css', '.test-render div.render-block-plugin');
     $this->assertElementContains('.test-render div.render-block-plugin', '<span>Powered by <a href="https://www.drupal.org">Drupal</a></span>');
 
     // Tests for Block Entity.
-    $this->assertElementPresent('.test-render div.render-block-entity');
-    $this->assertElementPresent('.test-render div.render-block-entity #block-stark-branding');
+    $this->assertSession()->elementExists('css', '.test-render div.render-block-entity');
+    $this->assertSession()->elementExists('css', '.test-render div.render-block-entity #block-stark-branding');
   }
 
   /**
@@ -81,8 +82,8 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testRegion() {
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-region');
-    $this->assertElementPresent('.test-render div.render-region #block-stark-branding');
+    $this->assertSession()->elementExists('css', '.test-render div.render-region');
+    $this->assertSession()->elementExists('css', '.test-render div.render-region #block-stark-branding');
   }
 
   /**
@@ -200,8 +201,8 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testImage() {
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-image');
-    $this->assertElementPresent('.test-render div.render-image img');
+    $this->assertSession()->elementExists('css', '.test-render div.render-image');
+    $this->assertSession()->elementExists('css', '.test-render div.render-image img');
   }
 
   /**
@@ -210,10 +211,10 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   public function testImageStyle() {
     $this->drupalGet('/bamboo-twig-render');
 
-    $this->assertElementPresent('.test-render div.render-image-style-uri');
+    $this->assertSession()->elementExists('css', '.test-render div.render-image-style-uri');
     $this->assertElementContains('.test-render div.render-image-style-uri', 'files/styles/thumbnail/public/antistatique.jpg');
 
-    $this->assertElementPresent('.test-render div.render-image-style-uri-preprocess');
+    $this->assertSession()->elementExists('css', '.test-render div.render-image-style-uri-preprocess');
     $this->assertElementContains('.test-render div.render-image-style-uri-preprocess', 'files/styles/thumbnail/public/antistatique.jpg');
   }
 
@@ -303,17 +304,17 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testMenu() {
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-menu-no-access');
-    $this->assertElementNotPresent('.test-render div.render-menu-no-access ul');
+    $this->assertSession()->elementExists('css', '.test-render div.render-menu-no-access');
+    $this->assertSession()->elementNotExists('css', '.test-render div.render-menu-no-access ul');
     $this->drupalLogin($this->admin_user);
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-menu-all');
+    $this->assertSession()->elementExists('css', '.test-render div.render-menu-all');
     $this->assertElementCount('ul', 9, '.test-render div.render-menu-all');
     $this->assertElementCount('li', 25, '.test-render div.render-menu-all');
-    $this->assertElementPresent('.test-render div.render-menu-level');
+    $this->assertSession()->elementExists('css', '.test-render div.render-menu-level');
     $this->assertElementCount('ul', 8, '.test-render div.render-menu-level');
     $this->assertElementCount('li', 24, '.test-render div.render-menu-level');
-    $this->assertElementPresent('.test-render div.render-menu-depth');
+    $this->assertSession()->elementExists('css', '.test-render div.render-menu-depth');
     $this->assertElementCount('ul', 2, '.test-render div.render-menu-depth');
     $this->assertElementCount('li', 3, '.test-render div.render-menu-depth');
   }
@@ -323,8 +324,8 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testForm() {
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-form');
-    $this->assertElementPresent('.test-render div.render-form form.system-cron-settings');
+    $this->assertSession()->elementExists('css', '.test-render div.render-form');
+    $this->assertSession()->elementExists('css', '.test-render div.render-form form.system-cron-settings');
   }
 
   /**
@@ -332,8 +333,8 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    */
   public function testViews() {
     $this->drupalGet('/bamboo-twig-render');
-    $this->assertElementPresent('.test-render div.render-views');
-    $this->assertElementPresent('.test-render div.render-views .views-element-container');
+    $this->assertSession()->elementExists('css', '.test-render div.render-views');
+    $this->assertSession()->elementExists('css', '.test-render div.render-views .views-element-container');
   }
 
   /**

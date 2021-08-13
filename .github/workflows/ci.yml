@@ -1,5 +1,9 @@
 name: Continuous integration
-on: [pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * THU'
 
 jobs:
   tests:
@@ -9,11 +13,11 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['8.8', '8.9', '9.0']
+        drupal_version: ['8.8', '8.9', '9.0', '9.1', '9.2']
         module: ['bamboo_twig']
         experimental: [ false ]
         include:
-          - drupal_version: '9.1'
+          - drupal_version: '9.3'
             module: 'bamboo_twig'
             experimental: true
 
@@ -34,11 +38,11 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: [ '8.8', '8.9', '9.0' ]
+        drupal_version: ['8.8', '8.9', '9.0', '9.1', '9.2']
         module: [ 'bamboo_twig' ]
         experimental: [ false ]
         include:
-          - drupal_version: '9.1'
+          - drupal_version: '9.3'
             module: 'bamboo_twig'
             experimental: true
 
