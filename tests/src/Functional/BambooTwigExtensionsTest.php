@@ -14,7 +14,7 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'bamboo_twig',
     'bamboo_twig_extensions',
     'bamboo_twig_test',
@@ -26,22 +26,22 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
   public function testTextTruncate() {
     $this->drupalGet('/bamboo-twig-extensions');
 
-    $this->assertElementPresent('.test-extensions div.text-truncat-1');
+    $this->assertSession()->elementExists('css', '.test-extensions div.text-truncat-1');
     $this->assertElementContains('.test-extensions div.text-truncat-1', 'Th...');
 
-    $this->assertElementPresent('.test-extensions div.text-truncat-2');
+    $this->assertSession()->elementExists('css', '.test-extensions div.text-truncat-2');
     $this->assertElementContains('.test-extensions div.text-truncat-2', 'This i...');
 
-    $this->assertElementPresent('.test-extensions div.text-truncat-3');
+    $this->assertSession()->elementExists('css', '.test-extensions div.text-truncat-3');
     $this->assertElementContains('.test-extensions div.text-truncat-3', 'This...');
 
-    $this->assertElementPresent('.test-extensions div.text-truncat-4');
+    $this->assertSession()->elementExists('css', '.test-extensions div.text-truncat-4');
     $this->assertElementContains('.test-extensions div.text-truncat-4', 'This[...]');
 
-    $this->assertElementPresent('.test-extensions div.text-truncat-5');
+    $this->assertSession()->elementExists('css', '.test-extensions div.text-truncat-5');
     $this->assertElementContains('.test-extensions div.text-truncat-5', 'This is a very long sen...');
 
-    $this->assertElementPresent('.test-extensions div.text-truncat-6');
+    $this->assertSession()->elementExists('css', '.test-extensions div.text-truncat-6');
     $this->assertElementContains('.test-extensions div.text-truncat-6', 'This is a very long sentence.', 23, TRUE, '...', 'This is a very long sentence.');
   }
 
@@ -51,12 +51,12 @@ class BambooTwigExtensionsTest extends BambooTwigTestBase {
   public function testArrayShuffle() {
     $this->drupalGet('/bamboo-twig-extensions');
 
-    $this->assertElementPresent('.test-extensions div.array-shuffle-1');
+    $this->assertSession()->elementExists('css', '.test-extensions div.array-shuffle-1');
     $this->assertElementContains('.test-extensions div.array-shuffle-1', '1');
     $this->assertElementContains('.test-extensions div.array-shuffle-1', '2');
     $this->assertElementContains('.test-extensions div.array-shuffle-1', '3');
 
-    $this->assertElementPresent('.test-extensions div.array-shuffle-2');
+    $this->assertSession()->elementExists('css', '.test-extensions div.array-shuffle-2');
     $this->assertElementContains('.test-extensions div.array-shuffle-2', 'orange');
     $this->assertElementContains('.test-extensions div.array-shuffle-2', 'apple');
     $this->assertElementContains('.test-extensions div.array-shuffle-2', 'citrus');

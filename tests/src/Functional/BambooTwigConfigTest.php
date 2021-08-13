@@ -14,7 +14,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'bamboo_twig',
     'bamboo_twig_config',
     'bamboo_twig_test',
@@ -30,7 +30,8 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     // Used in our tests to retrieve settings.
@@ -43,7 +44,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   public function testGetSettings() {
     $this->drupalGet('/bamboo-twig-config');
 
-    $this->assertElementPresent('.test-configs div.config-settings');
+    $this->assertSession()->elementExists('css', '.test-configs div.config-settings');
     $this->assertElementContains('.test-configs div.config-settings', $this->hashSalt);
   }
 
@@ -53,7 +54,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   public function testGetConfig() {
     $this->drupalGet('/bamboo-twig-config');
 
-    $this->assertElementPresent('.test-configs div.config-system');
+    $this->assertSession()->elementExists('css', '.test-configs div.config-system');
     $this->assertElementContains('.test-configs div.config-system', 'simpletest@example.com');
   }
 
@@ -66,7 +67,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
 
     $this->drupalGet('/bamboo-twig-config');
 
-    $this->assertElementPresent('.test-configs div.config-state');
+    $this->assertSession()->elementExists('css', '.test-configs div.config-state');
     $this->assertElementContains('.test-configs div.config-state', $this->time);
   }
 

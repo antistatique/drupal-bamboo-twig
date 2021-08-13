@@ -14,7 +14,7 @@ class BambooTwigPathTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'bamboo_twig',
     'bamboo_twig_path',
     'bamboo_twig_test',
@@ -26,13 +26,13 @@ class BambooTwigPathTest extends BambooTwigTestBase {
   public function testPathSystem() {
     $this->drupalGet('/bamboo-twig-path');
 
-    $this->assertElementPresent('.test-paths div.path-theme');
+    $this->assertSession()->elementExists('css', '.test-paths div.path-theme');
     $this->assertElementContains('.test-paths div.path-theme', 'core/themes/stable');
 
-    $this->assertElementPresent('.test-paths div.path-core');
+    $this->assertSession()->elementExists('css', '.test-paths div.path-core');
     $this->assertElementContains('.test-paths div.path-core', 'core');
 
-    $this->assertElementPresent('.test-paths div.path-module');
+    $this->assertSession()->elementExists('css', '.test-paths div.path-module');
     $this->assertElementContains('.test-paths div.path-module', 'core/modules/node');
   }
 

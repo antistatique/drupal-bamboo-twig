@@ -14,7 +14,7 @@ class BambooTwigFileTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'bamboo_twig',
     'bamboo_twig_file',
     'bamboo_twig_path',
@@ -27,16 +27,16 @@ class BambooTwigFileTest extends BambooTwigTestBase {
   public function testExtensionGuesser() {
     $this->drupalGet('/bamboo-twig-file');
 
-    $this->assertElementPresent('.test-files div.ext-guesser-pdf');
+    $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-pdf');
     $this->assertElementContains('.test-files div.ext-guesser-pdf', 'pdf');
 
-    $this->assertElementPresent('.test-files div.ext-guesser-word-legacy');
+    $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-word-legacy');
     $this->assertElementContains('.test-files div.ext-guesser-word-legacy', 'doc');
 
-    $this->assertElementPresent('.test-files div.ext-guesser-word');
+    $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-word');
     $this->assertElementContains('.test-files div.ext-guesser-word', 'docx');
 
-    $this->assertElementPresent('.test-files div.ext-guesser-png');
+    $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-png');
     $this->assertElementContains('.test-files div.ext-guesser-png', 'png');
   }
 
@@ -46,10 +46,10 @@ class BambooTwigFileTest extends BambooTwigTestBase {
   public function testUrlAbsolute() {
     $this->drupalGet('/bamboo-twig-file');
 
-    $this->assertElementPresent('.test-files div.url-module-file-relative');
+    $this->assertSession()->elementExists('css', '.test-files div.url-module-file-relative');
     $this->assertElementContains('.test-files div.url-module-file-relative', '/bamboo_twig_test/files/antistatique.jpg');
 
-    $this->assertElementPresent('.test-files div.url-module-file-absolute');
+    $this->assertSession()->elementExists('css', '.test-files div.url-module-file-absolute');
     $this->assertElementContains('.test-files div.url-module-file-absolute', 'http://');
     $this->assertElementContains('.test-files div.url-module-file-absolute', '/bamboo_twig_test/files/antistatique.jpg');
   }

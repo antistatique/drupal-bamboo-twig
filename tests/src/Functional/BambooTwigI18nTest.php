@@ -14,7 +14,7 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'locale',
     'language',
     'node',
@@ -27,7 +27,8 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     $this->setUpLanguages();

@@ -49,7 +49,8 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
+
     parent::setUp();
 
     /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
