@@ -6,6 +6,7 @@ CHANGELOG
  - remove dependency on twig/extensions
  - fix Issue #3168662 by Michael Humbert: docker-compose with phpunit not working
  - enforce PHPCS integration via GithubActions
+ - close Issue #3247601 - add drupalci.yml file to install symfony/mime on testing container
  
 ## 8.x-5.0-alpha (2020-01-10)
  - close #3044811 - fix Drupal-CI Composer failure since Drupal 8.7.x+ - Update of drupal/coder squizlabs/php_codesniffer"
