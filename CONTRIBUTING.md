@@ -8,13 +8,15 @@ https://github.com/antistatique/drupal-bamboo-twig/pulls
 ## 📦 Repositories
 
 Github repo
+  
   ```
-  $ git remote add drupal git@git.drupal.org:project/bamboo_twig.git
+  $ git remote add github git@github.com:antistatique/drupal-bamboo-twig.git
   ```
 
 Drupal repo
+  
   ```
-  $ git remote add github https://github.com/antistatique/drupal-bamboo-twig.git
+  $ git remote add drupal git@git.drupal.org:project/bamboo_twig.git  
   ```
 
 ## 🔧 Prerequisites
