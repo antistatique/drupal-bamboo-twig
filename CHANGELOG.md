@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - add block context-mapping on bamboo_render_block
+- drop support of drupal 8.8 & 8.9
 
 ### Fixed
 - fix docker running tests on Github Actions
