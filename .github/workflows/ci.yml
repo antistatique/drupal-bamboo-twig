@@ -26,8 +26,12 @@ jobs:
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
         continue-on-error: ${{ matrix.experimental }}
+      - name: Up a persistent Docker Container
+        run: docker-compose -f docker-compose.yml up -d drupal
+      - name: wait on Docker to be ready, especially MariaDB that takes many seconds to be up
+        run: docker-compose exec -T drupal wait-for-it db:3306 -t 60
       - name: Run unit tests
-        run: docker-compose -f docker-compose.yml run -u www-data drupal phpunit --no-coverage --group=${{ matrix.module }} --exclude-group=${{ matrix.module }}_functional --configuration=/var/www/html/phpunit.xml
+        run: docker-compose -f docker-compose.yml exec -T -u www-data drupal phpunit --no-coverage --group=${{ matrix.module }} --exclude-group=${{ matrix.module }}_functional --configuration=/var/www/html/phpunit.xml
         continue-on-error: ${{ matrix.experimental }}
 
   tests-functional:
@@ -51,7 +55,7 @@ jobs:
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
         continue-on-error: ${{ matrix.experimental }}
-      - name: Up a persistant Docker Container
+      - name: Up a persistent Docker Container
         run: docker-compose -f docker-compose.yml up -d drupal
       - name: wait on Docker to be ready, especially Apache that takes many seconds to be up
         run: docker-compose exec -T drupal wait-for-it drupal:80 -t 60
