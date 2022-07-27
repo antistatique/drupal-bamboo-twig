@@ -238,4 +238,24 @@ class TwigExtensionBase extends \Twig_Extension {
     return $this->container->get('stream_wrapper_manager');
   }
 
+  /**
+   * Provides the context repository service.
+   *
+   * @return \Drupal\Core\Plugin\Context\ContextRepositoryInterface
+   *   The context repository service.
+   */
+  protected function getContextRepository() {
+    return $this->container->get('context.repository');
+  }
+
+  /**
+   * Provides the plugin context handler.
+   *
+   * @return \Drupal\Core\Plugin\Context\ContextHandlerInterface
+   *   The plugin context handler.
+   */
+  protected function getContextHandler() {
+    return $this->container->get('context.handler');
+  }
+
 }
