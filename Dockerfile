@@ -4,6 +4,10 @@ FROM wengerk/drupal-for-contrib:${BASE_IMAGE_TAG}
 ARG BASE_IMAGE_TAG
 ENV BASE_IMAGE_TAG=${BASE_IMAGE_TAG}
 
+# Disable deprecation notice since PHPUnit 9 with Drupal 9.1 and lower.
+# @see https://www.drupal.org/project/drupal/issues/3259744
+ENV SYMFONY_DEPRECATIONS_HELPER=weak
+
 # Install symfony/mime as required by bamboo_twig_extensions
 RUN COMPOSER_MEMORY_LIMIT=-1 composer require "symfony/mime:^4.3|^5.1.0"
 
@@ -36,6 +40,7 @@ RUN set -eux; \
   \
   docker-php-ext-install bz2; \
   \
-  curl -LJO https://github.com/wapmorgan/PhpDeprecationDetector/releases/download/2.0.24/phpcf-2.0.24.phar; \
-  chmod +x phpcf-2.0.24.phar; \
-  mv phpcf-2.0.24.phar /usr/bin/phpdd
+  curl -LJO https://github.com/wapmorgan/PhpDeprecationDetector/releases/download/2.0.29/phpdd-2.0.29.phar; \
+  chmod +x phpdd-2.0.29.phar; \
+  mv phpdd-2.0.29.phar /usr/bin/phpdd
+
