@@ -40,6 +40,7 @@ RUN set -eux; \
   \
   docker-php-ext-install bz2; \
   \
-  curl -LJO https://github.com/wapmorgan/PhpDeprecationDetector/releases/download/2.0.24/phpcf-2.0.24.phar; \
-  chmod +x phpcf-2.0.24.phar; \
-  mv phpcf-2.0.24.phar /usr/bin/phpdd
+  curl -LJO https://github.com/wapmorgan/PhpDeprecationDetector/releases/download/2.0.29/phpdd-2.0.29.phar; \
+  chmod +x phpdd-2.0.29.phar; \
+  mv phpdd-2.0.29.phar /usr/bin/phpdd
+
