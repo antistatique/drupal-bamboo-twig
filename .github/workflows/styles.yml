@@ -12,7 +12,7 @@ jobs:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: cs2pr, composer:v1
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpcs ./ --report=checkstyle | cs2pr
 
@@ -26,7 +26,7 @@ jobs:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: cs2pr, composer:v1, phpmd
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - run: composer install --prefer-dist
       - run: phpmd ./ text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php,*vendor/*
 
@@ -40,7 +40,7 @@ jobs:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: cs2pr, composer:v1, phpcpd
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - run: composer install --prefer-dist
       - run: phpcpd ./src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
 
@@ -48,7 +48,7 @@ jobs:
     name: PhpDeprecationDetector (phpdd)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - run: docker-compose -f docker-compose.yml pull --include-deps drupal
       - uses: satackey/action-docker-layer-caching@v0.0.8
       - name: Build the docker-compose stack
