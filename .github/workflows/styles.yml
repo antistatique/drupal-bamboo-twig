@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: docker-compose -f docker-compose.yml pull --include-deps drupal
-      - uses: satackey/action-docker-layer-caching@v0.0.8
+      - uses: satackey/action-docker-layer-caching@v0.0.11
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build drupal
       - name: Run phpdd
