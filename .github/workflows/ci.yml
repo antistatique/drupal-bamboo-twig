@@ -21,7 +21,7 @@ jobs:
             experimental: true
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - run: docker-compose -f docker-compose.yml pull --include-deps drupal
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
@@ -50,7 +50,7 @@ jobs:
             experimental: true
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - run: docker-compose -f docker-compose.yml pull --include-deps drupal
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
