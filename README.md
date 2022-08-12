@@ -48,8 +48,9 @@ for each topic he provides Twigs.
 
 Bamboo Twig is available for Drupal 8 and Drupal 9!
 
+- If you are running Drupal `9.x`, use Bamboo Twig `5.x`.
+- If you are running Drupal `8.8.x`, use Bamboo Twig `5.0`.
 - If you are running Drupal `8.7.x`, use Bamboo Twig `4.x`.
-- If you are running Drupal `8.8.x`, use Bamboo Twig `5.x`.
 
 If you need some help to upgrade from the version `8.x-1.x` to `8.x-2.x` check
 [the guide](https://www.drupal.org/docs/8/modules/bamboo-twig/migrate-from-8x-1x-to-8x-2x#comment-12051399) about it.
@@ -68,13 +69,13 @@ must upgrade to `8.x-3.x` version of **Bamboo Twig**.
 
 ## Which version should I use?
 
-|Drupal Core|Bamboo Twig|
-|:---------:|:---------:|
-|8.0.x      |1.x        |
-|8.4.x      |2.x        |
-|8.7.x      |4.x        |
-|8.8.x      |5.x        |
-|9.x        |5.x        |
+|Drupal Core| Bamboo Twig |
+|:---------:|:-----------:|
+|8.0.x      |     1.x     |
+|8.4.x      |     2.x     |
+|8.7.x      |     4.x     |
+|8.8.x      |     5.0     |
+|9.x        |     5.x     |
 
 ## Dependencies
 
