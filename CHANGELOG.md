@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update linter phpdd 2.0.24 => 2.0.29
 
+### Added
+- add upgrade-status check
+
 ### Removed
 - remove satackey/action-docker-layer-caching on Github Actions
 
