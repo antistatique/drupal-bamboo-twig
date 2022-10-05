@@ -12,11 +12,11 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2']
+        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
         module: ['bamboo_twig']
         experimental: [ false ]
         include:
-          - drupal_version: '9.3'
+          - drupal_version: '9.5'
             module: 'bamboo_twig'
             experimental: true
 
@@ -41,11 +41,11 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2']
+        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
         module: [ 'bamboo_twig' ]
         experimental: [ false ]
         include:
-          - drupal_version: '9.3'
+          - drupal_version: '9.5'
             module: 'bamboo_twig'
             experimental: true
 
