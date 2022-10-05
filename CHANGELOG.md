@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add upgrade-status check
 
+### Removed
+- remove satackey/action-docker-layer-caching on Github Actions
+
 ## [5.0.0] - 2022-06-24
 ### Added
 - replace drupal_ti by wengerk/drupal-for-contrib
