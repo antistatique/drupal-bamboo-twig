@@ -12,16 +12,16 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2']
+        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
         module: ['bamboo_twig']
         experimental: [ false ]
         include:
-          - drupal_version: '9.3'
+          - drupal_version: '9.5'
             module: 'bamboo_twig'
             experimental: true
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - run: docker-compose -f docker-compose.yml pull --include-deps drupal
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
@@ -41,16 +41,16 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2']
+        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
         module: [ 'bamboo_twig' ]
         experimental: [ false ]
         include:
-          - drupal_version: '9.3'
+          - drupal_version: '9.5'
             module: 'bamboo_twig'
             experimental: true
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - run: docker-compose -f docker-compose.yml pull --include-deps drupal
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
@@ -67,3 +67,34 @@ jobs:
       - name: Run tests
         run: docker-compose -f docker-compose.yml exec -T -u www-data drupal phpunit --no-coverage --group=${{ matrix.module }}_functional --configuration=/var/www/html/phpunit.xml
         continue-on-error: ${{ matrix.experimental }}
+
+  upgrade-status:
+    name: Upgrade Status
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        drupal_version: ['9.4']
+        module: ['bamboo_twig']
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - run: docker-compose -f docker-compose.yml pull --include-deps drupal
+      - name: Build the docker-compose stack
+        run: docker-compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
+      - name: Up a persistent Docker Container
+        run: docker-compose -f docker-compose.yml up -d drupal
+      - name: Add upgrade status dependency
+        run: docker-compose exec -T drupal wait-for-it db:3306 -- composer require --dev drupal/upgrade_status --no-interaction
+      - name: Bootstrap Drupal
+        run: docker-compose -f docker-compose.yml exec -T -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" -y
+      - name: Enable upgrade status
+        run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush en upgrade_status -y
+      - name: Disable incompatible module
+        run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush pmu page_cache -y
+      - name: Enable the module
+        run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush en ${{ matrix.module }} -y
+      - name: Run upgrade status
+        run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush upgrade_status:analyze ${{ matrix.module }}

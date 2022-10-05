@@ -6,14 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- add block context-mapping on bamboo_render_block
 - drop support of drupal 8.8 & 8.9
+- change bamboo_render_block to support block context-mapping
 
 ### Fixed
 - fix docker running tests on Github Actions
 
 ### Security
 - update linter phpdd 2.0.24 => 2.0.29
+
+### Added
+- add coverage for Drupal 9.3, 9.4 & 9.5
+- add upgrade-status check
+
+### Removed
+- remove satackey/action-docker-layer-caching on Github Actions
 
 ## [5.0.0] - 2022-06-24
 ### Added
