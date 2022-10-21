@@ -4,11 +4,12 @@ namespace Drupal\bamboo_twig\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\Mime\MimeTypes;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
  */
-class TwigExtensionBase extends \Twig_Extension {
+class TwigExtensionBase extends AbstractExtension {
   use ContainerAwareTrait;
 
   /**

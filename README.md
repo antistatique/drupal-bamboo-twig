@@ -2,7 +2,7 @@
 
 All the Twig features you missed until now.
 
-A Drupal 8 powered module.
+A Drupal powered module.
 
 |       Tests-CI        |        Style-CI         |        Downloads        |         Releases         |
 |:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
@@ -46,8 +46,9 @@ for each topic he provides Twigs.
 
 ## Bamboo Twig versions
 
-Bamboo Twig is available for Drupal 8 and Drupal 9!
+Bamboo Twig is available for Drupal 8, Drupal 9 & Drupal 10!
 
+- If you are running Drupal `10.x`, use Bamboo Twig `>=5.1`.
 - If you are running Drupal `9.x`, use Bamboo Twig `5.x`.
 - If you are running Drupal `8.8.x`, use Bamboo Twig `5.0`.
 - If you are running Drupal `8.7.x`, use Bamboo Twig `4.x`.
@@ -75,12 +76,13 @@ must upgrade to `8.x-3.x` version of **Bamboo Twig**.
 |    8.4.x    |     2.x     |
 |    8.7.x    |     4.x     |
 |    8.8.x    |     5.0     |
+|    8.9.x    |     5.0     |
 |     9.x     |     5.x     |
-|    10.x     |     5.x     |
+|    10.x     |    5.1.x    |
 
 ## Dependencies
 
-The Drupal 8 & Drupal 9 version of Bamboo Twig requires nothing !
+The Drupal 8, Drupal 9 & Drupal 10 version of Bamboo Twig requires nothing !
 Feel free to use it.
 
 ## Similar modules

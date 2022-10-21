@@ -5,13 +5,14 @@ namespace Drupal\bamboo_twig_extensions\TwigExtension;
 use Twig\TwigFilter;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Provides bridge for Text functions and filters.
  *
  * Expose the features of Twig_Extensions_Extension_Date.
  */
-class TwigDate extends \Twig_Extension {
+class TwigDate extends AbstractExtension {
   use StringTranslationTrait;
 
   /**

@@ -4,13 +4,14 @@ namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
 use Twig\TwigFilter;
 use Drupal\Core\Template\TwigEnvironment;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Provides bridge for Text functions and filters.
  *
  * Expose the features of Twig_Extensions_Extension_Text.
  */
-class TwigText extends \Twig_Extension {
+class TwigText extends AbstractExtension {
 
   /**
    * List of all Twig functions.

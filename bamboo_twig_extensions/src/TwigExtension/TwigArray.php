@@ -3,13 +3,14 @@
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
 use Twig\TwigFilter;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Provides bridge for Array functions and filters.
  *
  * Expose the features of Twig_Extensions_Extension_Array.
  */
-class TwigArray extends \Twig_Extension {
+class TwigArray extends AbstractExtension {
 
   /**
    * List of all Twig functions.
