@@ -69,13 +69,14 @@ must upgrade to `8.x-3.x` version of **Bamboo Twig**.
 
 ## Which version should I use?
 
-|Drupal Core| Bamboo Twig |
-|:---------:|:-----------:|
-|8.0.x      |     1.x     |
-|8.4.x      |     2.x     |
-|8.7.x      |     4.x     |
-|8.8.x      |     5.0     |
-|9.x        |     5.x     |
+| Drupal Core | Bamboo Twig |
+|:-----------:|:-----------:|
+|    8.0.x    |     1.x     |
+|    8.4.x    |     2.x     |
+|    8.7.x    |     4.x     |
+|    8.8.x    |     5.0     |
+|     9.x     |     5.x     |
+|    10.x     |     5.x     |
 
 ## Dependencies
 

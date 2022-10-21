@@ -12,13 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
+        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5', '10.0']
         module: ['bamboo_twig']
         experimental: [ false ]
-        include:
-          - drupal_version: '9.5'
-            module: 'bamboo_twig'
-            experimental: true
 
     steps:
       - uses: actions/checkout@v3
@@ -41,13 +37,9 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
+        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5', '10.0']
         module: [ 'bamboo_twig' ]
         experimental: [ false ]
-        include:
-          - drupal_version: '9.5'
-            module: 'bamboo_twig'
-            experimental: true
 
     steps:
       - uses: actions/checkout@v3
@@ -74,7 +66,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.4']
+        drupal_version: ['10.0']
         module: ['bamboo_twig']
 
     steps:
