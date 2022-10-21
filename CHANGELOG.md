@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [5.1.0] - 2022-10-21
 ### Changed
 - drop support of drupal 8.8 & 8.9
 - change bamboo_render_block to support block context-mapping
@@ -85,7 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - init module
 - provides some Twig extensions with some useful functions and filters that can improve development experience.
 
-[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/5.0.0...HEAD
+[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.1...HEAD
+[5.1.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.0...8.x-5.1
 [5.0.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.0-alpha...5.0.0
 [5.0.0-alpha]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-4.1...8.x-5.0-alpha
 [4.1.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-4.0...8.x-4.1
