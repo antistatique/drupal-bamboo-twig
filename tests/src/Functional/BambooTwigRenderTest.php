@@ -28,6 +28,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     'file',
     'system',
     'views',
+    'block_test',
     'bamboo_twig',
     'bamboo_twig_loader',
     'bamboo_twig_test',
@@ -56,6 +57,9 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
       'access administration pages',
     ]);
 
+    $this->admin_user->set('name', 'john.doe');
+    $this->admin_user->save();
+
     // Create a file for tests.
     $this->file = $this->createFile();
 
@@ -75,6 +79,22 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     // Tests for Block Entity.
     $this->assertSession()->elementExists('css', '.test-render div.render-block-entity');
     $this->assertSession()->elementExists('css', '.test-render div.render-block-entity #block-stark-branding');
+
+    // Tests for Block Plugin with context.
+    $this->assertSession()->elementExists('css', '.test-render .render-block-plugin-context #test_context_aware--username');
+    $this->assertElementEmpty('.test-render .render-block-plugin-context #test_context_aware--username');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderBlock
+   */
+  public function testBlockLoggedIn() {
+    $this->drupalLogin($this->admin_user);
+    $this->drupalGet('/bamboo-twig-render');
+
+    // Tests for Block Plugin with context.
+    $this->assertSession()->elementExists('css', '.test-render .render-block-plugin-context #test_context_aware--username');
+    $this->assertElementContains('.test-render .render-block-plugin-context #test_context_aware--username', 'john.doe');
   }
 
   /**

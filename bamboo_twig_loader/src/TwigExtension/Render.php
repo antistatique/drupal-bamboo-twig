@@ -2,6 +2,7 @@
 
 namespace Drupal\bamboo_twig_loader\TwigExtension;
 
+use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
@@ -48,8 +49,16 @@ class Render extends TwigExtensionBase {
    *   A render array for the block or NULL if the block does not exist.
    */
   public function renderBlock($block_id, array $params = []) {
-    $instance = $this->getPluginManagerBlock()->createInstance($block_id, $params);
-    return $instance->build($params);
+    /** @var \Drupal\Core\Block\BlockPluginInterface $plugin */
+    $plugin = $this->getPluginManagerBlock()->createInstance($block_id, $params);
+
+    // Inject runtime contexts.
+    if ($plugin instanceof ContextAwarePluginInterface) {
+      $contexts = $this->getContextRepository()->getRuntimeContexts($plugin->getContextMapping());
+      $this->getContextHandler()->applyContextMapping($plugin, $contexts);
+    }
+
+    return $plugin->build($params);
   }
 
   /**

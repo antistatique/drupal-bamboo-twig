@@ -5,6 +5,11 @@
   <hr>
   <div class="render-block-plugin">{{ bamboo_render_block('system_powered_by_block') }}</div>
 
+  <!-- Render Block Plugin -->
+  <h2>Render Block Plugin with Context</h2>
+  <hr>
+  <div class="render-block-plugin-context">{{ bamboo_render_block('test_context_aware', {'context_mapping': {'user': '@user.current_user_context:current_user'}}) }}</div>
+
   <!-- Render Block Entity -->
   <h2>Render Block Entity</h2>
   <hr>
