@@ -216,7 +216,7 @@ or path to a file.
 
 ```twig
 {# Print the relative URL of the system entity `theme` named `stable` #}
-{{ bamboo_path_system('theme', 'stable') }}
+{{ bamboo_path_system('theme', 'starterkit_theme') }}
 ```
 
 **Loaders**

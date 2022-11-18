@@ -41,7 +41,7 @@ class Path extends TwigExtensionBase {
    *   if the item is not found.
    */
   public function getSystemPath($type, $name = NULL) {
-    return $this->getExtensionPathResolver()->getPathname($type, $name);
+    return $this->getExtensionPathResolver()->getPath($type, $name);
   }
 
 }
