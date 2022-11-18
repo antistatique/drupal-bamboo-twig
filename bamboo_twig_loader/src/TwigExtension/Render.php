@@ -94,7 +94,7 @@ class Render extends TwigExtensionBase {
    * @return null|array
    *   A render array for the entity or NULL if the entity does not exist.
    */
-  public function renderEntity($entity_type, $id = NULL, $view_mode = NULL, $langcode = NULL) {
+  public function renderEntity($entity_type, $id = NULL, $view_mode = '', $langcode = NULL) {
     // Lazy load the entity type manager only when needed.
     $entityTypeManager = $this->getEntityTypeManager();
 
