@@ -6,7 +6,7 @@ use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
-use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Drupal\Core\Routing\RouteObjectInterface;
 
 /**
  * Provides some renderer as Twig Extensions.
