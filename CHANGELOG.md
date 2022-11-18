@@ -5,11 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [6.0.0] - 2022-11-18
 ### Added
 - add official support of drupal 9.5 & 10.0
 
 ### Changed
 - drop support of drupal below 9.3.x
+- bump major release number in order of using Drupal new semver system
 
 ### Fixed
 - fix deprecated class name Twig_Extension for Drupal 10 compatibilities
@@ -102,7 +105,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - init module
 - provides some Twig extensions with some useful functions and filters that can improve development experience.
 
-[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.1...HEAD
+[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.0...HEAD
+[6.0.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.1...6.0.0
 [5.1.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.0...8.x-5.1
 [5.0.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.0-alpha...5.0.0
 [5.0.0-alpha]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-4.1...8.x-5.0-alpha
