@@ -4,6 +4,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
 
 use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
 use Drupal\Core\StreamWrapper\PublicStream;
+use Drupal\file\FileInterface;
 
 /**
  * Tests Loaders twig filters and functions.
@@ -278,7 +279,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
 
     $file = $file_storage->create([
       'uri' => 'public://antistatique.jpg',
-      'status' => FILE_STATUS_PERMANENT,
+      'status' => FileInterface::STATUS_PERMANENT,
     ]);
     $file->save();
 
