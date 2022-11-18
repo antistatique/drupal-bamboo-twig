@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - drop support of drupal below 9.3.x
 
+### Fixed
+- fix deprecated class name Twig_Extension for Drupal 10 compatibilities
+
 ## [5.1.0] - 2022-10-21
 ### Changed
 - drop support of drupal 8.8 & 8.9
