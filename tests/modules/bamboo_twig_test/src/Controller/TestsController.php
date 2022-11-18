@@ -17,7 +17,7 @@ class TestsController extends ControllerBase {
   public function testLoader() {
     return [
       '#variables' => [
-        'image_path' => drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg',
+        'image_path' => \Drupal::service('extension.list.module')->getPath('bamboo_twig_test') . '/files/antistatique.jpg',
       ],
       '#theme' => 'bamboo_twig_test_loader',
     ];
