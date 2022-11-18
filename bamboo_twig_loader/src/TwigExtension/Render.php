@@ -204,7 +204,7 @@ class Render extends TwigExtensionBase {
         // Create the new image derivative.
         $image_style->createDerivative($image_uri, $image_style_uri);
 
-        return file_create_url($image_style_uri);
+        return $this->getFileUrlGenerator()->generateAbsoluteString($image_style_uri);
       }
     }
 

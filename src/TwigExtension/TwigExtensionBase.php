@@ -259,4 +259,14 @@ class TwigExtensionBase extends AbstractExtension {
     return $this->container->get('context.handler');
   }
 
+  /**
+   * Provides the file URL generator.
+   *
+   * @return \Drupal\Core\File\FileUrlGeneratorInterface
+   *   The file URL generator.
+   */
+  protected function getFileUrlGenerator() {
+    return $this->container->get('file_url_generator');
+  }
+
 }
