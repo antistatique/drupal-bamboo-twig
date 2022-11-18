@@ -2,13 +2,13 @@
 
 namespace Drupal\bamboo_twig_path\TwigExtension;
 
+use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Twig\TwigFunction;
-use Twig\Extension\AbstractExtension;
 
 /**
  * Provides a 'Path' Twig Extensions.
  */
-class Path extends AbstractExtension {
+class Path extends TwigExtensionBase {
 
   /**
    * List of all Twig functions.
@@ -41,7 +41,7 @@ class Path extends AbstractExtension {
    *   if the item is not found.
    */
   public function getSystemPath($type, $name = NULL) {
-    return drupal_get_path($type, $name);
+    return $this->getExtensionPathResolver()->getPathname($type, $name);
   }
 
 }

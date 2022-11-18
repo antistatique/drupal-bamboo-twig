@@ -8,6 +8,8 @@ use Twig\Extension\AbstractExtension;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
+ *
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class TwigExtensionBase extends AbstractExtension {
   use ContainerAwareTrait;
@@ -267,6 +269,16 @@ class TwigExtensionBase extends AbstractExtension {
    */
   protected function getFileUrlGenerator() {
     return $this->container->get('file_url_generator');
+  }
+
+  /**
+   * Provides the extension path resolver.
+   *
+   * @return \Drupal\Core\Extension\ExtensionPathResolver
+   *   The extension path resolver.
+   */
+  protected function getExtensionPathResolver() {
+    return $this->container->get('extension.path.resolver');
   }
 
 }
