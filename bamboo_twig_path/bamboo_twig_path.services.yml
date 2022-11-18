@@ -3,3 +3,4 @@ services:
         class: Drupal\bamboo_twig_path\TwigExtension\Path
         tags:
             - { name: twig.extension }
+        parent: bamboo_twig.twig.base

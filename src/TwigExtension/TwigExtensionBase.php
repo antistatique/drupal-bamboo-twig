@@ -4,11 +4,14 @@ namespace Drupal\bamboo_twig\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\Mime\MimeTypes;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
+ *
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class TwigExtensionBase extends \Twig_Extension {
+class TwigExtensionBase extends AbstractExtension {
   use ContainerAwareTrait;
 
   /**
@@ -256,6 +259,26 @@ class TwigExtensionBase extends \Twig_Extension {
    */
   protected function getContextHandler() {
     return $this->container->get('context.handler');
+  }
+
+  /**
+   * Provides the file URL generator.
+   *
+   * @return \Drupal\Core\File\FileUrlGeneratorInterface
+   *   The file URL generator.
+   */
+  protected function getFileUrlGenerator() {
+    return $this->container->get('file_url_generator');
+  }
+
+  /**
+   * Provides the extension path resolver.
+   *
+   * @return \Drupal\Core\Extension\ExtensionPathResolver
+   *   The extension path resolver.
+   */
+  protected function getExtensionPathResolver() {
+    return $this->container->get('extension.path.resolver');
   }
 
 }

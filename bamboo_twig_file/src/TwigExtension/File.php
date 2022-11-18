@@ -76,7 +76,7 @@ class File extends TwigExtensionBase {
    *   then FALSE is returned
    */
   public function urlAbsolute($uri) {
-    return file_create_url($uri);
+    return $this->getFileUrlGenerator()->generateAbsoluteString($uri);
   }
 
 }

@@ -5,11 +5,46 @@ namespace Drupal\bamboo_twig_test\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Extension\ModuleExtensionList;
 
 /**
  * Returns renderer-responses for testing Twig functions/filters on templates.
+ *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class TestsController extends ControllerBase {
+
+  /**
+   * The module extension list.
+   *
+   * @var \Drupal\Core\Extension\ModuleExtensionList
+   */
+  protected $moduleExtensionList;
+
+  /**
+   * Constructs a TestsController object.
+   *
+   * @param \Drupal\Core\Extension\ModuleExtensionList $module_list
+   *   The module extension list.
+   */
+  public function __construct(ModuleExtensionList $module_list) {
+    $this->moduleList = $module_list;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @psalm-suppress ArgumentTypeCoercion
+   * @psalm-suppress PossiblyNullArgument
+   * @psalm-suppress MissingReturnType
+   * @psalm-suppress UnsafeInstantiation
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('extension.list.module')
+    );
+  }
 
   /**
    * Loader page.
@@ -17,7 +52,7 @@ class TestsController extends ControllerBase {
   public function testLoader() {
     return [
       '#variables' => [
-        'image_path' => drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg',
+        'image_path' => $this->moduleList->getPath('bamboo_twig_test') . '/files/antistatique.jpg',
       ],
       '#theme' => 'bamboo_twig_test_loader',
     ];

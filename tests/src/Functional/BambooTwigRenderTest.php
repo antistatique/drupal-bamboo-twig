@@ -4,6 +4,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
 
 use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
 use Drupal\Core\StreamWrapper\PublicStream;
+use Drupal\file\FileInterface;
 
 /**
  * Tests Renders twig filters and functions.
@@ -369,11 +370,11 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = $this->container->get('file_system');
 
-    $file_system->copy(drupal_get_path('module', 'bamboo_twig_test') . '/files/antistatique.jpg', PublicStream::basePath());
+    $file_system->copy(\Drupal::service('extension.list.module')->getPath('bamboo_twig_test') . '/files/antistatique.jpg', PublicStream::basePath());
 
     $file = $file_storage->create([
       'uri' => 'public://antistatique.jpg',
-      'status' => FILE_STATUS_PERMANENT,
+      'status' => FileInterface::STATUS_PERMANENT,
     ]);
     $file->save();
 

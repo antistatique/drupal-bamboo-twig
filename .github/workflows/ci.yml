@@ -12,13 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
+        drupal_version: ['9.3', '9.4', '9.5', '10.0']
         module: ['bamboo_twig']
         experimental: [ false ]
-        include:
-          - drupal_version: '9.5'
-            module: 'bamboo_twig'
-            experimental: true
 
     steps:
       - uses: actions/checkout@v3
@@ -41,13 +37,9 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5']
+        drupal_version: ['9.3', '9.4', '9.5', '10.0']
         module: [ 'bamboo_twig' ]
         experimental: [ false ]
-        include:
-          - drupal_version: '9.5'
-            module: 'bamboo_twig'
-            experimental: true
 
     steps:
       - uses: actions/checkout@v3
@@ -74,7 +66,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.4']
+        drupal_version: ['9.5']
         module: ['bamboo_twig']
 
     steps:
@@ -92,8 +84,6 @@ jobs:
         run: docker-compose -f docker-compose.yml exec -T -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" -y
       - name: Enable upgrade status
         run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush en upgrade_status -y
-      - name: Disable incompatible module
-        run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush pmu page_cache -y
       - name: Enable the module
         run: docker-compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush en ${{ matrix.module }} -y
       - name: Run upgrade status

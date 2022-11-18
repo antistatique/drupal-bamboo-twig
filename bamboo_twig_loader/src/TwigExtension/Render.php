@@ -6,7 +6,7 @@ use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
-use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Drupal\Core\Routing\RouteObjectInterface;
 
 /**
  * Provides some renderer as Twig Extensions.
@@ -94,7 +94,7 @@ class Render extends TwigExtensionBase {
    * @return null|array
    *   A render array for the entity or NULL if the entity does not exist.
    */
-  public function renderEntity($entity_type, $id = NULL, $view_mode = NULL, $langcode = NULL) {
+  public function renderEntity($entity_type, $id = NULL, $view_mode = '', $langcode = NULL) {
     // Lazy load the entity type manager only when needed.
     $entityTypeManager = $this->getEntityTypeManager();
 
@@ -198,13 +198,14 @@ class Render extends TwigExtensionBase {
           $image_uri = $path;
         }
         else {
-          $image_uri = file_build_uri($path);
+          $path_uri = $this->getConfigFactory()->get('system.file')->get('default_scheme') . '://' . $path;
+          $image_uri = $this->getStreamWrapperManager()->normalizeUri($path_uri);
         }
 
         // Create the new image derivative.
         $image_style->createDerivative($image_uri, $image_style_uri);
 
-        return file_create_url($image_style_uri);
+        return $this->getFileUrlGenerator()->generateAbsoluteString($image_style_uri);
       }
     }
 

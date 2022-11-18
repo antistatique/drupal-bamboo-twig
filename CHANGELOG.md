@@ -5,6 +5,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- add official support of drupal 9.5 & 10.0
+
+### Changed
+- drop support of drupal below 9.3.x
+
+### Fixed
+- fix deprecated class name Twig_Extension for Drupal 10 compatibilities
+- fix deprecation drupal_get_path for Drupal 10 compatibilities
+- fix deprecation Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT for Drupal 10 compatibilities
+- fix call to deprecated method assert() for Drupal 10 compatibilities
+- fix call to deprecated constant FILE_STATUS_PERMANENT for Drupal 10 compatibilities
+- fix call to deprecated function file_create_url() for Drupal 10 compatibilities
+- fix the function file_build_uri() has been deprecated for Drupal 10 compatibilities
+- fix Deprecated function: strtr(): Passing null to parameter #1 for PHP 8.1 compatibilities
 
 ## [5.1.0] - 2022-10-21
 ### Changed

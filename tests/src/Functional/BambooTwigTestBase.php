@@ -311,7 +311,7 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
       $css_selector
     );
 
-    $this->assert(empty($actual), $message);
+    $this->assertTrue(empty($actual), $message);
   }
 
   /**
