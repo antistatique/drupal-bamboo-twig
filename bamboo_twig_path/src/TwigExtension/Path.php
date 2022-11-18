@@ -3,11 +3,12 @@
 namespace Drupal\bamboo_twig_path\TwigExtension;
 
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Provides a 'Path' Twig Extensions.
  */
-class Path extends \Twig_Extension {
+class Path extends AbstractExtension {
 
   /**
    * List of all Twig functions.
