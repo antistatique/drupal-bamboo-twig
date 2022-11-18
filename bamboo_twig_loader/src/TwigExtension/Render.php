@@ -198,7 +198,8 @@ class Render extends TwigExtensionBase {
           $image_uri = $path;
         }
         else {
-          $image_uri = file_build_uri($path);
+          $path_uri = $this->getConfigFactory()->get('system.file')->get('default_scheme') . '://' . $path;
+          $image_uri = $this->getStreamWrapperManager()->normalizeUri($path_uri);
         }
 
         // Create the new image derivative.
