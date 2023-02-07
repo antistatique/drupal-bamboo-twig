@@ -25,6 +25,13 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   ];
 
   /**
+   * A collection of translations strings create on self::setUpTranslations().
+   *
+   * @var array
+   */
+  protected $translationsStrings = [];
+
+  /**
    * {@inheritdoc}
    */
   public function setUp(): void {

@@ -20,6 +20,13 @@ class BambooTwigSecurityTest extends KernelTestBase {
   protected $entityTypeManager;
 
   /**
+   * The Bamboo Twig Security Extension.
+   *
+   * @var \Drupal\bamboo_twig_security\TwigExtension\Security
+   */
+  protected $securityExtension;
+
+  /**
    * Modules to enable.
    *
    * @var array
@@ -40,10 +47,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
     $this->installEntitySchema('user');
     $this->installSchema('system', ['sequences']);
 
-    /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
     $this->entityTypeManager = $this->container->get('entity_type.manager');
-
-    /** @var \Drupal\bamboo_twig_security\TwigExtension\Security $securityExtension */
     $this->securityExtension = $this->container->get('bamboo_twig_security.twig.security');
 
     // Create admin user.

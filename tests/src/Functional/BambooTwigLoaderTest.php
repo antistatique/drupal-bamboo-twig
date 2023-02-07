@@ -32,6 +32,13 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   ];
 
   /**
+   * A user with administration access.
+   *
+   * @var \Drupal\user\UserInterface
+   */
+  protected $adminUser;
+
+  /**
    * The articles Node used by this test.
    *
    * @var \Drupal\node\NodeInterface[]
@@ -46,6 +53,13 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   protected $tags;
 
   /**
+   * A file used by this test.
+   *
+   * @var \Drupal\file\FileInterface
+   */
+  protected $file;
+
+  /**
    * {@inheritdoc}
    */
   public function setUp(): void {
@@ -57,7 +71,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->setUpArticles();
 
     // Create a user for tests.
-    $this->admin_user = $this->drupalCreateUser();
+    $this->adminUser = $this->drupalCreateUser();
 
     // Create a file for tests.
     $this->file = $this->createFile();
@@ -74,11 +88,11 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertSession()->elementExists('css', '.test-loaders div.loader-current-user');
     $this->assertElementContains('.test-loaders div.loader-current-user', '');
 
-    $this->drupalLogin($this->admin_user);
+    $this->drupalLogin($this->adminUser);
     $this->drupalGet('/bamboo-twig-loader');
 
     $this->assertSession()->elementExists('css', '.test-loaders div.loader-current-user');
-    $this->assertElementContains('.test-loaders div.loader-current-user', $this->admin_user->getAccountName());
+    $this->assertElementContains('.test-loaders div.loader-current-user', $this->adminUser->getAccountName());
   }
 
   /**
