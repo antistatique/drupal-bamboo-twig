@@ -345,10 +345,26 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertSession()->elementExists('css', '.test-render div.render-menu-all');
     $this->assertElementCount('ul', 9, '.test-render div.render-menu-all');
-    $this->assertElementCount('li', 25, '.test-render div.render-menu-all');
+
+    // Since Drupal 10.1.x the default Drupal distribution have 26 menu items.
+    if (version_compare(\Drupal::VERSION, '10.1', '>=')) {
+      $this->assertElementCount('li', 26, '.test-render div.render-menu-all');
+    }
+    else {
+      $this->assertElementCount('li', 25, '.test-render div.render-menu-all');
+    }
+
     $this->assertSession()->elementExists('css', '.test-render div.render-menu-level');
     $this->assertElementCount('ul', 8, '.test-render div.render-menu-level');
-    $this->assertElementCount('li', 24, '.test-render div.render-menu-level');
+
+    // Since Drupal 10.1.x the default Drupal distribution have 25 menu items.
+    if (version_compare(\Drupal::VERSION, '10.1', '>=')) {
+      $this->assertElementCount('li', 25, '.test-render div.render-menu-level');
+    }
+    else {
+      $this->assertElementCount('li', 24, '.test-render div.render-menu-level');
+    }
+
     $this->assertSession()->elementExists('css', '.test-render div.render-menu-depth');
     $this->assertElementCount('ul', 2, '.test-render div.render-menu-depth');
     $this->assertElementCount('li', 3, '.test-render div.render-menu-depth');

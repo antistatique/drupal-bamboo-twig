@@ -12,9 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.3', '9.4', '9.5', '10.0']
+        drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
         module: ['bamboo_twig']
-        experimental: [ false ]
+        experimental: [false]
 
     steps:
       - uses: actions/checkout@v3
@@ -37,9 +37,9 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.3', '9.4', '9.5', '10.0']
-        module: [ 'bamboo_twig' ]
-        experimental: [ false ]
+        drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
+        module: ['bamboo_twig']
+        experimental: [false]
 
     steps:
       - uses: actions/checkout@v3
