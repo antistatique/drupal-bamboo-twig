@@ -16,6 +16,13 @@ use Drupal\Component\Gettext\PoItem;
 class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
 
   /**
+   * A collection of translations strings create on self::setUpTranslations().
+   *
+   * @var array
+   */
+  protected $translationsStrings = [];
+
+  /**
    * {@inheritdoc}
    */
   protected static $modules = [

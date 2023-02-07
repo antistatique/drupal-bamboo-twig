@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - re-enable PHPUnit Symfony Deprecation notice
+- update codebase to be compliant PHP8.2
 
 ## [6.0.0] - 2022-11-18
 ### Added
