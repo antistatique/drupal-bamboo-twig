@@ -63,12 +63,12 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
    */
   public function testGetState() {
     $state = $this->container->get('state');
-    $this->time = $state->get('system.cron_last');
+    $time = $state->get('system.cron_last');
 
     $this->drupalGet('/bamboo-twig-config');
 
     $this->assertSession()->elementExists('css', '.test-configs div.config-state');
-    $this->assertElementContains('.test-configs div.config-state', $this->time);
+    $this->assertElementContains('.test-configs div.config-state', $time);
   }
 
 }

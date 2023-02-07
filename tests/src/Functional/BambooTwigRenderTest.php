@@ -17,6 +17,20 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   use TaxonomyTestTrait;
 
   /**
+   * A user with administration access.
+   *
+   * @var \Drupal\user\UserInterface
+   */
+  protected $adminUser;
+
+  /**
+   * A file used by this test.
+   *
+   * @var \Drupal\file\FileInterface
+   */
+  protected $file;
+
+  /**
    * {@inheritdoc}
    */
   protected static $modules = [
@@ -47,7 +61,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->setUpArticles();
 
     // Create a user for tests.
-    $this->admin_user = $this->drupalCreateUser([
+    $this->adminUser = $this->drupalCreateUser([
       'access content',
       'administer blocks',
       'administer content types',
@@ -58,8 +72,8 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
       'access administration pages',
     ]);
 
-    $this->admin_user->set('name', 'john.doe');
-    $this->admin_user->save();
+    $this->adminUser->set('name', 'john.doe');
+    $this->adminUser->save();
 
     // Create a file for tests.
     $this->file = $this->createFile();
@@ -90,7 +104,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
    * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderBlock
    */
   public function testBlockLoggedIn() {
-    $this->drupalLogin($this->admin_user);
+    $this->drupalLogin($this->adminUser);
     $this->drupalGet('/bamboo-twig-render');
 
     // Tests for Block Plugin with context.
@@ -327,7 +341,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertSession()->elementExists('css', '.test-render div.render-menu-no-access');
     $this->assertSession()->elementNotExists('css', '.test-render div.render-menu-no-access ul');
-    $this->drupalLogin($this->admin_user);
+    $this->drupalLogin($this->adminUser);
     $this->drupalGet('/bamboo-twig-render');
     $this->assertSession()->elementExists('css', '.test-render div.render-menu-all');
     $this->assertElementCount('ul', 9, '.test-render div.render-menu-all');

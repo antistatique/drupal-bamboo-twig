@@ -29,7 +29,7 @@ class TestsController extends ControllerBase {
    *   The module extension list.
    */
   public function __construct(ModuleExtensionList $module_list) {
-    $this->moduleList = $module_list;
+    $this->moduleExtensionList = $module_list;
   }
 
   /**
@@ -52,7 +52,7 @@ class TestsController extends ControllerBase {
   public function testLoader() {
     return [
       '#variables' => [
-        'image_path' => $this->moduleList->getPath('bamboo_twig_test') . '/files/antistatique.jpg',
+        'image_path' => $this->moduleExtensionList->getPath('bamboo_twig_test') . '/files/antistatique.jpg',
       ],
       '#theme' => 'bamboo_twig_test_loader',
     ];
