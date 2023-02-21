@@ -338,7 +338,7 @@ entity type. Can be rendered a specific `view_mode`.
 
 - `module` string
 - `formName` string
-- `params` array (optional)
+- `params` mixed (optional)
 
 ```twig
 {# Render a the CronForm #}

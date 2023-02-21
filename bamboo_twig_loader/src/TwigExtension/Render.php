@@ -68,13 +68,13 @@ class Render extends TwigExtensionBase {
    *   The module name where the form below.
    * @param string $form
    *   The form class name.
-   * @param array $params
-   *   (optional) An array of parameters passed to the form.
+   * @param mixed $params
+   *   (optional) Parameters passed to the form.
    *
    * @return null|array
    *   A render array for the form or NULL if the form does not exist.
    */
-  public function renderForm($module, $form, array $params = []) {
+  public function renderForm($module, $form, $params = NULL) {
     return $this->getFormBuilder()->getForm('Drupal\\' . $module . '\\Form\\' . $form, $params);
   }
 
