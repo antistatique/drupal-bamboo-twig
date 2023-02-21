@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - add coverage of Drupal 10.1.x
+- allow Render form mixed parameter types - Issue #3273960 by darrenwh, wengerk
 
 ## [6.0.0] - 2022-11-18
 ### Added
