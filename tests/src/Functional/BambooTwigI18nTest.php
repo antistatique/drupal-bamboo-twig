@@ -89,11 +89,11 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   public function testCurrentLang() {
     $this->drupalGet('/bamboo-twig-i18n');
 
-    $this->assertElementContains('.test-i18n div.i18n-current-lang', 'en');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-current-lang', 'en');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
 
-    $this->assertElementContains('.test-i18n div.i18n-current-lang', 'fr');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-current-lang', 'fr');
   }
 
   /**
@@ -102,31 +102,31 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   public function testFormatDate() {
     $this->drupalGet('/bamboo-twig-i18n');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-string', 'Thursday 24th July 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-string', 'Thursday 24th July 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-timestamp', 'Thursday 24th July 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-timestamp', 'Thursday 24th July 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-datetime', 'Thursday 24th July 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime', 'Thursday 24th July 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-datetimeplus', 'Thursday 24th July 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetimeplus', 'Thursday 24th July 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-drupaldatetime', 'Thursday 24th July 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-drupaldatetime', 'Thursday 24th July 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-datetime-medium', 'Thu, 07/24/2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Thu, 07/24/2014');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-string', 'Jeudi 24th Juillet 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-string', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-timestamp', 'Jeudi 24th Juillet 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-timestamp', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-datetime', 'Jeudi 24th Juillet 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-datetimeplus', 'Jeudi 24th Juillet 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetimeplus', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-drupaldatetime', 'Jeudi 24th Juillet 2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-drupaldatetime', 'Jeudi 24th Juillet 2014');
 
-    $this->assertElementContains('.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 07/24/2014');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 07/24/2014');
   }
 
   /**
@@ -135,40 +135,40 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   public function testGetTranslation() {
     $this->drupalGet('/bamboo-twig-i18n');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-ru', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1-ru', 'News N°1');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-en', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1-en', 'News N°1');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-de', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1-de', 'News N°1');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-fr', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1-fr', 'News N°1');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2-en', 'News N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-2-en', 'News N°2');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1-de', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1-de', 'News N°1');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2-fr', 'Article N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-2-fr', 'Article N°2');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-en', 'News N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-3-en', 'News N°3');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-de', 'Artikel N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-3-de', 'Artikel N°3');
 
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3-fr', 'Article N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-3-fr', 'Article N°3');
 
     $this->drupalGet('/bamboo-twig-i18n');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1', 'News N°1');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'News N°2');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'News N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-2', 'News N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-3', 'News N°3');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1', 'News N°1');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'Article N°2');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'Article N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-2', 'Article N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-3', 'Article N°3');
 
     $this->drupalGet('/de/bamboo-twig-i18n');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-1', 'News N°1');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-2', 'News N°2');
-    $this->assertElementContains('.test-i18n div.i18n-get-translation-node-3', 'Artikel N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-1', 'News N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-2', 'News N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-get-translation-node-3', 'Artikel N°3');
   }
 
   /**
@@ -177,25 +177,25 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
    */
   public function testGetTranslationReferencedField() {
     $this->drupalGet('/bamboo-twig-i18n');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-2', 'Tag N°2');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-3', 'Tag N°3');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-5', 'Tag N°5');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-2', 'Tag N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-3', 'Tag N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-5', 'Tag N°5');
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-2', 'Mot clé N°2');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-3', 'Mot clé N°3');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-5', 'Mot clé N°5');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-2', 'Mot clé N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-3', 'Mot clé N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-5', 'Mot clé N°5');
 
     $this->drupalGet('/de/bamboo-twig-i18n');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-2', 'Tag N°2');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-3', 'Stichworte N°3');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
-    $this->assertElementContains('.test-i18n div.loader-entity-reference-field-5', 'Tag N°5');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-1', 'Mot clé N°4');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-2', 'Tag N°2');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-3', 'Stichworte N°3');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-4', 'Tag N°1');
+    $this->assertSession()->elementContains('css', '.test-i18n div.loader-entity-reference-field-5', 'Tag N°5');
   }
 
 }

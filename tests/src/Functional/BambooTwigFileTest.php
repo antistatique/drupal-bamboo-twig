@@ -28,16 +28,16 @@ class BambooTwigFileTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-file');
 
     $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-pdf');
-    $this->assertElementContains('.test-files div.ext-guesser-pdf', 'pdf');
+    $this->assertSession()->elementContains('css', '.test-files div.ext-guesser-pdf', 'pdf');
 
     $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-word-legacy');
-    $this->assertElementContains('.test-files div.ext-guesser-word-legacy', 'doc');
+    $this->assertSession()->elementContains('css', '.test-files div.ext-guesser-word-legacy', 'doc');
 
     $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-word');
-    $this->assertElementContains('.test-files div.ext-guesser-word', 'docx');
+    $this->assertSession()->elementContains('css', '.test-files div.ext-guesser-word', 'docx');
 
     $this->assertSession()->elementExists('css', '.test-files div.ext-guesser-png');
-    $this->assertElementContains('.test-files div.ext-guesser-png', 'png');
+    $this->assertSession()->elementContains('css', '.test-files div.ext-guesser-png', 'png');
   }
 
   /**
@@ -47,11 +47,11 @@ class BambooTwigFileTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-file');
 
     $this->assertSession()->elementExists('css', '.test-files div.url-module-file-relative');
-    $this->assertElementContains('.test-files div.url-module-file-relative', '/bamboo_twig_test/files/antistatique.jpg');
+    $this->assertSession()->elementContains('css', '.test-files div.url-module-file-relative', '/bamboo_twig_test/files/antistatique.jpg');
 
     $this->assertSession()->elementExists('css', '.test-files div.url-module-file-absolute');
-    $this->assertElementContains('.test-files div.url-module-file-absolute', 'http://');
-    $this->assertElementContains('.test-files div.url-module-file-absolute', '/bamboo_twig_test/files/antistatique.jpg');
+    $this->assertSession()->elementContains('css', '.test-files div.url-module-file-absolute', 'http://');
+    $this->assertSession()->elementContains('css', '.test-files div.url-module-file-absolute', '/bamboo_twig_test/files/antistatique.jpg');
   }
 
 }

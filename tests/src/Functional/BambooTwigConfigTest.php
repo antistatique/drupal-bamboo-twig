@@ -45,7 +45,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-config');
 
     $this->assertSession()->elementExists('css', '.test-configs div.config-settings');
-    $this->assertElementContains('.test-configs div.config-settings', $this->hashSalt);
+    $this->assertSession()->elementContains('css', '.test-configs div.config-settings', $this->hashSalt);
   }
 
   /**
@@ -55,7 +55,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-config');
 
     $this->assertSession()->elementExists('css', '.test-configs div.config-system');
-    $this->assertElementContains('.test-configs div.config-system', 'simpletest@example.com');
+    $this->assertSession()->elementContains('css', '.test-configs div.config-system', 'simpletest@example.com');
   }
 
   /**
@@ -68,7 +68,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-config');
 
     $this->assertSession()->elementExists('css', '.test-configs div.config-state');
-    $this->assertElementContains('.test-configs div.config-state', $time);
+    $this->assertSession()->elementContains('css', '.test-configs div.config-state', $time);
   }
 
 }
