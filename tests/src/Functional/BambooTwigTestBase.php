@@ -28,6 +28,13 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
   protected $articles;
 
   /**
+   * The pages Node used by this test.
+   *
+   * @var \Drupal\node\NodeInterface[]
+   */
+  protected $pages;
+
+  /**
    * The tags Term used by this test.
    *
    * @var \Drupal\taxonomy\TermInterface[]
@@ -44,7 +51,7 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stark';
+  protected $defaultTheme = 'bamboo_twig_test';
 
   /**
    * {@inheritdoc}
@@ -70,13 +77,44 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
    * Setup default articles node for testing.
    *
    * Summary:
-   * | Nid | Title    | EN           | DE | FR           |
-   * |-----|----------|--------------|----|--------------|
-   * |   1 | News N°1 | X (original) |    |              |
-   * |   2 | News N°2 | X (original) |    |       X      |
-   * |   3 | News N°3 | X (original) |  X |       X      |
-   * |   4 | News N°4 |              |    | X (original) |
-   * |   5 | News N°5 |       X      |    | X (original) |
+   * | Nid | Title    | EN           | DE | FR           | Has revision ? |
+   * |-----|----------|--------------|----|--------------|                |
+   * |   7 | Page N°17| X (original) |    |              |        x       |
+   */
+  protected function setUpPages() {
+    // Create a page content type that we will use for testing.
+    $this->drupalCreateContentType(['type' => 'page', 'name' => 'Page']);
+
+    // Create a page Node in English (original language) with a revision.
+    $page = $this->entityTypeManager->getStorage('node')->create([
+      'nid' => 7,
+      'type' => 'page',
+      'title' => 'Page N°7',
+    ]);
+    $page->save();
+    $this->pages[] = $page;
+
+    // Make this change a new revision.
+    $page->setNewRevision();
+    $page->set('title', 'Revised Page N°7');
+    $page->revision_log = 'Created revision for Node 7';
+    $page->isDefaultRevision(FALSE);
+    $page->setRevisionUserId(1);
+    $page->save();
+  }
+
+  /**
+   * Setup default articles node for testing.
+   *
+   * Summary:
+   * | Nid | Title    | EN           | DE | FR           | Has revision ? |
+   * |-----|----------|--------------|----|--------------|                |
+   * |   1 | News N°1 | X (original) |    |              |                |
+   * |   2 | News N°2 | X (original) |    |       X      |                |
+   * |   3 | News N°3 | X (original) |  X |       X      |                |
+   * |   4 | News N°4 |              |    | X (original) |                |
+   * |   5 | News N°5 |       X      |    | X (original) |                |
+   * |   6 | News N°6 | X (original) |    |              |       X        |
    */
   protected function setUpArticles() {
     // Create an article content type that we will use for testing.
@@ -160,19 +198,37 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
     $article_translation->title = 'News N°5';
     $article_translation->save();
     $this->articles[] = $article;
+
+    // Create an article Node in English (original language) with a revision.
+    $article = $this->entityTypeManager->getStorage('node')->create([
+      'type' => 'article',
+      'title' => 'News N°6',
+      'field_tags' => $this->tags[4],
+    ]);
+    $article->save();
+    $this->articles[] = $article;
+
+    // Make this change a new revision.
+    $article->setNewRevision();
+    $article->set('title', 'Revised News N°6');
+    $article->revision_log = 'Created revision for Node 6';
+    $article->isDefaultRevision(FALSE);
+    $article->setRevisionUserId(1);
+    $article->save();
   }
 
   /**
    * Setup default taxonomy vocabulary with terms for testing.
    *
    * Summary:
-   * | Tid | Name    | EN           | DE | FR           |
-   * |-----|---------|--------------|----| -------------|
-   * |   1 | Tag N°1 | X (original) |    |              |
-   * |   2 | Tag N°2 | X (original) |    |       X      |
-   * |   3 | Tag N°3 | X (original) |  X |       X      |
-   * |   4 | Tag N°4 |              |    | X (original) |
-   * |   5 | Tag N°5 |       X      |    | X (original) |
+   * | Tid | Name    | EN           | DE | FR           | Has revision ? |
+   * |-----|---------|--------------|----| -------------|                |
+   * |   1 | Tag N°1 | X (original) |    |              |                |
+   * |   2 | Tag N°2 | X (original) |    |       X      |                |
+   * |   3 | Tag N°3 | X (original) |  X |       X      |                |
+   * |   4 | Tag N°4 |              |    | X (original) |                |
+   * |   5 | Tag N°5 |       X      |    | X (original) |                |
+   * |   6 | Tag N°6 | X (original) |    |              |       X        |
    */
   protected function setUpTags() {
     // Create a taxonomy vocabulary that we will use for testing.
@@ -231,6 +287,21 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
     $tag_translation->name = 'Tag N°5';
     $tag_translation->save();
     $this->tags[] = $tag;
+
+    // Create a Tag term in English (original language) with a revision.
+    $tag = $this->entityTypeManager->getStorage('taxonomy_term')->create([
+      'vid' => 'tags',
+      'name' => 'Tag N°6',
+    ]);
+    $tag->save();
+    // Make this change a new revision.
+    $tag->setNewRevision();
+    $tag->set('name', 'Revised Tag N°6');
+    $tag->revision_log = 'Created revision for Term 6';
+    $tag->isDefaultRevision(FALSE);
+    $tag->setRevisionUserId(1);
+    $tag->save();
+    $this->tags[] = $tag;
   }
 
   /**
@@ -274,6 +345,21 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
    */
   public function assertElementPresent($css_selector) {
     $this->assertSession()->elementExists('css', $css_selector);
+  }
+
+  /**
+   * Asserts that the element with the given CSS selector is not present.
+   *
+   * @param string $css_selector
+   *   The CSS selector identifying the element to check.
+   *
+   * @throws Behat\Mink\Exception\ElementHtmlException
+   *   When the condition is not fulfilled.
+   *
+   * @see \Behat\Mink\WebAssert::elementExists
+   */
+  public function assertElementNotPresent($css_selector) {
+    $this->assertSession()->elementNotExists('css', $css_selector);
   }
 
   /**

@@ -5,10 +5,24 @@ bamboo_twig_test.loader:
     requirements:
         _permission: 'access content'
 
+bamboo_twig_test.loader_revision:
+    path: '/bamboo-twig-loader-revision'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testLoaderRevision'
+    requirements:
+        _permission: 'access content'
+
 bamboo_twig_test.render:
     path: '/bamboo-twig-render'
     defaults:
         _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testRender'
+    requirements:
+        _permission: 'access content'
+
+bamboo_twig_test.render_revision:
+    path: '/bamboo-twig-render-revision'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testRenderRevision'
     requirements:
         _permission: 'access content'
 

@@ -59,10 +59,28 @@ class TestsController extends ControllerBase {
   }
 
   /**
+   * Loader Revision page.
+   */
+  public function testLoaderRevision() {
+    return [
+      '#theme' => 'bamboo_twig_test_loader_revision',
+    ];
+  }
+
+  /**
    * Render page.
    */
   public function testRender() {
     return ['#theme' => 'bamboo_twig_test_render'];
+  }
+
+  /**
+   * Render Revision page.
+   */
+  public function testRenderRevision() {
+    return [
+      '#theme' => 'bamboo_twig_test_render_revision',
+    ];
   }
 
   /**

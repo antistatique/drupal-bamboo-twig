@@ -32,6 +32,21 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   ];
 
   /**
+   * Permissions for the admin user that will be logged-in for test.
+   *
+   * @var array
+   */
+  protected static $adminUserPermissions = [
+    // Node module permissions.
+    'access content overview',
+    'administer content types',
+    'administer nodes',
+    'bypass node access',
+    // Taxonomy module permissions.
+    'administer taxonomy',
+  ];
+
+  /**
    * A user with administration access.
    *
    * @var \Drupal\user\UserInterface
@@ -69,9 +84,10 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->setUpLanguages();
     $this->setUpTags();
     $this->setUpArticles();
+    $this->setupPages();
 
     // Create a user for tests.
-    $this->adminUser = $this->drupalCreateUser();
+    $this->adminUser = $this->drupalCreateUser(static::$adminUserPermissions);
 
     // Create a file for tests.
     $this->file = $this->createFile();
@@ -107,6 +123,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-node-3', 'News N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-node-4', 'Article N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-node-5', 'News N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-node-6', 'News N°6');
+    $this->assertElementContains('.test-loaders div.loader-entity-node-7', 'Page N°7');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-node-8');
 
     // Load entity tag (taxonomy).
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-1', 'Tag N°1');
@@ -114,6 +133,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-4', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-5', 'Tag N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-6', 'Tag N°6');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-taxonomy-term-7');
 
     // Load entity article (node) referenced field.
     // Referenced field will always display the entity in its own original lang.
@@ -122,6 +143,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-4', 'Tag N°1');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-reference-field-6', 'News N°6 - Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-reference-field-7', 'Page N°7 -');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-reference-field-8');
 
     // Load entity file.
     $this->assertSession()->elementExists('css', '.test-loaders div.loader-entity-file');
@@ -139,6 +163,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-node-3', 'Article N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-node-4', 'Article N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-node-5', 'Article N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-node-6', 'News N°6');
+    $this->assertElementContains('.test-loaders div.loader-entity-node-7', 'Page N°7');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-node-8');
 
     // Load entity tag (taxonomy) - French.
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-1', 'Tag N°1');
@@ -146,6 +173,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-3', 'Mot clé N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-4', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-6', 'Tag N°6');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-taxonomy-term-7');
 
     // Load entity article (node) referenced field - French.
     // Referenced field will always display the entity in its own original lang.
@@ -154,6 +183,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-4', 'Tag N°1');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-reference-field-6', 'News N°6 - Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-reference-field-7', 'Page N°7 -');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-reference-field-8');
 
     $this->drupalGet('/de/bamboo-twig-loader');
 
@@ -163,6 +195,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-node-3', 'Artikel N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-node-4', 'Article N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-node-5', 'News N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-node-7', 'Page N°7');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-node-8');
 
     // Load entity tag (taxonomy) - German.
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-1', 'Tag N°1');
@@ -170,6 +204,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-3', 'Stichworte N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-4', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-5', 'Tag N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-taxonomy-term-6', 'Tag N°6');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-taxonomy-term-7');
 
     // Load entity article (node) referenced field - German.
     // Referenced field will always display the entity in its own original lang.
@@ -178,6 +214,74 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-4', 'Tag N°1');
     $this->assertElementContains('.test-loaders div.loader-entity-reference-field-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-reference-field-6', 'News N°6 - Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-entity-reference-field-7', 'Page N°7 -');
+    $this->assertElementEmpty('.test-loaders div.loader-entity-reference-field-8');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntityRevision
+   */
+  public function testEntityRevision() {
+    $this->drupalGet('/bamboo-twig-loader-revision');
+
+    // Load entity article (node) revision.
+    $this->assertElementContains('.test-loaders-revision .loader-entity-node-revision-1', 'News N°1');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-node-revision-6', 'News N°6');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-node-revision-7', 'Revised News N°6');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-node-revision-8', 'Page N°7');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-node-revision-9', 'Revised Page N°7');
+    $this->assertElementEmpty('.test-loaders-revision .loader-entity-node-revision-10');
+
+    // Load entity tag (taxonomy) revision.
+    $this->assertElementContains('.test-loaders-revision .loader-entity-taxonomy-term-revision-1', 'Tag N°1');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-taxonomy-term-revision-6', 'Tag N°6');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-taxonomy-term-revision-7', 'Revised Tag N°6');
+    $this->assertElementEmpty('.test-loaders-revision .loader-entity-taxonomy-term-revision-8');
+
+    // Load entity (node) referenced field.
+    // Referenced field will always display the entity in its own original lang.
+    $this->assertElementContains('.test-loaders-revision .loader-entity-reference-field-1', 'News N°1 - Mot clé N°4');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-reference-field-6', 'News N°6 - Mot clé N°5');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-reference-field-7', 'Revised News N°6 - Mot clé N°5');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-reference-field-8', 'Page N°7 -');
+    $this->assertElementContains('.test-loaders-revision .loader-entity-reference-field-9', 'Revised Page N°7 -');
+    $this->assertElementEmpty('.test-loaders-revision .loader-entity-reference-field-10');
+  }
+
+  /**
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntity
+   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntityRevision
+   */
+  public function testEntityFromRoutes() {
+    // Accessing unpublished revision page required to be authenticated.
+    $this->drupalLogin($this->adminUser);
+
+    // Load entity page (node) from the current route.
+    $this->drupalGet('/node/7');
+    $this->assertElementContains('.loader-current-node', 'Page N°7');
+    $this->assertElementEmpty('.loader-current-node-revision');
+    $this->assertElementContains('.loader-field-current-node-title', 'Page N°7');
+
+    // Load entity page (node revision) from the current route.
+    $this->drupalGet('/node/7/revisions/9/view');
+    $this->assertElementContains('.loader-current-node', 'Page N°7');
+    $this->assertElementContains('.loader-current-node-revision', 'Revised Page N°7');
+    $this->assertElementContains('.loader-field-current-node-title', 'Page N°7');
+
+    // Load entity article (node) from the current route.
+    $this->drupalGet('/node/6');
+    $this->assertElementContains('.loader-current-node', 'News N°6');
+    $this->assertElementEmpty('.loader-current-node-revision');
+    $this->assertElementContains('.loader-field-current-node-title', 'News N°6');
+    $this->assertElementContains('.loader-field-current-node-field-reference', 'Mot clé N°4');
+
+    // Load entity article (node revision) from the current route.
+    $this->drupalGet('/node/6/revisions/7/view');
+    $this->assertElementContains('.loader-current-node', 'News N°6');
+    $this->assertElementContains('.loader-current-node-revision', 'Revised News N°6');
+    $this->assertElementContains('.loader-field-current-node-title', 'News N°6');
+    $this->assertElementContains('.loader-field-current-node-field-reference', 'Mot clé N°4');
   }
 
   /**
@@ -192,6 +296,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-node-3', 'News N°3');
     $this->assertElementContains('.test-loaders div.loader-field-node-4', 'Article N°4');
     $this->assertElementContains('.test-loaders div.loader-field-node-5', 'News N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-node-6', 'News N°6');
+    $this->assertElementContains('.test-loaders div.loader-field-node-7', 'Page N°7');
+    $this->assertElementEmpty('.test-loaders div.loader-field-node-8');
 
     // Load field tag (taxonomy).
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-1', 'Tag N°1');
@@ -199,6 +306,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-4', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-5', 'Tag N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-6', 'Tag N°6');
+    $this->assertElementEmpty('.test-loaders div.loader-field-taxonomy-term-7');
 
     // Load entity article (node) referenced field.
     // Referenced field will always display the entity in its own original lang.
@@ -207,6 +316,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-reference-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-field-reference-4', 'Tag N°1');
     $this->assertElementContains('.test-loaders div.loader-field-reference-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-reference-6', 'Mot clé N°5');
+    $this->assertElementEmpty('.test-loaders div.loader-field-reference-7');
 
     // Load field file.
     $this->assertElementContains('.test-loaders div.loader-field-file', $this->file->filename->value);
@@ -222,6 +333,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-node-3', 'Article N°3');
     $this->assertElementContains('.test-loaders div.loader-field-node-4', 'Article N°4');
     $this->assertElementContains('.test-loaders div.loader-field-node-5', 'Article N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-node-6', 'News N°6');
+    $this->assertElementContains('.test-loaders div.loader-field-node-7', 'Page N°7');
+    $this->assertElementEmpty('.test-loaders div.loader-field-node-8');
 
     // Load field tag (taxonomy) - French.
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-1', 'Tag N°1');
@@ -229,6 +343,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-3', 'Mot clé N°3');
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-4', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-6', 'Tag N°6');
+    $this->assertElementEmpty('.test-loaders div.loader-field-taxonomy-term-7');
 
     // Load entity article (node) referenced field - French.
     // Referenced field will always display the entity in its own original lang.
@@ -237,6 +353,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-reference-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-field-reference-4', 'Tag N°1');
     $this->assertElementContains('.test-loaders div.loader-field-reference-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-reference-6', 'Mot clé N°5');
+    $this->assertElementEmpty('.test-loaders div.loader-field-reference-7');
 
     $this->drupalGet('/de/bamboo-twig-loader');
 
@@ -246,6 +364,9 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-node-3', 'Artikel N°3');
     $this->assertElementContains('.test-loaders div.loader-field-node-4', 'Article N°4');
     $this->assertElementContains('.test-loaders div.loader-field-node-5', 'News N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-node-6', 'News N°6');
+    $this->assertElementContains('.test-loaders div.loader-field-node-7', 'Page N°7');
+    $this->assertElementEmpty('.test-loaders div.loader-field-node-8');
 
     // Load field tag (taxonomy) - German.
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-1', 'Tag N°1');
@@ -253,6 +374,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-3', 'Stichworte N°3');
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-4', 'Mot clé N°4');
     $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-5', 'Tag N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-taxonomy-term-6', 'Tag N°6');
+    $this->assertElementEmpty('.test-loaders div.loader-field-taxonomy-term-7');
 
     // Load entity article (node) referenced field - German.
     // Referenced field will always display the entity in its own original lang.
@@ -261,6 +384,8 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
     $this->assertElementContains('.test-loaders div.loader-field-reference-3', 'Tag N°3');
     $this->assertElementContains('.test-loaders div.loader-field-reference-4', 'Tag N°1');
     $this->assertElementContains('.test-loaders div.loader-field-reference-5', 'Mot clé N°5');
+    $this->assertElementContains('.test-loaders div.loader-field-reference-6', 'Mot clé N°5');
+    $this->assertElementEmpty('.test-loaders div.loader-field-reference-7');
   }
 
   /**

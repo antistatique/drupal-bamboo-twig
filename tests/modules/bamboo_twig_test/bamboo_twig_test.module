@@ -12,47 +12,57 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
   return [
     'bamboo_twig_test_loader' => [
       'variables' => ['variables' => []],
-      'template'  => 'loader',
+      'template'  => 'bamboo_twig/loader',
+    ],
+
+    'bamboo_twig_test_loader_revision' => [
+      'variables' => ['variables' => []],
+      'template'  => 'bamboo_twig/loader_revision',
     ],
 
     'bamboo_twig_test_render' => [
       'variables' => ['variables' => []],
-      'template'  => 'render',
+      'template'  => 'bamboo_twig/render',
+    ],
+
+    'bamboo_twig_test_render_revision' => [
+      'variables' => ['variables' => []],
+      'template'  => 'bamboo_twig/render_revision',
     ],
 
     'bamboo_twig_test_security' => [
       'variables' => ['variables' => []],
-      'template'  => 'security',
+      'template'  => 'bamboo_twig/security',
     ],
 
     'bamboo_twig_test_config' => [
       'variables' => ['variables' => []],
-      'template'  => 'config',
+      'template'  => 'bamboo_twig/config',
     ],
 
     'bamboo_twig_test_file' => [
       'variables' => ['variables' => []],
-      'template'  => 'file',
+      'template'  => 'bamboo_twig/file',
     ],
 
     'bamboo_twig_test_token' => [
       'variables' => ['variables' => []],
-      'template'  => 'token',
+      'template'  => 'bamboo_twig/token',
     ],
 
     'bamboo_twig_test_path' => [
       'variables' => ['variables' => []],
-      'template'  => 'path',
+      'template'  => 'bamboo_twig/path',
     ],
 
     'bamboo_twig_test_i18n' => [
       'variables' => ['variables' => []],
-      'template'  => 'i18n',
+      'template'  => 'bamboo_twig/i18n',
     ],
 
     'bamboo_twig_test_extensions' => [
       'variables' => ['variables' => []],
-      'template'  => 'extensions',
+      'template'  => 'bamboo_twig/extensions',
     ],
 
   ];

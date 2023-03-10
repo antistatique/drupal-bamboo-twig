@@ -4,6 +4,7 @@ namespace Drupal\bamboo_twig_loader\TwigExtension;
 
 use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Provides some loaders as Twig Extensions.
@@ -16,6 +17,9 @@ class Loader extends TwigExtensionBase {
   public function getFunctions() {
     return [
       new TwigFunction('bamboo_load_entity', [$this, 'loadEntity']),
+      new TwigFunction('bamboo_load_entity_revision', [
+        $this, 'loadEntityRevision',
+      ]),
       new TwigFunction('bamboo_load_field', [$this, 'loadField']),
       new TwigFunction('bamboo_load_currentuser', [$this, 'loadCurrentUser']),
       new TwigFunction('bamboo_load_image', [$this, 'loadImage']),
@@ -55,12 +59,46 @@ class Loader extends TwigExtensionBase {
       $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
       $this->getCurrentRouteMatch()->getParameter($entity_type);
 
-    if (!$entity) {
+    if (!$entity instanceof EntityInterface) {
       return NULL;
     }
 
     // Get the entity in the current context language.
     return $entityRepository->getTranslationFromContext($entity, $langcode);
+  }
+
+  /**
+   * Returns an entity revision object in the current context language.
+   *
+   * Keep in mind languages loading priorities:
+   *  1. Get the entity in the current page lang,
+   *  2. When not found, try to fetch the entity in the default site lang,
+   *  3. When not found in 2 previous attempts, fetch the original entity lang.
+   *
+   * @param string $entity_type
+   *   The entity type.
+   * @param mixed $revision_id
+   *   (optional) The revision ID of the entity to be loaded.
+   * @param string $langcode
+   *   (optional) For which language the entity should be rendered, defaults to
+   *   the current content language.
+   *
+   * @return null|\Drupal\Core\Entity\EntityInterface
+   *   An entity revision object or NULL if the revision does not exist.
+   */
+  public function loadEntityRevision($entity_type, $revision_id = NULL, $langcode = NULL) {
+    $entityRepository = $this->getEntityRepository();
+
+    $revision = $revision_id ?
+      $this->getEntityTypeManager()->getStorage($entity_type)->loadRevision($revision_id) :
+      $this->getCurrentRouteMatch()->getParameter($entity_type . '_revision');
+
+    if (!$revision instanceof EntityInterface) {
+      return NULL;
+    }
+
+    // Get the entity in the current context language.
+    return $entityRepository->getTranslationFromContext($revision, $langcode);
   }
 
   /**

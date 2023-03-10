@@ -1,0 +1,40 @@
+<div class="test-loaders-revision">
+  <!-- Loader Node Revision -->
+  <h2>Loader Node Revision</h2>
+  <hr>
+  {% set node_1 = bamboo_load_entity_revision('node', 1) %}
+  {% set node_6 = bamboo_load_entity_revision('node', 6) %}
+  {% set node_7 = bamboo_load_entity_revision('node', 7) %}
+  {% set node_8 = bamboo_load_entity_revision('node', 8) %}
+  {% set node_9 = bamboo_load_entity_revision('node', 9) %}
+  {% set node_10 = bamboo_load_entity_revision('node', 10) %}
+  <div class="loader-entity-node-revision-1">{{ node_1.title.value }}</div>
+  <div class="loader-entity-node-revision-6">{{ node_6.title.value }}</div>
+  <div class="loader-entity-node-revision-7">{{ node_7.title.value }}</div>
+  <div class="loader-entity-node-revision-8">{{ node_8.title.value }}</div>
+  <div class="loader-entity-node-revision-9">{{ node_9.title.value }}</div>
+  <div class="loader-entity-node-revision-10">{{ node_10.title.value }}</div>
+
+  <!-- Loader Taxonomy Revision -->
+  <h2>Loader Taxonomy Revision</h2>
+  <hr>
+  {% set term_1 = bamboo_load_entity_revision('taxonomy_term', 1) %}
+  {% set term_6 = bamboo_load_entity_revision('taxonomy_term', 6) %}
+  {% set term_7 = bamboo_load_entity_revision('taxonomy_term', 7) %}
+  {% set term_8 = bamboo_load_entity_revision('taxonomy_term', 8) %}
+  <div class="loader-entity-taxonomy-term-revision-1">{{ term_1.name.value }}</div>
+  <div class="loader-entity-taxonomy-term-revision-6">{{ term_6.name.value }}</div>
+  <div class="loader-entity-taxonomy-term-revision-7">{{ term_7.name.value }}</div>
+  <div class="loader-entity-taxonomy-term-revision-8">{{ term_8.name.value }}</div>
+
+  <!-- Referenced field -->
+  <!-- Referenced field should always show referenced entity in his original lang -->
+  <h2>Referenced field</h2>
+  <hr>
+  <div class="loader-entity-reference-field-1">{{ node_1.title.value }} - {{ node_1.field_tags.entity.name.value }}</div>
+  <div class="loader-entity-reference-field-6">{{ node_6.title.value }} - {{ node_6.field_tags.entity.name.value }}</div>
+  <div class="loader-entity-reference-field-7">{{ node_7.title.value }} - {{ node_7.field_tags.entity.name.value }}</div>
+  <div class="loader-entity-reference-field-8">{{ node_8.title.value }} - {{ node_8.field_tags.entity.name.value }}</div>
+  <div class="loader-entity-reference-field-9">{{ node_9.title.value }} - {{ node_9.field_tags.entity.name.value }}</div>
+  <div class="loader-entity-reference-field-10">{{ node_10.field_tags.entity.name.value }}</div>
+</div>
