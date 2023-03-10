@@ -295,32 +295,32 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
    */
   public function testDateDiffTimeAgoAuto() {
     $this->drupalGet('/fr/bamboo-twig-extensions');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-1', 'il y a 1 seconde');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-2', 'il y a 5 secondes');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-3', 'il y a 1 minute');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-4', 'il y a 5 minutes');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-5', 'il y a 1 heure');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-6', 'il y a 9 heures');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-7', 'il y a 1 jour');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-8', 'il y a 4 jours');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-10', 'il y a 1 mois');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-11', 'il y a 5 mois');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-12', 'il y a 1 an');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-13', 'il y a 3 ans');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-1', 'il y a 1 seconde');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-2', 'il y a 5 secondes');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-3', 'il y a 1 minute');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-4', 'il y a 5 minutes');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-5', 'il y a 1 heure');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-6', 'il y a 9 heures');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-7', 'il y a 1 jour');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-8', 'il y a 4 jours');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-10', 'il y a 1 mois');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-11', 'il y a 5 mois');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-12', 'il y a 1 an');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-13', 'il y a 3 ans');
 
     $this->drupalGet('/de/bamboo-twig-extensions');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-1', 'vor 1 Sekunde');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-2', 'vor 5 Sekunden');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-3', 'vor 1 Minute');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-4', 'vor 5 Minuten');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-5', 'vor 1 Stunde');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-6', 'vor 9 Stunden');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-7', 'vor 1 Tag');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-8', 'vor 4 Tagen');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-10', 'vor 1 Monat');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-11', 'vor 5 Monaten');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-12', 'vor 1 Jahr');
-    $this->assertElementContains('.test-extensions div.date-diff-ago-13', 'vor 3 Jahren');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-1', 'vor 1 Sekunde');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-2', 'vor 5 Sekunden');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-3', 'vor 1 Minute');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-4', 'vor 5 Minuten');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-5', 'vor 1 Stunde');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-6', 'vor 9 Stunden');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-7', 'vor 1 Tag');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-8', 'vor 4 Tagen');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-10', 'vor 1 Monat');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-11', 'vor 5 Monaten');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-12', 'vor 1 Jahr');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-ago-13', 'vor 3 Jahren');
   }
 
   /**
@@ -328,32 +328,32 @@ class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
    */
   public function testDateDiffTimeInAuto() {
     $this->drupalGet('/fr/bamboo-twig-extensions');
-    $this->assertElementContains('.test-extensions div.date-diff-in-1', 'dans 1 second');
-    $this->assertElementContains('.test-extensions div.date-diff-in-2', 'dans 5 secondes');
-    $this->assertElementContains('.test-extensions div.date-diff-in-3', 'dans 1 minute');
-    $this->assertElementContains('.test-extensions div.date-diff-in-4', 'dans 5 minutes');
-    $this->assertElementContains('.test-extensions div.date-diff-in-5', 'dans 1 heure');
-    $this->assertElementContains('.test-extensions div.date-diff-in-6', 'dans 9 heures');
-    $this->assertElementContains('.test-extensions div.date-diff-in-7', 'dans 1 jour');
-    $this->assertElementContains('.test-extensions div.date-diff-in-8', 'dans 5 jours');
-    $this->assertElementContains('.test-extensions div.date-diff-in-9', 'dans 1 mois');
-    $this->assertElementContains('.test-extensions div.date-diff-in-10', 'dans 6 mois');
-    $this->assertElementContains('.test-extensions div.date-diff-in-11', 'dans 1 an');
-    $this->assertElementContains('.test-extensions div.date-diff-in-12', 'dans 3 ans');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-1', 'dans 1 second');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-2', 'dans 5 secondes');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-3', 'dans 1 minute');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-4', 'dans 5 minutes');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-5', 'dans 1 heure');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-6', 'dans 9 heures');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-7', 'dans 1 jour');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-8', 'dans 5 jours');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-9', 'dans 1 mois');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-10', 'dans 6 mois');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-11', 'dans 1 an');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-12', 'dans 3 ans');
 
     $this->drupalGet('/de/bamboo-twig-extensions');
-    $this->assertElementContains('.test-extensions div.date-diff-in-1', 'in 1 Sekunde');
-    $this->assertElementContains('.test-extensions div.date-diff-in-2', 'in 5 Sekunden');
-    $this->assertElementContains('.test-extensions div.date-diff-in-3', 'in 1 Minute');
-    $this->assertElementContains('.test-extensions div.date-diff-in-4', 'in 5 Minuten');
-    $this->assertElementContains('.test-extensions div.date-diff-in-5', 'in 1 Stunde');
-    $this->assertElementContains('.test-extensions div.date-diff-in-6', 'in 9 Stunden');
-    $this->assertElementContains('.test-extensions div.date-diff-in-7', 'in 1 Tag');
-    $this->assertElementContains('.test-extensions div.date-diff-in-8', 'in 5 Tagen');
-    $this->assertElementContains('.test-extensions div.date-diff-in-9', 'in 1 Monat');
-    $this->assertElementContains('.test-extensions div.date-diff-in-10', 'in 6 Monaten');
-    $this->assertElementContains('.test-extensions div.date-diff-in-11', 'in 1 Jahr');
-    $this->assertElementContains('.test-extensions div.date-diff-in-12', 'in 3 Jahren');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-1', 'in 1 Sekunde');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-2', 'in 5 Sekunden');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-3', 'in 1 Minute');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-4', 'in 5 Minuten');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-5', 'in 1 Stunde');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-6', 'in 9 Stunden');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-7', 'in 1 Tag');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-8', 'in 5 Tagen');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-9', 'in 1 Monat');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-10', 'in 6 Monaten');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-11', 'in 1 Jahr');
+    $this->assertSession()->elementContains('css', '.test-extensions div.date-diff-in-12', 'in 3 Jahren');
   }
 
 }

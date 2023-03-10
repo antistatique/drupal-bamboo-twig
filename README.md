@@ -368,7 +368,7 @@ entity type. Can be rendered a specific `view_mode`.
 entity revision type. Can be rendered a specific `view_mode`.
 
 - `entity_type` string
-- `entity_type` string
+- `revision_id` int (optional)
 - `view_mode` string (optional) - machine name of the view mode
 - `langcode` string (optional) - defaults to current language
 
