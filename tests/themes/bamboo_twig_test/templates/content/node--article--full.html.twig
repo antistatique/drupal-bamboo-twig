@@ -1,0 +1,25 @@
+<!-- Load Current Node -->
+{% set node = bamboo_load_entity('node') %}
+Current Node:
+<div class="loader-current-node">{{ node.title.value }}</div>
+
+<!-- Load Current Node Revision -->
+{% set node = bamboo_load_entity_revision('node') %}
+Current Node Revision:
+<div class="loader-current-node-revision">{{ node.title.value }}</div>
+
+<!-- Loader Field -->
+<h2>Loader Field</h2>
+<hr>
+{% set node_title = bamboo_load_field('title', 'node') %}
+<div class="loader-field-current-node-title">{{ node_title.value }}</div>
+<br>
+{% set node_tag = bamboo_load_field('field_tags', 'node', 1) %}
+<div class="loader-field-current-node-field-reference">{{ node_tag.entity.name.value }}</div>
+
+<!-- Render Field -->
+<h2>Render Field</h2>
+<hr>
+<div class="render-field-title-node">{{ bamboo_render_field('title', 'node') }}</div>
+<br>
+<div class="render-field-reference-node">{{ bamboo_render_field('field_tags', 'node') }}</div>

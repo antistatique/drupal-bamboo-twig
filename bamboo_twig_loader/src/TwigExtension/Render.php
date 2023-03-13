@@ -7,6 +7,7 @@ use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
 use Drupal\Core\Routing\RouteObjectInterface;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Provides some renderer as Twig Extensions.
@@ -21,6 +22,9 @@ class Render extends TwigExtensionBase {
       new TwigFunction('bamboo_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
       new TwigFunction('bamboo_render_form', [$this, 'renderForm'], ['is_safe' => ['html']]),
       new TwigFunction('bamboo_render_entity', [$this, 'renderEntity'], ['is_safe' => ['html']]),
+      new TwigFunction('bamboo_render_entity_revision', [
+        $this, 'renderEntityRevision',
+      ], ['is_safe' => ['html']]),
       new TwigFunction('bamboo_render_region', [$this, 'renderRegion'], ['is_safe' => ['html']]),
       new TwigFunction('bamboo_render_field', [$this, 'renderField'], ['is_safe' => ['html']]),
       new TwigFunction('bamboo_render_image', [$this, 'renderImage'], ['is_safe' => ['html']]),
@@ -113,6 +117,41 @@ class Render extends TwigExtensionBase {
 
     $render_controller = $entityTypeManager->getViewBuilder($entity_type);
     return $render_controller->view($entity, $view_mode, $langcode);
+  }
+
+  /**
+   * Returns the render array for an entity revision.
+   *
+   * @param string $entity_type
+   *   The entity type.
+   * @param mixed $revision_id
+   *   (optional) The revision ID of the entity to render.
+   * @param string $view_mode
+   *   (optional) The view mode that should be used to render the entity.
+   * @param string $langcode
+   *   (optional) For which language the entity should be rendered, defaults to
+   *   the current content language.
+   *
+   * @return null|array
+   *   A render array for the entity revision or NULL if the revision does not
+   *   exists.
+   */
+  public function renderEntityRevision($entity_type, $revision_id = NULL, $view_mode = '', $langcode = NULL) {
+    $revision = $revision_id ?
+      $this->getEntityTypeManager()->getStorage($entity_type)->loadRevision($revision_id) :
+      $this->getCurrentRouteMatch()->getParameter($entity_type . '_revision');
+
+    if (!$revision instanceof EntityInterface) {
+      return NULL;
+    }
+
+    // Load the entity view using the current content language.
+    if (!$langcode) {
+      $langcode = $this->getLanguageManager()->getCurrentLanguage()->getId();
+    }
+
+    $render_controller = $this->getEntityTypeManager()->getViewBuilder($entity_type);
+    return $render_controller->view($revision, $view_mode, $langcode);
   }
 
   /**
@@ -272,6 +311,10 @@ class Render extends TwigExtensionBase {
     $entity = $id ?
         $this->getEntityTypeManager()->getStorage($entity_type)->load($id) :
         $this->getCurrentRouteMatch()->getParameter($entity_type);
+
+    if (!$entity instanceof EntityInterface) {
+      return NULL;
+    }
 
     // Ensure the entity has the requested field.
     if (!$entity->hasField($field_name)) {

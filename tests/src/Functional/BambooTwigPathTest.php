@@ -27,13 +27,13 @@ class BambooTwigPathTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-path');
 
     $this->assertSession()->elementExists('css', '.test-paths div.path-theme');
-    $this->assertElementContains('.test-paths div.path-theme', 'core/themes/starterkit_theme');
+    $this->assertSession()->elementContains('css', '.test-paths div.path-theme', 'core/themes/starterkit_theme');
 
     $this->assertSession()->elementExists('css', '.test-paths div.path-profile');
-    $this->assertElementContains('.test-paths div.path-profile', 'core/profiles/standard');
+    $this->assertSession()->elementContains('css', '.test-paths div.path-profile', 'core/profiles/standard');
 
     $this->assertSession()->elementExists('css', '.test-paths div.path-module');
-    $this->assertElementContains('.test-paths div.path-module', 'core/modules/node');
+    $this->assertSession()->elementContains('css', '.test-paths div.path-module', 'core/modules/node');
   }
 
 }

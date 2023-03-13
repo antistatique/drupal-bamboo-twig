@@ -8,10 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - re-enable PHPUnit Symfony Deprecation notice
 - update codebase to be compliant PHP8.2
+- rework tests by using a custom theme "bamboo_twig" in order of overriding *.html.twig template for tests purpose
 
 ### Added
 - add coverage of Drupal 10.1.x
 - allow Render form mixed parameter types - Issue #3273960 by darrenwh, wengerk
+- add `bamboo_render_entity_revision` rendering of entity revision - Issue #3254160 by dibix, wengerk
+- add `bamboo_load_entity_revision` loading of entity revision - Issue #3254160 by dibix, wengerk
 
 ## [6.0.0] - 2022-11-18
 ### Added

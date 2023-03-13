@@ -258,6 +258,36 @@ entity displayed in another language.
 {{ node.field_referenced_tags.entity|bamboo_i18n_get_translation.name.value }}
 ```
 
+`bamboo_load_entity_revision(entity_type, revision_id, langcode)` returns a EntityInterface object
+of the requested entity revision.
+
+- `entity_type` string
+- `revision_id` int (optional)
+- `langcode` string (optional) - defaults to current context language
+
+```twig
+{# Load the entity revision node with revision ID 1 #}
+{% set node = bamboo_load_entity_revision('node', 1) %}
+```
+
+Keep in mind, when loading an entity it will fetch it in the current context language.
+When you access it directly through a *EntityReferenceField* or a *Paragraph*
+(e.g. `node.field_referenced_tags.entity`), the entity is always loaded in its original language.
+(it won't be loaded in the current context language or in the entity language)
+You should then use the `|bamboo_i18n_get_translation` filter to make sure you have the
+entity displayed in another language.
+
+```twig
+{# Load the entity revision node with revision ID 1 #}
+{% set node = bamboo_load_entity_revision('node', 1) %}
+{# Display the entity title in the current context lang (page language) #}
+{{ node.title.value }}
+{# Display the referenced entity name in its original lang #}
+{{ node.field_referenced_tags.entity.name.value }}
+{# Display the referenced entity name in the current context lang (page language) #}
+{{ node.field_referenced_tags.entity|bamboo_i18n_get_translation.name.value }}
+```
+
 `bamboo_load_field(field, entity_type, id)` returns a FieldItemListInterface object of the requested field.
 
 - `field` string
@@ -332,6 +362,22 @@ entity type. Can be rendered a specific `view_mode`.
 
 {# Render Block entity #}
 {{ bamboo_render_entity('block', 'stark_messages') }}
+```
+
+`bamboo_render_entity_revision(entity_type, revision_id, view_mode, langcode)` returns a render array of the specified
+entity revision type. Can be rendered a specific `view_mode`.
+
+- `entity_type` string
+- `revision_id` int (optional)
+- `view_mode` string (optional) - machine name of the view mode
+- `langcode` string (optional) - defaults to current language
+
+```twig
+{# Render node with revision id 1 #}
+{{ bamboo_render_entity_revision('node', 1) }}
+
+{# Render the teaser of node with revision id 2 #}
+{{ bamboo_render_entity_revision('node', 2, 'teaser') }}
 ```
 
 `bamboo_render_form(module, formName)` returns a render array of the specified Form.
