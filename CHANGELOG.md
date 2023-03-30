@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - re-enable PHPUnit Symfony Deprecation notice
 - update codebase to be compliant PHP8.2
 - rework tests by using a custom theme "bamboo_twig" in order of overriding *.html.twig template for tests purpose
+- change Blocks rendered via bamboo_render_block do not use the block theme hook - Issue #3110310 by wengerk, rattusrattus, sahaj, interdruper, gido
 
 ### Added
 - add coverage of Drupal 10.1.x

@@ -48,11 +48,13 @@ class Render extends TwigExtensionBase {
    *   The ID of the block to render.
    * @param array $params
    *   (optional) An array of parameters passed to the block.
+   * @param bool $wrapper
+   *   (Optional) Whether it use block template for rendering.
    *
    * @return null|array
    *   A render array for the block or NULL if the block does not exist.
    */
-  public function renderBlock($block_id, array $params = []) {
+  public function renderBlock($block_id, array $params = [], $wrapper = FALSE) {
     /** @var \Drupal\Core\Block\BlockPluginInterface $plugin */
     $plugin = $this->getPluginManagerBlock()->createInstance($block_id, $params);
 
@@ -62,7 +64,20 @@ class Render extends TwigExtensionBase {
       $this->getContextHandler()->applyContextMapping($plugin, $contexts);
     }
 
-    return $plugin->build($params);
+    if (!$wrapper) {
+      return $plugin->build($params);
+    }
+
+    return [
+      '#theme' => 'block',
+      '#attributes' => [],
+      '#contextual_links' => [],
+      '#configuration' => $plugin->getConfiguration(),
+      '#plugin_id' => $plugin->getPluginId(),
+      '#base_plugin_id' => $plugin->getBaseId(),
+      '#derivative_plugin_id' => $plugin->getDerivativeId(),
+      'content' => $plugin->build($params),
+    ];
   }
 
   /**

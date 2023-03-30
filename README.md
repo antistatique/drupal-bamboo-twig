@@ -331,11 +331,12 @@ of the requested image.
 
 **Render**
 
-`bamboo_render_block(block_name, params)` returns a render array of the
+`bamboo_render_block(block_name, params, wrapper)` returns a render array of the
 specified block (works only for Plugin Block).
 
 - `block_name` string
 - `params` array (optional)
+- `wrapper` bool (optional) Whether it use block template for rendering. Defaults: FALSE.
 
 ```twig
 {# Render the `system_powered_by_block` block #}
