@@ -69,7 +69,7 @@ class ContentBlockTest extends KernelTestBase {
     $this->assertArrayHasKey('#block_content', $renderer);
     $this->assertInstanceOf(BlockContent::class, $renderer['#block_content']);
 
-    // Ensure {{ bamboo_render_block('block_content:ca1f2401-1', [], FALSE) }}.
+    // Ensure {{ bamboo_render_block('block_content:ca1f2401-1', [], TRUE) }}.
     $renderer = $this->renderExtension->renderBlock('block_content:' . $block->uuid(), [], TRUE);
     $this->assertArrayHasKey('#theme', $renderer);
     $this->assertEquals('block', $renderer['#theme']);
