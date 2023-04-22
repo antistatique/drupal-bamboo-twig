@@ -60,7 +60,7 @@ class EntityBlockTest extends KernelTestBase {
   /**
    * @covers ::loadEntity
    *
-   * Cover the usage of {{ bamboo_render_entity('block', 'stark_branding') }}.
+   * Cover the usage of {{ bamboo_load_entity('block', 'stark_branding') }}.
    */
   public function testLoaderBlockEntity() {
     $entity = $this->loaderExtension->loadEntity('block', 'test_block');
@@ -70,7 +70,7 @@ class EntityBlockTest extends KernelTestBase {
   /**
    * @covers ::loadEntity
    *
-   * Cover the usage of {{ bamboo_render_entity('block_content', 1) }}.
+   * Cover the usage of {{ bamboo_load_entity('block_content', 1) }}.
    */
   public function testLoaderBlockContentEntity() {
     $block = $this->createBlockContent();

@@ -58,7 +58,7 @@ class ContentBlockTest extends KernelTestBase {
    *
    * Cover the usage of
    * {{ bamboo_render_block('block_content:ca1f2401-16a3-474b') }}.
-   * {{ bamboo_render_block('block_content:ca1f2401-16a3-474b', [], FALSE) }}.
+   * {{ bamboo_render_block('block_content:ca1f2401-16a3-474b', [], TRUE) }}.
    */
   public function testRenderContentBlock() {
     $block = $this->createBlockContent();
