@@ -319,6 +319,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertSession()->elementExists('css', '.test-render div.render-image');
     $this->assertSession()->elementExists('css', '.test-render div.render-image img');
+    $this->assertSession()->elementExists('css', '.test-render div.render-image-alt img[alt="Quam litora posuere"]');
   }
 
   /**

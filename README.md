@@ -432,10 +432,11 @@ entity revision type. Can be rendered a specific `view_mode`.
 
 - `fid` int
 - `style` string
+- `alt` string (optional) - the image alternative text
 
 ```twig
 {# Get thumbnail from image with fid 12. #}
-{{ bamboo_render_image(1, 'thumbnail') }}
+{{ bamboo_render_image(1, 'thumbnail', 'Alternative text.') }}
 ```
 
 `bamboo_render_image_style(path, style, preprocess)` returns the URL string of the

@@ -176,22 +176,26 @@ class Render extends TwigExtensionBase {
    *   The image File ID of the entity to render.
    * @param string $style
    *   The image style.
+   * @param string|null $alt
+   *   An optional image alternative text to be used.
    *
    * @return string
    *   A render array for the image style or NULL if the image does not exist.
    */
-  public function renderImage($id, $style) {
+  public function renderImage($id, $style, $alt = NULL) {
     $file = $this->getFileStorage()->load($id);
 
     // Check the entity exist.
-    if ($file) {
-      return [
-        '#theme'      => 'image_style',
-        '#style_name' => $style,
-        '#uri'        => $file->getFileUri(),
-      ];
+    if (!$file) {
+      return NULL;
     }
-    return NULL;
+
+    return [
+      '#theme' => 'image_style',
+      '#style_name' => $style,
+      '#uri' => $file->getFileUri(),
+      '#alt' => $alt,
+    ];
   }
 
   /**

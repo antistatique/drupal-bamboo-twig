@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - allow Render form mixed parameter types - Issue #3273960 by darrenwh, wengerk
 - add `bamboo_render_entity_revision` rendering of entity revision - Issue #3254160 by dibix, wengerk
 - add `bamboo_load_entity_revision` loading of entity revision - Issue #3254160 by dibix, wengerk
+- add support of optional `alt` parameter on `bamboo_render_image` - Issue #3355084 by Ranjit1032002, thatlotnextdoor, wengerk
 
 ## [6.0.0] - 2022-11-18
 ### Added
