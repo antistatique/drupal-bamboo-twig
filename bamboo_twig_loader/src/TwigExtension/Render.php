@@ -176,7 +176,7 @@ class Render extends TwigExtensionBase {
    *   The image File ID of the entity to render.
    * @param string $style
    *   The image style.
-   * @param string $alt
+   * @param string|null $alt
    *   An optional image alternative text to be used.
    *
    * @return string
