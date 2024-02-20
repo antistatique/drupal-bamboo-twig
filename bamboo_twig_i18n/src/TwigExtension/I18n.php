@@ -2,11 +2,11 @@
 
 namespace Drupal\bamboo_twig_i18n\TwigExtension;
 
+use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Template\TwigEnvironment;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
-use Drupal\Core\Template\TwigEnvironment;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Provides some 'Internationalization' Twig Extensions.

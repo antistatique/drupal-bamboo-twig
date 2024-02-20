@@ -2,12 +2,12 @@
 
 namespace Drupal\bamboo_twig_loader\TwigExtension;
 
-use Drupal\Core\Plugin\ContextAwarePluginInterface;
-use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
-use Drupal\Core\Routing\RouteObjectInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Plugin\ContextAwarePluginInterface;
+use Drupal\Core\Routing\RouteObjectInterface;
+use Twig\TwigFunction;
 
 /**
  * Provides some renderer as Twig Extensions.

@@ -2,8 +2,8 @@
 
 namespace Drupal\bamboo_twig_config\TwigExtension;
 
-use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Twig\TwigFunction;
 
 /**
  * Provides getter for configs drupal storage as Twig Extensions.

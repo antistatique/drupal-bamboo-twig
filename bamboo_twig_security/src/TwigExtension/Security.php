@@ -2,8 +2,8 @@
 
 namespace Drupal\bamboo_twig_security\TwigExtension;
 
-use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Twig\TwigFunction;
 
 /**
  * Provides a 'Security' Twig Extensions.

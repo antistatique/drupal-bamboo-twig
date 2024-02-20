@@ -1,5 +1,5 @@
-name: Bamboo Twig Test
+name: Bamboo Twig Theme Test
 type: theme
 description: The Official Theme for Bamboo Twig Tests
-base theme: starterkit_theme
+base theme: false
 package: Testing

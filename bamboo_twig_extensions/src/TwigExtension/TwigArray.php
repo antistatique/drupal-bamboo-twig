@@ -2,8 +2,8 @@
 
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
-use Twig\TwigFilter;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * Provides bridge for Array functions and filters.

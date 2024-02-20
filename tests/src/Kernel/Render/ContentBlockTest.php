@@ -4,8 +4,8 @@ namespace Drupal\Tests\bamboo_twig\Kernel\Render;
 
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\Tests\block\Traits\BlockCreationTrait;
 use Drupal\Tests\bamboo_twig\Traits\BlockCreationTrait as BambooBlockCreationTrait;
+use Drupal\Tests\block\Traits\BlockCreationTrait;
 
 /**
  * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Render
