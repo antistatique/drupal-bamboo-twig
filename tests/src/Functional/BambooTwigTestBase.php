@@ -51,7 +51,7 @@ abstract class BambooTwigTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'bamboo_twig_test';
+  protected $defaultTheme = 'bamboo_twig_theme_test';
 
   /**
    * {@inheritdoc}
