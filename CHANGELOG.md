@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add `bamboo_load_entity_revision` loading of entity revision - Issue #3254160 by dibix, wengerk
 - add support of optional `alt` parameter on `bamboo_render_image` - Issue #3355084 by Ranjit1032002, thatlotnextdoor, wengerk
 - add Drupal GitlabCI - #3417699 #3350583
+- add official support of drupal 11.x-dev
 
 ### Fixed
 - fix tests template discovery using 'path' property

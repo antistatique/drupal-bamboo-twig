@@ -2,7 +2,7 @@ name: Bamboo Twig test
 description: Support module for Bamboo Twig testing.
 package: Testing
 type: module
-core_version_requirement: ^9.3 || ^10
+core_version_requirement: ^9.3 || ^10 || ^11
 
 dependencies:
   - drupal:bamboo_twig
