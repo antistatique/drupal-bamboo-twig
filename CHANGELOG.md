@@ -17,10 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add `bamboo_render_entity_revision` rendering of entity revision - Issue #3254160 by dibix, wengerk
 - add `bamboo_load_entity_revision` loading of entity revision - Issue #3254160 by dibix, wengerk
 - add support of optional `alt` parameter on `bamboo_render_image` - Issue #3355084 by Ranjit1032002, thatlotnextdoor, wengerk
-- add Drupal GitlabCI
+- add Drupal GitlabCI - #3417699 #3350583
 
 ### Fixed
 - fix tests template discovery using 'path' property
+- fix Issue #3417699 by apaderno: Tests failing on Drupal 10 because Tests module has same name as Test Theme
+- fix Issue #3350583 by urvashi_vora, mukesh88, mahtab_alam: Fix the errors/warnings reported by PHP_CodeSniffer' --author="Mahtab Alam <25208-mahtab_alam@users.noreply.drupalcode.org>"
 
 ### Removed
 - drop tests support on Drupal < 9.4
