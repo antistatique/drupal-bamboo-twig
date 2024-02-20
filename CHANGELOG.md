@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fix tests template discovery using 'path' property
 - fix Issue #3417699 by apaderno: Tests failing on Drupal 10 because Tests module has same name as Test Theme
-- fix Issue #3350583 by urvashi_vora, mukesh88, mahtab_alam: Fix the errors/warnings reported by PHP_CodeSniffer' --author="Mahtab Alam <25208-mahtab_alam@users.noreply.drupalcode.org>"
+- fix Issue #3350583 by urvashi_vora, mukesh88, mahtab_alam: Fix the errors/warnings reported by PHP_CodeSniffer
 
 ### Removed
 - drop tests support on Drupal < 9.4
