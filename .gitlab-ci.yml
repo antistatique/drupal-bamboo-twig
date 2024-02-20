@@ -1,0 +1,47 @@
+################
+# Includes
+#
+# Additional configuration can be provided through includes.
+# One advantage of include files is that if they are updated upstream, the changes affect all pipelines using that include.
+#
+# Includes can be overridden by re-declaring anything provided in an include, here in gitlab-ci.yml
+# https://docs.gitlab.com/ee/ci/yaml/includes.html#override-included-configuration-values
+################
+
+include:
+  ################
+  # DrupalCI includes:
+  # As long as you include this, any future includes added by the Drupal Association will be accessible to your pipelines automatically.
+  # View these include files at https://git.drupalcode.org/project/gitlab_templates/
+  ################
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+################
+# Pipeline configuration variables
+#
+# These are the variables provided to the Run Pipeline form that a user may want to override.
+#
+# Docs at https://git.drupalcode.org/project/gitlab_templates/-/blob/1.0.x/includes/include.drupalci.variables.yml
+################
+variables:
+  SKIP_ESLINT: '1'
+  # Opt in to testing current minor against max supported PHP version.
+  OPT_IN_TEST_MAX_PHP: '1'
+  # Opt in to testing previous & next minor (Drupal 10.0.x and 10.2.x).
+  OPT_IN_TEST_PREVIOUS_MINOR: '1'
+  OPT_IN_TEST_NEXT_MINOR: '1'
+  # Opt in to testing $CORE_PREVIOUS_MAJOR (currently Drupal 9.5).
+  OPT_IN_TEST_PREVIOUS_MAJOR: '1'
+  # The 4.x branch of the CDN module requires PHP >=8.1, rather than core's >=7.4.
+  CORE_PREVIOUS_PHP_MIN: '8.1'
+  # Opt in to testing $CORE_MAJOR_DEVELOPMENT (currently Drupal 11).
+  OPT_IN_TEST_NEXT_MAJOR: '1'
+
+# This module wants to strictly comply with Drupal's coding standards.
+phpcs:
+  allow_failure: false
