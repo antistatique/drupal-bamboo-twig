@@ -8,8 +8,6 @@ use Twig\TwigFilter;
 
 /**
  * Provides bridge for Text functions and filters.
- *
- * Expose the features of Twig_Extensions_Extension_Text.
  */
 class TwigText extends AbstractExtension {
 
@@ -31,10 +29,6 @@ class TwigText extends AbstractExtension {
 
   /**
    * Truncate a string.
-   *
-   * Can't use the Twig filter callback cause the truncate function is
-   * actually declared as a global function and not method of
-   * Twig_Extensions_Extension_Text.
    *
    * @param \Drupal\Core\Template\TwigEnvironment $env
    *   A Twig_Environment instance.
