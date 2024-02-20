@@ -12,57 +12,68 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
   return [
     'bamboo_twig_test_loader' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/loader',
+      'template'  => 'loader',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_loader_revision' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/loader_revision',
+      'template'  => 'loader_revision',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_render' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/render',
+      'template'  => 'render',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_render_revision' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/render_revision',
+      'template'  => 'render_revision',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_security' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/security',
+      'template'  => 'security',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_config' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/config',
+      'template'  => 'config',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_file' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/file',
+      'template'  => 'file',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_token' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/token',
+      'template'  => 'token',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_path' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/path',
+      'template'  => 'path',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_i18n' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/i18n',
+      'template'  => 'i18n',
+      'path' => 'bamboo_twig',
     ],
 
     'bamboo_twig_test_extensions' => [
       'variables' => ['variables' => []],
-      'template'  => 'bamboo_twig/extensions',
+      'template'  => 'extensions',
+      'path' => 'bamboo_twig',
     ],
 
   ];

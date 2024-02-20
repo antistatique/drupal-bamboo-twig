@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add support of optional `alt` parameter on `bamboo_render_image` - Issue #3355084 by Ranjit1032002, thatlotnextdoor, wengerk
 - add Drupal GitlabCI
 
+### Fixed
+- fix tests template discovery using 'path' property
+
 ## [6.0.0] - 2022-11-18
 ### Added
 - add official support of drupal 9.5 & 10.0
