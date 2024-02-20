@@ -54,7 +54,13 @@ class ImageTest extends KernelTestBase {
     $this->installEntitySchema('user');
     $this->installEntitySchema('file');
     $this->installSchema('file', 'file_usage');
-    $this->installSchema('system', 'sequences');
+
+    // Since Drupal 10.2.0 installing the table sequences with the
+    // method KernelTestBase::installSchema() is deprecated.
+    if (version_compare(\Drupal::VERSION, '10.2.0', '<')) {
+      $this->installSchema('system', ['sequences']);
+    }
+
     $this->installEntitySchema('media');
     $this->installConfig(['field', 'system', 'image', 'file', 'media']);
 
@@ -134,7 +140,14 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" \/>/', $markup->__toString());
+
+    // Since Drupal 11.x the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
+    }
+    else {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" \/>/', $markup->__toString());
+    }
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', '') }}.
     $renderer = $this->renderExtension->renderImage($file->id(), 'thumbnail', '');
@@ -147,7 +160,14 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="" \/>/', $markup->__toString());
+
+    // Since Drupal 11.x the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="" \/>/', $markup->__toString());
+    }
+    else {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="" \/>/', $markup->__toString());
+    }
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', 'Dignissim ... primis') }}.
     $renderer = $this->renderExtension->renderImage($file->id(), 'thumbnail', 'Dignissim dui dolor ipsum sapien habitant primis');
@@ -160,7 +180,14 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
+
+    // Since Drupal 11.x the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
+    }
+    else {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
+    }
   }
 
   /**
@@ -185,7 +212,14 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" \/>/', $markup->__toString());
+
+    // Since Drupal 11.x the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
+    }
+    else {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" \/>/', $markup->__toString());
+    }
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', '') }}.
     $renderer = $this->renderExtension->renderImage($media->field_media_image->target_id, 'thumbnail', '');
@@ -198,7 +232,14 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="" \/>/', $markup->__toString());
+
+    // Since Drupal 11.x the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
+    }
+    else {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="" \/>/', $markup->__toString());
+    }
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', 'Dignissim ... primis') }}.
     $renderer = $this->renderExtension->renderImage($media->field_media_image->target_id, 'thumbnail', 'Dignissim dui dolor ipsum sapien habitant primis');
@@ -211,7 +252,14 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
+
+    // Since Drupal 11.x the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
+    }
+    else {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
+    }
   }
 
 }
