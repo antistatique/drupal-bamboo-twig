@@ -4,9 +4,9 @@ FROM wengerk/drupal-for-contrib:${BASE_IMAGE_TAG}
 ARG BASE_IMAGE_TAG
 ENV BASE_IMAGE_TAG=${BASE_IMAGE_TAG}
 
-# Disable deprecation notice since PHPUnit 9 with Drupal 9.1 and lower.
-# @see https://www.drupal.org/project/drupal/issues/3259744
-# ENV SYMFONY_DEPRECATIONS_HELPER=weak
+# Disable deprecation notice since PHPUnit 10 with Drupal 10.2 and upper.
+# @see https://www.drupal.org/project/drupal/issues/3403491
+ENV SYMFONY_DEPRECATIONS_HELPER=weak
 
 # Install symfony/mime as required by bamboo_twig_extensions.
 ENV COMPOSER_ALLOW_SUPERUSER=1
