@@ -5,13 +5,11 @@ namespace Drupal\Tests\bamboo_twig\Functional;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\Tests\BrowserTestBase;
-use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
 
 /**
  * Has some additional helper methods to make test code more readable.
  */
 abstract class BambooTwigTestBase extends BrowserTestBase {
-  use EntityReferenceTestTrait;
 
   /**
    * The Entity Type Manager.
