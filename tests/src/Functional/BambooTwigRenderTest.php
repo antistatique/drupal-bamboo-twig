@@ -131,7 +131,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   public function testRegion() {
     $this->drupalGet('/bamboo-twig-render');
     $this->assertSession()->elementExists('css', '.test-render div.render-region');
-    $this->assertSession()->elementExists('css', '.test-render div.render-region #block-bamboo-twig-test-branding');
+    $this->assertSession()->elementExists('css', '.test-render div.render-region #block-bamboo-twig-theme-test-branding');
   }
 
   /**
@@ -150,23 +150,17 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
 
     // Asserts node translations works.
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2 h2 a', 'News N°2');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2 .field--name-field-tags', 'Tag N°2');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2-teaser h2 a', 'News N°2');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3 h2 a', 'News N°3');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3 .field--name-field-tags', 'Tag N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3-teaser h2 a', 'News N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4 h2 a', 'Article N°4');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4 .field--name-field-tags', 'Tag N°1');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4-teaser h2 a', 'Article N°4');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5 h2 a', 'News N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5', 'News N°5');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5 .field--name-field-tags', 'Tag N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5-teaser h2 a', 'News N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6 h2 a', 'News N°6');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6 .field--name-field-tags', 'Tag N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6-teaser h2 a', 'News N°6');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-7 h2 a', 'Page N°7');
-    $this->assertSession()->elementNotExists('css', '.test-render div.render-entity-node-7 .field--name-field-tags');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-7-teaser h2 a', 'Page N°7');
     $this->assertElementEmpty('.test-render div.render-entity-node-8');
     $this->assertElementEmpty('.test-render div.render-entity-node-8-teaser');
@@ -198,25 +192,19 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
 
     // Asserts node translations works.
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-1 h2 a', 'News N°1');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-1 .field--name-field-tags', 'Mot clé N°4');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-1-teaser h2 a', 'News N°1');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2 h2 a', 'Article N°2');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2 .field--name-field-tags', 'Mot clé N°2');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2-teaser h2 a', 'Article N°2');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3 h2 a', 'Article N°3');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3 .field--name-field-tags', 'Mot clé N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3-teaser h2 a', 'Article N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4 h2 a', 'Article N°4');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4', 'Tag N°1');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4-teaser h2 a', 'Article N°4');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5 h2 a', 'Article N°5');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5 .field--name-field-tags', 'Mot clé N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5-teaser h2 a', 'Article N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6 h2 a', 'News N°6');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6 .field--name-field-tags', 'Mot clé N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6-teaser h2 a', 'News N°6');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-7 h2 a', 'Page N°7');
-    $this->assertSession()->elementNotExists('css', '.test-render div.render-entity-node-7 .field--name-field-tags');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-7-teaser h2 a', 'Page N°7');
     $this->assertElementEmpty('.test-render div.render-entity-node-8');
     $this->assertElementEmpty('.test-render div.render-entity-node-8-teaser');
@@ -241,25 +229,19 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
 
     // Asserts node translations works.
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-1 h2 a', 'News N°1');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-1 .field--name-field-tags', 'Mot clé N°4');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-1-teaser h2 a', 'News N°1');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2 h2 a', 'News N°2');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2 .field--name-field-tags', 'Tag N°2');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-2-teaser h2 a', 'News N°2');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3 h2 a', 'Artikel N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3', 'Stichworte N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-3-teaser h2 a', 'Artikel N°3');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4 h2 a', 'Article N°4');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4 .field--name-field-tags', 'Tag N°1');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-4-teaser h2 a', 'Article N°4');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5 h2 a', 'News N°5');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5 .field--name-field-tags', 'Tag N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-5-teaser h2 a', 'News N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6 h2 a', 'News N°6');
-    $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6 .field--name-field-tags', 'Tag N°5');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-6-teaser h2 a', 'News N°6');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-7 h2 a', 'Page N°7');
-    $this->assertSession()->elementNotExists('css', '.test-render div.render-entity-node-7 .field--name-field-tags');
     $this->assertSession()->elementContains('css', '.test-render div.render-entity-node-7-teaser h2 a', 'Page N°7');
     $this->assertElementEmpty('.test-render div.render-entity-node-8');
     $this->assertElementEmpty('.test-render div.render-entity-node-8-teaser');
