@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
+        drupal_version: ['9.5', '10.0', '10.1']
         module: ['bamboo_twig']
         experimental: [false]
 
@@ -37,7 +37,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
+        drupal_version: ['9.5', '10.0', '10.1']
         module: ['bamboo_twig']
         experimental: [false]
 
