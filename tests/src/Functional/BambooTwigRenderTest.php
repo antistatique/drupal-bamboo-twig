@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
-use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
+use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
 
 /**
  * Tests Renders twig filters and functions.

@@ -2,9 +2,9 @@
 
 namespace Drupal\bamboo_twig_loader\TwigExtension;
 
-use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Entity\EntityInterface;
+use Twig\TwigFunction;
 
 /**
  * Provides some loaders as Twig Extensions.

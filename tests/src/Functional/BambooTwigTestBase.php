@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
-use Drupal\Tests\BrowserTestBase;
-use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\language\Entity\ConfigurableLanguage;
+use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
 
 /**

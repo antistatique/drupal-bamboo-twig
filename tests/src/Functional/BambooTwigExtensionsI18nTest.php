@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
-use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\Component\Gettext\PoItem;
+use Drupal\language\Entity\ConfigurableLanguage;
 
 /**
  * Tests Extensions i18n of twig filters and functions.

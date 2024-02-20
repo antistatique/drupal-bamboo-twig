@@ -2,8 +2,8 @@
 
 namespace Drupal\bamboo_twig_token\TwigExtension;
 
-use Twig\TwigFunction;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Twig\TwigFunction;
 
 /**
  * Provides a token rempalcement as Twig Extensions.

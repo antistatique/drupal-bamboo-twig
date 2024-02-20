@@ -2,10 +2,10 @@
 
 namespace Drupal\bamboo_twig_extensions\TwigExtension;
 
-use Twig\TwigFilter;
-use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Template\TwigEnvironment;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * Provides bridge for Text functions and filters.

@@ -2,11 +2,11 @@
 
 namespace Drupal\Tests\bamboo_twig\Kernel\Render;
 
-use Drupal\KernelTests\KernelTestBase;
-use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
-use Drupal\Core\Render\Markup;
+use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
 
 /**
  * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Render

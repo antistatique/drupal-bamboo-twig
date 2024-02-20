@@ -2,9 +2,9 @@
 
 namespace Drupal\bamboo_twig_file\TwigExtension;
 
-use Twig\TwigFunction;
-use Twig\TwigFilter;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Provides a 'File' Twig Extensions.
