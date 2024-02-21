@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update codebase to be compliant PHP8.2
 - rework tests by using a custom theme "bamboo_twig" in order of overriding *.html.twig template for tests purpose
 - change Blocks rendered via bamboo_render_block do not use the block theme hook - Issue #3110310 by wengerk, rattusrattus, sahaj, interdruper, gido
-- Issue #3417105 - remove all requirements on twig/extensions
+- fix Issue #3417105 - remove all requirements on twig/extensions
+- disable PHPUnit Symfony Deprecation notice since Drupal 10.2
 
 ### Added
 - add coverage of Drupal 10.1.x
@@ -19,11 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add `bamboo_load_entity_revision` loading of entity revision - Issue #3254160 by dibix, wengerk
 - add support of optional `alt` parameter on `bamboo_render_image` - Issue #3355084 by Ranjit1032002, thatlotnextdoor, wengerk
 - add Drupal GitlabCI - #3417699 #3350583
+- add official support of drupal 11.x-dev
 
 ### Fixed
 - fix tests template discovery using 'path' property
 - fix Issue #3417699 by apaderno: Tests failing on Drupal 10 because Tests module has same name as Test Theme
-- fix Issue #3350583 by urvashi_vora, mukesh88, mahtab_alam: Fix the errors/warnings reported by PHP_CodeSniffer' --author="Mahtab Alam <25208-mahtab_alam@users.noreply.drupalcode.org>"
+- fix Issue #3350583 by urvashi_vora, mukesh88, mahtab_alam: Fix the errors/warnings reported by PHP_CodeSniffer
 
 ### Removed
 - drop tests support on Drupal < 9.4
