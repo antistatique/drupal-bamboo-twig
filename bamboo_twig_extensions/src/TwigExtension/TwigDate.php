@@ -9,8 +9,6 @@ use Twig\TwigFilter;
 
 /**
  * Provides bridge for Text functions and filters.
- *
- * Expose the features of Twig_Extensions_Extension_Date.
  */
 class TwigDate extends AbstractExtension {
   use StringTranslationTrait;

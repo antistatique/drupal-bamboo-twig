@@ -7,8 +7,6 @@ use Twig\TwigFilter;
 
 /**
  * Provides bridge for Array functions and filters.
- *
- * Expose the features of Twig_Extensions_Extension_Array.
  */
 class TwigArray extends AbstractExtension {
 
@@ -30,10 +28,6 @@ class TwigArray extends AbstractExtension {
 
   /**
    * Shuffles an array.
-   *
-   * Can't use the Twig filter callback cause the shuffle function is
-   * actually declared as a global function and not method of
-   * Twig_Extensions_Extension_Array.
    *
    * @param array|\Traversable $array
    *   An array.
