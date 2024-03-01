@@ -5,10 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [6.0.1] - 2024-03-01
 ### Changed
 - re-enable PHPUnit Symfony Deprecation notice
 - update codebase to be compliant PHP8.2
-- rework tests by using a custom theme "bamboo_twig" in order of overriding *.html.twig template for tests purpose
+- rework tests by using a custom theme "bamboo_twig" in order of overriding \*.html.twig template for tests purpose
 - change Blocks rendered via bamboo_render_block do not use the block theme hook - Issue #3110310 by wengerk, rattusrattus, sahaj, interdruper, gido
 - fix Issue #3417105 - remove all requirements on twig/extensions
 - disable PHPUnit Symfony Deprecation notice since Drupal 10.2
@@ -129,7 +131,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - init module
 - provides some Twig extensions with some useful functions and filters that can improve development experience.
 
-[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.0...HEAD
+[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.1...HEAD
+[6.0.1]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.0...6.0.1
 [6.0.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.1...6.0.0
 [5.1.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.0...8.x-5.1
 [5.0.0]: https://github.com/antistatique/drupal-bamboo-twig/compare/8.x-5.0-alpha...5.0.0

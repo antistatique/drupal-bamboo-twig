@@ -4,9 +4,9 @@ All the Twig features you missed until now.
 
 A Drupal powered module.
 
-|       Tests-CI        |        Style-CI         |        Downloads        |         Releases         |
-|:----------------------:|:-----------------------:|:-----------------------:|:------------------------:|
-| [![Build Status](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/ci.yml/badge.svg)](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/ci.yml) | [![Code styles](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/styles.yml/badge.svg)](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/styles.yml) | [![Downloads](https://img.shields.io/badge/downloads-8.x--5.0-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-8.x-5.0.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v5.0-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
+|       Tests-CI        |        Style-CI         |                                                                        Downloads                                                                         |                                                                        Releases                                                                        |
+|:----------------------:|:-----------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| [![Build Status](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/ci.yml/badge.svg)](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/ci.yml) | [![Code styles](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/styles.yml/badge.svg)](https://github.com/antistatique/drupal-bamboo-twig/actions/workflows/styles.yml) | [![Downloads](https://img.shields.io/badge/downloads-6.0.1-green.svg?style=flat-square)](https://ftp.drupal.org/files/projects/bamboo_twig-6.0.1.tar.gz) | [![Latest Stable Version](https://img.shields.io/badge/release-v6.0.1-blue.svg?style=flat-square)](https://www.drupal.org/project/bamboo_twig/releases) |
 
 The Bamboo Twig module provides some Twig extensions with some useful functions
 and filters aimed to improve the development experience.
@@ -84,7 +84,7 @@ must upgrade to `8.x-3.x` version of **Bamboo Twig**.
 
 ## Dependencies
 
-The Drupal 8, Drupal 9 & Drupal 10 version of Bamboo Twig requires nothing !
+The Drupal 8, Drupal 9, Drupal 10 & Drupal 11 version of Bamboo Twig requires nothing !
 Feel free to use it.
 
 ## Similar modules
@@ -96,8 +96,8 @@ thus reducing the need to install a bunch of extra modules.
 Plus, it adds a lots of functionality, ensures stability with tests, includes automated
 quality control and is totally open to contribution via [Github](https://github.com/antistatique/drupal-bamboo-twig) or [Drupal Issue Queue](https://www.drupal.org/project/issues/bamboo_twig).
 
-Finally, Bamboo Twig follows all the best practices of Drupal 8 to ensure
-compatibility with Drupal 9.
+Finally, Bamboo Twig follows all the best practices of Drupal & Symfony to ensure
+compatibility with next Drupal releases.
 
   - Only expose a set of Renderer functions & filters [Twig Tweak](https://www.drupal.org/project/twig_tweak).
   - Output clean Twig debug [Twig Clean Debug](https://www.drupal.org/project/twig_clean_debug).
@@ -125,18 +125,6 @@ We highly recommend you to install the module using `composer`.
 ```bash
 $ composer require drupal/bamboo_twig
 ```
-
-You can also install it using the `drush` or `drupal console` cli.
-
-```bash
-$ drush dl bamboo_twig
-```
-
-```bash
-$ drupal module:install bamboo_twig
- ```
-
-Don't forget to enable the  modules you need from Bamboo Twig.
 
 ## Bamboo Twig Extensions
 
