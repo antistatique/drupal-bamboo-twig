@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix Issue #3350583 by urvashi_vora, mukesh88, mahtab_alam: Fix the errors/warnings reported by PHP_CodeSniffer
 
 ### Removed
-- drop tests support on Drupal < 9.4
+- drop tests support on Drupal <= 9.4
 
 ## [6.0.0] - 2022-11-18
 ### Added

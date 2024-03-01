@@ -2,7 +2,7 @@ name: Bamboo Twig - Extensions
 description: 'Twig extensions (Text, Date & Array) from http://twig-extensions.readthedocs.io/en/latest/index.html.'
 package: Bamboo Twig
 type: module
-core_version_requirement: ^9.3 || ^10 || ^11
+core_version_requirement: ^9.5 || ^10 || ^11
 
 dependencies:
  - bamboo_twig:bamboo_twig
