@@ -2,7 +2,7 @@ name: Bamboo Twig - Config
 description: 'Several "Config" Twig extensions.'
 package: Bamboo Twig
 type: module
-core_version_requirement: ^9.3 || ^10 || ^11
+core_version_requirement: ^9.5 || ^10 || ^11
 
 dependencies:
  - bamboo_twig:bamboo_twig
