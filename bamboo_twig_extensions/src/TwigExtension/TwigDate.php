@@ -33,7 +33,7 @@ class TwigDate extends AbstractExtension {
    */
   public function getFilters() {
     return [
-      new TwigFilter('bamboo_extensions_time_diff', [$this, 'diff'], ['needs_environment' => TRUE]),
+      new TwigFilter('bamboo_extensions_time_diff', $this->diff(...), ['needs_environment' => TRUE]),
     ];
   }
 

@@ -15,7 +15,7 @@ class Path extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new TwigFunction('bamboo_path_system', [$this, 'getSystemPath']),
+      new TwigFunction('bamboo_path_system', $this->getSystemPath(...)),
     ];
   }
 
