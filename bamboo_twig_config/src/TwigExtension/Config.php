@@ -15,9 +15,9 @@ class Config extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new TwigFunction('bamboo_settings_get', [$this, 'getSettings']),
-      new TwigFunction('bamboo_config_get', [$this, 'getConfig']),
-      new TwigFunction('bamboo_state_get', [$this, 'getState']),
+      new TwigFunction('bamboo_settings_get', $this->getSettings(...)),
+      new TwigFunction('bamboo_config_get', $this->getConfig(...)),
+      new TwigFunction('bamboo_state_get', $this->getState(...)),
     ];
   }
 

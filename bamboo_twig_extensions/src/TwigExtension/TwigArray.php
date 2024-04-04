@@ -15,7 +15,7 @@ class TwigArray extends AbstractExtension {
    */
   public function getFilters() {
     return [
-      new TwigFilter('bamboo_extensions_shuffle', [$this, 'shuffle']),
+      new TwigFilter('bamboo_extensions_shuffle', $this->shuffle(...)),
     ];
   }
 

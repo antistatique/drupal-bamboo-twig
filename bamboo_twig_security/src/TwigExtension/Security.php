@@ -15,10 +15,10 @@ class Security extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new TwigFunction('bamboo_has_permission', [$this, 'hasPermission']),
-      new TwigFunction('bamboo_has_permissions', [$this, 'hasPermissions']),
-      new TwigFunction('bamboo_has_role', [$this, 'hasRole']),
-      new TwigFunction('bamboo_has_roles', [$this, 'hasRoles']),
+      new TwigFunction('bamboo_has_permission', $this->hasPermission(...)),
+      new TwigFunction('bamboo_has_permissions', $this->hasPermissions(...)),
+      new TwigFunction('bamboo_has_role', $this->hasRole(...)),
+      new TwigFunction('bamboo_has_roles', $this->hasRoles(...)),
     ];
   }
 

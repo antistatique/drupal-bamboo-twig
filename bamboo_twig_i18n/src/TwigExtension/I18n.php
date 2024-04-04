@@ -19,8 +19,8 @@ class I18n extends TwigExtensionBase {
    */
   public function getFilters() {
     return [
-      new TwigFilter('bamboo_i18n_format_date', [$this, 'formatDate'], ['needs_environment' => TRUE]),
-      new TwigFilter('bamboo_i18n_get_translation', [$this, 'getTranslation']),
+      new TwigFilter('bamboo_i18n_format_date', $this->formatDate(...), ['needs_environment' => TRUE]),
+      new TwigFilter('bamboo_i18n_get_translation', $this->getTranslation(...)),
     ];
   }
 
@@ -29,7 +29,7 @@ class I18n extends TwigExtensionBase {
    */
   public function getFunctions() {
     return [
-      new TwigFunction('bamboo_i18n_current_lang', [$this, 'getCurrentLanguage']),
+      new TwigFunction('bamboo_i18n_current_lang', $this->getCurrentLanguage(...)),
     ];
   }
 

@@ -16,7 +16,7 @@ class TwigText extends AbstractExtension {
    */
   public function getFilters() {
     return [
-      new TwigFilter('bamboo_extensions_truncate', [$this, 'truncate'], ['needs_environment' => TRUE]),
+      new TwigFilter('bamboo_extensions_truncate', $this->truncate(...), ['needs_environment' => TRUE]),
     ];
   }
 
