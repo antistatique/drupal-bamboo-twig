@@ -64,7 +64,7 @@ class RenderFormTest extends KernelTestBase {
   /**
    * Tests the renderForm() method with parameter(s).
    */
-  public function providerFormParameters() {
+  public static function providerFormParameters() {
     yield [
       'ArrayParamForm', 'bamboo_twig_test_array_form', [
         'text' => 'foobar',

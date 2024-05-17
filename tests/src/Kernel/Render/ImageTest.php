@@ -141,8 +141,8 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
-    // Since Drupal 11.x the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+    // Since Drupal 10.3 the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
     }
     else {
@@ -161,8 +161,8 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
-    // Since Drupal 11.x the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+    // Since Drupal 10.3 the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="" \/>/', $markup->__toString());
     }
     else {
@@ -181,8 +181,8 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
-    // Since Drupal 11.x the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+    // Since Drupal 10.3 the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
     }
     else {
@@ -213,8 +213,8 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
-    // Since Drupal 11.x the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+    // Since Drupal 10.3 the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
     }
     else {
@@ -233,8 +233,8 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
-    // Since Drupal 11.x the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+    // Since Drupal 10.3 the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
     }
     else {
@@ -253,8 +253,8 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
-    // Since Drupal 11.x the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '11', '>=')) {
+    // Since Drupal 10.3 the image styles are rendered as webp.
+    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
     }
     else {

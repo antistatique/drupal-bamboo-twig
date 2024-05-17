@@ -4,6 +4,7 @@ namespace Drupal\bamboo_twig_loader\TwigExtension;
 
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\RevisionableStorageInterface;
 use Twig\TwigFunction;
 
 /**
@@ -89,8 +90,13 @@ class Loader extends TwigExtensionBase {
   public function loadEntityRevision($entity_type, $revision_id = NULL, $langcode = NULL) {
     $entityRepository = $this->getEntityRepository();
 
+    $storage = $this->getEntityTypeManager()->getStorage($entity_type);
+    if (!$storage instanceof RevisionableStorageInterface) {
+      return NULL;
+    }
+
     $revision = $revision_id ?
-      $this->getEntityTypeManager()->getStorage($entity_type)->loadRevision($revision_id) :
+      $storage->loadRevision($revision_id) :
       $this->getCurrentRouteMatch()->getParameter($entity_type . '_revision');
 
     if (!$revision instanceof EntityInterface) {

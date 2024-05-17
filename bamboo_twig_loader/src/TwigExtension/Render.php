@@ -5,6 +5,7 @@ namespace Drupal\bamboo_twig_loader\TwigExtension;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\RevisionableStorageInterface;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Drupal\Core\Routing\RouteObjectInterface;
 use Twig\TwigFunction;
@@ -152,8 +153,14 @@ class Render extends TwigExtensionBase {
    *   exists.
    */
   public function renderEntityRevision($entity_type, $revision_id = NULL, $view_mode = '', $langcode = NULL) {
+    $storage = $this->getEntityTypeManager()->getStorage($entity_type);
+
+    if (!$storage instanceof RevisionableStorageInterface) {
+      return NULL;
+    }
+
     $revision = $revision_id ?
-      $this->getEntityTypeManager()->getStorage($entity_type)->loadRevision($revision_id) :
+      $storage->loadRevision($revision_id) :
       $this->getCurrentRouteMatch()->getParameter($entity_type . '_revision');
 
     if (!$revision instanceof EntityInterface) {
@@ -225,11 +232,6 @@ class Render extends TwigExtensionBase {
     // From an uri or path retrieve an image object.
     $image = $this->getImageFactory()->get($path);
 
-    // Assert the image exist, otherwise return null.
-    if (empty($image)) {
-      return NULL;
-    }
-
     // Lazy load the fso.
     $fso = $this->getFileSystemObject();
 
@@ -296,10 +298,10 @@ class Render extends TwigExtensionBase {
     foreach ($blocks as $id => $block) {
       $block_plugin = $block->getPlugin();
       if ($block_plugin instanceof TitleBlockPluginInterface) {
-        $request = $this->requestStack->getCurrentRequest();
+        $request = $this->getRequestStack()->getCurrentRequest();
         $route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
         if ($route) {
-          $block_plugin->setTitle($this->titleResolver->getTitle($request, $route));
+          $block_plugin->setTitle($this->getTitleResolver()->getTitle($request, $route));
         }
       }
       $build[$id] = $view_builder->view($block);

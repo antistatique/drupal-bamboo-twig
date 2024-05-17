@@ -5,6 +5,7 @@ namespace Drupal\bamboo_twig_extensions\TwigExtension;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Template\TwigEnvironment;
 use Twig\Extension\AbstractExtension;
+use Twig\Extension\CoreExtension;
 use Twig\TwigFilter;
 
 /**
@@ -64,9 +65,20 @@ class TwigDate extends AbstractExtension {
    *   The results as string or integer depend of the $humanize param.
    */
   public function diff(TwigEnvironment $env, $date, $now = NULL, $unit = NULL, $humanize = TRUE) {
+
     // Convert both dates to DateTime instances.
-    $date = twig_date_converter($env, $date);
-    $now = twig_date_converter($env, $now);
+    if (method_exists(CoreExtension::class, 'convertDate')) {
+      $date = $env->getExtension(CoreExtension::class)->convertDate($date);
+      $now = $env->getExtension(CoreExtension::class)->convertDate($now);
+    }
+    elseif (method_exists(CoreExtension::class, 'dateConverter')) {
+      $date = CoreExtension::dateConverter($env, $date);
+      $now = CoreExtension::dateConverter($env, $date);
+    }
+    else {
+      $date = twig_date_converter($env, $date);
+      $now = twig_date_converter($env, $now);
+    }
 
     // Get the difference between the two DateTime objects.
     $diff = $date->diff($now);
@@ -74,6 +86,7 @@ class TwigDate extends AbstractExtension {
     $count = 0;
 
     // Check existing units.
+    $duration = NULL;
     if ($unit != NULL && array_key_exists($unit, self::$units)) {
       $count = $this->getIntervalUnits($diff, $unit);
       $duration = self::$units[$unit];
@@ -88,7 +101,7 @@ class TwigDate extends AbstractExtension {
       }
     }
 
-    if ($humanize) {
+    if ($humanize && $duration) {
       return $this->humanize($count, $diff->invert, $duration);
     }
 

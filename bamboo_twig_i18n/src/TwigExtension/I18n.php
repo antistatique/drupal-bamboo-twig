@@ -5,6 +5,7 @@ namespace Drupal\bamboo_twig_i18n\TwigExtension;
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Template\TwigEnvironment;
+use Twig\Extension\CoreExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
@@ -82,7 +83,17 @@ class I18n extends TwigExtensionBase {
    *   contain user input, this value should be escaped when output.
    */
   public function formatDate(TwigEnvironment $env, $date, $type = 'medium', $format = '', $timezone = NULL, $langcode = NULL) {
-    $date = twig_date_converter($env, $date);
+    // Convert both dates to DateTime instances.
+    if (method_exists(CoreExtension::class, 'convertDate')) {
+      $date = $env->getExtension(CoreExtension::class)->convertDate($date);
+    }
+    elseif (method_exists(CoreExtension::class, 'dateConverter')) {
+      $date = CoreExtension::dateConverter($env, $date);
+    }
+    else {
+      $date = twig_date_converter($env, $date);
+    }
+
     if ($date instanceof \DateTime) {
       return $this->getDateFormatter()->format($date->getTimestamp(), $type, $format, $timezone, $langcode);
     }

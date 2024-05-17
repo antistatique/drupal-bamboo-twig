@@ -2,7 +2,7 @@
 
 namespace Drupal\bamboo_twig\TwigExtension;
 
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Mime\MimeTypes;
 use Twig\Extension\AbstractExtension;
 
@@ -12,7 +12,17 @@ use Twig\Extension\AbstractExtension;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class TwigExtensionBase extends AbstractExtension {
-  use ContainerAwareTrait;
+
+  /**
+   * The service container.
+   *
+   * @var \Symfony\Component\DependencyInjection\ContainerInterface
+   */
+  protected $container;
+
+  public function __construct(ContainerInterface $container) {
+    $this->container = $container;
+  }
 
   /**
    * Unique identifier for this Twig extension.
@@ -279,6 +289,26 @@ class TwigExtensionBase extends AbstractExtension {
    */
   protected function getExtensionPathResolver() {
     return $this->container->get('extension.path.resolver');
+  }
+
+  /**
+   * Provides the request stack.
+   *
+   * @return \Symfony\Component\HttpFoundation\RequestStack
+   *   The request stack.
+   */
+  protected function getRequestStack() {
+    return $this->container->get('request_stack');
+  }
+
+  /**
+   * Provides the title resolver.
+   *
+   * @return \Drupal\Core\Controller\TitleResolverInterface
+   *   The title resolver.
+   */
+  protected function getTitleResolver() {
+    return $this->container->get('title_resolver');
   }
 
 }

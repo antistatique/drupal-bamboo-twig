@@ -2,5 +2,4 @@ services:
     bamboo_twig.twig.base:
         private: true
         class: Drupal\bamboo_twig\TwigExtension\TwigExtensionBase
-        calls:
-            - [setContainer, ['@service_container']]
+        arguments: ['@service_container']

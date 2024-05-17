@@ -1,0 +1,18 @@
+includes:
+  - phar://phpstan.phar/conf/bleedingEdge.neon
+
+parameters:
+  level: 1
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    # new static() is a best practice in Drupal, so we cannot fix that.
+    - "#^Unsafe usage of new static#"
+    # The module support Drupal 10 and Drupal 11, so we cannot fix that deprecation without dropping support of Twig 3.9.3 and below.
+    - "#^Call to deprecated function twig_date_converter#"
+    # The module support Drupal 10 and Drupal 11, so we cannot fix that deprecation without dropping support of 10.1.x and below.
+    -
+      message: """
+        #^Usage of deprecated trait Drupal\\\\Tests\\\\field\\\\Traits\\\\EntityReferenceTestTrait#
+      """
+      count: 1
+      path: tests/src/Functional/BambooTwigTestBase.php
