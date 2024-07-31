@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add getRequestStack & getTitleResolver to TwigExtensionBase
 - improve type-hinting using RevisionableStorageInterface for Loader::loadEntityRevision && Render::renderEntityRevision
 - remove usage of deprecated twig_date_converter function when Twig 3.9 is installed
+- use both trait conditionnaly EntityReferenceTestTrait and EntityReferenceFieldCreationTrait for Drupal 10 & 11 compliances
 
 ### Fixed
 - fix tests running on 10.3-dev with rendered webp image
