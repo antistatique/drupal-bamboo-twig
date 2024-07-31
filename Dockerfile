@@ -10,7 +10,7 @@ ENV SYMFONY_DEPRECATIONS_HELPER=weak
 
 # Install symfony/mime as required by bamboo_twig_extensions.
 ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN COMPOSER_MEMORY_LIMIT=-1 composer require "symfony/mime:^4.3|^5.1.0|^6.1.4"
+RUN COMPOSER_MEMORY_LIMIT=-1 composer require "symfony/mime:^4.3|^5.1.0|^6.1.4|^7.0"
 
 # Register the Drupal and DrupalPractice Standard with PHPCS.
 RUN ./vendor/bin/phpcs --config-set installed_paths \

@@ -12,7 +12,7 @@ build:
       container_command:
         commands:
           - cd ${SOURCE_DIR}
-          - sudo composer require "symfony/mime:^4.3|^5.1.0" --no-scripts
+          - sudo composer require "symfony/mime:^4.3|^5.1.0|^7.0" --no-scripts
       run_tests.standard:
         types: 'Simpletest,PHPUnit-Unit,PHPUnit-Kernel,PHPUnit-Functional'
       run_tests.js:
