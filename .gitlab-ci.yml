@@ -32,7 +32,7 @@ variables:
   SKIP_ESLINT: '1'
   # Opt in to testing current minor against max supported PHP version.
   OPT_IN_TEST_MAX_PHP: '1'
-  # Opt in to testing previous & next minor (Drupal 10.0.x and 10.2.x).
+  # Opt in to testing previous & next minor (Drupal 10.2.x and 10.4.x).
   OPT_IN_TEST_PREVIOUS_MINOR: '1'
   OPT_IN_TEST_NEXT_MINOR: '1'
   # Opt in to testing $CORE_PREVIOUS_MAJOR (currently Drupal 9.5).
