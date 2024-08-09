@@ -43,7 +43,7 @@ class Render extends TwigExtensionBase {
   }
 
   /**
-   * Load a given block with or whitout parameters.
+   * Load a given block with or without parameters.
    *
    * @param string $block_id
    *   The ID of the block to render.
@@ -82,7 +82,7 @@ class Render extends TwigExtensionBase {
   }
 
   /**
-   * Load a given form with or whitout parameters.
+   * Load a given form with or without parameters.
    *
    * @param string $module
    *   The module name where the form below.
@@ -218,7 +218,7 @@ class Render extends TwigExtensionBase {
    * @return string|null
    *   The absolute URL where a style image can be downloaded, suitable for use
    *   in an <img> tag.
-   *   Requesting the URL will cause the image to be created. Exceptend when
+   *   Requesting the URL will cause the image to be created. Excepted when
    *   preprocess is enabled, the image will already be available on the fso.
    */
   public function renderImageStyle($path, $style, $preprocess = FALSE) {

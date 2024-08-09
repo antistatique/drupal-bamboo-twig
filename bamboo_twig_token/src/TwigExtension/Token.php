@@ -6,7 +6,7 @@ use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Twig\TwigFunction;
 
 /**
- * Provides a token rempalcement as Twig Extensions.
+ * Provides a token replacement as Twig Extensions.
  */
 class Token extends TwigExtensionBase {
 
