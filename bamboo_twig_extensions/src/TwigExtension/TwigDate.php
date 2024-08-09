@@ -73,7 +73,7 @@ class TwigDate extends AbstractExtension {
     }
     elseif (method_exists(CoreExtension::class, 'dateConverter')) {
       $date = CoreExtension::dateConverter($env, $date);
-      $now = CoreExtension::dateConverter($env, $date);
+      $now = CoreExtension::dateConverter($env, $now);
     }
     else {
       $date = twig_date_converter($env, $date);

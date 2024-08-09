@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - fix tests running on 10.3-dev with rendered webp image
+- fix Drupal 11 usage of bamboo_extensions_time_diff
 
 ## [6.0.1] - 2024-03-01
 ### Changed
