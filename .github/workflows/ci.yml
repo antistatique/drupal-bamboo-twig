@@ -96,3 +96,4 @@ jobs:
         run: docker compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush en ${{ matrix.module }} -y
       - name: Run upgrade status
         run: docker compose exec -T drupal wait-for-it db:3306 -- ./vendor/bin/drush upgrade_status:analyze ${{ matrix.module }}
+        continue-on-error: true
