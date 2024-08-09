@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add phpstan.neon file
 - add cpsell project words for Gitlab-CI
 - add .dockerignore to speedup docker mount
+- add official support of drupal 11.0
 
 ### Changed
 - remove usage of deprecated ContainerAware class
