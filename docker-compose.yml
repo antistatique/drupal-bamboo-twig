@@ -12,7 +12,7 @@ services:
     restart: always
 
   db:
-    image: mariadb:10.3.8
+    image: mariadb:10.6
     environment:
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
