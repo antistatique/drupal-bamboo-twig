@@ -74,7 +74,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['9.5']
+        drupal_version: ['10.2']
         module: ['bamboo_twig']
 
     steps:
