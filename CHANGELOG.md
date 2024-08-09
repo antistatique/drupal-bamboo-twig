@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add phpstan.neon file
 - add cpsell project words for Gitlab-CI
+- add .dockerignore to speedup docker mount
 
 ### Changed
 - remove usage of deprecated ContainerAware class
