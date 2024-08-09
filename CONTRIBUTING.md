@@ -27,20 +27,20 @@ globally on your environment:
   * drush
   * Latest dev release of Drupal 8.x/9.x/10.x.
   * docker
-  * docker-compose
+  * docker compose
 
 ### Project bootstrap
 
 Once run, you will be able to access to your fresh installed Drupal on `localhost::8888`.
 
-    docker-compose build --pull --build-arg BASE_IMAGE_TAG=10.1 drupal
+    docker compose build --pull --build-arg BASE_IMAGE_TAG=10.1 drupal
     (get a coffee, this will take some time...)
-    docker-compose up -d drupal
-    docker-compose exec -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" --site-name=Example -y
+    docker compose up -d drupal
+    docker compose exec -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" --site-name=Example -y
 
     # You may be interesed by reseting the admin passowrd of your Docker and install the module using those cmd.
-    docker-compose exec drupal drush user:password admin admin
-    docker-compose exec drupal drush en bamboo_twig
+    docker compose exec drupal drush user:password admin admin
+    docker compose exec drupal drush en bamboo_twig
 
 ## 🏆 Tests
 
@@ -48,7 +48,7 @@ We use the [Docker for Drupal Contrib images](https://hub.docker.com/r/wengerk/d
 
 Run testing by stopping at first failure using the following command:
 
-    docker-compose exec -u www-data drupal phpunit --group=bamboo_twig --no-coverage --stop-on-failure --configuration=/var/www/html/phpunit.xml
+    docker compose exec -u www-data drupal phpunit --group=bamboo_twig --no-coverage --stop-on-failure --configuration=/var/www/html/phpunit.xml
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
@@ -66,7 +66,7 @@ The following Analyzer will be downloaded & installed as PHAR:
 
     ./scripts/hooks/post-commit
     # or run command on the container itself
-    docker-compose exec drupal bash
+    docker compose exec drupal bash
 
 #### Running Code Sniffer Drupal & DrupalPractice
 
@@ -78,13 +78,13 @@ violations.
 PHP_CodeSniffer is an essential development tool that ensures your code remains clean and consistent.
 
   ```
-  $ docker-compose exec drupal ./vendor/bin/phpcs ./web/modules/contrib/bamboo_twig/
+  $ docker compose exec drupal ./vendor/bin/phpcs ./web/modules/contrib/bamboo_twig/
   ```
 
 Automatically fix coding standards
 
   ```
-  $ docker-compose exec drupal ./vendor/bin/phpcbf ./web/modules/contrib/bamboo_twig/
+  $ docker compose exec drupal ./vendor/bin/phpcbf ./web/modules/contrib/bamboo_twig/
   ```
 
 #### Running PHP Mess Detector
@@ -94,7 +94,7 @@ https://github.com/phpmd/phpmd
 Detect overcomplicated expressions & Unused parameters, methods, properties.
 
   ```
-  $ docker-compose exec drupal phpmd ./web/modules/contrib/bamboo_twig/ text ./phpmd.xml \
+  $ docker compose exec drupal phpmd ./web/modules/contrib/bamboo_twig/ text ./phpmd.xml \
   --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php,*vendor/*
   ```
 
@@ -105,7 +105,7 @@ https://github.com/sebastianbergmann/phpcpd
 `phpcpd` is a Copy/Paste Detector (CPD) for PHP code.
 
   ```
-  $ docker-compose exec drupal phpcpd ./web/modules/contrib/bamboo_twig/src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
+  $ docker compose exec drupal phpcpd ./web/modules/contrib/bamboo_twig/src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
   ```
 
 #### Running PhpDeprecationDetector
@@ -115,7 +115,7 @@ https://github.com/wapmorgan/PhpDeprecationDetector
 A scanner that checks compatibility of your code with PHP interpreter versions.
 
   ```
-  $ docker-compose exec drupal phpdd ./web/modules/contrib/bamboo_twig/ \
+  $ docker compose exec drupal phpdd ./web/modules/contrib/bamboo_twig/ \
     --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor
   ```
 

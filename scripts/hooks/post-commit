@@ -1,11 +1,11 @@
 echo "\n🚔  \033[0;32mRunning Code Sniffer Drupal & DrupalPractice for ./web/modules/contrib/bamboo_twig/ ...\033[0m"
-docker-compose exec drupal ./vendor/bin/phpcs ./web/modules/contrib/bamboo_twig/
+docker compose exec drupal ./vendor/bin/phpcs ./web/modules/contrib/bamboo_twig/
 
 echo "\n💩  \033[0;32mRunning PHP Mess Detector ...\033[0m"
-docker-compose exec drupal phpmd ./web/modules/contrib/bamboo_twig/ text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php,*vendor/*
+docker compose exec drupal phpmd ./web/modules/contrib/bamboo_twig/ text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php,*vendor/*
 
 echo "\n🛂  \033[0;32mRunning PHP Copy/Paste Detector ...\033[0m"
-docker-compose exec drupal phpcpd ./web/modules/contrib/bamboo_twig/src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
+docker compose exec drupal phpcpd ./web/modules/contrib/bamboo_twig/src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
 
 echo "\n🍫  \033[0;32mRunning PhpDeprecationDetector ...\033[0m"
-docker-compose exec drupal phpdd ./web/modules/contrib/bamboo_twig/ --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor
+docker compose exec drupal phpdd ./web/modules/contrib/bamboo_twig/ --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor

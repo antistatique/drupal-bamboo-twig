@@ -49,8 +49,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker-compose -f docker-compose.yml pull --include-deps drupal
+      - run: docker compose -f docker-compose.yml pull --include-deps drupal
       - name: Build the docker-compose stack
-        run: docker-compose -f docker-compose.yml build drupal
+        run: docker compose -f docker-compose.yml build drupal
       - name: Run phpdd
-        run: docker-compose run drupal phpdd ./web/modules/contrib/bamboo_twig/ --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor
+        run: docker compose run drupal phpdd ./web/modules/contrib/bamboo_twig/ --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor
