@@ -112,7 +112,13 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
 
     $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-drupaldatetime', 'Thursday 24th July 2014');
 
-    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Thu, 07/24/2014');
+    // Since Drupal 11.1.x the default format date has changed.
+    if (version_compare(\Drupal::VERSION, '11.1', '>=')) {
+      $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Thu, 24 Jul 2014');
+    }
+    else {
+      $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Thu, 07/24/2014');
+    }
 
     $this->drupalGet('/fr/bamboo-twig-i18n');
 
@@ -126,7 +132,13 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
 
     $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-drupaldatetime', 'Jeudi 24th Juillet 2014');
 
-    $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 07/24/2014');
+    // Since Drupal 11.1.x the default format date has changed.
+    if (version_compare(\Drupal::VERSION, '11.1', '>=')) {
+      $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 24 Jul 2014');
+    }
+    else {
+      $this->assertSession()->elementContains('css', '.test-i18n div.i18n-format-date-datetime-medium', 'Jeu, 07/24/2014');
+    }
   }
 
   /**

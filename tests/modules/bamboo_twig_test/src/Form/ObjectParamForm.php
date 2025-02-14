@@ -22,7 +22,7 @@ class ObjectParamForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, object $args = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?object $args = NULL) {
     $form['text'] = [
       '#type' => 'textfield',
       '#default_value' => $args->text,

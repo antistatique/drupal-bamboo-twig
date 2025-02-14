@@ -53,9 +53,9 @@ class PluginBlockTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::renderBlock
-   *
    * Cover the usage of {{ bamboo_render_block('system_powered_by_block') }}.
+   *
+   * @covers ::renderBlock
    */
   public function testRenderSystemPluginBlock() {
     Block::create([
@@ -92,9 +92,9 @@ HTML;
   }
 
   /**
-   * @covers ::renderBlock
-   *
    * Cover the usage of {{ bamboo_render_block('test_settings_validation') }}.
+   *
+   * @covers ::renderBlock
    */
   public function testRenderCustomPluginBlock() {
     // Ensure {{ bamboo_render_block('test_settings_validation', [], FALSE) }}.
@@ -120,15 +120,8 @@ HTML;
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    $expected_output = <<<HTML
-<div>
-  
-    
-      foo
-  </div>
-HTML;
-    $this->assertXmlStringEqualsXmlString($expected_output, $markup->__toString());
+    $expected = "<div>\n  \n    \n      foo\n  </div>\n";
+    $this->assertSame($expected, $markup->__toString());
   }
 
 }
