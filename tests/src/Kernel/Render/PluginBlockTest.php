@@ -53,9 +53,9 @@ class PluginBlockTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::renderBlock
-   *
    * Cover the usage of {{ bamboo_render_block('system_powered_by_block') }}.
+   *
+   * @covers ::renderBlock
    */
   public function testRenderSystemPluginBlock() {
     Block::create([
@@ -92,9 +92,9 @@ HTML;
   }
 
   /**
-   * @covers ::renderBlock
-   *
    * Cover the usage of {{ bamboo_render_block('test_settings_validation') }}.
+   *
+   * @covers ::renderBlock
    */
   public function testRenderCustomPluginBlock() {
     // Ensure {{ bamboo_render_block('test_settings_validation', [], FALSE) }}.
@@ -123,8 +123,8 @@ HTML;
 
     $expected_output = <<<HTML
 <div>
-  
-    
+
+
       foo
   </div>
 HTML;

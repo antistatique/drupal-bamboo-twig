@@ -119,12 +119,14 @@ class ImageTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::renderImage
+   * Cover rendering of image styles.
    *
    * Cover the usage of
    * {{ bamboo_render_image(1, 'thumbnail') }}.
    * {{ bamboo_render_image(1, 'thumbnail', '') }}.
    * {{ bamboo_render_image(1, 'thumbnail', 'Dignissim (...) primis') }}.
+   *
+   * @covers ::renderImage
    */
   public function testRenderImageFile() {
     $file = $this->createFile();
@@ -191,12 +193,14 @@ class ImageTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::renderImage
+   * Cover rendering of image Media styles.
    *
    * Cover the usage of
    * {{ bamboo_render_image(1, 'thumbnail') }}.
    * {{ bamboo_render_image(1, 'thumbnail', '') }}.
    * {{ bamboo_render_image(1, 'thumbnail', 'Dignissim (...) primis') }}.
+   *
+   * @covers ::renderImage
    */
   public function testRenderImageMedia() {
     $media = $this->createMedia();
