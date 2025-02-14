@@ -120,15 +120,8 @@ HTML;
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    $expected_output = <<<HTML
-<div>
-
-
-      foo
-  </div>
-HTML;
-    $this->assertXmlStringEqualsXmlString($expected_output, $markup->__toString());
+    $expected = "<div>\n  \n    \n      foo\n  </div>\n";
+    $this->assertSame($expected, $markup->__toString());
   }
 
 }
