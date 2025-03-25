@@ -148,4 +148,11 @@ class TestsController extends ControllerBase {
     return ['#theme' => 'bamboo_twig_test_token'];
   }
 
+  /**
+   * Cacheable page.
+   */
+  public function testCacheable() {
+    return ['#theme' => 'bamboo_twig_test_cacheable'];
+  }
+
 }

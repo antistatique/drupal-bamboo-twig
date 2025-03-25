@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - add official support of drupal 11.1
+- add newer bamboo-submodule Cacheable
 
 ### Fixed
 - fix tests following Drupal changes on date time medium format

@@ -76,5 +76,11 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'path' => 'bamboo_twig',
     ],
 
+    'bamboo_twig_test_cacheable' => [
+      'variables' => ['variables' => []],
+      'template'  => 'cacheable',
+      'path' => 'bamboo_twig',
+    ],
+
   ];
 }

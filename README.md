@@ -26,6 +26,7 @@ to ensure stability.
   - You need to "Render a Field".
   - You need to "Retrieve the current user".
   - You need to "Check permissions or roles".
+  - You need to "Bubble Cache Metadata from Twig".
   - You need to "Render a Form".
   - You need to "Deal with image styles".
   - You need to "Use Token".
@@ -535,6 +536,23 @@ has the requested permissions.
 {{ bamboo_has_permissions(['administer site configuration', 'bypass node access']) ? 'TRUE' : 'FALSE' }}
 {# Does the current user have at least one of the given permissions ? #}
 {{ bamboo_has_permissions(['administer site configuration', 'bypass node access'], 'OR') ? 'TRUE' : 'FALSE' }}
+```
+
+**Cacheable**
+
+`bamboo_attach_cacheable_metadata(cacheable_metadata)` returns an array containing cacheable metadata.
+
+- `cacheable_metadata` array
+
+```twig
+{# Bubble the User Cache Context. #}
+{{ bamboo_attach_cacheable_metadata({'contexts': ['user']}) }}
+
+{# Bubble the Cache Tag. #}
+{{ bamboo_attach_cacheable_metadata({'tags': ['node:12']}) }}
+
+{# Bubble the Max-Age. #}
+{{ bamboo_attach_cacheable_metadata({'max-age': 12}) }}
 ```
 
 **Extensions**

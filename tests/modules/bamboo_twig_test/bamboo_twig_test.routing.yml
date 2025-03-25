@@ -74,3 +74,10 @@ bamboo_twig_test.token:
         _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testToken'
     requirements:
         _permission: 'access content'
+
+bamboo_twig_test.cacheable:
+    path: '/bamboo-twig-cacheable'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testCacheable'
+    requirements:
+        _permission: 'access content'

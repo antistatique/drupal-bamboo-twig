@@ -1,0 +1,6 @@
+services:
+    bamboo_twig_cacheable.twig.bubble_metadata:
+        class: Drupal\bamboo_twig_cacheable\TwigExtension\BubbleMetadata
+        tags:
+            - { name: twig.extension }
+        parent: bamboo_twig.twig.base

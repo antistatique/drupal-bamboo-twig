@@ -1,0 +1,21 @@
+<div class="test-cacheable">
+
+  <h2>Cacheable Tags</h2>
+  <hr>
+  <div class="cacheable-tags">
+    {{ bamboo_attach_cacheable_metadata({'tags': ['entity.kitten.1']}) }}
+  </div>
+
+  <h2>Cacheable Max-Age</h2>
+  <hr>
+  <div class="cacheable-max-age">
+    {{ bamboo_attach_cacheable_metadata({'max-age': 12}) }}
+  </div>
+
+  <h2>Cacheable Context</h2>
+  <hr>
+  <div class="cacheable-contexts">
+    {{ bamboo_attach_cacheable_metadata({'contexts': ['ip']}) }}
+  </div>
+
+</div>
