@@ -47,7 +47,7 @@ for each topic he provides Twigs.
 
 ## Bamboo Twig versions
 
-Bamboo Twig is available for Drupal 8, Drupal 9, Drupal 10 & Drupal 11 (dev)!
+Bamboo Twig is available for Drupal 8, Drupal 9, Drupal 10 & Drupal 11 !
 
 - If you are running Drupal `11.x`, use Bamboo Twig `6.0.x`.
 - If you are running Drupal `10.x`, use Bamboo Twig `6.0.x`.
@@ -81,7 +81,7 @@ must upgrade to `8.x-3.x` version of **Bamboo Twig**.
 |    8.9.x    |     5.0     |
 |     9.x     |     5.x     |
 |    10.x     |    6.0.x    |
-|  11.x-dev   |    6.0.x    |
+|    11.x     |    6.0.x    |
 
 ## Dependencies
 

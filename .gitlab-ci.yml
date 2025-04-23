@@ -32,14 +32,12 @@ variables:
   SKIP_ESLINT: '1'
   # Opt in to testing current minor against max supported PHP version.
   OPT_IN_TEST_MAX_PHP: '1'
-  # Opt in to testing previous & next minor (Drupal 10.2.x and 10.4.x).
+  # Opt in to testing previous minor (Drupal 11.0.13) & next minor (Drupal 11.2-dev).
   OPT_IN_TEST_PREVIOUS_MINOR: '1'
   OPT_IN_TEST_NEXT_MINOR: '1'
-  # Opt in to testing $CORE_PREVIOUS_MAJOR (currently Drupal 9.5).
+  # Opt in to testing $CORE_PREVIOUS_MAJOR (currently Drupal 10.4.6).
   OPT_IN_TEST_PREVIOUS_MAJOR: '1'
-  # The 4.x branch of the CDN module requires PHP >=8.1, rather than core's >=7.4.
-  CORE_PREVIOUS_PHP_MIN: '8.1'
-  # Opt in to testing $CORE_MAJOR_DEVELOPMENT (currently Drupal 11).
+  # Opt in to testing $CORE_MAJOR_DEVELOPMENT (currently Drupal 12).
   OPT_IN_TEST_NEXT_MAJOR: '1'
 
 # This module wants to strictly comply with Drupal's coding standards.
