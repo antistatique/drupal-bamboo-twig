@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fix tests following Drupal changes on date time medium format
 
+### Changed
+- remove scanning CSS/JS with phpcs (deprecated and support will be removed in PHP_CodeSniffer 4.0)
+
 ## [6.0.2] - 2024-08-09
 ### Added
 - add phpstan.neon file

@@ -6,12 +6,26 @@
   <arg name="basepath" value="."/>
   <arg name="cache" value=".phpcs-cache"/>
   <arg name="colors"/>
-  <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt"/>
+  <arg name="extensions" value="php,inc,module,install,info,test,profile,theme"/>
 
   <exclude-pattern>*\.(md|info\.yml)$</exclude-pattern>>
   <exclude-pattern>*/vendor/*</exclude-pattern>>
 
-  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal"/>
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal">
+    <!-- Disable scanning CSS files will be removed completely in v4.0.0 -->
+    <exclude name="MySource.Debug.DebugCode"/>
+    <exclude name="Squiz.CSS.ClassDefinitionClosingBraceSpace"/>
+    <exclude name="Squiz.CSS.ClassDefinitionClosingBraceSpace.SpacingAfterClose"/>
+    <exclude name="Squiz.CSS.ClassDefinitionOpeningBraceSpace"/>
+    <exclude name="Squiz.CSS.ClassDefinitionOpeningBraceSpace.AfterNesting"/>
+    <exclude name="Squiz.CSS.ColonSpacing"/>
+    <exclude name="Squiz.CSS.DisallowMultipleStyleDefinitions"/>
+    <exclude name="Squiz.CSS.EmptyClassDefinition"/>
+    <exclude name="Squiz.CSS.EmptyStyleDefinition"/>
+    <exclude name="Squiz.CSS.Indentation"/>
+    <exclude name="Squiz.CSS.MissingColon"/>
+    <exclude name="Squiz.CSS.SemicolonSpacing"/>
+    <exclude name="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+   </rule>
   <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice"/>
 </ruleset>
-
