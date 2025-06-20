@@ -143,8 +143,12 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
+    // Since Drupal 10.3 the image styles are rendered as avif.
+    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
+    }
     // Since Drupal 10.3 the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
+    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
     }
     else {
@@ -163,8 +167,12 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
+    // Since Drupal 10.3 the image styles are rendered as avif.
+    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
+    }
     // Since Drupal 10.3 the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
+    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="" \/>/', $markup->__toString());
     }
     else {
@@ -183,8 +191,12 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
+    // Since Drupal 10.3 the image styles are rendered as avif.
+    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
+    }
     // Since Drupal 10.3 the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
+    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
     }
     else {
@@ -217,8 +229,12 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
+    // Since Drupal 10.3 the image styles are rendered as avif.
+    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
+    }
     // Since Drupal 10.3 the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
+    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
     }
     else {
@@ -237,8 +253,12 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
+    // Since Drupal 10.3 the image styles are rendered as avif.
+    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
+    }
     // Since Drupal 10.3 the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
+    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
     }
     else {
@@ -257,8 +277,12 @@ class ImageTest extends KernelTestBase {
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
 
+    // Since Drupal 10.3 the image styles are rendered as avif.
+    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
+      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
+    }
     // Since Drupal 10.3 the image styles are rendered as webp.
-    if (version_compare(\Drupal::VERSION, '10.3', '>=')) {
+    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
       $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
     }
     else {
