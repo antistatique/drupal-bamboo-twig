@@ -9,6 +9,8 @@ parameters:
     - "#^Unsafe usage of new static#"
     # The module support Drupal 10 and Drupal 11, so we cannot fix that deprecation without dropping support of Twig 3.9.3 and below.
     - "#^Call to deprecated function twig_date_converter#"
+    # The module support Drupal 10 and Drupal 11, so we cannot fix that deprecation without dropping support of Twig 3.9.3 and below.
+    - "#^Call to internal function twig_date_converter#"
     # The module support Drupal 10 and Drupal 11, so we cannot fix that deprecation without dropping support of 10.1.x and below.
     -
       message: """

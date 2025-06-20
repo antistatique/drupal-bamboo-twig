@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fix tests running on 11.2-dev with rendered avif image
 
+### Changed
+- ignore phpstan Call to internal function twig_date_converter - already adressed
+
 ## [6.0.4] - 2025-05-15
 ### Removed
 - drop support of Drupal 9.x
