@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - drop coverage of Drupal 10.2.x
 - drop coverage of Drupal 10.3.x
 - drop coverage of Drupal 10.4.x
+- remove legacy 'version_compare' from Tests suites
 
 ## [6.0.4] - 2025-05-15
 ### Removed

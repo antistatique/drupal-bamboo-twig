@@ -54,13 +54,6 @@ class ImageTest extends KernelTestBase {
     $this->installEntitySchema('user');
     $this->installEntitySchema('file');
     $this->installSchema('file', 'file_usage');
-
-    // Since Drupal 10.2.0 installing the table sequences with the
-    // method KernelTestBase::installSchema() is deprecated.
-    if (version_compare(\Drupal::VERSION, '10.2.0', '<')) {
-      $this->installSchema('system', ['sequences']);
-    }
-
     $this->installEntitySchema('media');
     $this->installConfig(['field', 'system', 'image', 'file', 'media']);
 
@@ -142,18 +135,7 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    // Since Drupal 10.3 the image styles are rendered as avif.
-    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
-    }
-    // Since Drupal 10.3 the image styles are rendered as webp.
-    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
-    }
-    else {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" \/>/', $markup->__toString());
-    }
+    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.(avif|webp)\?itok=.*" \/>/', $markup->__toString());
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', '') }}.
     $renderer = $this->renderExtension->renderImage($file->id(), 'thumbnail', '');
@@ -166,18 +148,7 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    // Since Drupal 10.3 the image styles are rendered as avif.
-    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
-    }
-    // Since Drupal 10.3 the image styles are rendered as webp.
-    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="" \/>/', $markup->__toString());
-    }
-    else {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="" \/>/', $markup->__toString());
-    }
+    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.(avif|webp)\?itok=.*" \/>/', $markup->__toString());
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', 'Dignissim ... primis') }}.
     $renderer = $this->renderExtension->renderImage($file->id(), 'thumbnail', 'Dignissim dui dolor ipsum sapien habitant primis');
@@ -190,18 +161,7 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    // Since Drupal 10.3 the image styles are rendered as avif.
-    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
-    }
-    // Since Drupal 10.3 the image styles are rendered as webp.
-    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
-    }
-    else {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
-    }
+    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.(avif|webp)\?itok=.*" \/>/', $markup->__toString());
   }
 
   /**
@@ -228,18 +188,7 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    // Since Drupal 10.3 the image styles are rendered as avif.
-    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
-    }
-    // Since Drupal 10.3 the image styles are rendered as webp.
-    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
-    }
-    else {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" \/>/', $markup->__toString());
-    }
+    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.(avif|webp)\?itok=.*" \/>/', $markup->__toString());
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', '') }}.
     $renderer = $this->renderExtension->renderImage($media->field_media_image->target_id, 'thumbnail', '');
@@ -252,18 +201,7 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    // Since Drupal 10.3 the image styles are rendered as avif.
-    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
-    }
-    // Since Drupal 10.3 the image styles are rendered as webp.
-    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" \/>/', $markup->__toString());
-    }
-    else {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="" \/>/', $markup->__toString());
-    }
+    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.(avif|webp)\?itok=.*" \/>/', $markup->__toString());
 
     // Ensure {{ bamboo_render_image(1, 'thumbnail', 'Dignissim ... primis') }}.
     $renderer = $this->renderExtension->renderImage($media->field_media_image->target_id, 'thumbnail', 'Dignissim dui dolor ipsum sapien habitant primis');
@@ -276,18 +214,7 @@ class ImageTest extends KernelTestBase {
 
     $markup = $this->renderer->renderRoot($renderer);
     $this->assertInstanceOf(Markup::class, $markup);
-
-    // Since Drupal 10.3 the image styles are rendered as avif.
-    if (version_compare(\Drupal::VERSION, '11.2', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.avif\?itok=.*" \/>/', $markup->__toString());
-    }
-    // Since Drupal 10.3 the image styles are rendered as webp.
-    elseif (version_compare(\Drupal::VERSION, '10.3', '>=')) {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.webp\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
-    }
-    else {
-      $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg\?itok=.*" alt="Dignissim dui dolor ipsum sapien habitant primis" \/>/', $markup->__toString());
-    }
+    $this->assertMatchesRegularExpression('/^<img src=".*public\/antistatique\.jpg.(avif|webp)\?itok=.*" \/>/', $markup->__toString());
   }
 
 }

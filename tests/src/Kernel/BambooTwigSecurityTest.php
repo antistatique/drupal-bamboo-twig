@@ -46,12 +46,6 @@ class BambooTwigSecurityTest extends KernelTestBase {
 
     $this->installEntitySchema('user');
 
-    // Since Drupal 10.2.0 installing the table sequences with the
-    // method KernelTestBase::installSchema() is deprecated.
-    if (version_compare(\Drupal::VERSION, '10.2.0', '<')) {
-      $this->installSchema('system', ['sequences']);
-    }
-
     $this->entityTypeManager = $this->container->get('entity_type.manager');
     $this->securityExtension = $this->container->get('bamboo_twig_security.twig.security');
 
