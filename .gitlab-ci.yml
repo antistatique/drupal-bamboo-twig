@@ -32,12 +32,13 @@ variables:
   SKIP_ESLINT: '1'
   # Opt in to testing current minor against max supported PHP version.
   OPT_IN_TEST_MAX_PHP: '1'
-  # Opt in to testing previous minor (Drupal 11.0.13) & next minor (Drupal 11.2-dev).
+  # Opt in to testing previous minor (Drupal 11.1.x)
   OPT_IN_TEST_PREVIOUS_MINOR: '1'
+  # Opt in to testing next minor (Drupal 11.3.x).
   OPT_IN_TEST_NEXT_MINOR: '1'
-  # Opt in to testing $CORE_PREVIOUS_MAJOR (currently Drupal 10.4.6).
+  # Opt in to testing $CORE_PREVIOUS_MAJOR (Drupal 10.4.x).
   OPT_IN_TEST_PREVIOUS_MAJOR: '1'
-  # Opt in to testing $CORE_MAJOR_DEVELOPMENT (currently Drupal 12).
+  # Opt in to testing $CORE_MAJOR_DEVELOPMENT (Drupal 12).
   OPT_IN_TEST_NEXT_MAJOR: '1'
 
 # This module wants to strictly comply with Drupal's coding standards.
