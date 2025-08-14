@@ -47,3 +47,4 @@ msword
 officedocument
 openxmlformats
 wordprocessingml
+datetimeplus

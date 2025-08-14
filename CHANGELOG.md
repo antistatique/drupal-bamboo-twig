@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add official support of drupal 10.5
 - add official support of drupal 11.2
+- add 'datetimeplus' to cspell ignore wordlist
 
 ### Removed
 - drop coverage of Drupal 10.0.x
