@@ -16,6 +16,9 @@ jobs:
         module: ['bamboo_twig']
         experimental: [false]
         include:
+          - drupal_version: '10.6'
+            module: 'bamboo_twig'
+            experimental: true
           - drupal_version: '11.3'
             module: 'bamboo_twig'
             experimental: true
@@ -45,6 +48,9 @@ jobs:
         module: ['bamboo_twig']
         experimental: [false]
         include:
+          - drupal_version: '10.6'
+            module: 'bamboo_twig'
+            experimental: true
           - drupal_version: '11.3'
             module: 'bamboo_twig'
             experimental: true
