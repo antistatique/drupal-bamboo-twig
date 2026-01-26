@@ -12,16 +12,16 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['10.5', '11.0', '11.1', '11.2']
+        drupal_version: ['10.5', '10.6', '11.0', '11.1', '11.2', '11.3']
         module: ['bamboo_twig']
         experimental: [false]
-        include:
-          - drupal_version: '10.6'
-            module: 'bamboo_twig'
-            experimental: true
-          - drupal_version: '11.3'
-            module: 'bamboo_twig'
-            experimental: true
+#         include:
+#           - drupal_version: '10.7'
+#             module: 'bamboo_twig'
+#             experimental: true
+#           - drupal_version: '11.4'
+#             module: 'bamboo_twig'
+#             experimental: true
 
     steps:
       - uses: actions/checkout@v6
@@ -44,16 +44,16 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['10.5', '11.0', '11.1', '11.2']
+        drupal_version: ['10.5', '10.6', '11.0', '11.1', '11.2', '11.3']
         module: ['bamboo_twig']
         experimental: [false]
-        include:
-          - drupal_version: '10.6'
-            module: 'bamboo_twig'
-            experimental: true
-          - drupal_version: '11.3'
-            module: 'bamboo_twig'
-            experimental: true
+#         include:
+#           - drupal_version: '10.7'
+#             module: 'bamboo_twig'
+#             experimental: true
+#           - drupal_version: '11.4'
+#             module: 'bamboo_twig'
+#             experimental: true
 
     steps:
       - uses: actions/checkout@v6
@@ -80,7 +80,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['10.5']
+        drupal_version: ['10.6']
         module: ['bamboo_twig']
 
     steps:

@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\bamboo_twig\Unit\Cacheable;
 
-use Drupal\Tests\UnitTestCase;
 use Drupal\bamboo_twig_cacheable\TwigExtension\BubbleMetadata;
+use Drupal\Tests\UnitTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
