@@ -7,6 +7,7 @@ use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Render
@@ -14,6 +15,7 @@ use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
  * @group bamboo_twig
  * @group bamboo_twig_render
  */
+#[RunTestsInSeparateProcesses]
 class ImageTest extends KernelTestBase {
   use MediaTypeCreationTrait;
 

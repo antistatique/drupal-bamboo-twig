@@ -5,6 +5,7 @@ namespace Drupal\Tests\bamboo_twig\Kernel\Render;
 use Drupal\block\Entity\Block;
 use Drupal\Core\Render\Markup;
 use Drupal\KernelTests\KernelTestBase;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Render
@@ -12,6 +13,7 @@ use Drupal\KernelTests\KernelTestBase;
  * @group bamboo_twig
  * @group bamboo_twig_render
  */
+#[RunTestsInSeparateProcesses]
 class PluginBlockTest extends KernelTestBase {
 
   /**

@@ -2,14 +2,17 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+
 /**
  * Tests Cacheable twig filters and functions.
- *
- * @group bamboo_twig
- * @group bamboo_twig_functional
- * @group bamboo_twig_cacheable
- * @group bamboo_twig_cacheable_functional
  */
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_cacheable')]
+#[Group('bamboo_twig_cacheable_functional')]
+#[RunTestsInSeparateProcesses]
 class BambooTwigCacheableTest extends BambooTwigTestBase {
 
   /**

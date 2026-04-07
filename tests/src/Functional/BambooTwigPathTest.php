@@ -2,6 +2,8 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+
 /**
  * Tests Path twig filters and functions.
  *
@@ -9,6 +11,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
  * @group bamboo_twig_functional
  * @group bamboo_twig_path
  */
+#[RunTestsInSeparateProcesses]
 class BambooTwigPathTest extends BambooTwigTestBase {
 
   /**

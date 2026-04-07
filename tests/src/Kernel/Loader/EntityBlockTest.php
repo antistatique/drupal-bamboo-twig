@@ -7,6 +7,7 @@ use Drupal\block_content\Entity\BlockContent;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\bamboo_twig\Traits\BlockCreationTrait as BambooBlockCreationTrait;
 use Drupal\Tests\block\Traits\BlockCreationTrait;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Loader
@@ -14,6 +15,7 @@ use Drupal\Tests\block\Traits\BlockCreationTrait;
  * @group bamboo_twig
  * @group bamboo_twig_loader
  */
+#[RunTestsInSeparateProcesses]
 class EntityBlockTest extends KernelTestBase {
   use BlockCreationTrait;
   use BambooBlockCreationTrait;

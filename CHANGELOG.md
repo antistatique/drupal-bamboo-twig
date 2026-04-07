@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add experimental coverage of Drupal 11.4
 
+### Changed
+- add required #\[RunTestsInSeparateProcesses] attribute on Kernel, Functional and FunctionalJavascript tests
+
 ## [6.0.6] - 2026-01-26
 ### Added
 - add official support of drupal 10.6

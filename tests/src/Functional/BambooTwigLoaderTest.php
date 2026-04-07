@@ -5,6 +5,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
 use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests Loaders twig filters and functions.
@@ -13,6 +14,7 @@ use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
  * @group bamboo_twig_functional
  * @group bamboo_twig_loader
  */
+#[RunTestsInSeparateProcesses]
 class BambooTwigLoaderTest extends BambooTwigTestBase {
   use TaxonomyTestTrait;
 

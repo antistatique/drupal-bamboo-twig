@@ -3,6 +3,7 @@
 namespace Drupal\Tests\bamboo_twig\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests Security twig filters and functions.
@@ -10,6 +11,7 @@ use Drupal\KernelTests\KernelTestBase;
  * @group bamboo_twig
  * @group bamboo_twig_security
  */
+#[RunTestsInSeparateProcesses]
 class BambooTwigSecurityTest extends KernelTestBase {
 
   /**

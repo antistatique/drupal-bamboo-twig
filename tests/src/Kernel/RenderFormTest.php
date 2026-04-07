@@ -3,6 +3,7 @@
 namespace Drupal\Tests\bamboo_twig\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests Form Rendering twig filters and functions.
@@ -10,6 +11,7 @@ use Drupal\KernelTests\KernelTestBase;
  * @group bamboo_twig
  * @group bamboo_twig_render_form
  */
+#[RunTestsInSeparateProcesses]
 class RenderFormTest extends KernelTestBase {
 
   /**

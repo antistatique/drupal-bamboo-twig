@@ -4,6 +4,7 @@ namespace Drupal\Tests\bamboo_twig\Functional;
 
 use Drupal\Component\Gettext\PoItem;
 use Drupal\language\Entity\ConfigurableLanguage;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests Extensions i18n of twig filters and functions.
@@ -13,6 +14,7 @@ use Drupal\language\Entity\ConfigurableLanguage;
  * @group bamboo_twig_extensions
  * @group bamboo_twig_extensions_i18n
  */
+#[RunTestsInSeparateProcesses]
 class BambooTwigExtensionsI18nTest extends BambooTwigTestBase {
 
   /**
