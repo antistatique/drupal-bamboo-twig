@@ -2,7 +2,12 @@
 
 namespace Drupal\Tests\bamboo_twig\Kernel;
 
+use Drupal\bamboo_twig_loader\TwigExtension\Render;
 use Drupal\KernelTests\KernelTestBase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -11,6 +16,10 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  * @group bamboo_twig
  * @group bamboo_twig_render_form
  */
+#[CoversClass(Render::class)]
+#[CoversMethod(Render::class, 'renderForm')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_render_form')]
 #[RunTestsInSeparateProcesses]
 class RenderFormTest extends KernelTestBase {
 
@@ -41,7 +50,7 @@ class RenderFormTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderForm
+   * Tests renderForm() renders a form without additional parameters.
    */
   public function testFormWithoutParam() {
     $form = $this->renderExtension->renderForm('bamboo_twig_test', 'BasicForm');
@@ -51,10 +60,11 @@ class RenderFormTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderForm
+   * Tests renderForm() renders a form with constructor parameters.
    *
    * @dataProvider providerFormParameters
    */
+  #[DataProvider('providerFormParameters')]
   public function testFormWithParams(string $form_class, string $expected_form_id, $args, $expected_default_value) {
     $form = $this->renderExtension->renderForm('bamboo_twig_test', $form_class, $args);
     self::assertArrayHasKey('text', $form);

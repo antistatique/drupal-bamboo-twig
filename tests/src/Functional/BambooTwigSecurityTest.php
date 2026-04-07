@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_security\TwigExtension\Security;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +13,15 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_security
  */
+#[CoversClass(Security::class)]
+#[CoversMethod(Security::class, 'hasPermission')]
+#[CoversMethod(Security::class, 'hasRole')]
+#[CoversMethod(Security::class, 'hasPermissions')]
+#[CoversMethod(Security::class, 'hasRoles')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_security')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigSecurityTest extends BambooTwigTestBase {
 
@@ -59,7 +70,7 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermission
+   * Tests hasPermission() for current user and specific user accounts.
    */
   public function testHasPermission() {
     $this->drupalGet('/bamboo-twig-security');
@@ -87,7 +98,7 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRole
+   * Tests hasRole() for current user and specific user accounts.
    */
   public function testHasRole() {
     $this->drupalGet('/bamboo-twig-security');
@@ -115,7 +126,7 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermissions
+   * Tests hasPermissions() with OR/AND conjunctions for multiple permissions.
    */
   public function testHasPermissions() {
     $this->drupalGet('/bamboo-twig-security');
@@ -161,7 +172,7 @@ class BambooTwigSecurityTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRoles
+   * Tests hasRoles() with OR/AND conjunctions for multiple roles.
    */
   public function testHasRoles() {
     $this->drupalGet('/bamboo-twig-security');

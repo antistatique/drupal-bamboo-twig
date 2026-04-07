@@ -2,19 +2,27 @@
 
 namespace Drupal\Tests\bamboo_twig\Kernel\Render;
 
+use Drupal\bamboo_twig_loader\TwigExtension\Render;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Render
+ * Cover the Render twig Extension for image rendering.
  *
  * @group bamboo_twig
  * @group bamboo_twig_render
  */
+#[CoversClass(Render::class)]
+#[CoversMethod(Render::class, 'renderImage')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_render')]
 #[RunTestsInSeparateProcesses]
 class ImageTest extends KernelTestBase {
   use MediaTypeCreationTrait;
@@ -120,8 +128,6 @@ class ImageTest extends KernelTestBase {
    * {{ bamboo_render_image(1, 'thumbnail') }}.
    * {{ bamboo_render_image(1, 'thumbnail', '') }}.
    * {{ bamboo_render_image(1, 'thumbnail', 'Dignissim (...) primis') }}.
-   *
-   * @covers ::renderImage
    */
   public function testRenderImageFile() {
     $file = $this->createFile();
@@ -173,8 +179,6 @@ class ImageTest extends KernelTestBase {
    * {{ bamboo_render_image(1, 'thumbnail') }}.
    * {{ bamboo_render_image(1, 'thumbnail', '') }}.
    * {{ bamboo_render_image(1, 'thumbnail', 'Dignissim (...) primis') }}.
-   *
-   * @covers ::renderImage
    */
   public function testRenderImageMedia() {
     $media = $this->createMedia();

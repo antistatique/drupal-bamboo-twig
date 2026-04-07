@@ -2,9 +2,13 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_loader\TwigExtension\Render;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
 use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -12,8 +16,21 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_render
  */
+#[CoversClass(Render::class)]
+#[CoversMethod(Render::class, 'renderBlock')]
+#[CoversMethod(Render::class, 'renderRegion')]
+#[CoversMethod(Render::class, 'renderEntity')]
+#[CoversMethod(Render::class, 'renderEntityRevision')]
+#[CoversMethod(Render::class, 'renderImage')]
+#[CoversMethod(Render::class, 'renderImageStyle')]
+#[CoversMethod(Render::class, 'renderField')]
+#[CoversMethod(Render::class, 'renderMenu')]
+#[CoversMethod(Render::class, 'renderForm')]
+#[CoversMethod(Render::class, 'getFunctions')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_render')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigRenderTest extends BambooTwigTestBase {
   use TaxonomyTestTrait;
@@ -97,7 +114,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderBlock
+   * Tests renderBlock() renders block plugins and block entities.
    */
   public function testBlock() {
     $this->drupalGet('/bamboo-twig-render');
@@ -116,7 +133,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderBlock
+   * Tests renderBlock() renders context-aware blocks for authenticated users.
    */
   public function testBlockLoggedIn() {
     $this->drupalLogin($this->adminUser);
@@ -128,7 +145,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderRegion
+   * Tests renderRegion() renders all blocks within a theme region.
    */
   public function testRegion() {
     $this->drupalGet('/bamboo-twig-render');
@@ -137,7 +154,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderEntity
+   * Tests renderEntity() renders nodes, terms and users with translations.
    */
   public function testEntity() {
     $this->drupalGet('/bamboo-twig-render');
@@ -266,7 +283,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderEntityRevision
+   * Tests renderEntityRevision() renders specific entity revisions.
    */
   public function testRenderEntityRevision() {
     $this->drupalGet('/bamboo-twig-render-revision');
@@ -297,7 +314,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderImage
+   * Tests renderImage() renders image styles from file IDs.
    */
   public function testImage() {
     $this->drupalGet('/bamboo-twig-render');
@@ -307,7 +324,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderImageStyle
+   * Tests renderImageStyle() renders image styles from URIs.
    */
   public function testImageStyle() {
     $this->drupalGet('/bamboo-twig-render');
@@ -320,7 +337,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderField
+   * Tests renderField() renders entity fields with display modes.
    */
   public function testField() {
     $this->drupalGet('/bamboo-twig-render');
@@ -421,7 +438,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderField
+   * Tests renderField() renders entity fields loaded from the current route.
    */
   public function testFieldOnEntityFromRoutes() {
     // Accessing unpublished revision page required to be authenticated.
@@ -447,7 +464,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderMenu
+   * Tests renderMenu() renders menu trees with links and depth options.
    */
   public function testMenu() {
     $this->drupalGet('/bamboo-twig-render');
@@ -481,7 +498,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::renderForm
+   * Tests renderForm() renders a Drupal form in templates.
    */
   public function testForm() {
     $this->drupalGet('/bamboo-twig-render');
@@ -490,7 +507,7 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Render::getFunctions
+   * Tests getFunctions() exposes Views output via twig functions.
    */
   public function testViews() {
     $this->drupalGet('/bamboo-twig-render');

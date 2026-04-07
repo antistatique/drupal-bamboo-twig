@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +10,10 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_extensions
  */
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_extensions')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigExtensionsTest extends BambooTwigTestBase {
 

@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_path\TwigExtension\Path;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +13,12 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_path
  */
+#[CoversClass(Path::class)]
+#[CoversMethod(Path::class, 'getSystemPath')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_path')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigPathTest extends BambooTwigTestBase {
 
@@ -24,7 +32,7 @@ class BambooTwigPathTest extends BambooTwigTestBase {
   ];
 
   /**
-   * @covers Drupal\bamboo_twig_path\TwigExtension\Path::getSystemPath
+   * Tests getSystemPath() resolves theme, profile, and module paths.
    */
   public function testPathSystem() {
     $this->drupalGet('/bamboo-twig-path');

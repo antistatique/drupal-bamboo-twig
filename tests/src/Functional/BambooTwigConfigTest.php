@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_config\TwigExtension\Config;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +13,14 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_config
  */
+#[CoversClass(Config::class)]
+#[CoversMethod(Config::class, 'getSettings')]
+#[CoversMethod(Config::class, 'getConfig')]
+#[CoversMethod(Config::class, 'getState')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_config')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigConfigTest extends BambooTwigTestBase {
 
@@ -42,7 +52,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_config\TwigExtension\Config::getSettings
+   * Tests getSettings() exposes PHP settings values in templates.
    */
   public function testGetSettings() {
     $this->drupalGet('/bamboo-twig-config');
@@ -52,7 +62,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_config\TwigExtension\Config::getConfig
+   * Tests getConfig() exposes Drupal configuration values in templates.
    */
   public function testGetConfig() {
     $this->drupalGet('/bamboo-twig-config');
@@ -62,7 +72,7 @@ class BambooTwigConfigTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_config\TwigExtension\Config::getState
+   * Tests getState() exposes Drupal state values in templates.
    */
   public function testGetState() {
     $now = time();

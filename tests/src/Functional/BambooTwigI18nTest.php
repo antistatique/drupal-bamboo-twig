@@ -2,6 +2,11 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_i18n\TwigExtension\I18n;
+use Drupal\bamboo_twig_loader\TwigExtension\Loader;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +14,16 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_i18n
  */
+#[CoversClass(I18n::class)]
+#[CoversClass(Loader::class)]
+#[CoversMethod(I18n::class, 'getCurrentLanguage')]
+#[CoversMethod(I18n::class, 'formatDate')]
+#[CoversMethod(I18n::class, 'getTranslation')]
+#[CoversMethod(Loader::class, 'loadEntity')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_i18n')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigI18nTest extends BambooTwigTestBase {
 
@@ -87,7 +100,7 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_i18n\TwigExtension\I18n::getCurrentLanguage
+   * Tests getCurrentLanguage() returns the active language code.
    */
   public function testCurrentLang() {
     $this->drupalGet('/bamboo-twig-i18n');
@@ -100,7 +113,7 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_i18n\TwigExtension\I18n::formatDate
+   * Tests formatDate() formats dates with locale-aware translations.
    */
   public function testFormatDate() {
     $this->drupalGet('/bamboo-twig-i18n');
@@ -145,7 +158,7 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_i18n\TwigExtension\I18n::getTranslation
+   * Tests getTranslation() returns the entity in the requested language.
    */
   public function testGetTranslation() {
     $this->drupalGet('/bamboo-twig-i18n');
@@ -187,8 +200,7 @@ class BambooTwigI18nTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_i18n\TwigExtension\I18n::getTranslation
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntity
+   * Tests getTranslation() with loadEntity() on entity reference fields.
    */
   public function testGetTranslationReferencedField() {
     $this->drupalGet('/bamboo-twig-i18n');

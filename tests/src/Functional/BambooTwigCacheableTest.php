@@ -2,12 +2,20 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_cacheable\TwigExtension\BubbleMetadata;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests Cacheable twig filters and functions.
+ *
+ * @group bamboo_twig
+ * @group bamboo_twig_functional
  */
+#[CoversClass(BubbleMetadata::class)]
+#[CoversMethod(BubbleMetadata::class, 'attachCacheableMetadata')]
 #[Group('bamboo_twig')]
 #[Group('bamboo_twig_functional')]
 #[Group('bamboo_twig_cacheable')]
@@ -25,7 +33,7 @@ class BambooTwigCacheableTest extends BambooTwigTestBase {
   ];
 
   /**
-   * @covers Drupal\bamboo_twig_cacheable\TwigExtension\BubbleMetadata::attachCacheableMetadata
+   * Tests attachCacheableMetadata() propagates cache contexts to the response.
    */
   public function testCacheableContexts() {
     $this->drupalGet('/bamboo-twig-cacheable');
@@ -35,7 +43,7 @@ class BambooTwigCacheableTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_cacheable\TwigExtension\BubbleMetadata::attachCacheableMetadata
+   * Tests attachCacheableMetadata() propagates cache tags to the response.
    */
   public function testCacheableTags() {
     $this->drupalGet('/bamboo-twig-cacheable');
@@ -45,7 +53,7 @@ class BambooTwigCacheableTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_cacheable\TwigExtension\BubbleMetadata::attachCacheableMetadata
+   * Tests attachCacheableMetadata() propagates max-age to the response.
    */
   public function testCacheableMaxAge() {
     $this->drupalGet('/bamboo-twig-cacheable');

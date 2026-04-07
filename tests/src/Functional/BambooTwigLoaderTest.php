@@ -2,9 +2,13 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_loader\TwigExtension\Loader;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\file\FileInterface;
 use Drupal\Tests\taxonomy\Traits\TaxonomyTestTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -12,8 +16,16 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_loader
  */
+#[CoversClass(Loader::class)]
+#[CoversMethod(Loader::class, 'loadCurrentUser')]
+#[CoversMethod(Loader::class, 'loadEntity')]
+#[CoversMethod(Loader::class, 'loadEntityRevision')]
+#[CoversMethod(Loader::class, 'loadField')]
+#[CoversMethod(Loader::class, 'loadImage')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_loader')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigLoaderTest extends BambooTwigTestBase {
   use TaxonomyTestTrait;
@@ -98,7 +110,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadCurrentUser
+   * Tests loadCurrentUser() loads the current user in templates.
    */
   public function testCurrentUser() {
     $this->drupalGet('/bamboo-twig-loader');
@@ -114,7 +126,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntity
+   * Tests loadEntity() loads nodes, taxonomy terms, files, and users.
    */
   public function testEntity() {
     $this->drupalGet('/bamboo-twig-loader');
@@ -222,7 +234,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntityRevision
+   * Tests loadEntityRevision() loads specific revisions of entities.
    */
   public function testEntityRevision() {
     $this->drupalGet('/bamboo-twig-loader-revision');
@@ -252,8 +264,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntity
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadEntityRevision
+   * Tests loadEntity() and loadEntityRevision() load entities from route.
    */
   public function testEntityFromRoutes() {
     // Accessing unpublished revision page required to be authenticated.
@@ -287,7 +298,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadField
+   * Tests loadField() loads individual field values from entities.
    */
   public function testField() {
     $this->drupalGet('/bamboo-twig-loader');
@@ -391,7 +402,7 @@ class BambooTwigLoaderTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_loader\TwigExtension\Loader::loadImage
+   * Tests loadImage() loads an image by URI and by module path.
    */
   public function testImage() {
     $this->drupalGet('/bamboo-twig-loader');

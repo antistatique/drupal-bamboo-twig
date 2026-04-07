@@ -2,18 +2,26 @@
 
 namespace Drupal\Tests\bamboo_twig\Kernel\Render;
 
+use Drupal\bamboo_twig_loader\TwigExtension\Render;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\bamboo_twig\Traits\BlockCreationTrait as BambooBlockCreationTrait;
 use Drupal\Tests\block\Traits\BlockCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Render
+ * Cover the Render twig Extension for content block rendering.
  *
  * @group bamboo_twig
  * @group bamboo_twig_render
  */
+#[CoversClass(Render::class)]
+#[CoversMethod(Render::class, 'renderBlock')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_render')]
 #[RunTestsInSeparateProcesses]
 class ContentBlockTest extends KernelTestBase {
   use BlockCreationTrait;
@@ -61,8 +69,6 @@ class ContentBlockTest extends KernelTestBase {
    * Cover the usage of
    * {{ bamboo_render_block('block_content:ca1f2401-16a3-474b') }}.
    * {{ bamboo_render_block('block_content:ca1f2401-16a3-474b', [], TRUE) }}.
-   *
-   * @covers ::renderBlock
    */
   public function testRenderContentBlock() {
     $block = $this->createBlockContent();

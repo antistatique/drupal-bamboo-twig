@@ -2,15 +2,21 @@
 
 namespace Drupal\Tests\bamboo_twig\Kernel;
 
+use Drupal\bamboo_twig_security\TwigExtension\Security;
 use Drupal\KernelTests\KernelTestBase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests Security twig filters and functions.
- *
- * @group bamboo_twig
- * @group bamboo_twig_security
  */
+#[CoversClass(Security::class)]
+#[CoversMethod(Security::class, 'hasPermissions')]
+#[CoversMethod(Security::class, 'hasRoles')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_security')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigSecurityTest extends KernelTestBase {
 
@@ -72,7 +78,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermissions
+   * Tests hasPermissions() returns TRUE when the user has the given permission.
    */
   public function testHasPermissions() {
     $result = $this->securityExtension->hasPermissions(['bypass node access'], 'OR', 1);
@@ -80,7 +86,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermissions
+   * Tests hasPermissions() returns FALSE when the user lacks the permission.
    */
   public function testHasNotPermissions() {
     $result = $this->securityExtension->hasPermissions(['bypass node access'], 'OR', 2);
@@ -88,7 +94,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRoles
+   * Tests hasRoles() returns TRUE when the user has the given role.
    */
   public function testHasRoles() {
     $result = $this->securityExtension->hasRoles(['administrator'], 'OR', 1);
@@ -96,7 +102,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRoles
+   * Tests hasRoles() returns FALSE when the user lacks the role.
    */
   public function testHasNotRoles() {
     $result = $this->securityExtension->hasRoles(['administrator'], 'OR', 2);
@@ -104,7 +110,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasPermissions
+   * Tests hasPermissions() throws on an invalid conjunction operator.
    */
   public function testHasPermissionsInvalidConjunction() {
     $this->expectException(\InvalidArgumentException::class);
@@ -113,7 +119,7 @@ class BambooTwigSecurityTest extends KernelTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_security\TwigExtension\Security::hasRoles
+   * Tests hasRoles() throws on an invalid conjunction operator.
    */
   public function testHasRolesInvalidConjunction() {
     $this->expectException(\InvalidArgumentException::class);

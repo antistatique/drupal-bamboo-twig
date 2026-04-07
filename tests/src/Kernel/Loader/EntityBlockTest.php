@@ -2,19 +2,27 @@
 
 namespace Drupal\Tests\bamboo_twig\Kernel\Loader;
 
+use Drupal\bamboo_twig_loader\TwigExtension\Loader;
 use Drupal\block\Entity\Block;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\bamboo_twig\Traits\BlockCreationTrait as BambooBlockCreationTrait;
 use Drupal\Tests\block\Traits\BlockCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * @coversDefaultClass \Drupal\bamboo_twig_loader\TwigExtension\Loader
+ * Cover the Loader twig Extension.
  *
  * @group bamboo_twig
  * @group bamboo_twig_loader
  */
+#[CoversClass(Loader::class)]
+#[CoversMethod(Loader::class, 'loadEntity')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_loader')]
 #[RunTestsInSeparateProcesses]
 class EntityBlockTest extends KernelTestBase {
   use BlockCreationTrait;
@@ -61,8 +69,6 @@ class EntityBlockTest extends KernelTestBase {
 
   /**
    * Cover the usage of {{ bamboo_load_entity('block', 'stark_branding') }}.
-   *
-   * @covers ::loadEntity
    */
   public function testLoaderBlockEntity() {
     $entity = $this->loaderExtension->loadEntity('block', 'test_block');
@@ -71,8 +77,6 @@ class EntityBlockTest extends KernelTestBase {
 
   /**
    * Cover the usage of {{ bamboo_load_entity('block_content', 1) }}.
-   *
-   * @covers ::loadEntity
    */
   public function testLoaderBlockContentEntity() {
     $block = $this->createBlockContent();

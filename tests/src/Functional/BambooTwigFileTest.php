@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_file\TwigExtension\File;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +13,13 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_file
  */
+#[CoversClass(File::class)]
+#[CoversMethod(File::class, 'extensionGuesser')]
+#[CoversMethod(File::class, 'UrlAbsolute')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_file')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigFileTest extends BambooTwigTestBase {
 
@@ -25,7 +34,7 @@ class BambooTwigFileTest extends BambooTwigTestBase {
   ];
 
   /**
-   * @covers Drupal\bamboo_twig_file\TwigExtension\File::extensionGuesser
+   * Tests extensionGuesser() returns the correct extension for various files.
    */
   public function testExtensionGuesser() {
     $this->drupalGet('/bamboo-twig-file');
@@ -44,7 +53,7 @@ class BambooTwigFileTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_file\TwigExtension\File::UrlAbsolute
+   * Tests UrlAbsolute() returns relative and absolute file URLs.
    */
   public function testUrlAbsolute() {
     $this->drupalGet('/bamboo-twig-file');

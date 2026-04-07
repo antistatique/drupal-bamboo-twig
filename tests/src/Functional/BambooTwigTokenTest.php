@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\bamboo_twig\Functional;
 
+use Drupal\bamboo_twig_token\TwigExtension\Token;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -9,8 +13,12 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * @group bamboo_twig
  * @group bamboo_twig_functional
- * @group bamboo_twig_token
  */
+#[CoversClass(Token::class)]
+#[CoversMethod(Token::class, 'substituteToken')]
+#[Group('bamboo_twig')]
+#[Group('bamboo_twig_functional')]
+#[Group('bamboo_twig_token')]
 #[RunTestsInSeparateProcesses]
 class BambooTwigTokenTest extends BambooTwigTestBase {
   /**
@@ -42,7 +50,7 @@ class BambooTwigTokenTest extends BambooTwigTestBase {
   }
 
   /**
-   * @covers Drupal\bamboo_twig_token\TwigExtension\Token::substituteToken
+   * Tests substituteToken() replaces tokens for site and node contexts.
    */
   public function testSubstituteToken() {
     $this->drupalGet('/bamboo-twig-token');

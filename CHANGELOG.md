@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - add required #\[RunTestsInSeparateProcesses] attribute on Kernel, Functional and FunctionalJavascript tests
+- replace doctrine annotation by php attribute for PHPUnit
 
 ## [6.0.6] - 2026-01-26
 ### Added
