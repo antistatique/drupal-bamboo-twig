@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [6.0.7] - 2026-04-07
 ### Added
 - add experimental coverage of Drupal 11.4
 
@@ -198,7 +200,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - init module
 - provides some Twig extensions with some useful functions and filters that can improve development experience.
 
-[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.6...HEAD
+[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.7...HEAD
+[6.0.7]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.6...6.0.7
 [6.0.6]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.5...6.0.6
 [6.0.5]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.4...6.0.5
 [6.0.4]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.3...6.0.4
