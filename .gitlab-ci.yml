@@ -44,3 +44,16 @@ variables:
 # This module wants to strictly comply with Drupal's coding standards.
 phpcs:
   allow_failure: false
+
+phpstan (previous major):
+  before_script:
+    # PHPStan on the previous major (Drupal 10) runs against an older PHPUnit
+    # that does not ship the PHPUnit\Framework\Attributes namespace. Strip all
+    # PHP 8 attribute lines from test files before analysis so PHPStan does not
+    # complain about undefined classes.
+    # See https://www.drupal.org/project/verify_email/issues/3546315
+    - find $DRUPAL_PROJECT_FOLDER/tests/src -name '*.php' -exec sed -i '/^[[:space:]]*#\[Group(/d' {} +
+    - find $DRUPAL_PROJECT_FOLDER/tests/src -name '*.php' -exec sed -i '/^[[:space:]]*#\[RunTestsInSeparateProcesses/d' {} +
+    - find $DRUPAL_PROJECT_FOLDER/tests/src -name '*.php' -exec sed -i '/^[[:space:]]*#\[CoversClass(/d' {} +
+    - find $DRUPAL_PROJECT_FOLDER/tests/src -name '*.php' -exec sed -i '/^[[:space:]]*#\[CoversMethod(/d' {} +
+    - find $DRUPAL_PROJECT_FOLDER/tests/src -name '*.php' -exec sed -i '/^[[:space:]]*#\[DataProvider(/d' {} +
