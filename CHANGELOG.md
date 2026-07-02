@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [6.0.8] - 2026-07-02
 ### Added
 - feat: add logo.png for project browser
 
@@ -202,7 +204,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - init module
 - provides some Twig extensions with some useful functions and filters that can improve development experience.
 
-[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.7...HEAD
+[Unreleased]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.8...HEAD
+[6.0.8]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.7...6.0.8
 [6.0.7]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.6...6.0.7
 [6.0.6]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.5...6.0.6
 [6.0.5]: https://github.com/antistatique/drupal-bamboo-twig/compare/6.0.4...6.0.5
