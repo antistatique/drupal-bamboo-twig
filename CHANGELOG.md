@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
+- fix: add 'codesniffer' to cspell ignore wordlist
 - fix: exclude CI-generated gitlab_templates_version.txt from phpcs
 
 ## [6.0.8] - 2026-07-02

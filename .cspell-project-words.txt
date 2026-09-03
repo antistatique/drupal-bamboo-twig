@@ -48,3 +48,4 @@ officedocument
 openxmlformats
 wordprocessingml
 datetimeplus
+codesniffer
