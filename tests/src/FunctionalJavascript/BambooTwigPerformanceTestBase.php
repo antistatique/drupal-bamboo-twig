@@ -39,13 +39,15 @@ abstract class BambooTwigPerformanceTestBase extends PerformanceTestBase {
    *
    * @param string $path
    *   The path of the page to collect performance data from.
+   * @param array $options
+   *   Options to be forwarded to the url generator, eg. "query".
    *
    * @return \Drupal\Tests\PerformanceData
    *   The collected performance data.
    */
-  protected function collectPagePerformanceData(string $path): PerformanceData {
-    return $this->collectPerformanceData(function () use ($path) {
-      $this->drupalGet($path);
+  protected function collectPagePerformanceData(string $path, array $options = []): PerformanceData {
+    return $this->collectPerformanceData(function () use ($path, $options) {
+      $this->drupalGet($path, $options);
     }, $path);
   }
 

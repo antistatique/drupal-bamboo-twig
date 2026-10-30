@@ -104,3 +104,11 @@ bamboo_twig_test.performance.render:
         _permission: 'access content'
         function: 'entity|field|block|region|views|menu|image_style|form'
         iterations: '\d+'
+
+bamboo_twig_test.performance.cacheable:
+    path: '/bamboo-twig/perf/cacheable/{metadata}'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\Performance\CacheablePerformanceTestController::attach'
+    requirements:
+        _permission: 'access content'
+        metadata: 'none|tags|max_age|contexts'

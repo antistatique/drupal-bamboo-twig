@@ -1,0 +1,14 @@
+<div class="test-performance-cacheable">
+
+  <!-- Attach cacheable metadata which must bubble up to the Dynamic Page Cache. -->
+  <h2>Cacheable {{ variables.metadata }}</h2>
+  <hr>
+  {% if variables.metadata == 'tags' %}
+    {{ bamboo_attach_cacheable_metadata({'tags': ['bamboo_twig_performance']}) }}
+  {% elseif variables.metadata == 'max_age' %}
+    {{ bamboo_attach_cacheable_metadata({'max-age': 0}) }}
+  {% elseif variables.metadata == 'contexts' %}
+    {{ bamboo_attach_cacheable_metadata({'contexts': ['url.query_args:bamboo']}) }}
+  {% endif %}
+
+</div>

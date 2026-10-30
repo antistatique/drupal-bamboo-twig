@@ -94,5 +94,11 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'path' => 'bamboo_twig',
     ],
 
+    'bamboo_twig_test_performance_cacheable' => [
+      'variables' => ['variables' => []],
+      'template'  => 'performance_cacheable',
+      'path' => 'bamboo_twig',
+    ],
+
   ];
 }
