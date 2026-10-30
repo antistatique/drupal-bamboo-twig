@@ -94,3 +94,13 @@ bamboo_twig_test.performance.loader:
     requirements:
         _permission: 'access content'
         iterations: '\d+'
+
+bamboo_twig_test.performance.render:
+    path: '/bamboo-twig/perf/render/{function}/{iterations}'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\Performance\RenderPerformanceTestController::render'
+        iterations: 1
+    requirements:
+        _permission: 'access content'
+        function: 'entity|field|block|region|views|menu|image_style|form'
+        iterations: '\d+'

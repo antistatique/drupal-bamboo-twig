@@ -1,0 +1,29 @@
+<div class="test-performance-render">
+
+  <!-- Render the same thing many times to detect any missing (render) cache. -->
+  <h2>Render {{ variables.function }}</h2>
+  <hr>
+  {% for i in 1..variables.iterations %}
+    <div class="render-item">
+      {% if variables.function == 'entity' %}
+        {# @todo The default view mode '' of bamboo_render_entity() is never render cached. #}
+        {{ bamboo_render_entity('node', 1, 'full') }}
+      {% elseif variables.function == 'field' %}
+        {{ bamboo_render_field('title', 'node', 1) }}
+      {% elseif variables.function == 'block' %}
+        {{ bamboo_render_block('system_powered_by_block') }}
+      {% elseif variables.function == 'region' %}
+        {{ bamboo_render_region('content') }}
+      {% elseif variables.function == 'views' %}
+        {{ bamboo_render_views('who_s_new', 'block_1') }}
+      {% elseif variables.function == 'menu' %}
+        {{ bamboo_render_menu('admin') }}
+      {% elseif variables.function == 'image_style' %}
+        {{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail') }}
+      {% elseif variables.function == 'form' %}
+        {{ bamboo_render_form('system', 'CronForm') }}
+      {% endif %}
+    </div>
+  {% endfor %}
+
+</div>
