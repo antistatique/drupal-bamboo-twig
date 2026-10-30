@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: add Gander performance tests for bamboo_render_* functions
 - feat: add Gander performance tests for bamboo_attach_cacheable_metadata
 - feat: extend Gander performance tests to every bamboo_load_* functions
+- feat: add Gander performance tests for config, state, settings & security functions
 
 ## [6.0.9] - 2026-09-17
 ### Fixed

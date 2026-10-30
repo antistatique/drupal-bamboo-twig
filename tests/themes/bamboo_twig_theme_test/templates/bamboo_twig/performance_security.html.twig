@@ -1,0 +1,20 @@
+<div class="test-performance-security">
+
+  <!-- Check the same access many times to detect any missing (static) cache. -->
+  <h2>Security {{ variables.function }}</h2>
+  <hr>
+  {% for i in 1..variables.iterations %}
+    <div class="security-item">
+      {% if variables.function == 'permission' %}
+        {{ bamboo_has_permission('access content') ? 'yes' : 'no' }}
+      {% elseif variables.function == 'permissions' %}
+        {{ bamboo_has_permissions(['access content', 'access user profiles']) ? 'yes' : 'no' }}
+      {% elseif variables.function == 'role' %}
+        {{ bamboo_has_role('authenticated') ? 'yes' : 'no' }}
+      {% elseif variables.function == 'roles' %}
+        {{ bamboo_has_roles(['authenticated']) ? 'yes' : 'no' }}
+      {% endif %}
+    </div>
+  {% endfor %}
+
+</div>

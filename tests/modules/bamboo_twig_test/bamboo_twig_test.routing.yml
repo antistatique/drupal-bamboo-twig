@@ -113,3 +113,23 @@ bamboo_twig_test.performance.cacheable:
     requirements:
         _permission: 'access content'
         metadata: 'none|tags|max_age|contexts'
+
+bamboo_twig_test.performance.config:
+    path: '/bamboo-twig/perf/config/{function}/{iterations}'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\Performance\ConfigPerformanceTestController::call'
+        iterations: 1
+    requirements:
+        _permission: 'access content'
+        function: 'settings|config|state'
+        iterations: '\d+'
+
+bamboo_twig_test.performance.security:
+    path: '/bamboo-twig/perf/security/{function}/{iterations}'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\Performance\SecurityPerformanceTestController::call'
+        iterations: 1
+    requirements:
+        _permission: 'access content'
+        function: 'permission|permissions|role|roles'
+        iterations: '\d+'

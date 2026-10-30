@@ -100,5 +100,17 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'path' => 'bamboo_twig',
     ],
 
+    'bamboo_twig_test_performance_config' => [
+      'variables' => ['variables' => []],
+      'template'  => 'performance_config',
+      'path' => 'bamboo_twig',
+    ],
+
+    'bamboo_twig_test_performance_security' => [
+      'variables' => ['variables' => []],
+      'template'  => 'performance_security',
+      'path' => 'bamboo_twig',
+    ],
+
   ];
 }

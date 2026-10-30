@@ -1,0 +1,18 @@
+<div class="test-performance-config">
+
+  <!-- Get the same configuration many times to detect any missing (static) cache. -->
+  <h2>Config {{ variables.function }}</h2>
+  <hr>
+  {% for i in 1..variables.iterations %}
+    <div class="config-item">
+      {% if variables.function == 'settings' %}
+        {{ bamboo_settings_get('file_public_path') }}
+      {% elseif variables.function == 'config' %}
+        {{ bamboo_config_get('system.site', 'name') }}
+      {% elseif variables.function == 'state' %}
+        {{ bamboo_state_get('system.cron_last') }}
+      {% endif %}
+    </div>
+  {% endfor %}
+
+</div>
