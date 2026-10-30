@@ -10,14 +10,17 @@ use Drupal\Core\Controller\ControllerBase;
 class LoaderPerformanceTestController extends ControllerBase {
 
   /**
-   * Performance page loading the same entity many times.
+   * Performance page loading the same thing many times.
    *
+   * @param string $function
+   *   The Loader function to use, eg. "entity", "field", "image", ...
    * @param int $iterations
-   *   The number of time the same entity will be loaded by the template.
+   *   The number of time the same thing will be loaded by the template.
    */
-  public function loadEntity(int $iterations) {
+  public function load(string $function, int $iterations) {
     return [
       '#variables' => [
+        'function' => $function,
         'iterations' => $iterations,
       ],
       '#theme' => 'bamboo_twig_test_performance_loader',

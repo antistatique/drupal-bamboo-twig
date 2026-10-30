@@ -2,13 +2,13 @@
 
 namespace Drupal\Tests\bamboo_twig\FunctionalJavascript\BambooTwigLoader;
 
-use Drupal\FunctionalJavascriptTests\PerformanceTestBase;
+use Drupal\Tests\bamboo_twig\FunctionalJavascript\BambooTwigPerformanceTestBase;
 use Drupal\Tests\PerformanceData;
 
 /**
  * Base class for performances (Gander) tests of Loaders twig functions.
  */
-abstract class LoaderPerformanceTestBase extends PerformanceTestBase {
+abstract class LoaderPerformanceTestBase extends BambooTwigPerformanceTestBase {
 
   /**
    * {@inheritdoc}
@@ -16,22 +16,12 @@ abstract class LoaderPerformanceTestBase extends PerformanceTestBase {
   protected static $modules = [
     'node',
     'user',
+    'file',
+    'image',
     'bamboo_twig',
     'bamboo_twig_loader',
     'bamboo_twig_test',
   ];
-
-  /**
-   * We use the minimal profile to keep metrics as stable as possible.
-   *
-   * @var string
-   */
-  protected $profile = 'minimal';
-
-  /**
-   * {@inheritdoc}
-   */
-  protected $defaultTheme = 'bamboo_twig_theme_test';
 
   /**
    * {@inheritdoc}
@@ -39,12 +29,21 @@ abstract class LoaderPerformanceTestBase extends PerformanceTestBase {
   public function setUp(): void {
     parent::setUp();
 
+    // Create 20 Nodes to detect any N+1 queries when loading many entities.
     $this->drupalCreateContentType(['type' => 'article', 'name' => 'Article']);
-    $this->drupalCreateNode([
-      'nid' => 1,
-      'type' => 'article',
-      'title' => 'News N°1',
-    ]);
+    for ($nid = 1; $nid <= 20; $nid++) {
+      $this->drupalCreateNode([
+        'nid' => $nid,
+        'type' => 'article',
+        'title' => 'News N°' . $nid,
+      ]);
+    }
+
+    // Copy the image used by bamboo_load_image().
+    $this->container->get('file_system')->copy(
+      $this->container->get('extension.list.module')->getPath('bamboo_twig_test') . '/files/antistatique.jpg',
+      'public://antistatique.jpg',
+    );
 
     // Use an authenticated user to bypass the Page Cache, the page itself
     // has a max-age of 0 to bypass the Dynamic Page Cache.
@@ -52,31 +51,48 @@ abstract class LoaderPerformanceTestBase extends PerformanceTestBase {
   }
 
   /**
-   * Warm up every caches (router, theme registry, Twig, ...) of given pages.
+   * Provides every Loader functions loading the same thing many times.
    *
-   * @param int[] $iterations
-   *   The number of entity loads of each page to warm up.
+   * @return array
+   *   The Loader functions keyed by name.
    */
-  protected function warmUp(array $iterations): void {
-    foreach ($iterations as $iteration) {
-      $this->drupalGet('bamboo-twig/perf/loader/' . $iteration);
-    }
+  public static function providerLoaderFunctions(): array {
+    return [
+      'bamboo_load_entity' => ['entity'],
+      'bamboo_load_entity_revision' => ['entity_revision'],
+      'bamboo_load_field' => ['field'],
+      'bamboo_load_currentuser' => ['current_user'],
+      'bamboo_load_image' => ['image'],
+    ];
   }
 
   /**
-   * Collect performance data of a page loading the same entity many times.
+   * Warm up a page loading the same thing once and many times.
    *
+   * @param string $function
+   *   The Loader function to use, eg. "entity", "field", "image", ...
+   */
+  protected function warmUpLoader(string $function): void {
+    $this->warmUp(
+      'bamboo-twig/perf/loader/' . $function . '/1',
+      'bamboo-twig/perf/loader/' . $function . '/20',
+    );
+  }
+
+  /**
+   * Collect performance data of a page loading the same thing many times.
+   *
+   * @param string $function
+   *   The Loader function to use, eg. "entity", "field", "image", ...
    * @param int $iterations
-   *   The number of time the same entity will be loaded by the template.
+   *   The number of time the same thing will be loaded by the template.
    *
    * @return \Drupal\Tests\PerformanceData
    *   The collected performance data.
    */
-  protected function collectLoaderPerformanceData(int $iterations): PerformanceData {
-    $performance_data = $this->collectPerformanceData(function () use ($iterations) {
-      $this->drupalGet('bamboo-twig/perf/loader/' . $iterations);
-    }, 'bambooTwigLoadEntity' . $iterations);
-    $this->assertSession()->elementsCount('css', '.loader-entity-node-1', $iterations);
+  protected function collectLoaderPerformanceData(string $function, int $iterations): PerformanceData {
+    $performance_data = $this->collectPagePerformanceData('bamboo-twig/perf/loader/' . $function . '/' . $iterations);
+    $this->assertSession()->elementsCount('css', '.test-performance-loader .loader-item', $iterations);
 
     return $performance_data;
   }

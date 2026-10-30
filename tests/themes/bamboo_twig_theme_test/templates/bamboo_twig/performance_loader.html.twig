@@ -1,11 +1,25 @@
 <div class="test-performance-loader">
 
-  <!-- Load the same Node many times to detect any missing (static) cache. -->
-  <h2>Loader Node</h2>
+  <!-- Load the same thing many times to detect any missing (static) cache. -->
+  <h2>Loader {{ variables.function }}</h2>
   <hr>
   {% for i in 1..variables.iterations %}
-    {% set article = bamboo_load_entity('node', 1) %}
-    <div class="loader-entity-node-1">{{ article.title.value }}</div>
+    <div class="loader-item">
+      {% if variables.function == 'entity' %}
+        {{ bamboo_load_entity('node', 1).title.value }}
+      {% elseif variables.function == 'entity_revision' %}
+        {{ bamboo_load_entity_revision('node', 1).title.value }}
+      {% elseif variables.function == 'field' %}
+        {{ bamboo_load_field('title', 'node', 1).value }}
+      {% elseif variables.function == 'current_user' %}
+        {{ bamboo_load_currentuser().name.value }}
+      {% elseif variables.function == 'image' %}
+        {{ bamboo_load_image('public://antistatique.jpg').width }}
+      {% elseif variables.function == 'entities' %}
+        {# Load a different Node on every iteration to detect any N+1 queries. #}
+        {{ bamboo_load_entity('node', i).title.value }}
+      {% endif %}
+    </div>
   {% endfor %}
 
 </div>
