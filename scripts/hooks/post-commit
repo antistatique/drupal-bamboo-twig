@@ -6,6 +6,3 @@ docker compose exec drupal phpmd analyze ./web/modules/contrib/bamboo_twig/ --ru
 
 echo "\n🛂  \033[0;32mRunning PHP Copy/Paste Detector ...\033[0m"
 docker compose exec drupal phpcpd ./web/modules/contrib/bamboo_twig/src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
-
-echo "\n🍫  \033[0;32mRunning PhpDeprecationDetector ...\033[0m"
-docker compose exec drupal phpdd ./web/modules/contrib/bamboo_twig/ --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor

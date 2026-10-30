@@ -41,7 +41,6 @@ Truncat
 truncat
 unmatch
 unusedcode
-wapmorgan
 wengerk
 msword
 officedocument
