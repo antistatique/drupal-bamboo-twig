@@ -10,8 +10,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Returns renderer-responses for testing Twig functions/filters on templates.
- *
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class TestsController extends ControllerBase {
 

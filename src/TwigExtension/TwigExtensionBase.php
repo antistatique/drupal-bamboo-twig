@@ -8,8 +8,6 @@ use Twig\Extension\AbstractExtension;
 
 /**
  * Provides a Twig Extension Lazy Service Injection.
- *
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class TwigExtensionBase extends AbstractExtension {
 

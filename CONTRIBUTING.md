@@ -58,7 +58,6 @@ During Docker build, the following Static Analyzers will be installed on the Doc
 
 The following Analyzer will be downloaded & installed as PHAR:
 
-- `phpmd/phpmd`
 - `sebastian/phpcpd`
 - `wapmorgan/PhpDeprecationDetector`
 
@@ -85,17 +84,6 @@ Automatically fix coding standards
 
   ```
   $ docker compose exec drupal ./vendor/bin/phpcbf ./web/modules/contrib/bamboo_twig/
-  ```
-
-#### Running PHP Mess Detector
-
-https://github.com/phpmd/phpmd
-
-Detect overcomplicated expressions & Unused parameters, methods, properties.
-
-  ```
-  $ docker compose exec drupal phpmd ./web/modules/contrib/bamboo_twig/ text ./phpmd.xml \
-  --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php,*vendor/*
   ```
 
 #### Running PHP Copy/Paste Detector

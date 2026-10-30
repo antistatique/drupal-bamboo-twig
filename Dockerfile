@@ -17,13 +17,7 @@ RUN ./vendor/bin/phpcs --config-set installed_paths \
     `pwd`/vendor/drupal/coder/coder_sniffer
 
 # Copy the Analyzer definition files to ease run.
-COPY phpcs.xml.dist phpmd.xml ./
-
-# Download & install PHPMD.
-RUN set -eux; \
-  curl -LJO https://phpmd.org/static/latest/phpmd.phar; \
-  chmod +x phpmd.phar; \
-  mv phpmd.phar /usr/bin/phpmd
+COPY phpcs.xml.dist ./
 
 # Download & install PHPCPD.
 RUN set -eux; \
