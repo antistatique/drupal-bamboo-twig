@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: add Gander front-end assets performance tests for bamboo_render_* functions
 
 ### Changed
-- ci: run Gander performance tests in their own GitHub Actions matrix
+- ci: run Gander performance tests in their own GitHub Actions job on the latest Drupal version only
 
 ## [6.0.9] - 2026-09-17
 ### Fixed
