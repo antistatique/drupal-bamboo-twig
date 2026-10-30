@@ -30,18 +30,3 @@ RUN set -eux; \
   curl -LJO https://phar.phpunit.de/phpcpd.phar; \
   chmod +x phpcpd.phar; \
   mv phpcpd.phar /usr/bin/phpcpd
-
-# Download & install PhpDeprecationDetector.
-RUN set -eux; \
-  \
-  apt-get update; \
-  apt-get install -y \
-   libbz2-dev \
-  ; \
-  \
-  docker-php-ext-install bz2; \
-  \
-  curl -LJO https://github.com/wapmorgan/PhpDeprecationDetector/releases/download/2.0.29/phpdd-2.0.29.phar; \
-  chmod +x phpdd-2.0.29.phar; \
-  mv phpdd-2.0.29.phar /usr/bin/phpdd
-

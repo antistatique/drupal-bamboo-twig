@@ -60,7 +60,6 @@ The following Analyzer will be downloaded & installed as PHAR:
 
 - `phpmd/phpmd`
 - `sebastian/phpcpd`
-- `wapmorgan/PhpDeprecationDetector`
 
 ### Command Line Usage
 
@@ -106,17 +105,6 @@ https://github.com/sebastianbergmann/phpcpd
 
   ```
   $ docker compose exec drupal phpcpd ./web/modules/contrib/bamboo_twig/src --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude *.md --exclude *.info.yml --exclude tests --exclude vendor/
-  ```
-
-#### Running PhpDeprecationDetector
-
-https://github.com/wapmorgan/PhpDeprecationDetector
-
-A scanner that checks compatibility of your code with PHP interpreter versions.
-
-  ```
-  $ docker compose exec drupal phpdd ./web/modules/contrib/bamboo_twig/ \
-    --file-extensions php,module,inc,install,test,profile,theme,info --exclude vendor
   ```
 
 ### Enforce code standards with git hooks
