@@ -29,4 +29,23 @@ class RenderPerformanceTestController extends ControllerBase {
     ];
   }
 
+  /**
+   * Cacheable performance page rendering something once.
+   *
+   * The page itself is cacheable, so the Page Cache and the Dynamic Page Cache
+   * are only altered by the rendered thing.
+   *
+   * @param string $function
+   *   The Render function to use, eg. "entity", "field", "block", ...
+   */
+  public function page(string $function) {
+    return [
+      '#variables' => [
+        'function' => $function,
+        'iterations' => 1,
+      ],
+      '#theme' => 'bamboo_twig_test_performance_render',
+    ];
+  }
+
 }

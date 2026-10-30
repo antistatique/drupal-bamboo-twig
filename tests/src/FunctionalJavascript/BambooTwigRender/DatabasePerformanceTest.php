@@ -67,6 +67,7 @@ class DatabasePerformanceTest extends RenderPerformanceTestBase {
       //   whole menu tree and checks access of every links.
       'bamboo_render_menu' => ['menu', 16],
       'bamboo_render_image_style' => ['image_style', 0],
+      'bamboo_render_image_style with preprocess' => ['image_style_preprocess', 0],
       'bamboo_render_form' => ['form', 0],
     ];
   }

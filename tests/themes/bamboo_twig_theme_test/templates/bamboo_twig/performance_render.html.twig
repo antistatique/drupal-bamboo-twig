@@ -20,6 +20,8 @@
         {{ bamboo_render_menu('admin') }}
       {% elseif variables.function == 'image_style' %}
         {{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail') }}
+      {% elseif variables.function == 'image_style_preprocess' %}
+        {{ bamboo_render_image_style('public://antistatique.jpg', 'thumbnail', TRUE) }}
       {% elseif variables.function == 'form' %}
         {{ bamboo_render_form('system', 'CronForm') }}
       {% endif %}
