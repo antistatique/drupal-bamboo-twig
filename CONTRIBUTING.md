@@ -94,7 +94,7 @@ https://github.com/phpmd/phpmd
 Detect overcomplicated expressions & Unused parameters, methods, properties.
 
   ```
-  $ docker compose exec drupal phpmd ./web/modules/contrib/bamboo_twig/ text ./phpmd.xml \
+  $ docker compose exec drupal phpmd analyze ./web/modules/contrib/bamboo_twig/ --ruleset ./phpmd.xml \
   --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php,*vendor/*
   ```
 
