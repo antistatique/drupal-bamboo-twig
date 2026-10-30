@@ -105,7 +105,8 @@ class Render extends TwigExtensionBase {
    * @param mixed $id
    *   (optional) The ID of the entity to render.
    * @param string $view_mode
-   *   (optional) The view mode that should be used to render the entity.
+   *   (optional) The view mode that should be used to render the entity,
+   *   defaults to "default" which is the only one always render cached.
    * @param string $langcode
    *   (optional) For which language the entity should be rendered, defaults to
    *   the current content language.
@@ -113,7 +114,7 @@ class Render extends TwigExtensionBase {
    * @return null|array
    *   A render array for the entity or NULL if the entity does not exist.
    */
-  public function renderEntity($entity_type, $id = NULL, $view_mode = '', $langcode = NULL) {
+  public function renderEntity($entity_type, $id = NULL, $view_mode = 'default', $langcode = NULL) {
     // Lazy load the entity type manager only when needed.
     $entityTypeManager = $this->getEntityTypeManager();
 
@@ -131,7 +132,8 @@ class Render extends TwigExtensionBase {
     }
 
     $render_controller = $entityTypeManager->getViewBuilder($entity_type);
-    return $render_controller->view($entity, $view_mode, $langcode);
+    // An empty view mode is never render cached, fallback on the default one.
+    return $render_controller->view($entity, $view_mode ?: 'default', $langcode);
   }
 
   /**
@@ -142,7 +144,8 @@ class Render extends TwigExtensionBase {
    * @param mixed $revision_id
    *   (optional) The revision ID of the entity to render.
    * @param string $view_mode
-   *   (optional) The view mode that should be used to render the entity.
+   *   (optional) The view mode that should be used to render the entity,
+   *   defaults to "default" which is the only one always render cached.
    * @param string $langcode
    *   (optional) For which language the entity should be rendered, defaults to
    *   the current content language.
@@ -151,7 +154,7 @@ class Render extends TwigExtensionBase {
    *   A render array for the entity revision or NULL if the revision does not
    *   exists.
    */
-  public function renderEntityRevision($entity_type, $revision_id = NULL, $view_mode = '', $langcode = NULL) {
+  public function renderEntityRevision($entity_type, $revision_id = NULL, $view_mode = 'default', $langcode = NULL) {
     $storage = $this->getEntityTypeManager()->getStorage($entity_type);
 
     if (!$storage instanceof RevisionableStorageInterface) {
@@ -172,7 +175,8 @@ class Render extends TwigExtensionBase {
     }
 
     $render_controller = $this->getEntityTypeManager()->getViewBuilder($entity_type);
-    return $render_controller->view($revision, $view_mode, $langcode);
+    // An empty view mode is never render cached, fallback on the default one.
+    return $render_controller->view($revision, $view_mode ?: 'default', $langcode);
   }
 
   /**
