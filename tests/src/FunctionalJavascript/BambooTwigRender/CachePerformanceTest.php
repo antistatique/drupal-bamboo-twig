@@ -64,9 +64,8 @@ class CachePerformanceTest extends RenderPerformanceTestBase {
       'bamboo_render_region' => ['region', 2],
       // Every render is a Views output & results cache hit.
       'bamboo_render_views' => ['views', 3],
-      // @todo bamboo_render_menu() is not render cached, every call loads the
-      //   whole menu tree and checks access of every links.
-      'bamboo_render_menu' => ['menu', 15],
+      // Every render is a Render Cache hit.
+      'bamboo_render_menu' => ['menu', 1],
       'bamboo_render_image_style' => ['image_style', 0],
       'bamboo_render_form' => ['form', 0],
     ];

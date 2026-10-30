@@ -8,12 +8,13 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\RevisionableStorageInterface;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Drupal\Core\Routing\RouteObjectInterface;
+use Drupal\Core\Security\TrustedCallbackInterface;
 use Twig\TwigFunction;
 
 /**
  * Provides some renderer as Twig Extensions.
  */
-class Render extends TwigExtensionBase {
+class Render extends TwigExtensionBase implements TrustedCallbackInterface {
 
   /**
    * List of all Twig functions.
@@ -38,6 +39,13 @@ class Render extends TwigExtensionBase {
    */
   public function getName() {
     return 'bamboo_twig_loader.twig.render';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function trustedCallbacks() {
+    return ['buildMenu'];
   }
 
   /**
@@ -366,6 +374,9 @@ class Render extends TwigExtensionBase {
   /**
    * Returns the render array for Drupal menu.
    *
+   * The menu tree is only loaded and built on Render Cache miss, so every
+   * further render of the same menu is served from the Render Cache.
+   *
    * @param string $menu_name
    *   The name of the menu.
    * @param int $level
@@ -377,6 +388,34 @@ class Render extends TwigExtensionBase {
    *   A render array for the menu.
    */
   public function renderMenu($menu_name, $level = 1, $depth = 0) {
+    return [
+      '#lazy_builder' => [
+        'bamboo_twig_loader.twig.render:buildMenu',
+        [$menu_name, (int) $level, (int) $depth],
+      ],
+      '#cache' => [
+        'keys' => ['bamboo_twig', 'menu', $menu_name, $level, $depth],
+        // The active trail is needed to build the menu tree parameters.
+        'contexts' => ['route.menu_active_trails:' . $menu_name],
+        'tags' => ['config:system.menu.' . $menu_name],
+      ],
+    ];
+  }
+
+  /**
+   * Lazy builder of the render array for Drupal menu.
+   *
+   * @param string $menu_name
+   *   The name of the menu.
+   * @param int $level
+   *   (optional) Initial menu level.
+   * @param int $depth
+   *   (optional) Maximum number of menu levels to display.
+   *
+   * @return array
+   *   A render array for the menu.
+   */
+  public function buildMenu($menu_name, $level = 1, $depth = 0) {
     // Lazy load the entity type manager only when needed.
     $menuLinkTree = $this->getMenuLinkTree();
 

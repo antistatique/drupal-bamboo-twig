@@ -63,9 +63,7 @@ class DatabasePerformanceTest extends RenderPerformanceTestBase {
       //   query on every call. It could be statically cached.
       'bamboo_render_region' => ['region', 1],
       'bamboo_render_views' => ['views', 0],
-      // @todo bamboo_render_menu() is not render cached, every call loads the
-      //   whole menu tree and checks access of every links.
-      'bamboo_render_menu' => ['menu', 16],
+      'bamboo_render_menu' => ['menu', 0],
       'bamboo_render_image_style' => ['image_style', 0],
       'bamboo_render_form' => ['form', 0],
     ];
