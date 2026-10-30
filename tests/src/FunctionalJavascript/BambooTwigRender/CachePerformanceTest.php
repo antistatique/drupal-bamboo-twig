@@ -61,6 +61,7 @@ class CachePerformanceTest extends RenderPerformanceTestBase {
       'bamboo_render_entity' => ['entity', 1],
       'bamboo_render_field' => ['field', 0],
       'bamboo_render_block' => ['block', 0],
+      // Every render is a Render Cache hit of each blocks of the region.
       'bamboo_render_region' => ['region', 2],
       // Every render is a Views output & results cache hit.
       'bamboo_render_views' => ['views', 3],

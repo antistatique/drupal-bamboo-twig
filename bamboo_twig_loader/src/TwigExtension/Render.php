@@ -16,6 +16,13 @@ use Twig\TwigFunction;
 class Render extends TwigExtensionBase {
 
   /**
+   * The block IDs of already rendered regions, keyed by theme and region.
+   *
+   * @var array
+   */
+  protected $regionBlockIds = [];
+
+  /**
    * List of all Twig functions.
    */
   public function getFunctions() {
@@ -284,10 +291,16 @@ class Render extends TwigExtensionBase {
    *   A render array to display the region content.
    */
   public function renderRegion($region, $theme = NULL) {
-    $blocks = $this->getBlockStorage()->loadByProperties([
-      'region' => $region,
-      'theme'  => $theme ?: $this->getConfigFactory()->get('system.theme')->get('default'),
-    ]);
+    $theme = $theme ?: $this->getConfigFactory()->get('system.theme')->get('default');
+
+    // Only query the blocks of a region once per request.
+    if (!isset($this->regionBlockIds[$theme][$region])) {
+      $this->regionBlockIds[$theme][$region] = array_keys($this->getBlockStorage()->loadByProperties([
+        'region' => $region,
+        'theme'  => $theme,
+      ]));
+    }
+    $blocks = $this->getBlockStorage()->loadMultiple($this->regionBlockIds[$theme][$region]);
 
     $view_builder = $this->getEntityTypeManager()->getViewBuilder('block');
 
