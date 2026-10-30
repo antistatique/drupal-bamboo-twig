@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fix(ci): use the PHPMD 3 `analyze` command
 - fix: query blocks of a region only once per request in bamboo_render_region
+- fix: respect blocks status & visibility in bamboo_render_region
 
 ### Added
 - feat: add Gander performance tests for bamboo_load_entity

@@ -4,6 +4,7 @@ namespace Drupal\bamboo_twig_loader\TwigExtension;
 
 use Drupal\bamboo_twig\TwigExtension\TwigExtensionBase;
 use Drupal\Core\Block\TitleBlockPluginInterface;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\RevisionableStorageInterface;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
@@ -305,8 +306,17 @@ class Render extends TwigExtensionBase {
     $view_builder = $this->getEntityTypeManager()->getViewBuilder('block');
 
     $build = [];
+    $cacheability = new CacheableMetadata();
     /** @var \Drupal\block\BlockInterface[] $blocks */
     foreach ($blocks as $id => $block) {
+      // Respect the block status & visibility as done by the Block Repository.
+      // @see \Drupal\block\BlockRepository::getVisibleBlocksPerRegion()
+      $access = $block->access('view', NULL, TRUE);
+      $cacheability->addCacheableDependency($access);
+      if (!$access->isAllowed()) {
+        continue;
+      }
+
       $block_plugin = $block->getPlugin();
       if ($block_plugin instanceof TitleBlockPluginInterface) {
         $request = $this->getRequestStack()->getCurrentRequest();
@@ -317,6 +327,9 @@ class Render extends TwigExtensionBase {
       }
       $build[$id] = $view_builder->view($block);
     }
+
+    // Denied blocks must also vary the region, eg. by user roles or route.
+    $cacheability->applyTo($build);
 
     return $build;
   }
