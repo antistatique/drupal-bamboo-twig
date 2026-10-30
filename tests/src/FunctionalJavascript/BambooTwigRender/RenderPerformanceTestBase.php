@@ -71,6 +71,7 @@ abstract class RenderPerformanceTestBase extends BambooTwigPerformanceTestBase {
       'bamboo_render_views' => ['views'],
       'bamboo_render_menu' => ['menu'],
       'bamboo_render_image_style' => ['image_style'],
+      'bamboo_render_image_style with preprocess' => ['image_style_preprocess'],
       'bamboo_render_form' => ['form'],
     ];
   }

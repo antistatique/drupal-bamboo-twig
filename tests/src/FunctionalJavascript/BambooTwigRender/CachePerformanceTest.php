@@ -4,6 +4,7 @@ namespace Drupal\Tests\bamboo_twig\FunctionalJavascript\BambooTwigRender;
 
 use Drupal\bamboo_twig_loader\TwigExtension\Render;
 use Drupal\Core\Cache\Cache;
+use Drupal\image\Entity\ImageStyle;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -68,6 +69,7 @@ class CachePerformanceTest extends RenderPerformanceTestBase {
       //   whole menu tree and checks access of every links.
       'bamboo_render_menu' => ['menu', 15],
       'bamboo_render_image_style' => ['image_style', 0],
+      'bamboo_render_image_style with preprocess' => ['image_style_preprocess', 0],
       'bamboo_render_form' => ['form', 0],
     ];
   }
@@ -104,6 +106,73 @@ class CachePerformanceTest extends RenderPerformanceTestBase {
     // proves it is stored in the Render Cache, then served from it.
     $this->assertGreaterThan(0, $cold->getCacheSetCount(), 'A cold bamboo_render_entity() must write the rendered entity in the Render Cache.');
     $this->assertSame(0, $warm->getCacheSetCount(), 'A warm bamboo_render_entity() must be served from the Render Cache.');
+  }
+
+  /**
+   * Preprocessing an image style must only generate the derivative once.
+   */
+  public function testRenderImageStylePreprocessOnce(): void {
+    // The derivative URI depends on the style effects, eg. AVIF conversion.
+    $derivative = ImageStyle::load('thumbnail')->buildUri('public://antistatique.jpg');
+
+    // The first request generates the image style derivative.
+    $this->drupalGet('bamboo-twig/perf/render/image_style_preprocess/1');
+    $this->assertFileExists($derivative, 'bamboo_render_image_style() with preprocess must generate the derivative.');
+
+    // Replace the derivative with a marker, it must never be generated again.
+    file_put_contents($derivative, 'bamboo-twig-marker');
+    $this->warmUp('bamboo-twig/perf/render/image_style/1', 'bamboo-twig/perf/render/image_style_preprocess/20');
+
+    $plain = $this->collectRenderPerformanceData('image_style', 1);
+    $preprocess = $this->collectRenderPerformanceData('image_style_preprocess', 20);
+
+    $this->assertSame('bamboo-twig-marker', file_get_contents($derivative), 'An existing derivative must not be generated again.');
+
+    // Once generated, preprocessing must cost the same as building the URL.
+    $this->assertSame($plain->getQueryCount(), $preprocess->getQueryCount(), 'A preprocessed bamboo_render_image_style() must not trigger additional database queries.');
+    $this->assertSame($plain->getCacheGetCount(), $preprocess->getCacheGetCount(), 'A preprocessed bamboo_render_image_style() must not trigger additional cache gets.');
+  }
+
+  /**
+   * Rendering a form must keep the Page Cache for anonymous users.
+   */
+  public function testRenderFormPageCache(): void {
+    $this->drupalLogout();
+    $this->warmUpPages('block', 'form');
+
+    // The Powered by Drupal block is always cacheable, use it as a baseline.
+    $baseline = $this->collectPagePerformanceData('bamboo-twig/perf/render-page/block');
+    $form = $this->collectPagePerformanceData('bamboo-twig/perf/render-page/form');
+    $this->assertSession()->elementExists('css', '.test-performance-render form');
+
+    $this->assertSame(0, $form->getCacheSetCount(), 'A page with bamboo_render_form() must be served from the Page Cache.');
+    $this->assertSame($baseline->getQueryCount(), $form->getQueryCount(), 'A page with bamboo_render_form() must be as cheap as any page served from the Page Cache.');
+  }
+
+  /**
+   * Rendering a form must keep the Dynamic Page Cache for authenticated users.
+   */
+  public function testRenderFormDynamicPageCache(): void {
+    $this->warmUpPages('block', 'form');
+
+    $form = $this->collectPagePerformanceData('bamboo-twig/perf/render-page/form');
+    $this->assertSession()->elementExists('css', '.test-performance-render form');
+
+    $this->assertSame(0, $form->getCacheSetCount(), 'A page with bamboo_render_form() must be served from the Dynamic Page Cache.');
+  }
+
+  /**
+   * Warm up twice the cacheable pages of given Render functions.
+   *
+   * @param string ...$functions
+   *   The Render functions to use, eg. "entity", "field", "block", ...
+   */
+  protected function warmUpPages(string ...$functions): void {
+    foreach ($functions as $function) {
+      // The first request builds the page, the second one is the first served
+      // from caches, so only then every caches are stable.
+      $this->warmUp('bamboo-twig/perf/render-page/' . $function, 'bamboo-twig/perf/render-page/' . $function);
+    }
   }
 
 }

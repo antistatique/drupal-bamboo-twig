@@ -103,8 +103,16 @@ bamboo_twig_test.performance.render:
         iterations: 1
     requirements:
         _permission: 'access content'
-        function: 'entity|field|block|region|views|menu|image_style|form'
+        function: 'entity|field|block|region|views|menu|image_style|image_style_preprocess|form'
         iterations: '\d+'
+
+bamboo_twig_test.performance.render.page:
+    path: '/bamboo-twig/perf/render-page/{function}'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\Performance\RenderPerformanceTestController::page'
+    requirements:
+        _permission: 'access content'
+        function: 'entity|field|block|region|views|menu|image_style|image_style_preprocess|form'
 
 bamboo_twig_test.performance.cacheable:
     path: '/bamboo-twig/perf/cacheable/{metadata}'

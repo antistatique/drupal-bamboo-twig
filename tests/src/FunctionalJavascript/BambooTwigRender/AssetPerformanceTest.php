@@ -83,6 +83,7 @@ class AssetPerformanceTest extends RenderPerformanceTestBase {
       'bamboo_render_views' => ['views', 0, 0],
       'bamboo_render_menu' => ['menu', 0, 0],
       'bamboo_render_image_style' => ['image_style', 0, 0],
+      'bamboo_render_image_style with preprocess' => ['image_style_preprocess', 0, 0],
       // Forms attach their own JS libraries (eg. core/drupal.form).
       'bamboo_render_form' => ['form', 0, 1],
     ];
