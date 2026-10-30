@@ -154,6 +154,40 @@ class BambooTwigRenderTest extends BambooTwigTestBase {
   }
 
   /**
+   * Tests renderRegion() respects the blocks status & visibility.
+   */
+  public function testRegionAccess() {
+    // A disabled block must never be rendered.
+    $this->drupalPlaceBlock('system_powered_by_block', [
+      'id' => 'bamboo_region_disabled',
+      'region' => 'header',
+    ])->disable()->save();
+    // A block only visible by authenticated users.
+    $this->drupalPlaceBlock('system_powered_by_block', [
+      'id' => 'bamboo_region_authenticated',
+      'region' => 'header',
+      'visibility' => [
+        'user_role' => [
+          'id' => 'user_role',
+          'roles' => ['authenticated' => 'authenticated'],
+          'context_mapping' => ['user' => '@user.current_user_context:current_user'],
+        ],
+      ],
+    ]);
+
+    $this->drupalGet('/bamboo-twig-render');
+    $this->assertSession()->elementExists('css', '.test-render div.render-region #block-bamboo-twig-theme-test-branding');
+    $this->assertSession()->elementNotExists('css', '.test-render div.render-region #block-bamboo-region-disabled');
+    $this->assertSession()->elementNotExists('css', '.test-render div.render-region #block-bamboo-region-authenticated');
+
+    // The region must vary by the visibility of its blocks.
+    $this->drupalLogin($this->adminUser);
+    $this->drupalGet('/bamboo-twig-render');
+    $this->assertSession()->elementNotExists('css', '.test-render div.render-region #block-bamboo-region-disabled');
+    $this->assertSession()->elementExists('css', '.test-render div.render-region #block-bamboo-region-authenticated');
+  }
+
+  /**
    * Tests renderEntity() renders nodes, terms and users with translations.
    */
   public function testEntity() {
