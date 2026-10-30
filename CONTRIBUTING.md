@@ -35,7 +35,7 @@ Once run, you will be able to access to your fresh installed Drupal on `localhos
 
     docker compose build --pull --build-arg BASE_IMAGE_TAG=11.3 drupal
     (get a coffee, this will take some time...)
-    docker compose up -d drupal
+    docker compose up -d drupal chrome
     docker compose exec -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" --site-name=Example -y
 
     # You may be interested in resetting the admin password of your Docker and installing the module using these commands.
@@ -49,6 +49,15 @@ We use the [Docker for Drupal Contrib images](https://hub.docker.com/r/wengerk/d
 Run testing by stopping at first failure using the following command:
 
     docker compose exec -u www-data drupal phpunit --group=bamboo_twig --no-coverage --stop-on-failure --configuration=/var/www/html/phpunit.xml
+
+### ⚡ Performance tests (Gander)
+
+Performance tests use [Gander](https://www.drupal.org/docs/develop/automated-testing/performance-tests), the Drupal core performance testing framework.
+They extend `PerformanceTestBase`, which drives a headless Chrome, so the `chrome` service must be up (`docker compose up -d drupal chrome`).
+
+Run only the performance tests with the following command:
+
+    docker compose exec -u www-data drupal phpunit --group=bamboo_twig_gander --no-coverage --configuration=/var/www/html/phpunit.xml
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 

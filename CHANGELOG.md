@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fix(ci): use the PHPMD 3 `analyze` command
 
+### Added
+- feat: add Gander performance tests for bamboo_load_entity
+
 ## [6.0.9] - 2026-09-17
 ### Fixed
 - fix: add 'codesniffer' to cspell ignore wordlist

@@ -81,3 +81,16 @@ bamboo_twig_test.cacheable:
         _controller: '\Drupal\bamboo_twig_test\Controller\TestsController::testCacheable'
     requirements:
         _permission: 'access content'
+
+################
+# Performance (Gander) testing.
+################
+
+bamboo_twig_test.performance.loader:
+    path: '/bamboo-twig/perf/loader/{iterations}'
+    defaults:
+        _controller: '\Drupal\bamboo_twig_test\Controller\Performance\LoaderPerformanceTestController::loadEntity'
+        iterations: 1
+    requirements:
+        _permission: 'access content'
+        iterations: '\d+'

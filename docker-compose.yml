@@ -19,3 +19,23 @@ services:
       MYSQL_DATABASE: drupal
       MYSQL_ROOT_PASSWORD: root
     restart: always
+
+  # Headless Chrome used by FunctionalJavascript & Performance (Gander) tests.
+  chrome:
+    image: drupalci/webdriver-chromedriver:production
+    depends_on:
+      - drupal
+    ulimits:
+      core:
+        soft: -1
+        hard: -1
+    ports:
+      - '4444:4444'
+      - '9515:9515'
+    entrypoint:
+      - chromedriver
+      - '--log-path=/tmp/chromedriver.log'
+      - '--verbose'
+      # cspell:ignore whitelisted
+      - '--whitelisted-ips='
+      - '--allowed-origins=*'

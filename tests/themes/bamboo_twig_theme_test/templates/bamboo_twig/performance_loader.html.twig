@@ -1,0 +1,11 @@
+<div class="test-performance-loader">
+
+  <!-- Load the same Node many times to detect any missing (static) cache. -->
+  <h2>Loader Node</h2>
+  <hr>
+  {% for i in 1..variables.iterations %}
+    {% set article = bamboo_load_entity('node', 1) %}
+    <div class="loader-entity-node-1">{{ article.title.value }}</div>
+  {% endfor %}
+
+</div>

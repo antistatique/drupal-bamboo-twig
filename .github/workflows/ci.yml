@@ -62,11 +62,13 @@ jobs:
         run: docker compose -f docker-compose.yml build --pull --build-arg BASE_IMAGE_TAG=${{ matrix.drupal_version }} drupal
         continue-on-error: ${{ matrix.experimental }}
       - name: Up a persistent Docker Container
-        run: docker compose -f docker-compose.yml up -d drupal
+        run: docker compose -f docker-compose.yml up -d drupal chrome
       - name: wait on Docker to be ready, especially Apache that takes many seconds to be up
         run: docker compose exec -T drupal wait-for-it drupal:80 -t 60
       - name: wait on Docker to be ready, especially MariaDB that takes many seconds to be up
         run: docker compose exec -T drupal wait-for-it db:3306 -t 60
+      - name: wait on Docker to be ready, especially Chrome that takes many seconds to be up
+        run: docker compose exec -T drupal wait-for-it chrome:9515 -t 60
       - name: Bootstrap Drupal
         run: docker compose -f docker-compose.yml exec -T -u www-data drupal drush site-install standard --db-url="mysql://drupal:drupal@db/drupal" -y
         continue-on-error: ${{ matrix.experimental }}

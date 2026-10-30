@@ -82,5 +82,11 @@ function bamboo_twig_test_theme($existing, $type, $theme, $path) {
       'path' => 'bamboo_twig',
     ],
 
+    'bamboo_twig_test_performance_loader' => [
+      'variables' => ['variables' => []],
+      'template'  => 'performance_loader',
+      'path' => 'bamboo_twig',
+    ],
+
   ];
 }
