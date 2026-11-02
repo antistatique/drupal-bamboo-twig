@@ -3,3 +3,13 @@ services:
         private: true
         class: Drupal\bamboo_twig\TwigExtension\TwigExtensionBase
         arguments: ['@service_container']
+
+    # Hooks
+    Drupal\bamboo_twig\Hook\BambooTwigHelpHook:
+        class: Drupal\bamboo_twig\Hook\BambooTwigHelpHook
+        arguments:
+            - '@module_handler'
+            - '@extension.list.module'
+            - '@config.factory'
+            # Optional: the Filter module is not a dependency.
+            - '@?plugin.manager.filter'
