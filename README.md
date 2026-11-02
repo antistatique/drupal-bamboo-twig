@@ -11,7 +11,7 @@ A Drupal powered module.
 The Bamboo Twig module provides some Twig extensions with some useful functions
 and filters aimed to improve the development experience.
 
-Bamboo Twig has a lot of advantages and brings a lot of new features to the Twig landscape of Drupal 8.
+Bamboo Twig has a lot of advantages and brings a lot of new features to the Twig landscape of Drupal.
 It boosts performance by using lazy loading, improves the code quality
 with automated workflow. It also includes automated unit and kernel tests
 to ensure stability.
@@ -35,7 +35,7 @@ to ensure stability.
   - You want to use a twig module which is design to works on multilingual websites.
   - You want to use a twig module that follows all the best practices.
   - You want to use a twig module that ensure stability with tests.
-  - You want to use a twig module that will be compatible Drupal 9.
+  - You want to use a twig module that is compatible with Drupal 10, 11 & 12.
 
 Bamboo Twig can do a lot more than that, but perhaps these are some of the
 obvious uses of Bamboo Twig.
@@ -47,10 +47,9 @@ for each topic he provides Twigs.
 
 ## Bamboo Twig versions
 
-Bamboo Twig is available for Drupal 8, Drupal 9, Drupal 10 & Drupal 11 !
+Bamboo Twig is available for Drupal 10.5+, Drupal 11 & Drupal 12 !
 
-- If you are running Drupal `11.x`, use Bamboo Twig `6.0.x`.
-- If you are running Drupal `10.x`, use Bamboo Twig `6.0.x`.
+- If you are running Drupal `10.5+`, `11.x` or `12.x`, use Bamboo Twig `6.0.x`.
 - If you are running Drupal `9.x`, use Bamboo Twig `5.x`.
 - If you are running Drupal `8.8.x`, use Bamboo Twig `5.0`.
 - If you are running Drupal `8.7.x`, use Bamboo Twig `4.x`.
@@ -74,18 +73,15 @@ must upgrade to `8.x-3.x` version of **Bamboo Twig**.
 
 | Drupal Core | Bamboo Twig |
 |:-----------:|:-----------:|
-|    8.0.x    |     1.x     |
-|    8.4.x    |     2.x     |
-|    8.7.x    |     4.x     |
-|    8.8.x    |     5.0     |
-|    8.9.x    |     5.0     |
+|     8.x     |     5.0     |
 |     9.x     |     5.x     |
 |    10.x     |    6.0.x    |
 |    11.x     |    6.0.x    |
+|    12.x     |    6.0.x    |
 
 ## Dependencies
 
-The Drupal 8, Drupal 9, Drupal 10 & Drupal 11 version of Bamboo Twig requires nothing !
+The Drupal 10, Drupal 11 & Drupal 12 versions of Bamboo Twig require nothing !
 Feel free to use it.
 
 ## Similar modules
