@@ -109,7 +109,7 @@ jobs:
 
     strategy:
       matrix:
-        drupal_version: ['10.6']
+        drupal_version: ['11.3']
         module: ['bamboo_twig']
 
     steps:
