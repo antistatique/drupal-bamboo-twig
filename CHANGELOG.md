@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ci: run Upgrade Status on Drupal 11.4
 - ci: rename the docker-compose build steps to docker compose
 - docs(gitlab-ci): refresh outdated Drupal versions in comments
+- refactor: convert hook_help to an invokable OOP hook class
 
 ### Removed
 - ci: remove PhpDeprecationDetector (phpdd) job, tool and docs
