@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - ci: run Upgrade Status on Drupal 11.3 to report Drupal 12 readiness
 - docs(readme): update the supported Drupal versions
+- ci: test Drupal 11.4 as a stable version
+- build(docker): use Drupal 11.4 as default base image
+- ci: run Upgrade Status on Drupal 11.4
 - ci: rename the docker-compose build steps to docker compose
 
 ### Removed
