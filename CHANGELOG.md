@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ci: test Drupal 11.4 as a stable version
 - build(docker): use Drupal 11.4 as default base image
 - ci: run Upgrade Status on Drupal 11.4
+- ci: rename the docker-compose build steps to docker compose
 
 ### Removed
 - ci: remove PhpDeprecationDetector (phpdd) job, tool and docs
