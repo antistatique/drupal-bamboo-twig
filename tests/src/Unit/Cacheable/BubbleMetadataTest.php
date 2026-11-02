@@ -50,31 +50,31 @@ class BubbleMetadataTest extends UnitTestCase {
    */
   public static function providerAttachCacheableMetadata(): iterable {
     return [
-          [
-              [
-                'contexts' => ['kitten.type'],
-                'tags' => ['entity.kitten.1'],
-                'max-age' => 10,
-              ],
-              [
-                '#cache' => [
-                  'contexts' => ['kitten.type'],
-                  'tags' => ['entity.kitten.1'],
-                  'max-age' => 10,
-                ],
-              ],
+      [
+        [
+          'contexts' => ['kitten.type'],
+          'tags' => ['entity.kitten.1'],
+          'max-age' => 10,
+        ],
+        [
+          '#cache' => [
+            'contexts' => ['kitten.type'],
+            'tags' => ['entity.kitten.1'],
+            'max-age' => 10,
           ],
-          [
-              [
-                'contexts' => ['kitten.type'],
-                'bad_array_key' => 'cat.type',
-              ],
-              [
-                '#cache' => [
-                  'contexts' => ['kitten.type'],
-                ],
-              ],
+        ],
+      ],
+      [
+        [
+          'contexts' => ['kitten.type'],
+          'bad_array_key' => 'cat.type',
+        ],
+        [
+          '#cache' => [
+            'contexts' => ['kitten.type'],
           ],
+        ],
+      ],
     ];
   }
 

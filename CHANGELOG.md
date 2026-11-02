@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix: add 'ulimits' to cspell ignore wordlist
 - fix: respect blocks status & visibility in bamboo_render_region
 - fix: render entities with the 'default' view mode by default so they are render cached
+- style(phpcs): fix coding standards reported by drupal/coder 9
 
 ### Added
 - feat: add Gander performance tests for bamboo_load_entity
