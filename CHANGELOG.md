@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ci: remove PhpDeprecationDetector (phpdd) job, tool and docs
 
 ### Fixed
+- fix(ci): enable all submodules before running Upgrade Status
 - fix(ci): use the PHPMD 3 `analyze` command
 - fix: add 'ulimits' to cspell ignore wordlist
 - fix: respect blocks status & visibility in bamboo_render_region
