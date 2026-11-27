@@ -1,0 +1,4 @@
+services:
+    # Hooks
+    Drupal\bamboo_twig_test\Hook\BambooTwigTestThemeHook:
+        class: Drupal\bamboo_twig_test\Hook\BambooTwigTestThemeHook
