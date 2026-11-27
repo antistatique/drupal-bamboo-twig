@@ -83,16 +83,8 @@ class I18n extends TwigExtensionBase {
    *   contain user input, this value should be escaped when output.
    */
   public function formatDate(TwigEnvironment $env, $date, $type = 'medium', $format = '', $timezone = NULL, $langcode = NULL) {
-    // Convert both dates to DateTime instances.
-    if (method_exists(CoreExtension::class, 'convertDate')) {
-      $date = $env->getExtension(CoreExtension::class)->convertDate($date);
-    }
-    elseif (method_exists(CoreExtension::class, 'dateConverter')) {
-      $date = CoreExtension::dateConverter($env, $date);
-    }
-    else {
-      $date = twig_date_converter($env, $date);
-    }
+    // Convert the date to a DateTime instance.
+    $date = $env->getExtension(CoreExtension::class)->convertDate($date);
 
     if ($date instanceof \DateTime) {
       return $this->getDateFormatter()->format($date->getTimestamp(), $type, $format, $timezone, $langcode);

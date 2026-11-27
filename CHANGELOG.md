@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - refactor: convert hook_help to an invokable OOP hook class
 
 ### Removed
+- refactor: remove the deprecated `twig_date_converter()` fallbacks
 - ci: remove PhpDeprecationDetector (phpdd) job, tool and docs
 
 ### Fixed

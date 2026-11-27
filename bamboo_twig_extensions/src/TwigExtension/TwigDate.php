@@ -67,18 +67,8 @@ class TwigDate extends AbstractExtension {
   public function diff(TwigEnvironment $env, $date, $now = NULL, $unit = NULL, $humanize = TRUE) {
 
     // Convert both dates to DateTime instances.
-    if (method_exists(CoreExtension::class, 'convertDate')) {
-      $date = $env->getExtension(CoreExtension::class)->convertDate($date);
-      $now = $env->getExtension(CoreExtension::class)->convertDate($now);
-    }
-    elseif (method_exists(CoreExtension::class, 'dateConverter')) {
-      $date = CoreExtension::dateConverter($env, $date);
-      $now = CoreExtension::dateConverter($env, $now);
-    }
-    else {
-      $date = twig_date_converter($env, $date);
-      $now = twig_date_converter($env, $now);
-    }
+    $date = $env->getExtension(CoreExtension::class)->convertDate($date);
+    $now = $env->getExtension(CoreExtension::class)->convertDate($now);
 
     // Get the difference between the two DateTime objects.
     $diff = $date->diff($now);
