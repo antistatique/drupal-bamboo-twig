@@ -1,0 +1,125 @@
+<?php
+
+namespace Drupal\bamboo_twig_test\Hook;
+
+use Drupal\Core\Hook\Attribute\Hook;
+
+/**
+ * Hook implementation of hook_theme() for the Bamboo Twig test module.
+ */
+#[Hook('theme')]
+final class BambooTwigTestThemeHook {
+
+  /**
+   * Register the theme hooks rendering the Bamboo Twig test templates.
+   *
+   * @return array
+   *   An associative array of theme hook definitions.
+   */
+  public function __invoke(): array {
+    return [
+      'bamboo_twig_test_loader' => [
+        'variables' => ['variables' => []],
+        'template'  => 'loader',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_loader_revision' => [
+        'variables' => ['variables' => []],
+        'template'  => 'loader_revision',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_render' => [
+        'variables' => ['variables' => []],
+        'template'  => 'render',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_render_revision' => [
+        'variables' => ['variables' => []],
+        'template'  => 'render_revision',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_security' => [
+        'variables' => ['variables' => []],
+        'template'  => 'security',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_config' => [
+        'variables' => ['variables' => []],
+        'template'  => 'config',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_file' => [
+        'variables' => ['variables' => []],
+        'template'  => 'file',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_token' => [
+        'variables' => ['variables' => []],
+        'template'  => 'token',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_path' => [
+        'variables' => ['variables' => []],
+        'template'  => 'path',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_i18n' => [
+        'variables' => ['variables' => []],
+        'template'  => 'i18n',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_extensions' => [
+        'variables' => ['variables' => []],
+        'template'  => 'extensions',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_cacheable' => [
+        'variables' => ['variables' => []],
+        'template'  => 'cacheable',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_performance_loader' => [
+        'variables' => ['variables' => []],
+        'template'  => 'performance_loader',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_performance_render' => [
+        'variables' => ['variables' => []],
+        'template'  => 'performance_render',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_performance_cacheable' => [
+        'variables' => ['variables' => []],
+        'template'  => 'performance_cacheable',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_performance_config' => [
+        'variables' => ['variables' => []],
+        'template'  => 'performance_config',
+        'path' => 'bamboo_twig',
+      ],
+
+      'bamboo_twig_test_performance_security' => [
+        'variables' => ['variables' => []],
+        'template'  => 'performance_security',
+        'path' => 'bamboo_twig',
+      ],
+    ];
+  }
+
+}

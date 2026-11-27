@@ -5,112 +5,15 @@
  * Primary module hooks for Bamboo Twig test module.
  */
 
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\bamboo_twig_test\Hook\BambooTwigTestThemeHook;
+
 /**
  * Implements hook_theme().
+ *
+ * Legacy shim for Drupal < 11.1, see BambooTwigTestThemeHook.
  */
+#[LegacyHook]
 function bamboo_twig_test_theme($existing, $type, $theme, $path) {
-  return [
-    'bamboo_twig_test_loader' => [
-      'variables' => ['variables' => []],
-      'template'  => 'loader',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_loader_revision' => [
-      'variables' => ['variables' => []],
-      'template'  => 'loader_revision',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_render' => [
-      'variables' => ['variables' => []],
-      'template'  => 'render',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_render_revision' => [
-      'variables' => ['variables' => []],
-      'template'  => 'render_revision',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_security' => [
-      'variables' => ['variables' => []],
-      'template'  => 'security',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_config' => [
-      'variables' => ['variables' => []],
-      'template'  => 'config',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_file' => [
-      'variables' => ['variables' => []],
-      'template'  => 'file',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_token' => [
-      'variables' => ['variables' => []],
-      'template'  => 'token',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_path' => [
-      'variables' => ['variables' => []],
-      'template'  => 'path',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_i18n' => [
-      'variables' => ['variables' => []],
-      'template'  => 'i18n',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_extensions' => [
-      'variables' => ['variables' => []],
-      'template'  => 'extensions',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_cacheable' => [
-      'variables' => ['variables' => []],
-      'template'  => 'cacheable',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_performance_loader' => [
-      'variables' => ['variables' => []],
-      'template'  => 'performance_loader',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_performance_render' => [
-      'variables' => ['variables' => []],
-      'template'  => 'performance_render',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_performance_cacheable' => [
-      'variables' => ['variables' => []],
-      'template'  => 'performance_cacheable',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_performance_config' => [
-      'variables' => ['variables' => []],
-      'template'  => 'performance_config',
-      'path' => 'bamboo_twig',
-    ],
-
-    'bamboo_twig_test_performance_security' => [
-      'variables' => ['variables' => []],
-      'template'  => 'performance_security',
-      'path' => 'bamboo_twig',
-    ],
-
-  ];
+  return \Drupal::service(BambooTwigTestThemeHook::class)();
 }
